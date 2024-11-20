@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_event_field__c</fullName>
+    <defaultValue>false</defaultValue>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Use Event Picklist Field?</label>
+    <type>Checkbox</type>
+</CustomField>

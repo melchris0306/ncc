@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Session Catch-Up Reminder</name>
+    <style>none</style>
+    <subject>Catch-Up Opportunity Reminder</subject>
+    <textOnly>VA Healh Connect CRM
+
+REMINDER: Catch-Up Opportunity!
+
+Hello {!Session_Participant__c.Contact_First_Name__c},
+
+{!Session_Participant__c.Session_Catchup_Reminder_Message__c}
+
+
+For more information, please visit the event page:
+
+{!Session_Participant__c.Event_Name__c}
+
+Event Details</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

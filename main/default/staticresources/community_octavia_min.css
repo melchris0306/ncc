@@ -1,0 +1,358 @@
+.card-main {
+	padding : 5rem 10rem;
+}
+
+.card-inner {
+
+}
+
+
+.card-inner {
+
+}
+
+
+.card-item-horizontal {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.card-item-left {
+	float:left;
+}
+
+.card-border {
+	border-style: solid;
+	border-width: 1px;
+}
+
+.card-color-white {
+	background-color: white;
+}
+
+.card-color-one {
+	background-color: orange;
+}
+
+.card-height-small {
+	height: 3rem;	
+	overflow: auto;
+}
+
+.card-height-medium {
+	height: 5rem;	
+	overflow: auto;
+}
+
+.card-height-large {
+	height: 7rem;	
+	overflow: auto;
+}
+
+/* Box Allignment ------- */
+/* ---------------------- */
+
+.box-allignment-center {
+	text-align: center;
+}
+
+/* Box ------------------ */
+/* ---------------------- */
+
+.box-size-small {
+	width: 3rem;
+	height: 3rem;
+}
+
+.box-size-medium {
+	width: 5rem;
+	height: 5rem;
+}
+
+.box-size-large {
+	width: 7rem;
+	height: 7rem;
+}
+
+/* Text style ----------- */
+/* ---------------------- */
+
+.text-font-size-extrasmall {
+    font-size: 0.8rem;
+}
+
+.text-font-size-small {
+    font-size: 1rem;
+}
+
+.text-font-size-medium {
+    font-size: 2rem;
+}
+
+.text-font-size-large {
+    font-size: 3rem;
+}
+
+.text-font-size-extralarge {
+    font-size: 5rem;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+/* Default Text style --- */
+/* ---------------------- */
+
+
+
+/* Column Size----------- */
+/* ---------------------- */
+
+.item-size-1-of-4 {
+	width: 25%;
+}
+
+.item-size-2-of-4 {
+	width: 50%;
+}
+
+.item-size-3-of-4 {
+	width: 75%;
+}
+
+.item-size-1-of-5 {
+	width: 20%;
+}
+
+.item-size-2-of-5 {
+	width: 40%;
+}
+
+.item-size-3-of-5 {
+	width: 60%;
+}
+
+.item-size-4-of-5 {
+	width: 80%;
+}
+
+
+
+/* Margin --------------- */
+/* ---------------------- */
+
+.margin-all-small {
+	margin : 1rem  1rem;
+}
+
+.margin-all-medium {
+	margin : 2rem  2rem;
+}
+
+.margin-all-large {
+	margin : 3rem  3rem;
+}
+
+.margin-vertical-small {
+	margin-top : 1rem;
+	margin-bottom : 1rem;
+}
+
+.margin-vertical-medium {
+	margin-top : 2rem;
+	margin-bottom : 2rem;
+}
+
+.margin-vertical-large {
+	margin-top : 3rem;
+	margin-bottom : 3rem;
+}
+
+.margin-horizontal-small {
+	margin-left : 1rem;
+	margin-right : 1rem;
+}
+
+.margin-horizontal-medium {
+	margin-left : 2rem;
+	margin-right : 2rem;
+}
+
+.margin-horizontal-large {
+	margin-left : 3rem;
+	margin-right : 3rem;
+}
+
+.margin-right-small {
+	margin-right : 1rem;
+} 
+
+.margin-left-small {
+	margin-left : 1rem;
+} 
+
+.margin-top-small {
+	margin-top : 1rem;
+} 
+
+.margin-bottom-small {
+	margin-bottom : 1rem;
+}
+
+.margin-bottom-medium {
+	margin-bottom : 2rem;
+}
+
+.margin-bottom-large {
+	margin-bottom : 3rem;
+}
+
+
+/* padding --------------- */
+/* ---------------------- */
+
+.padding-all-small {
+	padding : 1rem  1rem;
+}
+
+.padding-all-medium {
+	padding : 2rem  2rem;
+}
+
+.padding-all-large {
+	padding : 3rem  3rem;
+}
+
+.padding-vertical-small {
+	padding-top : 1rem;
+	padding-bottom : 1rem;
+} 
+
+.padding-vertical-medium {
+	padding-top : 2rem;
+	padding-bottom : 2rem;
+} 
+
+.padding-vertical-large {
+	padding-top : 3rem;
+	padding-bottom : 3rem;
+} 
+
+.padding-horizontal-small {
+	padding-left : 1rem;
+	padding-right : 1rem;
+} 
+
+.padding-horizontal-medium {
+	padding-left : 2rem;
+	padding-right : 2rem;
+} 
+
+.padding-horizontal-large {
+	padding-left : 3rem;
+	padding-right : 3rem;
+} 
+
+.padding-right-small {
+	padding-right : 1rem;
+} 
+
+.padding-left-small {
+	padding-left : 1rem;
+} 
+
+.padding-top-small {
+	padding-top : 1rem;
+} 
+
+.padding-bottom-small {
+	padding-bottom : 1rem;
+} 
+
+@media (min-width: 601px) and (max-width: 1280px) {
+  
+	.card-main {
+		padding : .2rem;
+	}
+	.margin-horizontal-large {
+		margin-left : 0.3rem;
+		margin-right : 0.3rem;
+	}
+	.padding-horizontal-large {
+		padding-left : 0.3rem;
+		padding-right : 0.3rem;
+	} 
+	
+}
+
+
+@media screen and (max-width: 600px) {
+
+	.card-main {
+		padding : .2rem;
+	}
+	.margin-horizontal-large {
+		margin-left : 0.3rem;
+		margin-right : 0.3rem;
+	}
+	.padding-horizontal-large {
+		padding-left : 0.3rem;
+		padding-right : 0.3rem;
+	} 
+	
+	.card-height-small {
+		height: 2rem;	
+	}
+
+	.card-height-medium {
+		height: 3rem;	
+	}
+
+	.card-height-large {
+		height: 5rem;	
+	}
+	
+	.box-size-small {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.box-size-medium {
+		width: 3rem;
+		height: 3rem;
+	}
+
+	.box-size-large {
+		width: 5rem;
+		height: 5rem;
+	}
+	
+	.text-font-size-extrasmall {
+		font-size: .5rem;
+	}
+	
+	.text-font-size-small {
+		font-size: .5rem;
+	}
+
+	.text-font-size-medium {
+		font-size: 1rem;
+	}
+
+	.text-font-size-large {
+		font-size: 2rem;
+	}
+
+	.text-font-size-extralarge {
+		font-size: 3rem;
+	}
+}

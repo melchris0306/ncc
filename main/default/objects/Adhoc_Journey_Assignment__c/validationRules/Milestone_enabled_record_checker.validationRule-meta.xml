@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_enabled_record_checker</fullName>
+    <active>true</active>
+    <description>Checks if the Event or Survey is tagged as milestone</description>
+    <errorConditionFormula>OR(NOT(Event__r.Milestone__c),NOT(Survey__r.Milestone__c))</errorConditionFormula>
+    <errorMessage>Cannot link Journey to a non-milestone record. Update the &apos;Milestone&apos; flag first before adding Adhoc Journey Assignment.</errorMessage>
+</ValidationRule>

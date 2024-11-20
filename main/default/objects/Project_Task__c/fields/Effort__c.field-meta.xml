@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Effort__c</fullName>
+    <inlineHelpText>How much of a time investment will this initiative require from a product, design, and development perspective?</inlineHelpText>
+    <label>Effort</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1 - 0-40 hours</fullName>
+                <default>false</default>
+                <label>1 - 0-40 hours</label>
+            </value>
+            <value>
+                <fullName>2 - 41-80 hours</fullName>
+                <default>false</default>
+                <label>2 - 41-80 hours</label>
+            </value>
+            <value>
+                <fullName>3 - 81-160 hours</fullName>
+                <default>false</default>
+                <label>3 - 81-160 hours</label>
+            </value>
+            <value>
+                <fullName>4 - 161-240 hours</fullName>
+                <default>false</default>
+                <label>4 - 161-240 hours</label>
+            </value>
+            <value>
+                <fullName>5 - More than 240 hours</fullName>
+                <default>false</default>
+                <label>5 - More than 240 hours</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

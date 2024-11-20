@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Widget_Parent_Object__c</fullName>
+    <label>Widget Parent Object</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Widget_Name__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Event__c</fullName>
+                <default>false</default>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>Journey__c</fullName>
+                <default>false</default>
+                <label>Journey</label>
+            </value>
+            <value>
+                <fullName>Contact</fullName>
+                <default>false</default>
+                <label>Contact</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Email Activity</controllingFieldValue>
+            <valueName>Contact</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Activity</controllingFieldValue>
+            <valueName>Event__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey Milestones Catch-Up</controllingFieldValue>
+            <controllingFieldValue>Journey Milestones Ongoing</controllingFieldValue>
+            <valueName>Journey__c</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

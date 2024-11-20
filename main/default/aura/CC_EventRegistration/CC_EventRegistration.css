@@ -1,0 +1,660 @@
+/* Updated/Added all changes below [CCN859,CCN860,CCN861] JaysonLabnao Nov042021 */
+@font-face{
+    font-family: 'Roboto';
+    src:url(/resource/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('/resource/CompassEventPage/Fonts/calibri.ttf'); /* IE9 Compat Modes */
+    src: url('/resource/CompassEventPage/Fonts/calibri.ttf') format('embedded-opentype'), /* IE6-IE8 */
+         url('/resource/CompassEventPage/Fonts/calibri.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+.THIS {
+    --calibri-bold: normal normal bold 1.125rem/1.5rem 'Calibri';
+    --calibri-bold-2: normal normal bold 1.125rem/2.125rem 'Calibri';
+    --calibri-normal: normal normal normal 1rem/1.5rem 'Calibri';
+    --roboto-bold: normal normal bold 1rem/1.5rem 'Roboto';
+    --roboto-normal: normal normal normal 1rem/1.5rem 'Roboto';
+    --header-title-color2 : rgb(161,217,35);
+    background-color : white;
+}
+
+/*---------------------------- Overrides ----------------------------*/
+
+/* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+/* .THIS .slds-input {
+    border: 1px solid rgb(198,198,198) !important;
+    border-radius: 8px !important;
+    max-width: none !important;
+    max-height: 2.3rem !important;
+}
+
+.THIS .slds-select_container{
+    top: -11px !important;
+}
+
+.THIS .slds-select{
+    border-color: rgb(198,198,198) !important;
+    border-radius: 8px !important;
+    min-height: 2.3rem !important;
+    margin: unset;
+    padding: 0 1rem;
+}
+
+.THIS .slds-form-element__label {
+    color: black;
+}
+
+.THIS .slds-radio__label > .slds-form-element__label {
+    color: #333333 !important;
+    font: var(--calibri-normal) !important;
+}
+
+.THIS .slds-required {
+    display: none;
+} */
+
+/* Added [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+.THIS .slds-select {
+    height: 3rem;
+}
+
+.THIS label.slds-form-element__label {
+    display: none;
+}
+
+.THIS .slds-select_container::before {
+    padding-top: 0.5rem;
+}
+
+.THIS .slds-select_container::after {
+    padding-bottom: 0.5rem;
+}
+
+/*---------------------------- Overrides ----------------------------*/
+
+.THIS .main-header-section {
+    /*margin-left: 3rem; mel*/
+}
+
+/*mel*/
+.THIS .main-header-section-content{
+    /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    padding: unset;
+    display: flex;
+    justify-content: center;
+    width: 88% !important;
+}
+
+.THIS .required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+/* .THIS .form-header{
+    margin: 20px 0;
+    padding: 5px 3%;
+} */
+
+.THIS .form-title {
+    font: var(--calibri-bold);
+    /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    margin: 3rem 0 1rem;
+    color: black;
+}
+
+.THIS .form-message {
+    font: var(--calibri-normal);
+    margin-bottom: 1rem;
+}
+
+.THIS .registration-container{
+	/*Updated by MMallorca 08272023 [CCN-3443] - Update display value*/
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(245,245,245);
+    box-shadow: inset 0 8px 6px -6px grey;
+    padding: 0 0 2rem;
+}
+
+.THIS .registration-form{
+    display: flex;
+    flex-direction: column;
+    /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    width: 60%;
+}
+
+.THIS .registration-element-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+.THIS .registration-element{
+    width: 50%;
+    padding-bottom: 0.5rem;
+}
+
+.THIS .registration-element:nth-child(odd){
+    padding-right: 0.75rem;
+}
+
+.THIS .registration-element:nth-child(even){
+    padding-left: 0.75rem;
+}
+                    
+.THIS .registration-element-alt:nth-child(1){
+    width: 25%;
+    padding-left: .75rem;
+}
+
+.THIS .registration-element-alt + .registration-element{
+    width: 25%;
+}
+                    
+.THIS .registration-element-alt ~ .registration-element:nth-child(odd){
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.THIS .registration-element-alt ~ .registration-element:nth-child(even){
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+/* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+/* .THIS .registration-label{
+    font: var(--calibri-normal);
+} */
+ 
+.THIS .table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    background-color: transparent;
+    font: var(--roboto-normal);
+}
+
+.THIS th {
+    padding: 5px;
+}
+
+.THIS td {
+    padding: 5px;
+}
+
+.THIS .table-header {
+    background-color: rgb(0,131,194) !important;
+    height: 3.75rem;
+}
+
+.THIS .table-row {
+    height: 3.75rem;
+}
+
+.THIS .table-space {
+    width: 8%;
+}
+
+.THIS .table-select {
+    text-align: center;
+    width: 6%;
+}
+
+.THIS .sort-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.THIS .sort-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 2.1875rem;
+    width: 6.25rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(7,46,85);
+    font: normal normal bold 16px/34px 'Calibri';
+    color: white;
+    padding-top: unset;
+    top: unset;
+    right: unset;
+    position: unset;
+}
+
+.THIS .sort-column {
+    display: flex;
+    padding-right: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3.75rem;
+    width: 18%;
+}
+
+.THIS .sort-button > p {
+    margin-right: 0.625rem;
+}
+
+.THIS .sort-image{
+    max-height: 80%;
+    margin-right: 0.5rem;
+}
+
+.THIS .sort-modal {    
+    position: absolute;
+    margin-top: 3rem;
+    padding: 1.2rem;
+    width: 13.75rem;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(197,197,197);
+    box-shadow: 0px 0px 3px gray;
+}
+
+.THIS .sort-by {
+    color: rgb(0,131,193);
+    font: var(--calibri-bold);
+}
+
+.THIS .uiInputCheckbox {
+    border-color: rgb(116, 116, 116);
+}
+
+.THIS .table-checkbox {  
+    height: 3.75rem;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.THIS .session-column {
+    font: var(--roboto-bold);
+    width: 32%;
+}
+
+.THIS .field-column {
+    width: 14%;
+}
+
+.THIS .end-time-column {
+    width: 8%;
+}
+
+.THIS tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+
+.THIS .submit-button:hover{
+    cursor: pointer;
+    background-color: rgb(237 162 89);
+}
+
+.THIS .submit-buttondisabled {
+    color: white;
+    text-align: center;
+    /* font: normal normal bold 18px/34px Calibri; */
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 0;
+    width: 100px;
+    height: 35px;
+    background: lightgray 0% 0% no-repeat padding-box;
+    box-shadow: 0 3px 6px #d3d3d3;
+    border-radius: 5px;
+    opacity: 1;
+    margin: auto;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-text-class {
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+                                            
+
+
+.THIS .slds-select_container:before {
+    content: none !important;
+}
+
+.THIS .slds-select_container:before {
+    content: none !important;
+}
+
+.THIS .slds-select_container:after {
+    content: none !important;
+}
+
+.THIS .slds-select_container:after {
+    content: none !important;
+}
+
+.THIS .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+}
+
+.THIS .titleField .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+}
+
+.THIS .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+.THIS .titleField .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+
+.THIS .slds-select:disabled + ::after {
+    content: '' !important;
+}
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    
+    .THIS {
+        height: 100%;
+        width: 100%;
+    }
+    .THIS .main-section-content {
+        width: 100%;
+    }
+
+    .THIS .main-header-section-content {
+        /* Updated by Jayson Labnao Jan282022 [EVENT REFRESH FIXES] */
+        /* margin-left: 5rem; */
+        width: 80% !important;
+        padding: unset !important;
+    }
+
+    .THIS .registration-container {
+        width: 100%;
+        /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+        /* padding: 0 1.5rem 3rem .5rem; */
+    }
+
+    .THIS .registration-form {
+        width: 60%;
+    }
+
+    .THIS .table-select {
+        min-width: 10%;
+        width: unset;
+    }
+
+    .THIS .session-column {
+        min-width: 45%;
+        width: unset;
+    }
+
+    .THIS .sort-column {
+        min-width: 45%;
+        width: unset;
+        justify-content: space-between;
+    }
+
+    /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    /* .THIS .slds-input {
+        border-radius: 5px !important;
+    }
+
+    .THIS .slds-select {
+        border-radius: 5px !important;
+    } */
+}
+
+/* tablet landscape */
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : landscape) { 
+        .THIS {
+            height: 100%;
+            width: 100%;
+        }
+
+        .THIS .main-section-content {
+            width: 100%;
+            margin: unset;
+        }
+
+        /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+        .THIS .main-header-section-content {
+            margin: unset;
+            width: 80% !important;
+        }
+    
+        .THIS .registration-container {
+            width: 100%;
+            /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+            /* padding: 0 1.5rem 3rem 1.5rem; */
+        }
+
+        /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+        .THIS .registration-form {
+            width: 60%;
+        }
+
+        .THIS .table-select {
+            min-width: 10%;
+            width: unset;
+        }
+    
+        .THIS .session-column {
+            min-width: 45%;
+            width: unset;
+        }
+    
+        .THIS .sort-column {
+            min-width: 45%;
+            width: unset;
+            justify-content: space-between;
+        }
+    
+        /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+        /* .THIS .slds-input {
+            border-radius: 5px !important;
+        }
+    
+        .THIS .slds-select {    
+            margin-top: 2px;
+            border-radius: 5px !important;
+        } */
+
+}
+
+/* Ipad Pro portrait */
+@media only screen 
+    and (min-device-width : 1366px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+
+        .THIS .main-header-section-content {
+            margin-left: 5rem;
+            width: 93%;
+        }
+
+        .THIS .table-select {
+            min-width: 10%;
+            width: unset;
+        }
+    
+        .THIS .session-column {
+            min-width: 45%;
+            width: unset;
+        }
+    
+        .THIS .sort-column {
+            min-width: 45%;
+            width: unset;
+            justify-content: space-between;
+        }
+}
+
+/* Ipad Pro landscape */
+@media only screen 
+    and (min-device-width : 1024px) 
+    and (max-device-width : 1366px)
+    and (orientation : landscape) { 
+
+        .THIS .table-select {
+            min-width: 10%;
+            width: unset;
+        }
+    
+        .THIS .session-column {
+            min-width: 45%;
+            width: unset;
+        }
+    
+        .THIS .sort-column {
+            min-width: 45%;
+            width: unset;
+            justify-content: space-between;
+        }
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .THIS .registration-container {
+        display: block;
+        padding: 0.5rem 1rem 1rem;
+    }
+
+    .THIS .main-header-section, 
+    .THIS .main-header-section-title {
+        margin: unset;
+        padding-left: unset;
+        color: rgb(96,98,102);
+    }
+    
+    /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    /*     
+    .THIS .main-header-section {
+        margin-left: 0.6rem;
+    } */
+
+    .THIS .main-header-section-content {
+        width: 100% !important;
+        padding: 1rem 0 0 0;
+    }
+
+    .THIS .registration-form {
+        margin: unset;
+        width: 100%;
+    }
+
+    .THIS .form-title {
+        margin: 0.5rem 0 1rem;
+        font: var(--calibri-bold);
+    }
+
+    .THIS .form-message {
+        font: var(--calibri-normal);
+    }
+
+    .THIS .registration-element-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .THIS .registration-element {
+        width: 100%;
+        /* margin: 10px 3%; */
+        margin-bottom: 0.5rem;
+        padding: unset !important;
+    }
+
+    .THIS .table {
+        font-size: 0.75rem;
+    }
+
+    .THIS .table-header{
+        height: 2.7rem;
+    }
+
+    .THIS .table-select {
+        padding-left: 1rem;
+    }
+
+    .THIS .session-column {
+        width: 50%;;
+        font-size: 0.9rem;
+    }
+
+    .THIS .sort-column { 
+        height: unset;
+    }
+
+    .THIS .table-row {
+        height: 5rem;
+    }
+
+    .THIS .table-checkbox {
+        margin: 0;
+        padding: unset;
+        height: 5rem;
+    }
+
+    .THIS .table-checkbox > input {
+        height: 1.2rem;
+        width: 1.2rem;
+        border-color: rgb(151,151,151);
+        border-radius: 2px;
+    }
+
+    .THIS .submit-button {
+        height: 2.2rem;
+        width: 19rem;
+        font-size: 1.32em;
+        
+    }
+
+    .THIS .submit-buttondisabled {
+        height: 2.2rem;
+        width: 19rem;
+        font-size: 1.32em;
+        
+    }
+
+
+   
+    
+  
+    
+    /* Removed [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    /* .THIS .slds-input {
+        border-radius: 5px !important;
+    }
+
+    
+    .THIS .slds-select {
+        border-radius: 5px !important;
+    } */
+}

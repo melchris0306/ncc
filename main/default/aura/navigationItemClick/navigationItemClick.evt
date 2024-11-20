@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="navigationName" type="String"/>
+    <aura:attribute name="navigationLink" type="String"/>
+</aura:event>

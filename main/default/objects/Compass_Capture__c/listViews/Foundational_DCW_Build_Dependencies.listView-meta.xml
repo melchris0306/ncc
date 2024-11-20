@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Foundational_DCW_Build_Dependencies</fullName>
+    <columns>NAME</columns>
+    <columns>Entity_Value_L1__c</columns>
+    <columns>Capture_Title__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>equals</operation>
+        <value>Department of Veterans Affairs</value>
+    </filters>
+    <filters>
+        <field>Campaign__c</field>
+        <operation>equals</operation>
+        <value>Oracle Cerner Deployment CSR Compass Demo</value>
+    </filters>
+    <filters>
+        <field>Type_Values__c</field>
+        <operation>equals</operation>
+        <value>Foundational DCW Build Dependency Validation</value>
+    </filters>
+    <label>Foundational DCW Build Dependencies</label>
+</ListView>

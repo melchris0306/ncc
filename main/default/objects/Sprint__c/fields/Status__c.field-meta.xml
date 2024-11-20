@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(Start_Date__c &gt; TODAY(), End_Date__c &gt; TODAY()),
+IMAGE(&quot;https://ulapp-developers.force.com/projects/resource/1609548260000/Icon_Status_Planning&quot;,&quot;N&quot;,20,65),
+
+IF(AND(Start_Date__c &lt;= TODAY(), End_Date__c &gt; TODAY()),
+IMAGE(&quot;https://ulapp-developers.force.com/projects/resource/1609548240000/Icon_Status_Active&quot;,&quot;N&quot;,20,65),
+
+IF(AND(Start_Date__c &lt; TODAY(), End_Date__c &lt; TODAY()),
+IMAGE(&quot;https://ulapp-developers.force.com/projects/resource/1609513559000/Icon_Complete&quot;,&quot;N&quot;,20,65),
+
+IMAGE(&quot;https://ulapp-developers.force.com/projects/resource/1609548664000/Icon_Status_Accepted&quot;,&quot;N&quot;,20,65)
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

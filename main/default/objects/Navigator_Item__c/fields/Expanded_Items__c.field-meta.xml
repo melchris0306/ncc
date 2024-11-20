@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expanded_Items__c</fullName>
+    <description>List of options under Navigator Items. Enter each items in a new line.</description>
+    <inlineHelpText>List of options under Navigator Items. Enter each items in a new line.</inlineHelpText>
+    <label>Expanded Items</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

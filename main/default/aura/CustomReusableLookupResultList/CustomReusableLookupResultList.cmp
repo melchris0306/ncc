@@ -1,0 +1,33 @@
+<aura:component>
+  <aura:attribute
+    name="listOfSelectedRecords"
+    type="List"
+    description="Stores list of sObject records"
+  />
+  <aura:attribute name="iconName" type="String" />
+
+  <div class="slds-p-top_x-small">
+    <aura:iteration
+      items="{!v.listOfSelectedRecords}"
+      var="selectedRecord"
+      indexVar="i"
+    >
+      <div aura:id="lookup-pill" class="slds-pill-container">
+        <lightning:pill
+          class="pill-size"
+          label="{! selectedRecord.Email == null ? selectedRecord.Name : selectedRecord.Name + ' (' + selectedRecord.Email + ')'}"
+          name="{!i}"
+          onremove="{!c.clear}"
+        >
+          <aura:set attribute="media">
+            <lightning:icon
+              iconName="{!v.iconName}"
+              size="x-small"
+              alternativeText="{!v.iconName}"
+            />
+          </aura:set>
+        </lightning:pill>
+      </div>
+    </aura:iteration>
+  </div>
+</aura:component>

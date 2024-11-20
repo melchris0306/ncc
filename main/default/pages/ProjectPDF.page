@@ -1,0 +1,225 @@
+<apex:page id="ProjectPDF" standardController="Project__c" extensions="ProjectPDFClass" renderAs="pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+    <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'styles.css')}"/>
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: letter;
+                    @bottom-right {
+                        content: counter(page);
+                    }
+                    @bottom-left {
+                        content: element(footer);
+                    }
+                }
+                @page :first {
+                    @bottom-left {
+                    }
+                }
+                div.footer{
+                    display: block;
+                    margin-top: -210px;
+                    margin-left: -50px;
+                    position: running(footer);
+                }
+                .page-break {
+                    display:block;
+                    page-break-after:always;
+                }
+                .funcDesc{
+                	text-indent: 0 !important;
+                }
+                body {
+                	text-align: justify;
+                	text-indent: 0 !important;
+  					text-justify: inter-word;
+                    font-family: Arial Unicode MS;
+                }
+                
+                ol {counter-reset: item;}
+                ol .li {display:block;}
+                ol .li .level:before {content: counters(item, ".") " ";counter-increment: item;}
+  
+                .level span{
+                    padding:0 0 0 10px;
+                }
+
+            </style>
+        </head>
+
+        <div class="footer" style="">
+            <img src="{!$Resource.footer}"/>
+        </div>
+
+        <body>
+            <div style="font-size:15px;color:#1797c0;">
+                <!-- Start -->
+                <div class="main-page" style="width:100%;">
+                    <div class="header-page">
+                        <div class="header-content" style="position:relative;padding:0px 0 20px 0;">
+                            <div style="display:inline-block;text-align:left;width:50%;padding:0;float:left">
+                                <apex:image url="{!$Resource.edera_logo}"/>
+                            </div>
+                            
+                            <div style="display:inline-block;width:50%;">
+                                <div style="background:#92D050;color:white;letter-spacing: 20pt;font-weight:bold;text-align:left;font-size:20px;padding: 5px 10% 5px 10%;text-transform:uppercase;">
+                                    <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                                        <apex:param value="{!TODAY()}" /> 
+                                    </apex:outputText>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="color:#003B71;font-size:46px;padding-top:30px;">
+                            {!Project__c.Name}
+                            <br />
+                        </div>
+                        
+                        <div class="header-desc" style="color:#0083C1;font-size:30px;margin-top:20px;letter-spacing: 2pt;">
+                            <strong>Product Overview</strong>
+                        </div>
+                        <div class="header-img">
+                            <apex:image url="{!$Resource.edera_project}"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="page-break-after: always"><span style="display: none;">&nbsp;</span></div>
+                
+                <div class="table-of-contents">
+                    <div class="table-of-contents-header" style="color:#0083C1;font-size:22px;">
+                        Table of Contents
+                    </div>
+                    <div style="color:black;">
+                        <!--div class="level" style="font-size:13px;">
+                            Table of Contents
+                        </div-->
+                        <ol style="list-style-type:decimal;list-style:decimal;font-size:13px;margin-left:0px;">
+                            <li class="li-level1 li" style="padding-bottom:10px;">
+                                <div class="level1 level" style="font-size:13px;">
+                                    <span>Executive Summary</span>
+                                </div>
+                            </li>
+                            <li class="li-level1 li">
+                                <div class="level1 level" style="font-size:13px;">
+                                    <span>{!Project__c.Name}</span>
+                                </div>
+                                <!-- EPIC -->
+                                <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:13px;">
+                                    <apex:repeat value="{!epicList}" var="epic">
+                                        <li class="li-level li">
+                                            <div class="level">
+                                                <span>{!epic.Name}</span>
+                                            </div>
+                                            <!-- FEATURE -->
+                                            <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:13px;">
+                                                <apex:repeat rendered="{!IF(Contains(epicsText, epic.Id), true, false)}" value="{!features[epic]}" var="fea">
+                                                    <li class="li-level li">
+                                                        <div class="level">
+                                                            <span>{!fea.Title__c}</span>
+                                                        </div>
+                                                        <!-- FUNCTIONALITY -->
+                                                        <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:13px;">
+                                                            <apex:repeat rendered="{!IF(Contains(featuresText, fea.Id), true, false)}" value="{!functionalities[fea.Id]}" var="func">
+                                                                <li class="li-level li">
+                                                                    <div class="level">
+                                                                        <span style="padding-left:20px;font-size:13px">{!func.Title__c}</span>
+                                                                    </div>
+                                                                </li>
+                                                            </apex:repeat>
+                                                        </ol>
+                                                    </li>
+                                                </apex:repeat>
+                                            </ol>
+                                        </li>
+                                    </apex:repeat>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div style="page-break-after: always"><span style="display: none;">&nbsp;</span></div>
+                
+                <div style="color:#0083C1;font-size:13px">
+                    <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:20px">
+                        <li style="padding-bottom:20px;" class="li">
+                            <div class="level" style="padding-left:0px;font-size:20px;">
+                                <span>Executive Summary</span>
+                            </div>
+                            <br />
+                            <div style="font-size:13px;color:black;margin:0 0 0 -5px;">
+                                {!Project__c.Description__c}
+                            </div>
+                        </li>
+                        <li class="li">
+                            <div class="level" style="padding:0 0 20px 0;font-size:20px;">
+                                <span>{!Project__c.Name}</span>
+                            </div>
+                            <!-- EPIC -->
+                            <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:18px;padding: 0 0 0 0;">
+                                <apex:repeat value="{!epicList}" var="epic">
+                                    <li class="li">
+                                        <div class="level" style="font-size:18px;padding: 0 0 10px 0;color:#003B71;">
+                                            <span>{!epic.Name}</span>
+                                        </div>
+                                        <div style="font-size:13px;color:black;padding: 0 0 20px 0;">
+                                            {!epic.Description__c}
+                                        </div>
+                                        <!-- FEATURE -->
+                                        <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:16px;margin:0 0 0 20px;">
+                                            <apex:repeat rendered="{!IF(Contains(epicsText, epic.Id), true, false)}" value="{!features[epic]}" var="fea">
+                                                <li class="li">
+                                                    <apex:outputText rendered="{!IF(Contains(featuresText, fea.Id), false, true)}">
+                                                        <div class="level" style="font-size:16px;padding: 0 0 10px 0;">
+                                                            <span>{!fea.Title__c}
+                                                                
+                                                            </span>
+                                                                           
+                                                        </div>
+                                                    </apex:outputText>
+                                                    <apex:outputText rendered="{!IF(Contains(featuresText, fea.Id), true, false)}">
+                                                        <div class="level" style="font-size:16px;padding: 0 0 10px 0;">
+                                                            <span>{!fea.Title__c}
+                                                            </span>
+                                                                           
+                                                                        
+                                                        </div>
+                                                    </apex:outputText>
+                                                    <div style="font-size:13px;color:black;margin-top: -10px;">
+															<apex:outputText escape="false" style="color: black !important;font-size: 13px !important;" rendered="{!NOT(ISBLANK(fea.Description__c))}" value="{!fea.Description__c}"></apex:outputText>                         
+                                                    </div>
+                                                    <!--div style="font-size:16px;color: black;">
+                                                    {!fea.Description__c}
+                                                    </div-->
+                                                    <!-- FUNCTIONALITY -->
+                                                    <ol type="1.0" style="list-style-type:decimal;list-style:decimal;font-size:13px;color:black;padding:10px 0 10px 0;margin: 0 0 0 0;">
+                                                        <apex:repeat rendered="{!IF(Contains(featuresText, fea.Id), true, false)}" value="{!functionalities[fea.Id]}" var="func">
+                                                            <li class="li">
+                                                                <div class="level" style="padding:0 0 0px 10px;">
+                                                                    <span style="padding-left:10px;margin-bottom: 5px; font-size:13px">{!func.Title__c}
+                                                                        <apex:outputText rendered="{!NOT(ISBLANK(func.Description__c))}">
+                                                                            &nbsp;
+                                                                            <div style="font-size: 13px !important;">
+                                                                            	<apex:outputText styleClass="funcDesc" escape="false" value="{!func.Description__c}" ></apex:outputText>
+                                                                            </div>
+                                                                            
+                                                                        </apex:outputText>
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </apex:repeat>
+                                                    </ol>
+                                                </li>
+                                            </apex:repeat>
+                                        </ol>
+                                    </li>
+                                </apex:repeat>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

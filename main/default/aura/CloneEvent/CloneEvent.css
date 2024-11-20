@@ -1,0 +1,11 @@
+.THIS .spins::after {
+    position: absolute;
+    content: 'Cloning Event';
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+}
+.THIS .slds-spinner_container {
+    background-color: unset !important;
+}

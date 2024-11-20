@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>If_workplan_exists</fullName>
+    <active>true</active>
+    <description>If a Project Task (Story, Dev, Bug, QA, Support) is related to a Workplan i.e. Workplan is not equal to null, Start Date and Target Completion Date should be required.</description>
+    <errorConditionFormula>($RecordType.DeveloperName == &quot;Story&quot; ||
+$RecordType.DeveloperName == &quot;Dev&quot; ||
+$RecordType.DeveloperName == &quot;Bug&quot; ||
+$RecordType.DeveloperName == &quot;QA&quot; ||
+$RecordType.DeveloperName == &quot;Support&quot;)
+
+&amp;&amp;
+
+(NOT(ISBLANK( Workplan__c ))
+&amp;&amp; (ISBLANK( Start_Date__c ) || ISBLANK( Target_Resolution_Date__c )))</errorConditionFormula>
+    <errorMessage>Start Date and Target Completion Date is required if Project task has a related workplan</errorMessage>
+</ValidationRule>

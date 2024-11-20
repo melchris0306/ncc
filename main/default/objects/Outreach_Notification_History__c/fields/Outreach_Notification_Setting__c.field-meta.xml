@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Notification_Setting__c</fullName>
+    <description>Lookup field to the Outreach Notification Setting</description>
+    <label>Outreach Notification Setting</label>
+    <referenceTo>Outreach_Notification_Setting__c</referenceTo>
+    <relationshipLabel>Outreach Notification Histories</relationshipLabel>
+    <relationshipName>Outreach_Notification_Histories</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Message_when_Required__c</fullName>
+    <defaultValue>&quot;This field is required&quot;</defaultValue>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>This message will be displayed when the field is required and is not filled-up</inlineHelpText>
+    <label>Message when Required</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

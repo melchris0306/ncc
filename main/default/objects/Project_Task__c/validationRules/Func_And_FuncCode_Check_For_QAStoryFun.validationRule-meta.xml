@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Func_And_FuncCode_Check_For_QAStoryFun</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(OR(RecordType.Name = &apos;Bug&apos;,RecordType.Name = &apos;Dev&apos;), OR(From_DevQA_Button_Story__c = true, From_DevQA_Button_Functionality__c = true, From_Bug_Button__c= true), OR(Functionality__c = Null, Functionality__r.Functionality_Code__c = Null)),True,False)</errorConditionFormula>
+    <errorDisplayField>Functionality__c</errorDisplayField>
+    <errorMessage>Please add a Functionality Record or make sure that the Functionality Record assigned has a Functionality Code</errorMessage>
+</ValidationRule>

@@ -1,0 +1,143 @@
+<template>
+    <div class="container">
+        <div class="survey-independent">
+            <template if:true={showSpinner}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="medium" style="position: fixed"></lightning-spinner>
+                </div>
+            </template>
+            
+            <!-- BODY -->
+            <div class="survey-title">{surveyName}</div>
+            <template if:true={surveyDescription}>
+                <div class="survey-description">
+                    <lightning-formatted-rich-text value={surveyDescription}></lightning-formatted-rich-text>
+                </div>
+            </template>
+
+            <div class="slds-form-element">
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <!-- Column 1 -->
+                    <template for:each={surveyFieldsLeftColumn} for:item="surveyField">
+                        <div class={surveyField.Style} key={surveyField.Field.key}>
+                            <template if:false={surveyField.IsPicklist}>
+                                <div class="slds-form-element__control">
+                                    <div class="field-label">
+                                        <template if:true={surveyField.Field.isRequired}>
+                                            <span class="required-mark">*</span>
+                                        </template>
+                                        {surveyField.Field.label}
+                                    </div>
+                                    <lightning-input type={surveyField.Field.fieldType} name={surveyField.Field.key}
+                                                placeholder={surveyField.Field.label}
+                                                onchange={handleChange}
+                                                message-when-value-missing={surveyField.Field.messageWhenRequired}
+                                                required={surveyField.Field.isRequired}
+                                                variant="label-hidden"
+                                                class="form-fields">
+                                    </lightning-input>
+                                </div>
+                            </template>
+                            <template if:true={surveyField.IsPicklist}>
+                                <div class="slds-form-element__control" key={surveyField.Field.key}>
+                                    <div class="field-label">
+                                        <template if:true={surveyField.Field.isRequired}>
+                                            <span class="required-mark">*</span>
+                                        </template>
+                                        {surveyField.Field.label}
+                                    </div>
+                                    <lightning-combobox class="form-fields"
+                                        name={surveyField.Field.key}
+                                        placeholder={surveyField.Field.label}
+                                        options={surveyField.Field.picklistOptions}
+                                        onchange={handleChange}
+                                        required={surveyField.Field.isRequired}
+                                        variant="label-hidden"
+                                        message-when-value-missing={surveyField.Field.messageWhenRequired}>
+                                    </lightning-combobox>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <!-- Column 2 -->
+                    <template if:true={hasFieldsInRight}>
+                        <template for:each={surveyFieldsRightColumn} for:item="surveyField">
+                            <div class={surveyField.Style} key={surveyField.Field.key}>
+                                <template if:false={surveyField.IsPicklist}>
+                                    <div class="slds-form-element__control">
+                                        <div class="field-label">
+                                            <template if:true={surveyField.Field.isRequired}>
+                                                <span class="required-mark">*</span>
+                                            </template>
+                                            {surveyField.Field.label}
+                                        </div>
+                                        <lightning-input type={surveyField.Field.fieldType} name={surveyField.Field.key}
+                                                    placeholder={surveyField.Field.label}
+                                                    onchange={handleChange}
+                                                    message-when-value-missing={surveyField.Field.messageWhenRequired}
+                                                    required={surveyField.Field.isRequired}
+                                                    variant="label-hidden"
+                                                    class="form-fields">
+                                        </lightning-input>
+                                    </div>
+                                </template>
+                                <template if:true={surveyField.IsPicklist}>
+                                    <div class="slds-form-element__control">
+                                        <div class="field-label">
+                                            <template if:true={surveyField.Field.isRequired}>
+                                                <span class="required-mark">*</span>
+                                            </template>
+                                            {surveyField.Field.label}
+                                        </div>
+                                        <lightning-combobox class="form-fields"
+                                            name={surveyField.Field.key}
+                                            placeholder={surveyField.Field.label}
+                                            options={surveyField.Field.picklistOptions}
+                                            onchange={handleChange}
+                                            required={surveyField.Field.isRequired}
+                                            variant="label-hidden"
+                                            message-when-value-missing={surveyField.Field.messageWhenRequired}>
+                                        </lightning-combobox>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <template if:true={disclaimerText}>
+                <span class="slds-text-body_regular disclaimer">Disclaimer:  </span>
+                <lightning-formatted-rich-text class="disclaimer-text" value={disclaimerText}></lightning-formatted-rich-text>
+            </template>
+
+            <!-- Survey questions -->
+            <div class="survey-questions">
+                <template for:each={elementAttributes} for:item="element">
+                    <div key={element.questionId}>
+                        <div style="font-weight: bold; color: #0083C1">{element.questionTitle}</div>
+                        <c-survey-detail-element question-id={element.questionId} type={element.type} 
+                            label={element.label} options={element.options} min={element.min} max={element.max} 
+                            step={element.step} question-title={element.questionTitle} oninputchange={handleOnClick}
+                            is-independent-survey="true" is-required-field={element.isRequired}>
+                        </c-survey-detail-element>
+                    </div>
+                </template>
+            </div>
+            
+            <!-- Submit button -->
+            <template if:true={showButton}>
+                <button class="slds-button custom-button slds-align_absolute-center" onclick={handleSubmit}>Submit</button>
+            </template>
+        </div>
+        <!-- </template> -->
+
+        <template if:true={showNoSurveyMessage}>
+            <div class="slds-text-heading_large" style="text-align: center; flex: 1">
+                Survey not found. Please come back later.
+            </div>
+        </template>
+    </div>
+</template>

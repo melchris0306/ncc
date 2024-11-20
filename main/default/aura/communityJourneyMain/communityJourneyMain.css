@@ -1,0 +1,138 @@
+/* desktop view */
+@media only screen and (min-width: 1025px) {
+  .THIS .journeymain-box {
+    background-color: white;
+    margin: 0 100px;
+    padding: 40px 120px;
+    border-radius: 12px;
+  }
+
+  .THIS .journeymain-title {
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .THIS .journeymain-line {
+    border-top: 5px solid #ffdebf;
+    width: 20rem;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .THIS .journeymain-box {
+    background-color: white;
+    padding: 30px 49px;
+    margin: 0 100px;
+    border-radius: 12px;
+  }
+
+  .THIS .journeymain-title {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .THIS .journeymain-line {
+    border-top: 4px solid #ffdebf;
+    width: 15rem;
+  }
+
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .THIS .journeymain-box {
+    background-color: white;
+    padding: 30px 49px;
+    margin: 0 100px;
+    border-radius: 12px;
+  }
+
+  .THIS .journeymain-title {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .THIS .journeymain-line {
+    border-top: 4px solid #ffdebf;
+    width: 15rem;
+  }
+
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 812px) and (orientation: portrait) {
+  .THIS .journeymain-box {
+    background-color: white;
+    padding: 16px 16px;
+  }
+
+  .THIS .journeymain-title {
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .THIS .journeymain-line {
+    border-top: 3px solid #ffdebf;
+    width: 10rem;
+  }
+
+  .THIS .journeymain-description p {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeymain-description b {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeymain-description span {
+    font-size: 13px !important;
+  }
+  
+  .THIS .journeymain-description i {
+    font-size: 13px !important;
+  }
+    
+  .THIS .journeymain-description strike {
+    font-size: 13px !important;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .THIS .journeymain-box {
+    background-color: white;
+    padding: 16px 16px;
+  }
+
+  .THIS .journeymain-title {
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .THIS .journeymain-line {
+    border-top: 3px solid #ffdebf;
+    width: 10rem;
+  }
+
+  .THIS .journeymain-description p {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeymain-description b {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeymain-description span {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeymain-description i {
+    font-size: 13px !important;
+  }
+}

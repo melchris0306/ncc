@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Pages__c</fullName>
+    <label>Event Pages</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Home</fullName>
+                <default>true</default>
+                <label>Home</label>
+            </value>
+            <value>
+                <fullName>Sessions</fullName>
+                <default>false</default>
+                <label>Sessions</label>
+            </value>
+            <value>
+                <fullName>Materials</fullName>
+                <default>false</default>
+                <label>Materials</label>
+            </value>
+            <value>
+                <fullName>Issue Tracker</fullName>
+                <default>false</default>
+                <label>Issue Tracker</label>
+            </value>
+            <value>
+                <fullName>Parking Lot</fullName>
+                <default>false</default>
+                <label>Parking Lot</label>
+            </value>
+            <value>
+                <fullName>Survey</fullName>
+                <default>false</default>
+                <label>Survey</label>
+            </value>
+            <value>
+                <fullName>Contact Us</fullName>
+                <default>false</default>
+                <label>Contact Us</label>
+            </value>
+            <value>
+                <fullName>Learn More</fullName>
+                <default>false</default>
+                <label>Learn More</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

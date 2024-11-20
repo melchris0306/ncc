@@ -1,0 +1,183 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="CommunicationEmail_Controller">
+    
+    <aura:html tag="style">
+    	.slds-modal__container {
+    		min-height: 70vh !important;
+         	min-width: 90vw !important;
+        }
+        .slds-modal__content{
+    		min-height: 70vh !important;
+        }
+        .slds-spinner_container{
+            background: none;
+            height: 10vh;
+            margin-top: 45vh;
+        }
+    </aura:html>
+
+    <aura:attribute name="communication" type="Communication__c" default="{ Id : null,
+                                                                            Name : '',
+                                                                            Organization_Wide_Email_Id__c : null,
+                                                                            Subject__c : '',
+                                                                            Body__c : '',
+                                                                            Email_Recipient_CC__c : '',
+                                                                            Email_Recipient_BCC__c : '',
+                                                                            Reply_Email_Address__c : null,
+                                                                            Sender_Name__c : '',
+                                                                            Sender_Email_Address__c : '',
+                                                                            Status : 'Draft',
+                                                                            Milestone__c : false,
+                                                                            Email_Date__c : null,
+                                                                            Email_Template_Id__c : null}"/>
+    <!-- attributes -->
+    <aura:attribute name="user" type="User" />
+    <aura:attribute name="orgWideEmailAddressRecord" type="OrgWideEmailAddress"/>
+    <aura:attribute name="contactIdList" type="String[]"/>
+    <!-- <aura:attribute name="subject" type="String" /> -->
+    <!-- <aura:attribute name="emailBody" type="String" /> -->
+    <aura:attribute name="ccRecipients" type="String[]" default=""/>
+    <aura:attribute name="bccRecipients" type="String[]" default=""/>
+    <aura:attribute name="isLoading" type="Boolean" access="private" default="true"/>
+    <aura:attribute name="contactRecipientsToBeRemoved" type="String[]"  />
+
+    <!-- CCN-1004 Xen Reyes January 25, 2022 -->
+    <aura:attribute name="contactIdListCC" type="String[]"  />
+    <aura:attribute name="contactIdListBCC" type="String[]"  />
+    <aura:attribute name="contactRecipientsToBeRemovedCC" type="String[]"  />
+    <aura:attribute name="contactRecipientsToBeRemovedBCC" type="String[]"  />
+
+    <!-- Updated by XenReyes Oct282022 CCN-814 -->
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="sobjectType" type="String"/>
+    <aura:attribute name="attachmentRecords" type="List" default="[]"/>
+
+    <!-- Email Preview Attributes -->
+    <aura:attribute name="isReplyReceiverEnabled" type="Boolean"/>
+    <aura:attribute name="orgWideEmailAddressOptions" type="Object[]"/>
+    <aura:attribute name="selectedSender" type="String"/>
+    <aura:attribute name="selectedReplyReceiver" type="String"/>
+
+    <!-- Summary Page Attributes -->
+    <!-- <aura:attribute name="emailTemplateId" type="String" /> -->
+    <aura:attribute name="orgWideEmailList" type="OrgWideEmailAddress[]" />
+
+    <!-- Navigation Attributes -->
+    <aura:attribute name="currentPageIndex" type="Integer" default="1"/>
+    <aura:attribute name="lastPageIndex" type="Integer" default="3"/>
+
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <aura:handler name="commsEvent" event="c:CommunicationEmailEvent" action="{!c.handleCommunicationEmailEvent}"/>
+    
+    <!-- CCN-COM-1214-DV XEN REYES Apr. 14, 2022 -->
+    <aura:attribute name="isCommunication" type="Boolean" default="false"/>
+    <aura:attribute name="isCommunicationHasJourney" type="Boolean" default="false"/>
+    <aura:attribute name="isFromJourney" type="Boolean" default="false"/>
+    <aura:attribute name="commsRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="options" type="List" default="[]"/>
+	<aura:attribute name="excludedIds" type="List"/>
+    <aura:attribute name="excludedRecipientsDefault" type="String"/>
+    <aura:attribute name="isSend" type="Boolean" default="false"/>
+    
+    <!-- XenReyes CCN-2251 Nov2022 -->
+    <aura:attribute name="commsFields" type="List" default="Journey__c,Excluded_Recipients__c,Status__c"/>
+    <aura:attribute name="namespace" type="String" />
+    
+    <aura:if isTrue="{!v.isCommunication}">
+        <force:recordData aura:id="recordLoader"
+            fields="{!v.commsFields}"
+            recordId="{!v.recordId}"
+            targetFields="{!v.commsRecord}"
+            targetError="{!v.recordError}"
+            recordUpdated="{!c.handleRecordUpdated}"
+        />
+    </aura:if>
+
+    <!-- spinner -->
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+
+    <!-- Start of the Modal -->
+    <section role="dialog" aria-labelledby="modal-heading" aria-modal="true" aria-describedby="modal-content-id" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning:buttonIcon class="slds-modal__close"
+                                      iconName="utility:close" 
+                                      variant="bare-inverse" 
+                                      onclick="{! c.handleCloseModal }" 
+                                      alternativeText="Close" 
+                                      title="Close" 
+                                      size="large"/>
+                <h2 id="modal-heading" class="slds-modal__title slds-hyphenate">Communication</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id">
+ 			<!-- Start of Modal Content -->
+                <aura:if isTrue="{! and(v.currentPageIndex == 1, !v.isLoading) }">
+                    
+                <!-- Updated by XenReyes Oct282022 CCN-814 -->
+                    <c:CommunicationEmail_Form user="{!v.user}"
+                                               communication="{!v.communication}"
+                                               orgWideEmailAddressRecord="{!v.orgWideEmailAddressRecord}"
+                                               orgWideEmailList="{!v.orgWideEmailList}"
+                                               selectedSender="{!v.selectedSender}"
+                                               selectedReplyReceiver="{!v.selectedReplyReceiver}"
+                                               orgWideEmailAddressOptions="{!v.orgWideEmailAddressOptions}"
+                                               recordId="{!v.recordId}"
+                                               attachmentRecords="{!v.attachmentRecords}"/>
+                </aura:if>
+                <aura:if isTrue="{! v.currentPageIndex == 2}">
+
+                    <!-- CCN-1004 Xen Reyes January 25, 2022 -->
+                    <c:CommunicationEmail_RecipientSelection recordId="{!v.recordId}"
+                                                       contactIdList="{!v.contactIdList}"
+                                                       contactIdListCC="{!v.contactIdListCC}"
+                                                       contactIdListBCC="{!v.contactIdListBCC}"
+                                                       ccRecipients="{!v.ccRecipients}"
+                                                       bccRecipients="{!v.bccRecipients}"
+                                                       contactRecipientsToBeRemoved="{!v.contactRecipientsToBeRemoved}"
+                                                       contactRecipientsToBeRemovedCC="{!v.contactRecipientsToBeRemovedCC}"
+                                                       contactRecipientsToBeRemovedBCC="{!v.contactRecipientsToBeRemovedBCC}"
+                                                       sobjectType="{!v.sobjectType}"
+                                                       isCommunicationHasJourney = "{!v.isCommunicationHasJourney}"
+                                                       isFromJourney = "{!v.isFromJourney}"
+                                                       options = "{!v.options}"
+                                                       excludedIds = "{!v.excludedIds}"
+                                                       excludedRecipientsDefault = "{!v.excludedRecipientsDefault}"
+                                                       />
+                </aura:if>
+                <aura:if isTrue="{! v.currentPageIndex == 3}">
+                    
+                    <!-- Updated by XenReyes Oct282022 CCN-814 -->
+                    <c:CommunicationEmail_Summary orgWideEmailAddressRecord="{!v.orgWideEmailAddressRecord}"
+                                                    communication="{!v.communication}" 
+                                                    ccRecipients="{!v.ccRecipients}"
+                                                    bccRecipients="{!v.bccRecipients}"
+                                                    user="{!v.user}"
+                                                    attachmentRecords="{!v.attachmentRecords}"/>
+                </aura:if>
+                
+ 			<!-- End of Modal Content -->
+            </div>
+            <footer class="slds-modal__footer slds-clearfix">
+                <div class="slds-float_left">
+                    <lightning:button label="Cancel" title="cancel" onclick="{! c.handleCloseModal }"/>
+                </div>
+                <div class="slds-float_right">
+                    <aura:if isTrue="{! v.currentPageIndex == 2 || v.currentPageIndex == 3 }">
+                        <lightning:button label="Previous" title="previous" onclick="{! c.handlePrevious }"/>
+                    </aura:if>
+                    <aura:if isTrue="{! v.currentPageIndex == 1 || v.currentPageIndex == 2 }">
+                        <lightning:button label="Next" title="next" onclick="{! c.handleNext }" variant="brand"/>
+                    </aura:if>
+                    <aura:if isTrue="{! v.currentPageIndex == 3 }">
+                        <lightning:button label="Save Draft" title="Save Draft" onclick="{! c.handleSaveDraft }" variant="brand" iconName="utility:save"/>
+                        <lightning:button label="Send" title="Send" onclick="{! c.handleSend }" variant="brand" iconName="utility:send"/>
+                    </aura:if>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <!-- End of the Modal -->
+</aura:component>

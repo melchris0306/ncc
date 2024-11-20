@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dependency_Relationship__c</fullName>
+    <label>Dependency Relationship</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>START-FINISH</fullName>
+                <default>false</default>
+                <label>START-FINISH</label>
+            </value>
+            <value>
+                <fullName>START-START</fullName>
+                <default>false</default>
+                <label>START-START</label>
+            </value>
+            <value>
+                <fullName>FINISH-START</fullName>
+                <default>false</default>
+                <label>FINISH-START</label>
+            </value>
+            <value>
+                <fullName>FINISH-FINISH</fullName>
+                <default>false</default>
+                <label>FINISH-FINISH</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

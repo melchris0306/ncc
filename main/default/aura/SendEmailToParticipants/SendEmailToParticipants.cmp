@@ -1,0 +1,43 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="SendEmailToParticipantsController">
+    <aura:attribute name="emailTemplates" type="List" default=""/>
+    <aura:attribute name="templateValue" type="String" default="Event Invitation Reminder Template"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="statusOptions" type="Map"/>
+    <aura:attribute name="statusValue" type="String" default="Invited"/>
+    
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+        <h4 class="title slds-text-heading--medium" >Send Email To Participants</h4>
+    </div>
+    
+    <div style="padding: 20px;">
+    <lightning:combobox name="Email Templates" label="Email Templates" value="{!v.templateValue}" placeholder="Select Email Templates" 
+                        options="{! v.emailTemplates }" onchange="{! c.handleTemplateChange }" required="true"/>
+    
+    <lightning:combobox name="Status" label="Participant Status" value="{!v.statusValue}" placeholder="Select Participant Status" 
+                        options="{! v.statusOptions }" onchange="{! c.handleStatusChange }" required="true"/>
+    </div>
+    
+    <!-- MODAL FOOTER -->
+    <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+        <div class="forceChangeRecordTypeFooter">
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning:button variant="brand" label="Send Email" title="Send Email" onclick="{!c.handleSendEmail}" />
+        </div>
+    </div>
+    
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }       
+        .slds-modal__content{
+        overflow: initial !important;
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+</aura:component>

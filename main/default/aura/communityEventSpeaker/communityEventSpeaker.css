@@ -1,0 +1,261 @@
+.THIS .clear-section{
+    clear:both;
+}
+.THIS .float-left {
+    margin-right: 0rem;
+}
+.THIS .speaker-section {
+    background-color: white;
+    color: #54565A;
+    min-height: 30rem;
+    display: inline-block;
+    width: 100%;
+}
+.THIS .speaker-title{
+    width: 10%;
+    margin: 0;
+    padding-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+}
+.THIS .speaker-container-outer{
+    width: 90%;
+    display: inline-block;
+}
+.THIS .speaker-container {
+    padding: 3rem 1rem;
+    margin: 0;
+    width: 100%;
+}
+.THIS .speaker-item{
+    margin: auto;
+    display: inline-block;
+    padding-bottom: 3rem;
+    width: 100%;
+}
+.THIS .profile-float{
+    display: inline-block;
+    width: 25%;
+    margin: 0;
+    padding-left: 1rem;
+    vertical-align: top;
+    text-align: right;
+}
+.THIS .speaker-float{
+    width: 75%;
+    display: inline-block;
+    margin: unset;
+    padding-left: 1rem;
+}
+.THIS .speaker-profile-image{
+    margin: 0;
+    display: inline-block;
+    margin: 0rem .3rem;
+    max-height: 6rem;
+    max-width: 6rem;
+    /*margin: 0 auto 1rem;*/
+}
+.THIS .speaker-section-title {
+    border-left: .15rem solid #ffb369; 
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: 8.5rem;
+    border-left: none;
+}
+.THIS .speaker-section-title:after {
+    content: "";
+    display: block;
+    width: .15rem;
+    height: 75%;
+    padding: 0;
+    margin: 0;
+    background-color: #ffb369;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.THIS .speaker-detail, .THIS .speaker-detail-full {
+    width: 90%;
+    color: #333333 !important;
+    max-width: unset;
+    min-width: unset;
+    background-color: #ECECEC !important;
+    border-left: 1rem solid #93d50a !important;
+}
+.THIS .speaker-profile-image {
+    border: 0.25rem solid #093C71;
+}
+
+
+/*Tablet Landscape*/ 
+@media only screen 
+    and (min-device-width : 481px) 
+    and (max-device-width : 1024px)
+    and (orientation : landscape) { 
+    /*.THIS .speaker-container {
+    	width: 85%;
+    }
+    .THIS .speaker-detail, .THIS .speaker-detail-full {
+        max-width: unset;
+        min-width: unset;
+    }
+    .THIS .speaker-float{
+        width: 75%;
+    }*/
+    .THIS .speaker-section-title:after {
+        bottom: 0px;
+        height: 97%;
+    }
+    .THIS .speaker-section-title {
+        font-weight: lighter;
+    }
+}
+/*Tablet Portrait*/ 
+@media only screen 
+    and (min-device-width : 481px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    /*.THIS .speaker-container {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .THIS .speaker-detail, .THIS .speaker-detail-full{
+        max-width: unset;
+        min-width: unset;
+    }
+    .THIS .speaker-float{
+        width: 75%;
+    }*/
+    .THIS .speaker-section{
+        min-height: 20rem;
+    }
+    .THIS .float-left {
+        margin-left: .25rem;
+        
+        margin-right: .25rem;
+    }
+    .THIS .font-section-header {
+        font-size: 1rem;
+    }
+    .THIS .speaker-section-title {
+        margin: 3rem .5rem;
+        height: 6rem;
+        text-align: center;
+        font-weight: lighter;
+    }
+    .THIS .speaker-profile-image {
+        min-height: 6rem;
+        min-width: 6rem;
+        margin: .5rem .25rem;
+    }
+    .THIS .speaker-section-title:after {
+        bottom: 2px;
+        height: 97%;
+    }
+}
+
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .THIS .float-left {
+        margin-left: .5rem;
+        margin-right: 0;
+        width: auto;
+    }
+    .THIS .speaker-section-title:after {
+    	display: none;
+    }
+    .THIS .font-section-header{
+        font-size: 1rem;
+    }
+    .THIS .speaker-section-title{
+        height: auto;
+        border-bottom: .15rem solid #93d50a;
+        border-left: none;
+        text-align: center;
+        writing-mode: unset;
+        transform: none;
+        font-size: 1.4rem;
+        margin: 1rem 1rem .3rem 0rem;
+        border-bottom: none;
+        font-weight: lighter;
+    }
+    .THIS .speaker-section-title:after {
+        content: "";
+        display: block;
+        width: 80%;
+        height: .2rem;
+        padding: 0;
+        margin: 0 1rem 0 1rem;
+        background-color: #ffb369;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .THIS .speaker-container-outer{
+        width: 100%;
+    }
+    .THIS .speaker-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .THIS .speaker-item {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+    .THIS .speaker-profile-image{
+        margin: 1rem .3rem;
+        min-height: 6rem;
+        min-width: 6rem;
+        max-height: 3rem;
+        max-width: 6rem;
+        margin: 0 auto 1rem;
+    }
+    .THIS .speaker-container{
+        /*display: inline;*/
+    }
+    .THIS .speaker-detail, .THIS .speaker-detail-full{
+        padding: 1rem;
+        min-width: unset;
+        max-width: unset;
+        border-top: 1rem solid #93d50a !important;
+        border-left: none!important;
+        margin: auto;
+        width: 100%;
+    }
+    .THIS .speaker-container {
+        width: 95%;
+    }
+    .THIS .speaker-float{
+        padding-left: 0;
+        width: 100%;
+    }
+    .THIS .profile-float{   
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        padding-left: 0;
+    }
+    .THIS .font-header {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .THIS .slds-text-heading_small {
+        font-size: .9rem;
+    }
+    .THIS .font-body {
+        font-size: .9rem;
+    }
+    .THIS .speaker-title{
+        width: auto;
+        position: relative;
+    }
+    
+    .THIS .speaker-item:nth-child(1) .profile-float{
+        /*margin-left: 4rem;*/
+    }
+    
+    .THIS .speaker-section{
+        min-height: 10rem;
+    }
+}

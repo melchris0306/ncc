@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Event_Time</fullName>
+    <active>false</active>
+    <description>This validates time of the event.</description>
+    <errorConditionFormula>OR(
+AND(NOT(ISNULL(StartDate)),ISNULL(Start_Time__c)),
+AND(NOT(ISNULL(EndDate)),ISNULL(End_Time__c)))</errorConditionFormula>
+    <errorMessage>Event time is required.</errorMessage>
+</ValidationRule>

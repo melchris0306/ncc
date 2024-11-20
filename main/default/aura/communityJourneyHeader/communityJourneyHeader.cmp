@@ -1,0 +1,592 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  access="global"
+  controller="TheProviderJourney"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute name="isOpen" type="boolean" default="false" />
+  <aura:attribute name="journeyID" type="String" />
+  <aura:attribute name="userJourney" type="Journey_Participant__c" />
+  <aura:attribute name="journeyData" type="Journey__c" />
+  <aura:attribute name="userMilestones" type="List" />
+  <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+  <aura:attribute name="journeyMilestoneList" type="List" />
+  <aura:attribute name="urlFromJourney" type="Boolean" />
+  <aura:attribute name="uploadImageModal" type="Boolean" default="false" />
+  <aura:attribute name="submitConfirmationMdl" type="Boolean" default="false" />
+  <aura:attribute name="taskCreationResult" type="String" />
+  <aura:attribute name="userComment" type="String" />
+  <aura:attribute name="userSubject" type="String" />
+  <aura:attribute name="disableSubmit" type="boolean" default="true" />
+  <aura:attribute name="submitConfirmationBtn" type="String" default="Done" />
+  <aura:attribute name="userJourneyFirstName" type="String" default="" />
+  <aura:attribute name="userJourneyLastName" type="String" default="" />
+  <aura:attribute type="Boolean" name="showSpinner" default="false" />
+  <aura:attribute name="profilePicURL" type="String" default="" />
+
+  <div>
+    <div class="nav-box">
+      <aura:if isTrue="{!or($Browser.formFactor == 'DESKTOP', $Browser.formFactor == 'TABLET')}">
+        <aura:if isTrue="{!v.urlFromJourney}">
+          <ul>
+            <li>
+              <img
+                src="{!$Resource.communityEventHeaderLogo}"
+                alt="Change Cloud"
+                class="navbar-logo-img"
+              />
+            </li>
+          </ul>
+          <aura:set attribute="else">
+            <ul>
+              <li>
+                <img
+                  src="{!$Resource.communityEventHeaderLogo}"
+                  alt="Change Cloud"
+                  class="navbar-logo-img"
+                />
+              </li>
+              <li>
+                <!-- Added by: Mel Mallorca - 04/26/2022 - CCN-JOU-1529-DV -->
+                  <div class="navbar-progress">
+                      <div style="padding:5px">
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Target_Progress__c,-1), lessthan(v.userJourney.Journey_Target_Progress__c, 15))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Target_Progress__c+'%)'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small"/>
+                                  Journey Progress
+                              </div>
+                          </aura:if>
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Target_Progress__c,15), lessthan(v.userJourney.Journey_Target_Progress__c, 85))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Target_Progress__c+'% - 50px)'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small"/>
+                                  Journey Progress
+                              </div>
+                          </aura:if>
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Target_Progress__c,84), lessthan(v.userJourney.Journey_Target_Progress__c, 101))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Target_Progress__c+'% - 120px)'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small"/>
+                                  Journey Progress
+                              </div>
+                          </aura:if>
+                      </div>
+                      <!--<div class="progress-label">-->
+                          <!--My Progress-->
+                      <!--</div>-->
+                      <div class="journey-progress-bar">
+                          <lightning:progressBar
+                                                 value="{!v.userJourney.Journey_Target_Progress__c}"
+                                                 size="large"
+                                                 />
+                      </div>
+                      <div class="journey-participant-progress-bar">
+                          <lightning:progressBar
+                                                 value="{!v.userJourney.Journey_Progress__c - 1}"
+                                                 size="large"
+                                                 />
+                      </div>
+                      <div style="padding:7px 5px">
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Progress__c,-1), lessthan(v.userJourney.Journey_Progress__c, 15))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Progress__c+'%) - 10%'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small" class="myprogressIcon"/>
+                                  My Progress
+                              </div>
+                          </aura:if>
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Progress__c,15), lessthan(v.userJourney.Journey_Progress__c, 85))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Progress__c+'% - 50px)'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small" class="myprogressIcon"/>
+                                  My Progress
+                              </div>
+                          </aura:if>
+                          <aura:if isTrue="{!and(greaterthan(v.userJourney.Journey_Progress__c,84), lessthan(v.userJourney.Journey_Progress__c, 101))}">
+                              <div class="journeyprogress-label" style="{!'left:calc('+v.userJourney.Journey_Progress__c+'% - 120px)'}">
+                                  <lightning:icon iconName="utility:record" size="xx-small" class="myprogressIcon"/>
+                                  My Progress
+                              </div>
+                          </aura:if>
+                      </div>
+                </div>
+                <!-- Added by: Mel Mallorca - 04/26/2022 - CCN-JOU-1529-DV -->
+              </li>
+              <li class="float-right">
+                <!-- Added by: Kyzer Buhay - 05/01/2021 - Added onclick function-->
+                <div
+                  aura:id="navbar-picture-container01"
+                  class="navbar-picture-inactive"
+                  onclick="{!c.onClickAvatarHandler}"
+                >
+                  <aura:if isTrue="{!v.profilePicURL != ''}">
+                    <img src="{!v.profilePicURL}" class="navbar-avatar-img" />
+                    <aura:set attribute="else">
+                      <img
+                        src="{!$Resource.communityJourneyAvatar1}"
+                        alt="Profile Picture"
+                        class="navbar-avatar-img"
+                      />
+                    </aura:set>
+                  </aura:if>
+                </div>
+              </li>
+              <aura:if isTrue="{!v.uploadImageModal}">
+                <div class="dropdown-menu-nav-image">
+                  <c:LightningFileUploadComponent
+                    aura:id="communityJourneyFileUpload"
+                    userRecordId="{!v.userJourney.Contact__r.Id}"
+                    profilePictureURL="{!v.profilePicURL}"
+                    uploadImageModal="{!v.uploadImageModal}"
+                    contactRecordFirstName="{!v.userJourney.Contact__r.FirstName}"
+                    contactRecordLastName="{!v.userJourney.Contact__r.LastName}"
+                    journeyTemplateURL="{!v.userJourney.Journey__r.Journey_Preview_URL__c}"
+                  />
+                </div>
+              </aura:if>
+              <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+                  <li class="float-right">
+                    <div class="navbar-name">
+                        {!v.userJourneyFirstName}<br/>
+                        {!v.userJourneyLastName}
+                    </div>
+                  </li>
+              </aura:if>
+              <li class="float-right">
+                <div class="navbar-contact-us">
+                  <a
+                    href="#contact"
+                    class="contact-us-button"
+                    onclick="{! c.openModel }"
+                    ><h1 class="contact-us-label">Contact Us</h1></a
+                  >
+                </div>
+              </li>
+            </ul>
+          </aura:set>
+        </aura:if>
+        <div class="clear-both"></div>
+      </aura:if>
+
+      <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+        <aura:if isTrue="{!v.urlFromJourney}">
+          <ul>
+            <li>
+              <img
+                src="{!$Resource.communityEventHeaderLogo}"
+                alt="Change Cloud"
+                class="navbar-logo-img"
+              />
+            </li>
+          </ul>
+          <aura:set attribute="else">
+            <div class="slds-grid">
+              <div class="slds-col slds-size_1-of-4">
+                <img
+                  src="{!$Resource.communityEventHeaderLogo}"
+                  alt="Change Cloud"
+                  class="navbar-logo-img"
+                />
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <div class="navbar-progress">
+                  <div class="progress-label">My Progress</div>
+                  <div>
+                    <lightning:progressBar
+                      value="{!v.userJourney.Journey_Progress__c}"
+                      size="large"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                <!-- Added by: Kyzer Buhay - 05/01/2021 - Added onclick function-->
+                <div
+                  aura:id="navbar-picture-container01"
+                  class="navbar-picture-inactive"
+                  onclick="{!c.onClickAvatarHandler}"
+                >
+                  <aura:if isTrue="{!v.profilePicURL != ''}">
+                    <img src="{!v.profilePicURL}" class="navbar-avatar-img" />
+                    <aura:set attribute="else">
+                      <img
+                        src="{!$Resource.communityJourneyAvatar1}"
+                        alt="Profile Picture"
+                        class="navbar-avatar-img"
+                      />
+                    </aura:set>
+                  </aura:if>
+                </div>
+              </div>
+              <aura:if isTrue="{!v.uploadImageModal}">
+                <div class="dropdown-menu-nav-image">
+                  <c:LightningFileUploadComponent
+                    aura:id="communityJourneyFileUpload"
+                    userRecordId="{!v.userJourney.Contact__r.Id}"
+                    profilePictureURL="{!v.profilePicURL}"
+                    uploadImageModal="{!v.uploadImageModal}"
+                    contactRecordFirstName="{!v.userJourney.Contact__r.FirstName}"
+                    contactRecordLastName="{!v.userJourney.Contact__r.LastName}"
+                    journeyTemplateURL="{!v.userJourney.Journey__r.Journey_Preview_URL__c}"
+                    contactUsBtnIsActive="{!v.isOpen}"
+                  />
+                </div>
+              </aura:if>
+            </div>
+          </aura:set>
+        </aura:if>
+
+        <div class="clear-both"></div>
+      </aura:if>
+    </div>
+  </div>
+
+  <aura:if isTrue="{!v.showSpinner}">
+    <div class="spinnerHolder">
+      <lightning:spinner alternativeText="Loading" size="small" />
+    </div>
+
+    <aura:set attribute="else">
+      <aura:if isTrue="{!v.isOpen}">
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-labelledby="modal-heading-01"
+          aria-modal="true"
+          aria-describedby="modal-content-id-1"
+          class="slds-modal slds-fade-in-open"
+        >
+          <div class="slds-modal__container">
+            <div
+              class="slds-modal__content slds-p-around_medium contactus-box"
+              id="modal-content-id-1"
+            >
+              <div class="slds-grid">
+                <div
+                  class="slds-col slds-size_11-of-12 slds-align_absolute-center"
+                >
+                  <h2
+                    id="modal-heading-01"
+                    class="
+                      slds-text-heading_medium
+                      slds-hyphenate
+                      contactus-label
+                    "
+                  >
+                    {!v.userJourney.Journey__r.Contact_Us_Tag_Line__c}
+                  </h2>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                  <lightning:buttonIcon
+                    iconName="utility:close"
+                    onclick="{!c.closeModel }"
+                    alternativeText="close"
+                    class="float-right"
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="contactus-description">
+                {!v.userJourney.Journey__r.Contact_Us_Message__c}
+              </div>
+
+              <aura:if
+                isTrue="{!or($Browser.formFactor == 'DESKTOP', $Browser.formFactor == 'TABLET')}"
+              >
+                <div class="contactus-form">
+                  <div class="required-field-indicator-container legend">
+                    <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator. -->
+                  	<lightning:formattedText class="required-field-indicator legend" value="* Required Field" />
+                  </div>
+                  <fieldset
+                    class="slds-form-element slds-form-element_compound"
+                  >
+                    <div class="slds-form-element__control">
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-2">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->
+                              <lightning:input
+                                label="First Name"
+                                value="{!v.userJourney.Contact__r.FirstName}"
+                                onchange="{!c.formValidation}"
+                                placeholder="First Name"
+                               	disabled="true"
+                                class="required-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-size_1-of-2">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->
+                              <lightning:input
+                                label="Last Name"
+                                value="{!v.userJourney.Contact__r.LastName}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Last Name"
+                                disabled="true"
+                                class="required-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_3-of-3">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->
+                              <lightning:input
+                                label="Email"
+                                value="{!v.userJourney.Contact__r.Email}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Email Address"
+                                disabled="true"
+                                class="required-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-3">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <lightning:input
+                                label="Phone Number"
+                                value="{!v.userJourney.Contact__r.Phone}"
+                                onchange="{!c.formValidation}"
+                                placeholder="(xxx) xxx-xxxx"
+                                class="active-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-size_2-of-3">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+ 							  <!-- Gian Bata - CCN-JOU-3045-DV: 
+								Made asterisk handled by css, added both active-field and required-field class
+								added a function that shows a required error onBlur
+						      -->   
+                              <lightning:input
+                                label="Subject"
+                                value="{!v.userSubject}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Your Query Subject"
+                                class="active-field required-field"
+                                onblur="{!c.handleBlur}"
+                              />
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator. -->
+                              <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_3-of-3">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gian Bata - CCN-JOU-3045-DV: 
+								Made asterisk handled by css, added both active-field and required-field class
+								added a function that shows a required error onBlur
+						      -->  
+                              <lightning:textarea
+                                label="Comment"
+                                value="{!v.userComment}"
+                                class="commentBox active-field required-field"
+                                onchange="{!c.formValidation}"
+                                placeholder="Comment"
+                                onblur="{!c.handleBlur}"
+                              />
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator. -->
+                              <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </aura:if>
+              <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+                <div class="contactus-form">
+                  <div class="required-field-indicator-container">
+                    <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator. -->  
+                  	<lightning:formattedText class="required-field-indicator" value="* Required Field" />
+                  </div>
+                  <fieldset
+                    class="slds-form-element slds-form-element_compound"
+                  >
+                    <div class="slds-form-element__control">
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-2">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->
+                              <lightning:input
+                                label="First Name"
+                                value="{!v.userJourney.Contact__r.FirstName}"
+                                onchange="{!c.formValidation}"
+                                placeholder="First Name"
+                                disabled="true"
+                                class="required-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-size_1-of-2">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->  
+                              <lightning:input
+                                label="Last Name"
+                                value="{!v.userJourney.Contact__r.LastName}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Last Name"
+                                disabled="true"
+                                class="required-field"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-1">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gabriel Delavin: Added disbled = true as part of CCN-JOU-2972-DV -->
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css and added required-field class. -->
+                              <lightning:input
+                                label="Email"
+                                value="{!v.userJourney.Contact__r.Email}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Email Address"
+                                disabled="true" 
+                                class="required-field"          
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_2-of-4">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Made asterisk handled by css, added both active-field and required-field class.-->  
+                              <lightning:input
+                                label="Phone Number"
+                                value="{!v.userJourney.Contact__r.Phone}"
+                                onchange="{!c.formValidation}"
+                                placeholder="(xxx) xxx-xxxx"
+                                class="active-field required-field"               
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-size_2-of-4">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                              <!-- Gian Bata - CCN-JOU-3045-DV: 
+								Made asterisk handled by css, added both active-field and required-field class
+								added a function that shows a required error onBlur
+						      -->   
+                              <lightning:input
+                                label="Subject"
+                                value="{!v.userSubject}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Your Query Subject"
+                                class="active-field required-field"
+                                onblur="{!c.handleBlur}"
+                              />
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator. -->
+                              <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-1">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+ 							  <!-- Gian Bata - CCN-JOU-3045-DV: 
+								Made asterisk handled by css, added both active-field and required-field class
+								added a function that shows a required error onBlur
+						      -->   
+                              <lightning:textarea
+                                label="Comment"
+                                value="{!v.userComment}"
+                                onchange="{!c.formValidation}"
+                                placeholder="Comment"
+                                class="active-field required-field"
+                                onblur="{!c.handleBlur}"
+                              />
+                              <!-- Gian Bata - CCN-JOU-3045-DV: Added a required field indicator -->
+                              <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </aura:if>
+
+              <lightning:button
+                variant="brand"
+                label="Submit"
+                title="Submit"
+                onclick="{! c.onClickSubmit }"
+                class="center"
+                disabled="{!v.disableSubmit}"
+              />
+            </div>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <!--###### MODAL BOX Part END Here ######-->
+      </aura:if>
+    </aura:set>
+  </aura:if>
+  <aura:if isTrue="{!v.submitConfirmationMdl}">
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <div class="slds-modal__content" id="modal-content-id-1">
+          <h2
+            id="modal-heading-01"
+            class="
+              slds-text-heading_medium
+              slds-hyphenate
+              contactus-label
+              slds-align_absolute-center
+            "
+          >
+            {!v.userJourney.Journey__r.Contact_Us_Tag_Line__c}
+          </h2>
+          <br />
+          <h2 class="slds-align_absolute-center">{!v.taskCreationResult}</h2>
+          <br />
+          <lightning:button
+            variant="brand"
+            label="{!v.submitConfirmationBtn}"
+            onclick="{!c.onClickConfirm}"
+            class="center"
+          />
+          <br />
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </aura:if>
+</aura:component>

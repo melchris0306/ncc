@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AttendedSuccessMessage</fullName>
+        <categories>Session Participant</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AttendedSuccessMessage</shortDescription>
+        <value>Selected participants are successfully marked as attended!</value>
+    </labels>
+    <labels>
+        <fullName>AttendedWarningMessage</fullName>
+        <categories>Session Participant</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AttendedWarningMessage</shortDescription>
+        <value>Please select 1 or more session participants to be updated.</value>
+    </labels>
+    <labels>
+        <fullName>BasecampExemptionForFileUpload</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BasecampExemptionForFileUpload</shortDescription>
+        <value>AWS_Link__c,Footer_Image__c,Login_Page_URL__c,Mascot_Image__c</value>
+    </labels>
+    <labels>
+        <fullName>Btn_MarkAsAttended</fullName>
+        <categories>Session Participant</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Btn_MarkAsAttended</shortDescription>
+        <value>Mark as Attended</value>
+    </labels>
+    <labels>
+        <fullName>COMPASS_Event_CheckItOut</fullName>
+        <categories>Compass Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COMPASS_Event_CheckItOut</shortDescription>
+        <value>EVENT DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>Communication_Batch_Size</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication Batch Size</shortDescription>
+        <value>20</value>
+    </labels>
+    <labels>
+        <fullName>Communication_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication Success</shortDescription>
+        <value>Email/s successfully sent to queue.</value>
+    </labels>
+    <labels>
+        <fullName>Communication_Success_Save_Draft</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication Success Save Draft</shortDescription>
+        <value>Email Draft saved! Please check the communication record related to this Journey/Campaign/Survey to edit or send the draft.</value>
+    </labels>
+    <labels>
+        <fullName>Communication_Success_Scheduled</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication Success Scheduled</shortDescription>
+        <value>Email/s Successfully Scheduled. You will receive an email indicating the success/failure of the scheduled email/s being sent.</value>
+    </labels>
+    <labels>
+        <fullName>Compass_Email_Reply_Email_HelpText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Compass Email Reply Email HelpText</shortDescription>
+        <value>If not set then the default reply receiver is the sender.</value>
+    </labels>
+    <labels>
+        <fullName>Compass_Email_Select_Recipient</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Compass Email Select Recipient</shortDescription>
+        <value>You wouldn&apos;t be able to search for contact/s with HasOptedOutOfEmail field set to true.</value>
+    </labels>
+    <labels>
+        <fullName>Compass_Email_Unrecognized_Id_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Compass Email Unrecognized Id Error</shortDescription>
+        <value>Record Id\&apos;s object type is not recognized. Object type should be a Campaign__c or Journey__c or Communication__c.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message</fullName>
+        <categories>Sync Participant Milestone Metrics</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message</shortDescription>
+        <value>A Batch Sync Participant Milestone Metric job is currently running, and this job was not submitted. The job will automatically runs every 15 minutes. You can manually submit the job by selecting the button again after the current job has completed if necessary.</value>
+    </labels>
+    <labels>
+        <fullName>Event_Participant_Templates</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Event Participant Templates</shortDescription>
+        <value>Event Confirmation Reminder Template,Event Confirmation Template,Event Registration Reminder,Survey Thank You DoD</value>
+    </labels>
+    <labels>
+        <fullName>JourneyAddParticipantsBody</fullName>
+        <categories>Journey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>JourneyAddParticipantsBody</shortDescription>
+        <value>Please confirm you would like to add journey participants.</value>
+    </labels>
+    <labels>
+        <fullName>JourneyAddParticipantsSpinner</fullName>
+        <categories>Journey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>JourneyAddParticipantsSpinner</shortDescription>
+        <value>Hang on, we&apos;re adding journey participants...</value>
+    </labels>
+    <labels>
+        <fullName>JourneyAddParticipantsTitle</fullName>
+        <categories>Journey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>JourneyAddParticipantsTitle</shortDescription>
+        <value>Please select the event(s) to add journey participants from.</value>
+    </labels>
+    <labels>
+        <fullName>Journey_Welcome_Message</fullName>
+        <categories>Journey Page</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Journey Welcome Message</shortDescription>
+        <value>Welcome to the Journey!</value>
+    </labels>
+    <labels>
+        <fullName>MS_Teams_Body</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MS Teams Body</shortDescription>
+        <value>&lt;p&gt;&lt;span style=&quot;font-size: 24px; font-family: inherit;&quot;&gt;Microsoft Teams meeting&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style=&quot;font-family: inherit;&quot;&gt;Join on your computer, mobile app or room device&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;[MEETURL]&quot; target=&quot;_blank&quot; style=&quot;color: rgb(98, 100, 167);&quot;&gt;Click here to join the meeting&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: inherit;&quot;&gt;Meeting ID: &lt;/span&gt;&lt;span style=&quot;font-family: inherit; font-size: 16px;&quot;&gt;[MEETID]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: inherit;&quot;&gt;Passcode: &lt;/span&gt;&lt;span style=&quot;font-family: inherit; font-size: 16px;&quot;&gt;[MEETCODE]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: inherit;&quot;&gt;Conference ID: &lt;/span&gt;&lt;span style=&quot;font-family: inherit; font-size: 16px;&quot;&gt;[MEETCONF]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: inherit;&quot;&gt;Toll Number: &lt;/span&gt;&lt;span style=&quot;font-family: inherit; font-size: 16px;&quot;&gt;[MEETTOLL]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-family: inherit;&quot;&gt;Dial In Url: &lt;/span&gt;&lt;span style=&quot;font-family: inherit; font-size: 16px;&quot;&gt;[MEETDIAL]&lt;/span&gt;&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Navigator_Home_URL</fullName>
+        <categories>Navigator</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Navigator Home URL</shortDescription>
+        <value>https://dev3-nationalcoordinationcenter.cs90.force.com/Compass/s/navigator</value>
+    </labels>
+    <labels>
+        <fullName>Navigator_Login_Page_URL</fullName>
+        <categories>Navigator</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Navigator Login Page URL</shortDescription>
+        <value>https://dev3-nationalcoordinationcenter.cs90.force.com/Compass/s/navigatorlogin</value>
+    </labels>
+    <labels>
+        <fullName>Navigator_My_Change_Agent_Description</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Navigator My Change Agent Description</shortDescription>
+        <value>We&apos;re offering live one-on-one consultations through text chat and video calls with your change agent. We are here to help you discover the best solutions, along with tips on how to get the most out from your  change journey. Get started now!</value>
+    </labels>
+    <labels>
+        <fullName>No_participants_to_display</fullName>
+        <categories>Session Participant</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No participants to display</shortDescription>
+        <value>There are no records to display!</value>
+    </labels>
+    <labels>
+        <fullName>Onboarding_Bill_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Onboarding Bill Email</shortDescription>
+        <value>bill.thach@nationalcoordinationcenter.com.invalid</value>
+    </labels>
+    <labels>
+        <fullName>Onboarding_Email_Addresses</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Onboarding Email Addresses</shortDescription>
+        <value>ciamca.20@gmail.com</value>
+    </labels>
+    <labels>
+        <fullName>Organization_Timezone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organization Timezone</shortDescription>
+        <value>EDT</value>
+    </labels>
+    <labels>
+        <fullName>Organization_Timezone_Full</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organization Timezone Full</shortDescription>
+        <value>Eastern Daylight Time (UTC-4:00)</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Confirmation_Declined_Status</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Confirmation Declined Status</shortDescription>
+        <value>Declined</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Confirmation_L2_Flagged_Declined_Status</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Confirmation L2 Flagged Declined Status</shortDescription>
+        <value>L2 Flagged - Session Declined</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Confirmation_Reminder</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Confirmation Reminder</shortDescription>
+        <value>Registration Confirmation Reminder</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_L2_Flagged</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification L2 Flagged</shortDescription>
+        <value>L2 Flagged</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Missed_Attendance</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Missed Attendance</shortDescription>
+        <value>Missed Attendance</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Participant_Status_Invited</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Participant Status Invited</shortDescription>
+        <value>Invited</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Registered_Status</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Registered Status</shortDescription>
+        <value>Registered</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Registration_Reminder</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Registration Reminder</shortDescription>
+        <value>Invitation Registration Reminder</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Attendance_Thank_you</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Attendance Thank you</shortDescription>
+        <value>Session Attendance Thank you</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Attended</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Attended</shortDescription>
+        <value>Attended</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Catchup</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Catchup</shortDescription>
+        <value>Session Catchup</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Catchup_Reminder</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Catchup Reminder</shortDescription>
+        <value>Session Catchup Reminder</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Catchup_Reminder_L2</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Catchup Reminder L2</shortDescription>
+        <value>Session Catchup Reminder L2</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Catchup_Thank_you</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Catchup Thank you</shortDescription>
+        <value>Session Catchup Thank you</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Session_Declined_Status</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Session Declined Status</shortDescription>
+        <value>Session Declined</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Survey_Catchup</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Survey Catchup</shortDescription>
+        <value>Survey Catchup</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Survey_Catchup_Reminder</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Survey Catchup Reminder</shortDescription>
+        <value>Survey Catchup Reminder</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Survey_Reminder</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Survey Reminder</shortDescription>
+        <value>Survey Reminder</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Survey_Thank_you</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Survey Thank you</shortDescription>
+        <value>Survey Thank You</value>
+    </labels>
+    <labels>
+        <fullName>Outreach_Notification_Valid_Session_Participant_Status</fullName>
+        <categories>Outreach Notification</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outreach Notification Valid Session Participant Status</shortDescription>
+        <value>Registered</value>
+    </labels>
+    <labels>
+        <fullName>Project_Raid_Home_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Project Raid Home URL</shortDescription>
+        <value>https://ovac-nationalcoordinationcenter.cs25.force.com/CompassProject/s/raid</value>
+    </labels>
+    <labels>
+        <fullName>Project_Raid_Login_URL</fullName>
+        <categories>Project Raid</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Project Raid Login URL</shortDescription>
+        <value>https://ovac-nationalcoordinationcenter.cs25.force.com/CompassProject/s/raid-login</value>
+    </labels>
+    <labels>
+        <fullName>Reference_Timezone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reference Timezone</shortDescription>
+        <value>America/New_York</value>
+    </labels>
+    <labels>
+        <fullName>Scheduled_Email_Failure</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scheduled Email Failure</shortDescription>
+        <value>We encountered an error while trying to process your request. Please contact your administrator for assistance. Errors:</value>
+    </labels>
+    <labels>
+        <fullName>Scheduled_Email_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scheduled Email Success</shortDescription>
+        <value>This is to notify you that the scheduled email you sent was successful.</value>
+    </labels>
+    <labels>
+        <fullName>Success_Message</fullName>
+        <categories>Sync Participant Milestone Metrics</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Success Message</shortDescription>
+        <value>The Batch Sync Participant Milestone job was submitted successfully.
+You can check the status of the job</value>
+    </labels>
+    <labels>
+        <fullName>Successful_Save_Draft_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Successful Save Draft Message</shortDescription>
+        <value>Email Draft is saved! Please check the communication record related to this Journey/Campaign to edit or send the draft.</value>
+    </labels>
+    <labels>
+        <fullName>Tech_Edera_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Tech Edera Email</shortDescription>
+        <value>david.rexieaaron@gmail.com</value>
+    </labels>
+    <labels>
+        <fullName>View_Calendar_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>View Calendar URL</shortDescription>
+        <value>https://ncc--staging.sandbox.my.site.com/Compass/s/sessions-calendar?id=</value>
+    </labels>
+    <labels>
+        <fullName>WorkAuthExternalEmailFooter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WorkAuthExternalEmailFooter</shortDescription>
+        <value>Please reach out to your project manager for each project with any questions.
+ &lt;br/&gt;
+ &lt;br/&gt;
+Thank you,
+ &lt;br/&gt;
+NCC</value>
+    </labels>
+    <labels>
+        <fullName>WorkAuthExternalEmailHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WorkAuthExternalEmailHeader</shortDescription>
+        <value>The National Coordination Center (NCC) thanks you for serving our clients on the projects and tasks assigned to you below.
+&lt;br/&gt;
+&lt;br/&gt;
+You will receive automatic work authorization emails every Monday morning for all your projects.
+&lt;br/&gt;
+&lt;br/&gt;
+Below is your updated work authorization email. The hours below are cumulative for the total project period of performance.
+If you anticipate you may require additional hours to complete the “tasks” assigned, please notify the project manager before exceeding your hours to  obtain your revised work authorization (hours and task assignments).
+&lt;br/&gt;
+&lt;br/&gt;
+Please “save” your timesheets daily and “submit” no later than Mondays at 10am ET weekly.</value>
+    </labels>
+    <labels>
+        <fullName>WorkAuthInternalEmailFooter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WorkAuthInternalEmailFooter</shortDescription>
+        <value>Please reach out to your project manager for each project with any questions.
+ &lt;br/&gt;
+ &lt;br/&gt;
+Thank you,
+ &lt;br/&gt;
+NCC</value>
+    </labels>
+    <labels>
+        <fullName>WorkAuthInternalEmailHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WorkAuthInternalEmailHeader</shortDescription>
+        <value>The National Coordination Center (NCC) thanks you for serving our clients on the projects and tasks assigned to you below.
+ &lt;br/&gt;
+ &lt;br/&gt;
+You will receive automatic work authorization emails every Monday morning for all your projects.
+ &lt;br/&gt;
+ &lt;br/&gt; 
+Below is your updated work authorization email. The hours below are cumulative for the total project period of performance.
+  &lt;br/&gt;
+ &lt;br/&gt;
+Please “save” your timesheets daily and “submit” no later than Mondays at 10am ET weekly.</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,33 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="NavigatorHomeComponentsController">
+    <aura:attribute name="itemsToDisplayCount" type="Integer" default="6" />
+    <aura:attribute name="milestoneStatus" type="String" />
+    <aura:attribute name="milestones" type="List" />
+    <aura:attribute name="milestonesToDisplay" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="container">
+        <header class="title">
+            {!v.milestoneStatus} Milestones
+        </header>
+        <div class="{! if( greaterthan(v.milestonesToDisplay.length, 0), 'body slds-scrollable--y', 'no-items')}">
+            <aura:if isTrue="{!v.milestonesToDisplay.length}">
+                <ul>
+                    <aura:iteration items="{!v.milestonesToDisplay}" var="item">
+                        <li>
+                            <a href="#">{!item.Milestone__r.Name}</a>
+                        </li>
+                    </aura:iteration>
+                </ul>
+                <aura:set attribute="else">
+                    <p>No items to display.</p>
+                </aura:set>
+            </aura:if>
+        </div>
+        <!-- <footer class="footer">
+            <aura:if isTrue="{!v.milestones.length >= v.itemsToDisplayCount}">
+                <a href="#" class="see-all">See All</a>
+            </aura:if>
+        </footer> -->
+    </div>
+
+</aura:component>

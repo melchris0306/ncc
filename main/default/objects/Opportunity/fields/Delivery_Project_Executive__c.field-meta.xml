@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Project_Executive__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>Must be a VP or higher</inlineHelpText>
+    <label>Delivery Project Executive</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Opportunities (Delivery Project Executive)</relationshipLabel>
+    <relationshipName>Opportunities2</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

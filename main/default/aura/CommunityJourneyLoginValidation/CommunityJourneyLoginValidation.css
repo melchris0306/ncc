@@ -1,0 +1,275 @@
+/* desktop view */
+@media only screen and (min-width: 1025px) {
+  .THIS .header {
+    color: #0072a8;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: Roboto-Bold;
+    margin-bottom: 33px;
+    margin-top: 20px;
+  }
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    max-width: 45rem;
+  }
+  .THIS .slds-modal__content {
+    border-radius: 15px;
+    height: 350px;
+  }
+  .THIS .modal-margin-top {
+    margin-top: 20%;
+  }
+  .THIS .label {
+    color: #707070;
+    font-weight: bold;
+    font-size: small;
+    font-style: Roboto-Bold;
+    font-size: 20px;
+    margin-left: 117px;
+  }
+  .THIS .modal-title {
+    font-size: 30px;
+  }
+  .THIS .backgroundField {
+    background-color: #e8edea;
+  }
+  .THIS .slds-input {
+    color: gray;
+    font-size: 18px;
+    outline: 0 !important;
+    border-color: rgb(
+      21,
+      137,
+      238
+    ) !important; /* This is the blue color of the border */
+    background-color: #eeeeee;
+    box-shadow: 0 0 3px #0070d2 !important; /* This is the blue color of the shadow */
+    height: 50px;
+    width: 500px;
+    border-radius: 15px;
+  }
+  .THIS .input-login-field-container {
+    margin: 0 auto;
+    width: 70%;
+  }
+  .THIS .slds-button {
+    margin-top: 54px;
+    width: 120px;
+    height: 45px;
+    background: #f3bd48 0% 0% no-repeat padding-box;
+    border-color: #f3bd48;
+    border-radius: 10px;
+    opacity: 1;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-style: Roboto-Bold;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 812px) and (orientation: portrait) {
+  .THIS .header {
+    color: #0072a8;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: Roboto-Bold;
+    margin-bottom: 33px;
+    margin-top: 10px;
+  }
+  .THIS .slds-modal__container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .THIS .slds-modal__content {
+    border-radius: 15px;
+    height: 300px;
+  }
+  .THIS .modal-margin-top {
+    margin-top: 200px;
+  }
+  .THIS .label {
+    color: #707070;
+    font-weight: bold;
+    font-size: small;
+    font-style: Roboto-Bold;
+    font-size: 20px;
+    margin-left: 35px;
+  }
+  .THIS .modal-title {
+    font-size: 30px;
+  }
+  .THIS .backgroundField {
+    background-color: #e8edea;
+  }
+  .THIS .slds-input {
+    color: gray;
+    font-size: 18px;
+    outline: 0 !important;
+    border-color: rgb(
+      21,
+      137,
+      238
+    ) !important; /* This is the blue color of the border */
+    background-color: #eeeeee;
+    box-shadow: 0 0 3px #0070d2 !important; /* This is the blue color of the shadow */
+    height: 50px;
+    width: 300px;
+    border-radius: 15px;
+  }
+  .THIS .input-login-field-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .THIS .slds-button {
+    margin-top: 30px;
+    width: 120px;
+    height: 45px;
+    background: #f3bd48 0% 0% no-repeat padding-box;
+    border-color: #f3bd48;
+    border-radius: 10px;
+    opacity: 1;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-style: Roboto-Bold;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .THIS .header {
+    color: #0072a8;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: Roboto-Bold;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+  }
+  .THIS .slds-modal__content {
+    border-radius: 15px;
+    height: 300px;
+  }
+  .THIS .modal-margin-top {
+    margin-top: 200px;
+  }
+  .THIS .label {
+    color: #707070;
+    font-weight: bold;
+    font-size: small;
+    font-style: Roboto-Bold;
+    font-size: 20px;
+    margin-left: 35px;
+  }
+  .THIS .modal-title {
+    font-size: 30px;
+  }
+  .THIS .backgroundField {
+    background-color: #e8edea;
+  }
+  .THIS .slds-input {
+    color: gray;
+    font-size: 18px;
+    outline: 0 !important;
+    border-color: rgb(
+      21,
+      137,
+      238
+    ) !important; /* This is the blue color of the border */
+    background-color: #eeeeee;
+    box-shadow: 0 0 3px #0070d2 !important; /* This is the blue color of the shadow */
+    height: 50px;
+    width: 300px;
+    border-radius: 15px;
+  }
+  .THIS .input-login-field-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .THIS .slds-button {
+    margin-top: 30px;
+    width: 120px;
+    height: 45px;
+    background: #f3bd48 0% 0% no-repeat padding-box;
+    border-color: #f3bd48;
+    border-radius: 10px;
+    opacity: 1;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-style: Roboto-Bold;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .THIS .header {
+    color: #0072a8;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: Roboto-Bold;
+    margin-bottom: 33px;
+    margin-top: 20px;
+  }
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 70%;
+    max-width: 700px;
+  }
+  .THIS .slds-modal__content {
+    border-radius: 15px;
+    height: 350px;
+  }
+  .THIS .modal-margin-top {
+    margin-top: 20%;
+  }
+  .THIS .label {
+    color: #707070;
+    font-weight: bold;
+    font-size: small;
+    font-style: Roboto-Bold;
+    font-size: 20px;
+    margin-left: 117px;
+  }
+  .THIS .modal-title {
+    font-size: 30px;
+  }
+  .THIS .backgroundField {
+    background-color: #e8edea;
+  }
+  .THIS .slds-input {
+    color: gray;
+    font-size: 18px;
+    outline: 0 !important;
+    border-color: rgb(
+      21,
+      137,
+      238
+    ) !important; /* This is the blue color of the border */
+    background-color: #eeeeee;
+    box-shadow: 0 0 3px #0070d2 !important; /* This is the blue color of the shadow */
+    height: 50px;
+    width: 500px;
+    border-radius: 15px;
+  }
+  .THIS .input-login-field-container {
+    margin: 0 auto;
+    width: 70%;
+  }
+  .THIS .slds-button {
+    margin-top: 54px;
+    width: 120px;
+    height: 45px;
+    background: #f3bd48 0% 0% no-repeat padding-box;
+    border-color: #f3bd48;
+    border-radius: 10px;
+    opacity: 1;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-style: Roboto-Bold;
+  }
+}

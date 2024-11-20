@@ -1,0 +1,34 @@
+<aura:component description="RelatedList" implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="RelatedListController">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="objectType" type="String" default="Session__c"/>
+    <aura:attribute name="eventId" type="String"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="sObject[]" access="global"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:showToast" action="{!c.handleApplicationEvent}"/>
+    <div class="slds-box slds-p-bottom_none">
+    <lightning:card title="Sessions" iconName="custom:custom89">
+        <aura:set attribute="actions">
+            
+                <lightning:buttonGroup>
+                <lightning:button label="New" onclick="{!c.createRecord}"/>
+                <lightning:button label="View as Calendar" onclick="{!c.gotoURL}"/>
+                </lightning:buttonGroup>
+        </aura:set>
+            <aura:if isTrue="{!not(empty(v.data))}" >
+                <lightning:datatable data="{! v.data }"
+                                     columns="{! v.columns }"
+                                     keyField="id"
+                                     hideCheckboxColumn="true"
+                                     onrowaction="{! c.handleRowAction }"/>
+            </aura:if>
+        <aura:set attribute="footer">
+            <aura:if isTrue="{!not(empty(v.data))}" >
+        <a href="javascript:void(0)" onclick="{!c.navigateToRelatedList}">
+            View All
+        </a>
+            </aura:if>
+        </aura:set>
+    </lightning:card>
+    </div>
+</aura:component>

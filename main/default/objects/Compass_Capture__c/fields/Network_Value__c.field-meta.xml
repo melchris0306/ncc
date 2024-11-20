@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Network_Value__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Network Value</label>
+    <referenceTo>Master_Data_Value__c</referenceTo>
+    <relationshipLabel>Compass Capture (Network Value)</relationshipLabel>
+    <relationshipName>Compass_Capture</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

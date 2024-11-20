@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Capture_Category__c</columns>
+    <columns>Capture_Functional_Clinical_Area__c</columns>
+    <columns>Capture_Type__c</columns>
+    <columns>Category_Values__c</columns>
+    <columns>Entity_L1__c</columns>
+    <columns>Entity_L2__c</columns>
+    <columns>Entity_L3__c</columns>
+    <columns>Entity_L4__c</columns>
+    <columns>Entity_Value_L1__c</columns>
+    <columns>Entity_Value_L2__c</columns>
+    <columns>Entity_Value_L3__c</columns>
+    <columns>Entity_Value_L4__c</columns>
+    <columns>Functional_Clinical_Area_Values__c</columns>
+    <columns>Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

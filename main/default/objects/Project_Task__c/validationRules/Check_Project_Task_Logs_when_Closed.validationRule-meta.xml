@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Project_Task_Logs_when_Closed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(ISPICKVAL(Status__c,&apos;Completed&apos;),ISPICKVAL(Status__c,&apos;Pass&apos;)),
+OR( RecordType.Name = &apos;Bug&apos;, RecordType.Name = &apos;Dev&apos;),
+Estimated_Hours__c &gt; 0,
+Actual_Hours__c &lt;= 0)</errorConditionFormula>
+    <errorDisplayField>AE_End_Date__c</errorDisplayField>
+    <errorMessage>Add project task logs before closing this task</errorMessage>
+</ValidationRule>

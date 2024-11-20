@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CampaignId__c</fullName>
+    <description>This field is populated by a process upon the creation of a session record. It stores the ID of the campaign linked to this session so guest user can query sessions without being given read permission on Campaign object.</description>
+    <externalId>false</externalId>
+    <label>CampaignId</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

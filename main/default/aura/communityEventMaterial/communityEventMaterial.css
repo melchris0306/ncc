@@ -1,0 +1,153 @@
+/* Added [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.THIS {
+    --calibri-title: normal normal normal 1.375rem/1.9375rem Calibri;
+	--pantone-cool-gray-11-c: #54565A;
+    --underline-orange: #FFAE5E;
+    box-shadow: inset 0 8px 6px -6px grey !important;
+    font-size: 1rem;
+}
+
+.THIS .right {
+    min-width: 6%;
+}
+
+/* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.THIS .material-container-outer {
+    text-align: left;
+    min-height: 40rem;
+    min-width: 88%;
+	/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    padding: 0.5rem 2rem;
+}
+
+.THIS .clear-section {
+    clear:both;
+}
+
+.THIS .no-min-max-height {
+    height: auto !important;
+}
+
+/* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.THIS .title-underline {
+    background-color: rgb(255,174,94);
+    height: 0.25rem;
+    width: 98%;
+    border-radius: 5px;
+}
+
+/* tablet portrait */
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    /* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+    .THIS .material-container-outer{
+        min-height: 84vh;
+    }
+
+    .THIS .main-header-section-title {
+        color: var(--pantone-cool-gray-11-c);
+    }
+
+    .THIS .main-header-section {
+        min-width: 10%;
+    }
+
+    .THIS .material-container-outer {
+        min-width: 80%;
+    }
+    
+    .THIS .right {
+        min-width: 10%;
+    }
+
+}
+
+/* Added [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+/* tablet landscape */
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : landscape) {
+
+    .THIS .main-header-section-title {
+        color: var(--pantone-cool-gray-11-c);
+    }
+
+    .THIS .main-header-section {
+        min-width: 10%;
+    }
+
+    .THIS .material-container-outer {
+        min-width: 80%;
+    }
+    
+    .THIS .right {
+        min-width: 10%;
+    }
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    /* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+    .THIS .main-header-section {
+        margin-left: 1rem;
+    }
+
+	/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+    .THIS .main-header-section-title {
+        color: var(--pantone-cool-gray-11-c);
+        padding-left: unset;
+        letter-spacing: 3.52px;
+    }
+
+    /* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+    .THIS .material-container-outer {
+        display: inline-block;
+        padding: 0 0.5rem;
+        width: 100%;
+    }
+
+    /* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+    .THIS .float-left {
+        margin-right: 0;
+    }
+
+    .THIS .slds-card[c-materialsDetails_materialsDetails] {
+        margin-top: 18px;
+    }
+
+    .THIS .slds-text-heading_medium[c-materialsDetails_materialsDetails] {
+        font-weight: bold;
+    }
+
+}
+
+
+@media screen and (max-device-width: 740px)
+              and (orientation : landscape) {
+    
+    .THIS .main-header-section {
+        margin-left: 1rem;
+    }
+
+    .THIS .material-container-outer {
+        display: flex;
+    }
+
+    .THIS .material-container-outer {
+        min-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .THIS .group-container-grouped {
+        width: 100% !important;
+        max-width: unset;
+        margin: unset;
+    }
+
+    .THIS .container-inner {
+        padding: 1.5rem 0;
+    }
+}

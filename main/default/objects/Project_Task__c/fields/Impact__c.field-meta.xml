@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Impact__c</fullName>
+    <label>Bug Impact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>4 - Extensive/Widespread (100% of Users)</fullName>
+                <default>false</default>
+                <label>4 - Extensive/Widespread (100% of Users)</label>
+            </value>
+            <value>
+                <fullName>3 - Significant/Large (50% of Users)</fullName>
+                <default>false</default>
+                <label>3 - Significant/Large (50% of Users)</label>
+            </value>
+            <value>
+                <fullName>2 - Moderate/Limited (1 Team)</fullName>
+                <default>false</default>
+                <label>2 - Moderate/Limited (1 Team)</label>
+            </value>
+            <value>
+                <fullName>1 - Minor/Localized (1-5 Users)</fullName>
+                <default>false</default>
+                <label>1 - Minor/Localized (1-5 Users)</label>
+            </value>
+            <value>
+                <fullName>Extensive/Widespread</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Extensive/Widespread</label>
+            </value>
+            <value>
+                <fullName>Minor/Localized</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Minor/Localized</label>
+            </value>
+            <value>
+                <fullName>Moderate/Limited</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Moderate/Limited</label>
+            </value>
+            <value>
+                <fullName>Significant/Large</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Significant/Large</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

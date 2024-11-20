@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <div class="info-box">
+        <div class="info-box-inside">
+            <div class="info-box-row">
+                <div class="font-header">
+                    WHEN
+                </div>	
+                <div class="font-small">
+                    14/07/2020 9:00 AM to 19/07/2020 5:30 PM 
+                </div>	
+            </div>	
+            <div class="info-box-row">
+                <div class="font-header" >
+                    WHERE
+                </div>	
+                <div class="font-small" >
+                    412th Medical Group, 31 Nightingale Road Bldg. 5513, Edwards, CA 93523, United States
+                </div>	
+            </div>		
+        </div>	
+    </div>	
+    
+</aura:component>

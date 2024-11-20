@@ -1,0 +1,39 @@
+@media screen and (max-width: 600px)  {
+	.hero-box {
+		padding : 1rem 1rem;
+	}
+		
+	.hero-box-info {
+		padding : 1rem 1rem;
+		margin: 0 auto;
+	}
+	
+	.box {
+		min-height: 30rem;
+		padding : 1rem 1rem;
+	}
+	
+	.info-box-inside { 
+		margin : 0 1rem;
+	}
+	
+    .navbar a:not(:first-child) {display: none;}
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+	.navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/*
+@media screen and (max-width: 600px) 
+@media screen and (max-width: 1200px) 
+*/

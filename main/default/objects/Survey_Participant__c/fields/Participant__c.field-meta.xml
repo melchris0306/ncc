@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Participant__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Contact that has been selected as a participant for a survey</description>
+    <inlineHelpText>Contact that has been selected as a participant for a survey</inlineHelpText>
+    <label>Participant</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Survey Participants</relationshipLabel>
+    <relationshipName>Survey_Participants</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

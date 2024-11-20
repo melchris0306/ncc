@@ -1,0 +1,43 @@
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-text-class {
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .slds-textarea {
+    margin-bottom: 0px;
+}
+
+.THIS .slds-rich-text-editor__output * {
+    font-family: 'Calibri' !important;
+    font-size: 16px !important;
+}
+
+/* Phone protrait */
+@media only screen and
+    (max-device-height: 375px) and 
+    (orientation: landscape) {
+    
+    .THIS .main-header-section-content {
+        margin-left: 0.4rem;
+    }
+}
+
+/* Updated by Jayson Labnao Jan162022 [EVENT REFRESH FIXES] */
+.THIS .mobile-row:nth-child(odd) {
+    background: #f5f5f5;
+}
+
+/* Added by Rexie David 7/12/2023 CCN-EVE-3029-DV-ParkingLot*/
+.THIS .spacer {
+    padding: 3rem 8% 2rem 2%;
+}

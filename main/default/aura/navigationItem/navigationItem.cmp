@@ -1,0 +1,32 @@
+<aura:component>
+    <aura:attribute name="sldsIcon" type="String" access="public" default="chevronright"/>
+    <aura:attribute name="iconUrl" type="String" access="public"/>
+    <aura:attribute name="label" type="String" access="public" default="TEST LABEL"/>
+    <aura:attribute name="name" type="String" access="public"/>
+    <aura:attribute name="link" type="String" access="public" default=""/>
+    <aura:attribute name="isSelected" type="Boolean" access="public" default="false"/>
+    <aura:attribute name="expandedItems" type="List" access="public"/>
+    <aura:attribute name="currentURL" type="String" access="public"/>
+
+    <aura:registerEvent name="navigationItemClick" type="c:navigationItemClick"/>
+
+    <div title="{!v.label}" class="{! (v.isSelected ? 'navigation-item-selected' : '') + ' navigation-item' }" onclick="{!c.navigationClick}">
+        <aura:if isTrue="{!v.iconUrl}">
+            <img class="navigator-item-icon slds-m-horizontal_x-small" src="{!v.iconUrl}" />
+            <aura:set attribute="else">
+                <lightning:icon class="slds-m-horizontal_medium" iconName="{!v.sldsIcon}" title="{!v.label}" variant="{! v.isSelected ? 'inverse' : '' }"/>
+            </aura:set>
+        </aura:if>
+        <p class="slds-m-horizontal_xx-small tab-label"><lightning:formattedText value="{!v.label}" /></p>
+    </div>
+    <aura:if isTrue="{! and(v.isSelected, !empty(v.expandedItems)) }">
+        <aura:iteration items="{!v.expandedItems }" var="item">
+            <div class="expanded-list-item">
+                <span class="bullet"></span>
+                <p id="{!item}" class="expanded-item-label" onclick="{!c.navigationItemClick}">{!item}</p>
+            </div>
+        </aura:iteration>
+    </aura:if>
+
+
+</aura:component>

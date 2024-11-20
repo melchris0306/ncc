@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not started</fullName>
+                <default>false</default>
+                <label>Not started</label>
+            </value>
+            <value>
+                <fullName>In progress</fullName>
+                <default>false</default>
+                <label>In progress</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>TBD</fullName>
+                <default>false</default>
+                <label>TBD</label>
+            </value>
+            <value>
+                <fullName>Not applicable</fullName>
+                <default>false</default>
+                <label>Not applicable</label>
+            </value>
+            <value>
+                <fullName>Identified</fullName>
+                <default>false</default>
+                <label>Identified</label>
+            </value>
+            <value>
+                <fullName>Mitigating</fullName>
+                <default>false</default>
+                <label>Mitigating</label>
+            </value>
+            <value>
+                <fullName>Resolved</fullName>
+                <default>false</default>
+                <label>Resolved</label>
+            </value>
+            <value>
+                <fullName>Reviewed by Product Owner</fullName>
+                <default>false</default>
+                <label>Reviewed by Product Owner</label>
+            </value>
+            <value>
+                <fullName>Approved by Product Owner</fullName>
+                <default>false</default>
+                <label>Approved by Product Owner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

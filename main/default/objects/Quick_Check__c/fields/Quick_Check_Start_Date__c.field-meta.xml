@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quick_Check_Start_Date__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Quick Check Start Date</description>
+    <externalId>false</externalId>
+    <label>Quick Check Start Date</label>
+    <required>false</required>
+    <securityClassification>Public</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

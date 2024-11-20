@@ -1,0 +1,121 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="NavigatorController">
+    <aura:attribute name="isLoggedIn" type="boolean" default="false"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:attribute name="noPassword" type="boolean" default="true"/>
+    <aura:attribute name="navigatorId" type="String" default=""/>
+    
+    <!-- Image variables -->
+    <aura:attribute name="backgroundImageURL" type="String" default=""/>
+    <aura:attribute name="headerLogo" type="String" default=""/>
+    <aura:attribute name="loginFormLogo" type="String" default=""/>
+    
+    <!-- JS Cookie library for cookie manipulation -->
+    <ltng:require scripts="{!$Resource.JS_Cookie}" afterScriptsLoaded="{!c.jsCookieLoaded}" />
+    
+    <aura:attribute name="isFormLoading" type="Boolean" default="true"/>
+    <aura:attribute name="secret" type="String"/>
+    <aura:attribute name="encryptedData" type="String"/>
+    <aura:attribute name="isLoginTokenEnabled" type="Boolean" default="false"/>
+    
+    <aura:attribute name="isSubmitDisabled" type="Boolean" default="true"/>  
+    
+
+    <!--div id="loginDiv" class="loginContent" style="{!'background:url(' + v.backgroundImageURL +') repeat;height: 100%;width: 100%; position:fixed;top: 0; left: 0; '}" onkeyup="{! c.keyPress}"-->
+    <div id="loginDiv" class="loginContent" style="{!'background:url(' + v.backgroundImageURL +') repeat;height: 200%;width: 100%; position:fixed;top: 0; left: 0;'}">
+	<!-- Header -->
+
+    <div class="header-section">
+        <div class="header-logo-image"><img src="{!v.headerLogo}"/></div>
+    </div>
+        
+        <aura:if isTrue="{!v.isFormLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+
+            <aura:set attribute="else">
+                
+                <div class="slds-card loginFormToTheRight ">
+                    <div class="slds-grid  slds-card__header ">
+                        <div class="slds-align_absolute-center logoImageSize"><img src="{!v.loginFormLogo}"/></div>
+                    </div>
+                    <div class="loginFormToTheRightInner">
+                    	<div class ="">
+                            <lightning:layoutItem >
+                                <span class="slds-text-heading_large welcomeCSS bottomSpacing">Welcome</span>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem >
+                                <span class="slds-text-heading_medium promptCSS spanMargin">Enter your email to sign in to your Basecamp.</span>
+                            </lightning:layoutItem>
+                            <span class ="">
+                                <lightning:layoutItem class ="spanEmail">
+                                        <lightning:input aura:id="email"
+                                                     id="email"
+                                                     name="email"
+                                                     label=""
+                                                     placeholder="Email Address"
+                                                     pattern=".+@.+(\.[a-zA-Z]{1,})+"
+                                                     messageWhenPatternMismatch="Invalid Email Format"
+                                                     messageWhenTypeMismatch="Invalid Email Format"
+                                                     onchange="{! c.inputEmail }"/>
+                                   
+                                    
+                                </lightning:layoutItem>
+                                 </span>
+                            
+                           
+                                <div class ="signInButtonCSS">
+                                    <span class ="spanButton">
+                                        <lightning:button label="Sign In" title="Sign In" disabled="{!v.isSubmitDisabled}" onclick="{! c.submit }"/>
+                                    </span>
+                                    
+                                </div>
+                            
+                            <span class="bottomSpacing"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--
+                <div class ="loginFormToTheRightOuter">
+                    <lightning:card>
+                    sfadfsdfs
+                <div class ="loginFormToTheRight">
+                    	<lightning:card >
+                        <div class="formMargin">
+                            <lightning:layoutItem size="12">
+                                <span class="slds-text-heading_large welcomeCSS">Welcome</span>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="12">
+                                <span class="slds-text-heading_medium promptCSS">Enter your email to sign in to your Navigator.</span>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="12">
+                                <lightning:input aura:id="email"
+                                                 id="email"
+                                                 name="email"
+                                                 label=""
+                                                 placeholder="Email Address"
+                    							 pattern=".+@.+(\.[a-zA-Z]{1,})+"
+                  							     messageWhenPatternMismatch="Invalid Email Format"
+                    							 messageWhenTypeMismatch="Invalid Email Format"/>
+                            </lightning:layoutItem>
+                            
+                            <div class ="signInButtonCSS">
+                                <lightning:button label="Sign In" title="Sign In" onclick="{! c.submit }"/>
+                            </div>
+                        </div>
+                    </lightning:card>
+                </div>
+              </lightning:card>
+                </div>
+                -->
+            </aura:set>
+        </aura:if>
+        
+        <footer class="footer">
+            <div class="footer-logo-image"><img src="{!$Resource.communityEventFooterLogo}"/></div>
+        </footer>
+        
+    </div>
+</aura:component>

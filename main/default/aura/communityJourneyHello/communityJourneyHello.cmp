@@ -1,0 +1,21 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  access="global"
+  controller="TheProviderJourney"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="journeyID" type="String" />
+  <aura:attribute name="userJourney" type="Journey_Participant__c" />
+  <aura:attribute name="journeyData" type="Journey__c" />
+  <aura:attribute name="userMilestones" type="List" />
+  <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+  <aura:attribute name="journeyMilestoneList" type="List" />
+  <aura:attribute name="urlFromJourney" type="Boolean" />
+
+  <div>
+    <div class="hello-box">
+      <b>Hello {!v.userJourney.Contact__r.FirstName},</b>&nbsp;{!v.userJourney.Journey__r.Subtitle__c}
+    </div>
+    <div></div>
+  </div>
+</aura:component>

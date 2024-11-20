@@ -1,0 +1,5 @@
+({
+	cloneEvent : function() {
+		
+	}
+})

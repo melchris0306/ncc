@@ -1,0 +1,245 @@
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CC_SessionParticipantsAttended">
+    <aura:attribute name="participants" type="Session_Participant__c[]"/>
+    <aura:attribute name="selectedParticipants" type="Session_Participant__c[]"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="No_participants_to_display" type="String" />
+    <aura:attribute name="Btn_MarkAsAttended" type="String" />
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="100"/>
+    <aura:attribute name="listOfAllAccounts" type="list"/>
+    <aura:attribute name="readinessPicklistValues" type="list"/>
+    <aura:attribute name="sessionPicklistValues" type="list"/>
+    <aura:attribute name="selectedCount" type="integer" default="0"
+                    description="selected Records Count"/>
+    <aura:attribute name="showReadinessSelfRanking" type="boolean" default="false"/>
+    <aura:attribute name="showSessionParticipation" type="boolean" default="false"/>
+    <aura:attribute name="requireReadinessSelfRanking" type="boolean" default="false"/>
+    <aura:attribute name="requireSessionParticipation" type="boolean" default="false"/>
+    
+	<!--Added for CCN-EVE-11-DV Feb.15.2022-->
+    <aura:attribute name="sortColumn" type="String" default="Number"/>
+    <aura:attribute name="sortAsc" type="boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+    
+    <!--  this tag sets modal width -->
+    <aura:html tag="style">
+        .slds-modal__container {
+        min-width: 70vw;
+        }
+    </aura:html>  
+    
+    <aura:if isTrue="{!empty(v.participants)}">
+        <h2>{!v.No_participants_to_display}</h2>
+        <aura:set attribute="else">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1">
+                    <lightning:button class="slds-button slds-float_right slds-m-bottom_medium" label="{!v.Btn_MarkAsAttended}" name="markedButton" 
+                                      onclick="{!c.handleMarkAsAttendedClick}" 
+                                      aura:id="markedAsAttendedId"
+                                      variant="brand"/>
+                </div>
+                
+                <!-- Removed for CCN-975, replaced with custom table to accomodate picklist fied
+                <div class="slds-col slds-size_1-of-1">
+                    <lightning:datatable data="{!v.participants}" columns="{!v.columns}" keyField="id"
+                                         maxRowSelection="{!v.maxRowSelection}" onrowselection="{!c.updateSelectedRecord}"/>
+                </div>
+                <-->
+                
+                
+                <!-- data table start-->  
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <!--header checkbox for select all-->
+                            <th style="width:3.25rem;" class="slds-text-align_right">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <ui:inputCheckbox disabled="{!v.totalRecordsCount == 0}"
+                                                              aura:id="selectAllId"
+                                                              change="{!c.selectAllCheckbox}"/>
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-form-element__label"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div onclick="{!c.sortByNumber}" class="slds-truncate col-sortable" title="Session Participant Number">
+                                    Session Participant Number
+                                    <!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                    <aura:if isTrue="{!v.sortColumn == 'Number'}">
+                                        <span class="col-sort-icon">
+                                            <aura:if isTrue="{!v.sortAsc}">
+                                                &#8593;
+                                                <aura:set attribute="else">
+                                                    &#8595;
+                                                </aura:set>
+                                            </aura:if>
+                                        </span>
+                                    </aura:if>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div onclick="{!c.sortByContact}" class="slds-truncate col-sortable" title="Contact">
+                                    Contact
+                                    <!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                    <aura:if isTrue="{!v.sortColumn == 'Contact'}">
+                                        <span class="col-sort-icon">
+                                            <aura:if isTrue="{!v.sortAsc}">
+                                                &#8593;
+                                                <aura:set attribute="else">
+                                                    &#8595;
+                                                </aura:set>
+                                            </aura:if>
+                                        </span>
+                                    </aura:if>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div onclick="{!c.sortByDate}" class="slds-truncate col-sortable" title="Session Start Date">
+                                    Session Start Date
+                                    <!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                    <aura:if isTrue="{!v.sortColumn == 'Date'}">
+                                        <span class="col-sort-icon">
+                                            <aura:if isTrue="{!v.sortAsc}">
+                                                &#8593;
+                                                <aura:set attribute="else">
+                                                    &#8595;
+                                                </aura:set>
+                                            </aura:if>
+                                        </span>
+                                    </aura:if>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div onclick="{!c.sortByStatus}" class="slds-truncate col-sortable" title="Status">
+                                    Status
+                                    <!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                    <aura:if isTrue="{!v.sortColumn == 'Status'}">
+                                        <span class="col-sort-icon">
+                                            <aura:if isTrue="{!v.sortAsc}">
+                                                &#8593;
+                                                <aura:set attribute="else">
+                                                    &#8595;
+                                                </aura:set>
+                                            </aura:if>
+                                        </span>
+                                    </aura:if>
+                                </div>
+                            </th>
+                            <aura:if isTrue="{!v.showReadinessSelfRanking}">
+                                <th scope="col">
+                                    <div onclick="{!c.sortByRanking}" class="slds-truncate col-sortable" title="Readiness Self Ranking">
+                                        <aura:if isTrue="{!v.requireReadinessSelfRanking}">
+                                            <span style="color:red">*</span>
+                                        </aura:if>
+                                        Readiness Self Ranking
+                                    	<!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                        <aura:if isTrue="{!v.sortColumn == 'Ranking'}">
+                                            <span class="col-sort-icon">
+                                                <aura:if isTrue="{!v.sortAsc}">
+                                                    &#8593;
+                                                    <aura:set attribute="else">
+                                                        &#8595;
+                                                    </aura:set>
+                                                </aura:if>
+                                            </span>
+                                        </aura:if>
+                                    </div>
+                                </th>
+                            </aura:if>
+                            <aura:if isTrue="{!v.showSessionParticipation}">
+                                <th scope="col">
+                                    <div onclick="{!c.sortByParticipation}" class="slds-truncate col-sortable" title="Session Participation">
+                                        <aura:if isTrue="{!v.requireSessionParticipation}">
+                                            <span style="color:red">*</span>
+                                        </aura:if>
+                                        Session Participation
+                                    	<!--Added for CCN-EVE-11-DV Feb.15.2022-->
+                                        <aura:if isTrue="{!v.sortColumn == 'Participation'}">
+                                            <span class="col-sort-icon">
+                                                <aura:if isTrue="{!v.sortAsc}">
+                                                    &#8593;
+                                                    <aura:set attribute="else">
+                                                        &#8595;
+                                                    </aura:set>
+                                                </aura:if>
+                                            </span>
+                                        </aura:if>
+                                    </div>
+                                </th>
+                            </aura:if>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.participants}" var="obj">
+                            <tr>
+                                <th scope="row" class="slds-text-align_right" style="width:3.25rem;">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox">
+                                                <ui:inputCheckbox text="{!obj.objAccount.Id}"
+                                                                  value="{!obj.isChecked}"
+                                                                  change="{!c.checkboxSelect}"/>
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-form-element__label text"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th scope="row">
+                                    <div class="slds-truncate" title="{!obj.Name}">
+                                        {!obj.Name}
+                                    </div>
+                                </th>
+                                <th scope="row">
+                                    <div class="slds-truncate" title="{!obj.Contact_Name__c}">
+                                        {!obj.Contact_Name__c}
+                                    </div>
+                                </th>
+                                <th scope="row">
+                                    <div class="slds-truncate" title="{!obj.Session_Start_Date__c}">
+                                        <lightning:formattedDateTime value="{!obj.Session_Start_Date__c}"/>
+                                    </div>
+                                </th>
+                                <th scope="row">
+                                    <div class="slds-truncate" title="{!obj.Status__c}">
+                                        {!obj.Status__c}
+                                    </div>
+                                </th>
+                                <aura:if isTrue="{!v.showReadinessSelfRanking}">
+                                    <th scope="row">
+                                        <div class="slds-truncate" title="{!obj.Readiness_Self_Ranking__c}">
+                                            <lightning:select class="label-hidden" name="Readiness Self Ranking" value="{!obj.Readiness_Self_Ranking__c}" required="{!v.requireReadinessSelfRanking}">
+                                                <option text="--None--" value=""></option>
+                                                <aura:iteration items="{!v.readinessPicklistValues}" var="option">
+                                                    <option text="{!option}" value="{!option}"></option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                    </th>
+                                </aura:if>
+                                <aura:if isTrue="{!v.showSessionParticipation}">
+                                    <th scope="row">
+                                        <div class="slds-truncate" title="{!obj.Session_Participation__c}">
+                                            <lightning:select class="label-hidden" name="Session Participation" value="{!obj.Session_Participation__c}" required="{!v.requireSessionParticipation}">
+                                                <option text="--None--" value=""></option>
+                                                <aura:iteration items="{!v.sessionPicklistValues}" var="option">
+                                                    <option text="{!option}" value="{!option}"></option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                    </th>
+                                </aura:if>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

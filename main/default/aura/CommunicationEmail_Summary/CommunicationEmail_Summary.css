@@ -1,0 +1,10 @@
+.THIS.footer-box {
+    margin-left: -15%;
+    margin-right: -15%;
+    position: sticky;
+    bottom: 43px;
+}
+.THIS.footer-content {
+    margin-top: 9px;
+    margin-right: 3%;
+}

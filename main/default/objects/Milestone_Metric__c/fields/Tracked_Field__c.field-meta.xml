@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tracked_Field__c</fullName>
+    <description>Indicates tracked field for metric calculation</description>
+    <label>Tracked Field</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Invitation Date</fullName>
+                <default>false</default>
+                <label>Invitation Date</label>
+            </value>
+            <value>
+                <fullName>Registration Date</fullName>
+                <default>false</default>
+                <label>Registration Date</label>
+            </value>
+            <value>
+                <fullName>Attendance Date</fullName>
+                <default>false</default>
+                <label>Attendance Date</label>
+            </value>
+            <value>
+                <fullName>Date Sent</fullName>
+                <default>false</default>
+                <label>Date Sent</label>
+            </value>
+            <value>
+                <fullName>Date Responded</fullName>
+                <default>false</default>
+                <label>Date Responded</label>
+            </value>
+            <value>
+                <fullName>Completion Date</fullName>
+                <default>false</default>
+                <label>Completion Date</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Communication</controllingFieldValue>
+            <valueName>Date Sent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event</controllingFieldValue>
+            <valueName>Invitation Date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event</controllingFieldValue>
+            <valueName>Registration Date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event</controllingFieldValue>
+            <valueName>Attendance Date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Survey</controllingFieldValue>
+            <controllingFieldValue>Quick Check</controllingFieldValue>
+            <valueName>Date Responded</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Attestation</controllingFieldValue>
+            <valueName>Completion Date</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solution_Type__c</fullName>
+    <label>Solution Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Configuration</fullName>
+                <default>false</default>
+                <label>Configuration</label>
+            </value>
+            <value>
+                <fullName>Custom Report</fullName>
+                <default>false</default>
+                <label>Custom Report</label>
+            </value>
+            <value>
+                <fullName>Delivered Business Process</fullName>
+                <default>false</default>
+                <label>Delivered Business Process</label>
+            </value>
+            <value>
+                <fullName>Delivered Functionality</fullName>
+                <default>false</default>
+                <label>Delivered Functionality</label>
+            </value>
+            <value>
+                <fullName>New Functionlity</fullName>
+                <default>false</default>
+                <label>New Functionlity</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

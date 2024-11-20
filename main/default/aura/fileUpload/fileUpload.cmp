@@ -1,0 +1,51 @@
+<!--
+
+    History:
+    29-8-19 CV:added caution panel to notify if component not fully setup.
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                controller="FileUploadUtility">
+    <aura:attribute name="fileId" 
+                    type="String" 
+                    default="" 
+                    description="used to store API name of file Id field in target record"/>
+    <aura:attribute name="successMessage" 
+                    type="String" 
+                    default="The file has been uploaded successfully." 
+                    description="allows success message to be customised."/>
+    <aura:attribute name="cardTitle" 
+                    type="String" 
+                    default="File Uploader" 
+                    description="configurable title for upload widget"/>
+    <aura:attribute name="cardPrompt" 
+                    type="String" 
+                    default="Select or Drag your file for upload." 
+                    description="configurable prompt for upload widget"/>
+    <aura:attribute name="fileTypes" 
+                    type="String" 
+                    default=".svg, .png, .jpg, .jpeg" 
+                    description="the file types accepted by the upload widget"/>
+    
+    <lightning:card  title="{!v.cardTitle}">
+    
+    <aura:renderIf isTrue="{!v.fileId == '' || v.successMessage == '' || v.cardTitle == '' || v.cardPrompt == ''}">
+        <div class="caution slds-align_absolute-center">
+            WARNING: Component is not setup for use.
+        </div>
+        <aura:set attribute="else">
+            <p class="slds-p-horizontal_small">
+                <lightning:fileUpload label="{!v.cardPrompt}"
+                    name="fileUploader"
+                    multiple="false"
+                    accept="{!v.fileTypes}"
+                    recordId="{!v.recordId}"
+                    onuploadfinished="{!c.handleUploadFinished}" />
+            </p>
+        </aura:set>
+    </aura:renderIf>
+
+        
+    </lightning:card> 
+
+    
+</aura:component>

@@ -1,0 +1,191 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ChangeCloudController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute type="String" name="eventId" default="" />
+    <aura:attribute type="String" name="firstname" default="" />
+    <aura:attribute type="String" name="lastname" default="" />
+    <aura:attribute type="String" name="email" default="" />
+    <aura:attribute type="String" name="phone" default="" />
+    <aura:attribute type="String" name="subject" default="" />
+    <aura:attribute type="String" name="comments" default="" />
+    <aura:attribute type="String" name="commentTag" default="" />
+    <aura:attribute type="String" name="commentMessage" default="" />
+    <aura:attribute type="Boolean" name="showSpinner" default="false" />
+    <aura:attribute name="contactUsPageTitle" type="String"/>
+
+    <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+    <aura:attribute name="RequiredFieldErrorMessage" type="String" default="Required Field"/>
+    
+    <!-- Updated by Edison Crisostomo Oct202021 [CCN799,CCN800,CCN801] -->
+    <div>
+        <div class="main-section">
+            <div class="main-section-content">
+                <div class="main-header-section float-left">
+                    <div class="main-header-section-title height-auto">{!v.contactUsPageTitle}</div>
+                </div>
+                <div class="main-header-section-content slds-grid slds-wrap" id="contactus-section-top">
+                    <aura:if isTrue="{!v.showSpinner}">
+                        <div class="spinnerHolder">
+                            <lightning:spinner alternativeText="Loading" size="small" />
+                        </div>
+                        <aura:set attribute="else">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                <div class="main-header-section-content-title">
+                                    <aura:if isTrue="{!v.commentTag}">
+                                        <div class="main-header-section-content-title-header">
+                                            {!v.commentTag}
+                                        </div>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.commentMessage}">
+                                        <div class="main-header-section-content-title-body">
+                                            {!v.commentMessage}
+                                        </div>
+                                    </aura:if>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+
+                                <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+                                <div class="required-text-class">* Required Field</div>
+                                
+                                <form action="/action_page.php" class="main-header-section-content-form">
+                                    <aura:if  isTrue="{!not($Browser.isPhone)}" >
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                                <span>
+                                                    <!-- First Name -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="firstname">First Name</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:input type="text" id="firstname" name="firstname" value="{!v.firstname}" placeholder="John" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                    <!-- Last Name -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="lastname">Last Name</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:input type="text" id="lastname" name="lastname" value="{!v.lastname}" placeholder="Doe" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                    <!-- Email -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="lname">Email</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:input type="email" id="email" name="email" value="{!v.email}" placeholder="john.doe@gmail.com" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                    <!-- Phone -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="phone">Phone</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:input type="tel" id="phone" name="phone" value="{!v.phone}" placeholder="3433433434" pattern="^\d+$" required="true" aura:id="contactUsForm" variant="label-hidden" maxlength="10" minlength = "10" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                                <span>
+                                                    <!-- Subject -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="subject">Subject</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:input type="text" id="subject" name="subject" value="{!v.subject}" placeholder="Your query subject" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                    <!-- Comment -->
+                                                    <div class="header-label">
+                                                        <span class="required-mark">*</span>
+                                                        <label for="comment" class="contactus-form-label">Comment</label>
+                                                    </div>
+                                                    <div class="input-text">
+                                                        <lightning:textarea name="comments" value="{!v.comments}" placeholder="Your comment" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if  isTrue="{!$Browser.isPhone}" >
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1"> 
+                                                <!-- First Name -->
+                                                <div class="header-label">
+                                                    <label for="firstname">First Name *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input type="text" id="firstname" name="firstname" value="{!v.firstname}" placeholder="John" required="true" aura:id="contactUsForm" variant="label-hidden"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Last Name -->
+                                                <div class="header-label">
+                                                    <label for="lastname">Last Name *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input type="text" id="lastname" name="lastname" value="{!v.lastname}" placeholder="Doe" required="true" aura:id="contactUsForm" variant="label-hidden"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Email -->
+                                                <div class="header-label">
+                                                    <label for="lname">Email *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input type="email" id="email" name="email" value="{!v.email}" placeholder="john.doe@gmail.com" required="true" aura:id="contactUsForm" variant="label-hidden"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Phone -->
+                                                <div class="header-label">
+                                                    <label for="phone">Phone *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input type="tel" id="phone" name="phone" value="{!v.phone}" placeholder="3433433434" pattern="^\d+$" required="true" aura:id="contactUsForm" variant="label-hidden" maxlength="10" minlength = "10"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Subject -->
+                                                <div class="header-label">
+                                                    <label for="subject">Subject *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input type="text" id="subject" name="subject" value="{!v.subject}" placeholder="Your query subject" required="true" aura:id="contactUsForm" variant="label-hidden"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Comment -->
+                                                <div class="header-label">
+                                                    <label for="comment" class="contactus-form-label">Comment *</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:textarea name="comments" value="{!v.comments}" placeholder="Your comment" required="true" aura:id="contactUsForm" variant="label-hidden"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    
+                                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-1 slds-align-middle">
+                                        <span>
+                                            <div class="submit-button-section">
+                                                <div class="submit-button" onclick="{!c.handleSubmit}">Submit</div>
+                                            </div>
+                                        </span>
+                                        
+                                    </div>
+                                </form> 
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>  
+        </div>
+    </div>
+    
+    
+    
+</aura:component>

@@ -1,0 +1,23 @@
+<template>
+    <div class="container">
+        <article class="">
+            <div class="innerBox">
+                <a class="material-header" onclick={handleDownload}><b>{title}</b></a>
+                <p class="material-description">{description}</p>
+                <!--<p class="slds-text-body_regular link" onclick={handleDownload}>Click here</p>-->
+                <template if:true={isVideo}>
+                    <video width="400" controls = "TRUE">
+                        <source src={url} type="video/mp4"/>
+                        <source src={url} type="video/ogg"/>
+                        <source src={url} type="video/avi"/>
+                        <source src={url} type="video/wmv"/>
+                        <source src={url} type="video/wma"/>
+                        <source src={url} type="video/wav"/>
+                        <source src={url} type="video/mov"/>
+                        Your browser does not support HTML5 video.
+                    </video>
+                </template>
+            </div>
+        </article>
+    </div>
+</template>

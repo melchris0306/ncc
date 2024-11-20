@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Change_Cloud_Program__c</fullName>
+    <inlineHelpText>Please select the Change Cloud Program to which you will enroll the contact. Change Cloud will then enroll the participant and allow you to select specific journeys for the individual.</inlineHelpText>
+    <label>Change Cloud Program</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Change_Cloud_Program</valueSetName>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

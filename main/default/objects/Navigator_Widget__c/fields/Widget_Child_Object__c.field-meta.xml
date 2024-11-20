@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Widget_Child_Object__c</fullName>
+    <label>Widget Child Object</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Widget_Parent_Object__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Participant_Milestone__c</fullName>
+                <default>false</default>
+                <label>Participant Milestone</label>
+            </value>
+            <value>
+                <fullName>Communication_Recipient__c</fullName>
+                <default>false</default>
+                <label>Communication Recipient</label>
+            </value>
+            <value>
+                <fullName>Session_Participant__c</fullName>
+                <default>false</default>
+                <label>Participant/Participant Session</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Event__c</controllingFieldValue>
+            <valueName>Session_Participant__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Journey__c</controllingFieldValue>
+            <valueName>Participant_Milestone__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact</controllingFieldValue>
+            <valueName>Communication_Recipient__c</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

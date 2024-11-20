@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Widgets__c</fullName>
+    <label>Connect Widgets</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consultation Team</fullName>
+                <default>false</default>
+                <label>Consultation Team</label>
+            </value>
+            <value>
+                <fullName>Consultation Schedule</fullName>
+                <default>false</default>
+                <label>Consultation Schedule</label>
+            </value>
+            <value>
+                <fullName>My Medication</fullName>
+                <default>false</default>
+                <label>My Medication</label>
+            </value>
+            <value>
+                <fullName>Health Summary</fullName>
+                <default>false</default>
+                <label>Health Summary</label>
+            </value>
+            <value>
+                <fullName>Files</fullName>
+                <default>false</default>
+                <label>Files</label>
+            </value>
+            <value>
+                <fullName>Support Team</fullName>
+                <default>false</default>
+                <label>Support Team</label>
+            </value>
+            <value>
+                <fullName>Support Schedule</fullName>
+                <default>false</default>
+                <label>Support Schedule</label>
+            </value>
+            <value>
+                <fullName>My Tickets</fullName>
+                <default>false</default>
+                <label>My Tickets</label>
+            </value>
+            <value>
+                <fullName>My Files</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>My Files</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,547 @@
+body {
+	background-color : #e0e0e0;
+	font-family: Helvetica, monospace;
+	/*b7d6d8 Courier, monospace */
+}
+
+.btn-base {
+	border: none;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	width : 17rem;
+}
+
+.btn-survey {
+	background-color: #8b8c4a;
+	border: 0.08rem solid #8b8c4a;
+	color : white;
+}
+
+.btn-learnmore {
+	border: 0.08rem solid white;
+	color : white;
+}
+
+.btn-register {
+	background-color: white;
+	border: 0.08rem solid white;
+	color : black;
+}
+
+.btn-submit {
+	border: 0.08rem solid white;
+	color : black;
+}
+
+
+/*NAVIGATION SECTION*/
+
+.navbar-logo-img {
+	height:2.5rem;
+}
+.img-logo {
+	height : 6rem;
+	padding: 1.5rem 1.5rem !important;
+}
+
+.nav-box {
+	background: rgba(255, 255, 255, 0.5) ;
+	border-bottom: 0.7rem;
+	border-bottom-style: solid;
+	border-color: #8b8c4a;
+}
+
+.navbar {
+    overflow: hidden;
+    width: 100%;
+}
+
+.navbar a {
+    float: right;
+    display: block;
+    color: #3a3a3c;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+	padding : 2.5rem 2rem;
+	height : 6rem;
+}
+
+.navbar-left {
+	float: left;
+	height: 6rem;
+}
+
+.navbar-right {
+	float: right;
+}
+
+.navbar-logo {
+	background-color: #011e41;
+}
+
+.navbar a:hover {
+	background-color: white;
+    color: gray;
+}
+
+.navbar a.active {
+    color: #2f4159;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+
+/*HERO SECTION*/
+
+.campaignlogo {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15rem 3rem;
+    height: 100%;
+    width : 100%;
+    overflow: hidden;
+}
+
+.campaign-logo {
+    width : 15rem;
+}
+
+.hero-section {
+		position: relative;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 50rem;
+		overflow: hidden;
+}
+
+.hero-section-infobox {
+	background: rgba(0, 0, 0, 0.5) ;
+	color: white;
+	float: left;
+	width: 35%;
+	height : 50rem;
+}
+
+.hero-info-box-inside {
+	margin : 4rem;
+	overflow: hidden;
+}
+
+.hero-info-box-button {
+	margin-top:2rem;
+}
+
+
+/*DETAIL SECTION*/
+
+.detail-section {
+	background-color : #8b8c4a;
+	display: block;
+	min-height : 20rem;
+	color : white;
+}
+
+.detail-section .c1 {
+	display:inline-block;
+	float: left;
+	width : 35%;
+	background-color : #8b8c4a;
+}
+
+.detail-section .c2 {
+	display:inline-block;
+	float: left;
+	width : 65%;
+}
+
+.float-left {
+	float: left;
+}
+
+.detail-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin: 3rem 1rem;
+	height : 6rem;
+	border-left: 0.08rem solid black;
+}
+
+.detail-section-body {
+	margin: 3rem 1rem;
+	width : 15rem;
+}
+
+
+/*SESSION SECTION*/
+
+.session-section {
+	background-color : white;
+	display: block;
+	min-height : 40rem;
+	color : black;
+}
+
+.session-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin: 3rem 1rem;
+	height : 8rem;
+	border-left: 0.08rem solid #8b8c4a;
+}
+
+.session-container-outer {
+	display:block;
+	text-align:center;
+}
+
+.session-container {
+	display:inline-block;
+	margin: 3rem 1rem;
+}
+
+.session-item {
+	margin-bottom: 1.5rem;
+}
+
+.session-date {
+	background-color : #8b8c4a;
+	margin: 0rem .5rem;
+	padding : 1rem;
+	width : 5rem;
+	height : 5rem;
+}
+
+.session-detail {
+	background-color : #e8dfd8;
+	text-align: left;
+	margin: 0rem .5rem;
+	padding : 2rem;
+	max-width : 45rem;
+}
+
+.session-date-month {
+	text-align: center;
+	color : white;
+}
+
+.session-date-day {
+	text-align: center;
+	color : white;
+}
+
+/*SPEAKER SECTION*/
+
+.speaker-section {
+	background-color : #3a3a3c;
+	display: block;
+	min-height : 40rem;
+	color : white;
+}
+
+.speaker-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin: 3rem 1rem;
+	height : 8rem;
+	border-left: 0.08rem solid #8b8c4a;
+}
+
+.speaker-container-outer {
+	display:block;
+	text-align:center;
+}
+
+.speaker-container {
+	display:inline-block;
+	margin: 3rem 1rem;
+}
+
+.speaker-item {
+	margin-bottom: 1.5rem;
+}
+
+.speaker-profile {
+	
+	
+}
+
+.speaker-profile-image {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	border-radius: 50%;
+	min-height: 8rem;
+	min-width : 8rem;
+	border: 0.25rem solid #b7d6d8;
+	margin: 1.5rem .5rem;
+}
+
+.speaker-detail {
+	background-color : white;
+	color : black;
+	text-align: left;
+	margin: 0rem .5rem;
+	padding : 2rem;
+	max-width : 30rem;
+	min-width: 30rem;	
+	border-left: 1rem solid #b7d6d8;
+}
+
+.speaker-detail-full {
+	background-color : white;
+	color : black;
+	text-align: left;
+	margin: 0rem .5rem;
+	padding : 2rem;
+	max-width : 42rem;
+	min-width: 41rem;
+	border-left: 1rem solid #b7d6d8;
+}
+
+/*MATERIAL SECTION*/
+
+.material-section {
+	background-color : white;
+}
+
+.material-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin: 3rem 1rem;
+	height : 8rem;
+	border-left: 0.08rem solid #8b8c4a;
+}
+
+.material-container-outer {
+	display:block;
+	text-align:center;
+}
+
+.material-container {
+	display:inline-block;
+	margin: 3rem 1rem;
+}
+
+.material-item {
+	margin-bottom: 1.5rem;
+	text-align:left;
+}
+
+.material-session-container {
+	width : 25rem;
+	margin : 0 4rem;
+
+}
+
+.material-session-content {
+	background-color : #e9e9e9;
+	padding : 1.8rem 1rem;
+	border-left: 1rem solid #8b8c4a;
+	margin : 1.5rem 0;
+}
+
+/*CONTACT US SECTION*/
+
+.float-left{
+	margin-left: 1rem;
+	margin-right: 2rem;
+}
+
+.float-left.second{
+	width: 100%;
+}
+
+.float-left.third{
+	width: 100%;
+}
+
+.contactus-section{
+	background-color : #b9d2d3;
+	display: flex;
+	min-height : 40rem;
+	color : black;
+}
+
+.contactus-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin-top: 3rem;
+	height : 10rem;
+	border-left: 0.08rem solid white;
+}
+
+.contactus-container-outer{
+	width: 100%;
+    padding: 3rem 1rem 7rem 0px;
+    margin-left: 1rem;
+}
+
+.contactus-detail {
+	max-width : 25rem;
+	margin : 0 auto;
+	margin-bottom : 1rem;
+	margin-right: 1rem;
+}
+
+.slds-input{
+	max-width: 30rem;
+	padding: 1rem 0.5rem;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 1px solid white;
+	outline: none;
+	border-radius: 0px;
+	max-height: 49px;
+}
+
+.slds-textarea{
+    max-width: 30rem;
+    padding: 1rem 0.5rem;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid white;
+    outline: none;
+    border-radius: 0px;
+    max-height: 49px;
+    overflow: hidden;
+}
+
+.contactus-input:focus {
+  background-color: lightblue;
+}
+
+/*SURVEY SECTION*/
+
+.survey-section {
+	background-color : white;
+	display: block;
+	min-height : 15rem;
+	color : black;
+}
+
+.survey-section-title {
+	writing-mode: vertical-rl;
+	transform:scale(-1);
+	text-align: right;
+	margin: 3rem 1rem;
+	height : 6rem;
+	border-left: 0.08rem solid #8b8c4a;
+}
+
+.survey-container-outer {
+	display:block;
+}
+
+.survey-container {
+	display:inline-block;
+	margin: 3rem 1rem;
+}
+
+.survey-item {
+	display:inline-block;
+	margin : 0 4rem;
+	max-width : 60rem;
+}
+
+/*FOOTER SECTION*/
+
+.footer-section {
+	background-color : white;
+	padding : 1rem;
+	border-top: 0.08rem solid #8b8c4a;
+}
+
+.footer-logo-image {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 10rem;
+	width : 10rem;
+	margin : auto;
+}
+
+/*REGISTRATION SECTION*/
+
+.registration-section {
+	background-color : white;
+	margin : auto;
+}
+
+.registration-container {
+	background-color : white;
+	margin : auto;
+	width : 50rem;
+	padding : 2rem 0;
+}
+
+.registration-container-element {
+	margin : 1rem 0;
+}
+.registration-label {
+	font-size : 1rem;
+	font-weight : bold;
+}
+
+.registration-input {
+	width :100%;
+	height : 2.5rem;
+	font-size : 1rem;
+}
+
+.registration-session-table {
+	width : 100%;
+	text-align :left;
+	border: 1px solid black;
+	border-collapse: collapse;
+	background-color: transparent;
+}
+
+.table-header {
+	height : 3rem;
+    color: #ffffff;
+    background: #6c7ae0;
+	
+}
+
+.table-row {
+	height : 2rem;
+}
+
+.table-select {
+	text-align :center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.registration-btn-submit {
+	width :100%;
+	background-color : #8b8c4a;
+}

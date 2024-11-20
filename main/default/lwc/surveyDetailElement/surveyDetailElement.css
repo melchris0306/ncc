@@ -1,0 +1,88 @@
+.help-text{
+    color: #c23934;
+}
+
+.slds-form-element{
+    margin-bottom: 15px;
+}
+
+.questionTitle {
+    color: #0083C1 !important;
+    font: bold 18px/24px Calibri, Bold;
+}
+
+.detailElement, .detailElementIndependent {
+    margin-bottom: 20px;
+}
+
+.detailElement .slds-form-element__label {
+    text-align: left;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    padding-bottom: 5px;
+    font-size: 13px !important;
+}
+
+.detailElementIndependent .slds-form-element__label {
+    text-align: left;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    padding-bottom: 10px;
+   
+    /* Updated by XenReyes Oct202021 [CCN796] */
+    /* font: 18px/24px Calibri, Regular !important; */
+}
+
+.detailElement .textInput {
+    width: 100% !important;
+    font-size: 12px;
+}
+
+.slds-input {
+    max-width: none !important;
+}
+
+.slds-input:invalid {
+    outline: 1px solid red;
+}
+
+.slds-select:invalid {
+    outline: 1px solid red;
+}
+
+.question-label {
+    
+    /* Updated by XenReyes Oct202021 [CCN796] */
+    /* font-size: 14px !important; */
+    white-space: pre-wrap !important;
+    width: 95%;
+}
+
+.standalone-survey-font {
+    
+    /* Updated by XenReyes Oct202021 [CCN796] */
+    /* font: 18px/24px Calibri, Regular !important; */
+}
+
+.is-required {
+    color: red;
+    display: inline !important;
+    float: left;
+    margin-right: 5px;
+}
+
+.slds-form-element__legend {
+    font-weight: normal;
+}
+
+/* Updated by XenReyes Oct202021 [CCN796] */
+.clearselection {
+    font-size: 10px;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.spaceAbove {
+    padding-top: 10px;
+}

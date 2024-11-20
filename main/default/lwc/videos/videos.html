@@ -1,0 +1,30 @@
+<template>
+    <lightning-card  title="Videos" class={flexipageRegionWidth}>
+        <template if:true={videoResult}>
+            <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                <template for:each={videoResult} for:item="video">
+                    <div key={video.videoId} class="slds-m-top_small slds-m-left_small">
+                        <!-- <lightning-icon icon-name="doctype:video" alternative-text="video file">
+                        </lightning-icon> 
+                        <a class="slds-m-left_small" data-video-url={video.videoUrl} onclick={handleOnclickShowVideo}>{video.name}</a>
+                        <br/> -->
+                        <article class="slds-card">
+                            <div class="slds-card__body slds-card__body_inner">
+                                <video width={videoWidth} height={videoHeight} controls preload="metadata">
+                                    <source src={video.videoUrl} type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <footer class="slds-card__footer">
+                                {video.name}
+                            </footer>
+                        </article>
+                    </div>
+                </template>
+            </lightning-layout>
+        </template>
+        <template if:true={noVideos}>
+            <h1 class="slds-align_absolute-center" style="height:5rem; font-weight: bold;">No Video Found</h1>    
+        </template>
+    </lightning-card>
+</template>

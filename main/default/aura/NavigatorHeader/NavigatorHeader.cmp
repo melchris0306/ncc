@@ -1,0 +1,46 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="NavigatorController">
+    <aura:attribute name="initials" type="String" default=""/>
+    <aura:attribute name="profilePicURL" type="String" default=""/>
+    <aura:attribute name="isFileUploadOpen" type="Boolean" default="false" />
+    <aura:attribute name="navigatorRecord" type="Object" />
+    <aura:attribute name="contact" type="Object" />
+    
+    <!-- JS Cookie library for cookie manipulation -->
+    <ltng:require scripts="{!$Resource.JS_Cookie}" afterScriptsLoaded="{!c.jsCookieLoaded}" />
+
+    <aura:registerEvent name="NavigatorRecord" type="c:NavigatorRecord"/>
+    
+    <div class="header-container" style="--theme-color1:white">
+        <div class="top-bar">
+            <img class="app-logo" src="{!v.navigatorRecord.appLogo}" />
+            <div class="{!'user-avatar ' + if(v.isFileUploadOpen, 'active', '')}">
+                <span class="user-name" onclick="{!c.toggleFileUpload}">{!v.contact.name}</span>
+                <div onclick="{!c.toggleFileUpload}">
+                    <aura:if isTrue="{!v.profilePicURL}">
+                        <img src="{!v.profilePicURL}" alt="{!v.contact.name}" class="user-image"/>
+                        <aura:set attribute="else">
+                            <img src="{!$Resource.communityJourneyAvatar1}" alt="Profile Picture" class="user-image"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <aura:if isTrue="{!v.isFileUploadOpen}">
+                    <div class="image-upload-dropdown">
+                        <c:LightningFileUploadComponent aura:id="navigatorProfilePicUpload"
+                                                        userRecordId="{!v.contact.id}"
+                                                        profilePictureURL="{!v.profilePicURL}"
+                                                        uploadImageModal="{!v.isFileUploadOpen}"
+                                                        contactRecordFirstName="{!v.contact.firstName}"
+                                                        contactRecordLastName="{!v.contact.lastName}"
+                                                        sitePageName="navigator"
+                                                        journeyTemplateURL="{!v.navigatorRecord.loginPageUrl}"/>
+                    </div>
+                </aura:if>
+            </div>
+        </div>
+        <div class="lower-bar">
+            <div class="brand-logo-container"><img src="{!v.navigatorRecord.brandingLogo}" /></div>
+            <div class="header-photo"><img src="{!v.navigatorRecord.headerImage}"/></div>
+        </div>
+    </div>
+
+</aura:component>

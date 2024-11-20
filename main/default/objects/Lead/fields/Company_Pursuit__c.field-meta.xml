@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Pursuit__c</fullName>
+    <description>Company who is pursuing the lead as a client.</description>
+    <inlineHelpText>Company who is pursuing the lead as a client.</inlineHelpText>
+    <label>Company Pursuit</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>givebackRx</fullName>
+                <default>false</default>
+                <label>givebackRx</label>
+            </value>
+            <value>
+                <fullName>Edera L3C</fullName>
+                <default>false</default>
+                <label>Edera L3C</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,41 @@
+.THIS .compass-topnav {
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-color: #0083C1;
+    border-bottom-width: 10.5px;
+    height: 139px;
+}
+
+.THIS .compass-topnav-logo {
+    float: left;
+    background-color: #011E41;
+    color: white;
+    height: 100%;
+    width: 125px;
+    text-align: center;
+}
+
+.THIS .compass-topnav-event-logo {
+    padding : 15px 10px;
+    float: left;
+    color: white;
+    height: 100%;
+    text-align: center;
+    max-width: 20%;
+}
+
+.THIS .compass-topnav-title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 0px;
+    color: #003B71;
+    opacity: 1;
+}
+
+/* ADDED XEN REYES CCN-753 11192021 */
+.THIS .compass-topnav-event-logo-img {
+    vertical-align: middle;
+    height: 100%;
+}

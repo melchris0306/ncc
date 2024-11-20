@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( RecordType.Name = &apos;Session&apos; &amp;&amp; ParentId &lt;&gt; null, HYPERLINK(&apos;/&apos; + ParentId, &apos;Event: &apos; +  Parent.Name),
+IF( RecordType.Name = &apos;Event&apos; &amp;&amp; ParentId &lt;&gt; null, HYPERLINK(&apos;/&apos; + ParentId, &apos;Campaign: &apos; +  Parent.Name),
+&apos;None&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Parent</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,96 @@
+<aura:component controller="NavigatorHomeComponentsController">
+    <aura:attribute name="agentProfilePicURL" type="String" default="{!$Resource.AgentProfilePicDemo}"/>
+    <aura:attribute name="navigator" type="Object"/>
+    <aura:attribute name="isLiveCallOpen" type="Boolean" default="false"/>
+    <aura:attribute name="isScheduleCallOpen" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <aura:attribute name="contactId" type="String"/>
+
+    <header class="title">
+        {!v.navigator.changeAgentLabel}
+    </header>
+    <div class="container slds-scrollable--y">
+        <div class="avatar-container slds-m-vertical_medium">
+            <div class=" slds-m-vertical_x-small">
+                <lightning:avatar variant="circle" 
+                                    src="{!if(v.navigator.changeAgentProfilePicUrl, v.navigator.changeAgentProfilePicUrl, $Resource.NavigatorBlankProfilePic)}" 
+                                    fallbackIconName="standard:person_account" 
+                                    alternativeText="Agent's Name" 
+                                    class="avatar-image"
+                                    size="large"/>
+            </div>
+            <span class="change-agent-name">{!v.navigator.changeAgentName}</span>
+            <span class="change-agent-title">{!v.navigator.changeAgentTitle}</span>
+        </div>
+        
+        <div class="slds-grid slds-gutters slds-m-vertical_small">
+            <!--  Updated by JaysonLabnao May242022 [CCN-NAV-1674-DV] -->
+            <aura:if isTrue="{!and(v.navigator, v.navigator.liveCallButton)}">
+                <div class="navigator-button-icon slds-m-horizontal_x-small theme-color2" onclick="{!c.liveCallClick}">
+                    <img src="{!$Resource.Navigator_VideoCallIcon}" />
+                    <span class="button-label">Live Call</span>
+                </div>
+            </aura:if>
+            <aura:if isTrue="{!and(v.navigator, v.navigator.scheduleVideoCallButton)}">
+                <div class="navigator-button-icon slds-m-horizontal_x-small theme-color4" onclick="{!c.scheduleCall}">
+                    <img src="{!$Resource.Navigator_VideoCallIcon}" />
+                    <span class="button-label">Schedule a Video Call</span>
+                </div>
+            </aura:if>
+        </div>
+
+        <!-- Live Call -->
+        <aura:if isTrue="{!v.isLiveCallOpen}" >
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Live Call</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="live-call-details slds-p-horizontal_xx-large">
+                            <aura:if isTrue="{! and(v.navigator, v.navigator.liveCallNumber) }">
+                                <p class="live-call-label"><b>Number:</b></p>
+                                <p class="live-call-number">{!v.navigator.liveCallNumber}</p>
+                                <aura:set attribute="else">
+                                    <p class="slds-col">No available number for this navigator.</p>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.closeLiveCall}">Close</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        
+        
+        
+        <!-- Schedule Call -->
+        <aura:if isTrue="{!v.isScheduleCallOpen}" >
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style="width:100%;">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Schedule a Video Call</h2>
+                    </header>
+                    <c:AvailabilityCalendarComponent resourceId="{!v.navigator.changeAgentId}" contactId="{!v.contactId}"/>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.closeScheduleCall}">Close</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+        <!-- Description -->
+        <!--  Updated by JaysonLabnao May242022 [CCN-NAV-1674-DV] -->
+        <aura:if isTrue="{!and(v.navigator, v.navigator.changeAgentDescription)}">
+            <p class="description slds-m-vertical_medium">
+                <aura:unescapedHtml value="{!v.navigator.changeAgentDescription}" /> 
+            </p>
+        </aura:if>
+    </div>
+</aura:component>

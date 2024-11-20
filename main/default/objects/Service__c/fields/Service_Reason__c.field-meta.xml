@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Reason__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Service Reason</label>
+    <referenceTo>Service_Reason__c</referenceTo>
+    <relationshipLabel>Service Builder</relationshipLabel>
+    <relationshipName>Service_Builder</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

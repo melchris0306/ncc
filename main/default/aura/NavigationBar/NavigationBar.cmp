@@ -1,0 +1,92 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+
+<aura:attribute type="Boolean" name="showPanel" default="false"/>
+<div style="background-color:#FE8900;height:80px">
+        <div style="float:right;margin-top:29px;display:block;padding-right:38px;">
+           <!--<button class="firstButton" type="button" style="margin-top:29px;background-color: #F2F2F2;color: #393d42;padding: .3rem 2rem;    box-shadow: none;">SIGN IN</button>-->
+        	<button class="button"  style="vertical-align:middle;background-color: #F2F2F2;color: #393d42;box-shadow: none;margin-right: 10px;"><span>SIGN IN </span></button>
+            <button class="button"  style="vertical-align:middle;background-color: #cf7b18;color: #FFFFFF; box-shadow: none"><span>SIGN UP</span></button>
+        </div>
+        
+    </div>
+    
+<div style="display:flex;justify-content:space-between;align-items:center;padding-top:20px">
+    <div class="headerBar" >
+     	<a style="font-weight: 600;font-size: 26px;box-sizing: border-box;color:black;padding-left:10px;text-decoration:none">CORONA</a><a style="font-weight: 600;font-size: 26px;text-decoration:none;box-sizing: border-box;color:orange">FACTS</a>
+	</div>
+	<div class="headerBar"  style="font-family:Roboto, sans-serif;">
+   <a href="https://www.coronafacts.com" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none;">Home</a><span style="color:black;"> | </span>
+  <a href="http://www.coronafacts.com/#about" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">About Us</a><span style="color:black;"> | </span>
+  <a href="http://www.coronafacts.com/story/" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">My Story</a><span style="color:black;"> | </span>
+  <a href="https://www.coronafacts.com/news" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">News</a><span style="color:black;"> | </span>
+  <a href="https://articles.coronafacts.com/s/" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">Coronavirus FACTS</a><span style="color:black;"> | </span>
+   <a href="https://www.coronafacts.com/consensus-map" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">Consensus Map</a><span style="color:black;"> | </span>
+  <a href="https://www.coronafacts.com/resources-continent" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">Resources By Continent</a><span style="color:black;"> | </span>
+  
+       <span class="dropdown">
+            <span data-toggle="dropdown" style="padding: 10px 13px;color:#393d42;font-size: 18px;font-size: 14px !important;text-decoration:none"> Case Details 
+                <span class="caret">
+                </span>
+               |
+            </span>
+            <ul class="dropdown-menu" style="padding-left: 0.5em;">
+                <li><a style="padding-top: 5px;    padding-right: 10px;color: #393d42;    padding-left: 1px;  font-size: 18px;font-size: 14px !important;" href="https://www.coronafacts.com/case-details/">Global Case Detail</a></li>
+                <li><a style="padding-top: 5px;    padding-right: 10px;color: #393d42;    padding-left: 1px;  font-size: 18px;font-size: 14px !important;" href="https://www.coronafacts.com/us-state-map/">US State Map</a></li>
+                <li><a style="padding-top: 5px;    padding-right: 10px;color: #393d42;    padding-left: 1px;  font-size: 18px;font-size: 14px !important;" href="https://www.coronafacts.com/us-counties-cases/">US Counties Map</a></li>
+            </ul>
+            
+         </span>
+       
+        
+  <a href="https://www.coronafacts.com/contact" style="padding: 10px 13px;color: #393d42;font-size: 18px;font-size: 14px !important;text-decoration:none">Contact Us</a>
+	</div>
+</div>
+    
+   <div> 
+    <div class="slds-grid slds-gutter">
+        <div class="slds-col slds-size_7-of-8 headerInnerBar" style="padding-top: 15px;">
+        <a style="font-weight: 600;font-size: 26px;box-sizing: border-box;color:black;padding-left:10px;text-decoration:none">CORONA</a><a style="font-weight: 600;font-size: 26px;text-decoration:none;box-sizing: border-box;color:orange">FACTS</a>
+        </div>
+      
+            <div style="cursor: pointer;margin-top: 13px;width:11%;" class="slds-col headerInnerBar headerstyle slds-size_2-of-4" onclick="{!c.panelOne}">
+            <section class="slds-clearfix">
+                    <lightning:icon class="slds-show" aura:id="panelOne" iconName="utility:rows" size="x-medium" alternativeText="Indicates add"/>
+                    <lightning:icon class="slds-hide" aura:id="panelOne" iconName="utility:close" size="x-medium" alternativeText="Indicates dash"/>
+                <div class="slds-m-left--large"></div>
+            </section>
+        </div>
+            
+         
+     </div>
+       
+       
+    
+        <div aura:id="panelOne" class="slds-hide slds-p-around--medium headerInnerBarMobile" style="background-color: #f2f2f2;border-radius: 5px;z-index: 10;z-index: 10; position: absolute;"><br/>
+            <a class="showAnchor" href="https://www.coronafacts.com" >Home</a><br/><br/>
+            <a class="showAnchor" href="http://www.coronafacts.com/#about">About Us</a><br/><br/>
+            <a class="showAnchor" href="http://www.coronafacts.com/story/" >My Story</a><br/><br/>
+            <a class="showAnchor" href="https://www.coronafacts.com/news">News</a><br/><br/>
+            <a class="showAnchor" href="https://articles.coronafacts.com/s/" >Coronavirus FACTS</a><br/><br/>
+            <a class="showAnchor" href="https://www.coronafacts.com/consensus-map">Consensus Map</a><br/><br/>
+            <a class="showAnchor" href="https://www.coronafacts.com/resources-continent">Resources By Continent</a><br/><br/>
+            <span class="dropdown">
+            <span data-toggle="dropdown" class="showAnchor"> Case Details 
+                <span class="caret">
+                </span>
+               
+            </span>
+            <ul class="dropdown-menu" style="padding-left: 0.5em;">
+                <li><a class="showAnchor"  href="http://www.coronafacts.com/case-details/">Global Case Detail</a></li>
+                <li><a class="showAnchor"  href="http://www.coronafacts.com/us-state-map/">US State Map</a></li>
+                <li><a class="showAnchor"  href="http://www.coronafacts.com/us-counties-cases/">US Counties Map</a></li>
+            </ul>
+            
+         </span><br/><br/>
+            <a class="showAnchor" href="https://www.coronafacts.com/contact">Contact Us</a>
+           
+           
+        </div>
+    </div>
+        
+</aura:component>

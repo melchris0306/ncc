@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" 
+    controller="LinktreeController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="campaignId" type="String"/>
+    <aura:attribute name="campaignLogoURL" type="string"/>
+    <aura:attribute name="campaignName" type="string"/>
+
+    <div class="compass-topnav">
+        <div class="compass-topnav">
+            <div class="compass-topnav-logo" href="#home">
+                <span class="helper"></span>
+                    <img src="{!$Resource.communityEventHeaderLogo}" alt="Change Cloud" class="compass-topnav-logo-img"></img>
+            </div>
+            <div class="compass-topnav-event-logo" href="#home">
+                <span class="helper"></span>
+                <img src="{!v.campaignLogoURL }" alt="Change Cloud" class="compass-topnav-event-logo-img"></img>
+            </div>
+            <div class="compass-topnav-title">
+                <br/>
+                <br/>
+               <!--- {!v.campaignName}-->
+            </div>
+            
+        </div>
+    </div> 
+</aura:component>

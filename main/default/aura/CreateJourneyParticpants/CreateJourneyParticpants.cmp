@@ -1,0 +1,79 @@
+<!--
+ - Created by angelorivera [CCN-JOU-1165-DV] on 29/9/20.
+ - description: When user clicks ‘Add Journey Participants’ button, it will display 
+        a screen to confirm (yes/no) whether to add participants to a journey.
+ -->
+
+<aura:component  description="CreateJourneyParticipants"
+                 implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes"
+                 access="global"
+                 controller="JourneyParticipantServices" >
+
+    <aura:attribute name="showSpinner" type="Boolean"/>
+    <aura:attribute name="showBody" type="Boolean" default="true"/>
+    <aura:attribute name="strMessage" type="String"/>
+    <aura:attribute name="ListJourneyEvents" type="List"/>
+
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedEventIds" type="List"/>
+    <aura:attribute name="selectedRowCount" type="Integer" default="0"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:if isTrue="{!v.showBody}">
+        <lightning:card>
+            <div class="slds-grid slds-wrap slds-p-left_x-small slds-p-right_x-small">
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-box slds-theme_shade">
+                        <p class="slds-text-heading_medium slds-text-color_success slds-text-align_center slds-text-title_caps">
+                            {!$Label.c.JourneyAddParticipantsTitle}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-p-left_x-small slds-p-right_x-small slds-p-top_small slds-scrollable_y" >
+                <div class="slds-col slds-size_1-of-1">
+                    <aura:if isTrue="{!not(empty(v.strMessage))}">
+                        <p class="slds-text-heading_small slds-text-align_center">
+                            {!v.strMessage}
+                        </p>
+                        <aura:set attribute="else">
+                            <p class="slds-text-heading_medium slds-text-align_center slds-text-title_caps slds-p-around_medium">
+                                Selected Events: {!v.selectedRowCount}
+                            </p>
+                            <!-- the container element determine the height of the datatable -->
+                            <div>
+                                <lightning:datatable
+                                        columns="{! v.columns }"
+                                        data="{! v.ListJourneyEvents }"
+                                        keyField="Id"
+                                        onrowselection="{! c.updateSelectedText }"
+                                        showRowNumberColumn="true"/>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </lightning:card>
+
+        <lightning:card>
+            <aura:set attribute="footer">
+                <div class="slds-text-align_center slds-m-around_x-medium">
+                    <lightning:button name="cancel" label="Cancel" onclick="{!c.handleCancel}"/>
+                    <aura:if isTrue="{!not(empty(v.selectedEventIds))}">
+                        <lightning:button name="ok" label="Submit" variant="brand" onclick="{!c.handleSubmit}"/>
+                    </aura:if>
+                </div>
+            </aura:set>
+        </lightning:card>
+
+    </aura:if>
+    <!-- spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="backgroundInverse">
+            <lightning:spinner alternativeText="Loading" variant="inverse">Adding journey participants.</lightning:spinner>
+        </div>
+        <div class="slds-text-align_center slds-text-heading_medium slds-p-top_small">{!$Label.c.JourneyAddParticipantsSpinner}</div>
+    </aura:if>
+</aura:component>

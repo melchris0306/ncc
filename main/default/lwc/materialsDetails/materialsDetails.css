@@ -1,0 +1,16 @@
+.container{
+
+}
+.innerBox {
+		margin-top : 1rem;
+}
+
+.material-header {
+		font-size : 18px;
+		font-weight : bolder;
+		color : black;
+}
+.material-description {
+		font-size : 16px;
+		color : black;	
+}

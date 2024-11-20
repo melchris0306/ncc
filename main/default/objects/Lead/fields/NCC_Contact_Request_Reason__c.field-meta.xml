@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NCC_Contact_Request_Reason__c</fullName>
+    <inlineHelpText>Please select the reason for contacting the NCC.</inlineHelpText>
+    <label>Contact Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Change Cloud</fullName>
+                <default>false</default>
+                <label>Change Cloud</label>
+            </value>
+            <value>
+                <fullName>Consulting Services (Clinical)</fullName>
+                <default>false</default>
+                <label>Consulting Services (Clinical)</label>
+            </value>
+            <value>
+                <fullName>Consulting Services (Revenue Cycle)</fullName>
+                <default>false</default>
+                <label>Consulting Services (Revenue Cycle)</label>
+            </value>
+            <value>
+                <fullName>givebackRx</fullName>
+                <default>false</default>
+                <label>givebackRx</label>
+            </value>
+            <value>
+                <fullName>Join Our Speakers Bureau</fullName>
+                <default>false</default>
+                <label>Join Our Speakers Bureau</label>
+            </value>
+            <value>
+                <fullName>Book a Speaker for Your Event</fullName>
+                <default>false</default>
+                <label>Book a Speaker for Your Event</label>
+            </value>
+            <value>
+                <fullName>Partner With Us</fullName>
+                <default>false</default>
+                <label>Partner With Us</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

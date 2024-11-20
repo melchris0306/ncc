@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" 
+    controller="LinktreeController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="campaignId" type="String"/>
+    <aura:attribute name="campaignEvents" type="Object"/>
+
+    <div class="slds-form-element">
+        <div class="slds-grid slds-gutters slds-wrap">
+            <ul class="slds-m-around_medium">
+                <aura:renderIf isTrue="{!not(empty(v.campaignEvents))}">
+                    <aura:iteration items="{!v.campaignEvents}" var="event">
+                        <p><lightning:formattedUrl 
+                            value="{!event.Event_Page_URL__c}" 
+                            label="{!event.Name}" 
+                            target="_blank"/></p>
+                    </aura:iteration>
+                <aura:set attribute="else">
+                    This Campaign has no related events...
+                </aura:set>
+                </aura:renderIf>                
+                
+            </ul>
+        </div>
+    </div>
+
+</aura:component>

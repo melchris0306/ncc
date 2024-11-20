@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Person_Capture_For_Editing</fullName>
+    <columns>NAME</columns>
+    <columns>Capture_Title__c</columns>
+    <columns>Capture_Category__c</columns>
+    <columns>Category_Value__c</columns>
+    <columns>In_CSR__c</columns>
+    <columns>In_WS__c</columns>
+    <columns>Email__c</columns>
+    <columns>Notes__c</columns>
+    <columns>Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Compass_Capture__c.Person_Capture</value>
+    </filters>
+    <filters>
+        <field>Campaign__c</field>
+        <operation>equals</operation>
+        <value>Oracle Cerner Deployment CSR Compass Demo</value>
+    </filters>
+    <label>All Person Capture - For Editing</label>
+</ListView>

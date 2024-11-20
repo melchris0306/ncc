@@ -1,0 +1,55 @@
+.THIS.navigation-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1 1 150px;
+    background-color: var(--theme-color3);
+    border-right: 12px solid var(--theme-color3-intense);
+    height: 5.2rem;
+    cursor: pointer;
+    font-size: large;
+    transition: 0.3s;
+}
+
+.THIS.navigation-item:hover{
+    border-right: 12px solid var(--theme-color1);
+    border-left: 1px solid var(--theme-color1);
+    border-top: 1px solid var(--theme-color1);
+    border-bottom: 1px solid var(--theme-color1);
+}
+
+.THIS.navigation-item-selected{
+    background-color: var(--theme-color2);
+    border-right: 12px solid var(--theme-color1);
+    color: white;
+}
+
+.THIS .navigator-item-icon{
+    height: 50%;
+}
+
+.THIS.expanded-list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+    transition: height 2s;
+}
+
+.THIS.expanded-list-item .bullet{
+    height: 8px;
+    width: 8px;
+    background-color: rgb(51,51,51);
+    border-radius: 50%;
+    margin-left: 40px;
+    margin-right: 12px;
+}
+
+.THIS.expanded-list-item .expanded-item-label{
+    cursor: pointer;
+    font-size: medium;
+}
+
+.THIS .tab-label{
+    overflow: hidden;
+}

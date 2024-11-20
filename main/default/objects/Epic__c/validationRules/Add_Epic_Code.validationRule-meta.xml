@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Epic_Code</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISBLANK(Epic_Code__c)</errorConditionFormula>
+    <errorDisplayField>Epic_Code__c</errorDisplayField>
+    <errorMessage>Add a value</errorMessage>
+</ValidationRule>

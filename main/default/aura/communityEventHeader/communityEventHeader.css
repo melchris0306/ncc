@@ -1,0 +1,391 @@
+.THIS {
+    font-family: sans-serif; 
+}
+
+.THIS .clear-section{
+    clear:both;
+}
+
+.THIS .navbar-logo-img{
+    height: 6rem !important;
+}
+
+.THIS .img-logo{
+    padding: 0rem 0rem !important;
+}
+
+.THIS .font-hero-header {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.THIS .font-hero-body {
+    /*font-size: 1.25rem;*/
+    font-size: 16px;
+    line-height: 1.5rem;
+}
+
+.THIS .btn-base {
+    /*width : 22rem;    */
+    color: white;
+    padding: 8px;
+    border: 0.08rem solid #a1e704;
+}
+
+.THIS .font-hero-header{
+    margin-bottom : 1rem
+}
+
+.THIS .backtomain, .THIS .main{
+    display: none;
+}
+.THIS .hero-title{
+    position: relative;
+}
+.THIS .logo{
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15rem 6rem;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.THIS .login-button{
+    padding: 2.1rem 1.5rem !important;
+}
+.THIS .navbar a{
+    padding: 2.5rem 1.5rem;
+    color: #777676;
+}
+.THIS .nav-box{
+    border-color: #0083c1;
+    border-bottom: .5rem;
+    background: white;
+}
+.THIS .slds-button_brand{
+    background: #93d500;
+    border-color: #a1e704;
+}
+.THIS .campaignlogo{
+    background-size: 15rem 6rem;
+}
+.THIS .hero-section-infobox {
+    background: rgb(0 0 0 / 25%);
+}
+.THIS .welcomebanner {
+    width : 100%; 
+    /*background-color : #0083c1;*/
+    color : white;
+    padding-left : 0.5rem;
+    padding-right : 0.5rem;
+    /*padding-bottom : 0.5rem;*/
+    font-size: 25px;
+}
+
+.THIS .background-image-url {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+@media only screen 
+    and (min-device-width : 1200px) 
+    and (max-device-width : 1500px) {
+        .THIS .btn-base {
+            width: 17rem;
+        }
+        .THIS .font-hero-header{
+            font-size: 1.4rem;
+        }
+        .THIS .font-hero-body{
+            font-size: 1rem;
+        }
+
+    }
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1199px) {
+    .THIS .btn-base {
+        width: 10rem;
+    }
+    .THIS .font-hero-header{
+        font-size: 1.4rem;
+    }
+    .THIS .font-hero-body{
+        font-size: 1rem;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    .THIS .hero-info-box-inside{
+        margin: 1rem;
+    }
+    .THIS .btn-base {
+        width: 10rem;
+    }
+    .THIS .navbar a {
+        padding: 1rem .25rem;
+        height: 3rem;
+        font-size: 13px;
+        
+    }
+    .THIS .hero-info-box-button {
+        margin-top: 2rem;
+    }
+    .THIS .navbar-left {
+        height: 3rem;
+    }
+    .THIS .img-logo{
+        padding: 0 !important;
+    }
+    .THIS .navbar-logo-img {
+        height: 3rem !important;
+    }
+    .THIS .campaign-logo {
+        width: 9rem;
+    }
+    .THIS .campaignlogo{
+        background-size: 9rem 3rem !important;
+    }
+    .THIS .hero-section, .THIS .hero-section-infobox{
+    	height: auto;
+    }
+    .THIS .hero-title{
+        text-align: center;
+    }
+    .THIS .font-hero-body{
+        text-align: justify;
+    }
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    
+    .THIS .hero-section-infobox{
+        width: 100%;
+        height: auto;
+        background: #3a3a3c;
+    }
+    
+    /*First Header Logos*/
+    .THIS .hero-title{
+        height: 6rem;
+        background: #8b8c4a;
+    }
+    .THIS .navbar-content{
+        width: 100%;
+    }
+    .THIS .campaign-logo{
+        width: 70% ;
+        text-align: right;
+    }
+    .THIS .campaignlogo{
+        background-size: 100% 6rem;
+    }
+    .THIS .img-logo{
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /*Second Header Title*/
+    .THIS .font-hero-header-content{
+        height: auto;
+        position: relative;
+    }
+    .THIS .vertical-center {
+        /*margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);*/
+        text-align: center;
+    }
+    .THIS .font-hero-header{
+        margin-bottom: 5px;
+        margin-bottom: 0px;
+        font-size: 1.4rem;
+        /*width: 75%;
+        background: #2d4d69;
+        padding: 5px;
+        border-radius: 0 5px 15px 0;*/
+        letter-spacing: .5px;
+    }
+    .THIS .font-hero-body{
+        font-size: 1rem;
+        text-align: left;
+        margin: 2%;
+        letter-spacing: .5px;
+    }
+    .THIS .hero-info-box-inside{
+        margin: 0;
+    }
+    .THIS .hero-info-box-button{
+        margin:5px 1rem;
+    }
+    
+    
+    
+    /*Navigation Menu*/
+    .THIS .nav-box{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+        background: #8b8c4a;
+        z-index: 1000;
+        height: 60px;
+    }
+    .THIS .navbar-logo{
+        /*top: 0;
+        position: fixed;
+        left: 0;
+        padding: 0 25%;*/
+        height: 6rem;
+        width: 30%;
+        background: none;
+		background-color: #011e41;
+        padding: 0;
+    }
+    .THIS .navbar-logo-img{
+        height: 6rem;
+        display: block;
+        margin: auto;
+    }
+    .THIS .btn-learnmore, .THIS .btn-register {
+        /*border: .25rem solid white;*/
+    }
+    .THIS .navbar a.icon {
+        background: #e0e0e0;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: white;
+    }
+    .THIS .hamburger{
+        display:  none;
+    }
+    .THIS .navbar{
+        height: 50px;
+    }
+    .THIS .navbar a{
+        font-size: 12px;
+        padding: .25rem .5rem;
+        width: 25%;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    .THIS .navbar a:hover {
+        background: #8b8c4a;
+    }
+    .THIS .navbar img{
+        width: 25px;
+        height: 25px;
+        margin-bottom: 3px;
+        margin-top: 2px;
+    }
+    .THIS .hamburger img{
+        margin-right: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .THIS .hamburger-nav-bar a{
+        font-size: 12px;
+        line-height: 60px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    .THIS .nav-icon{
+        margin-top: 3px;
+    }
+    .THIS .nav-icon svg{
+        fill: white;
+    }
+    .THIS .hamburger-nav-icon svg{
+        fill: black;
+    }
+    
+    .THIS .hamburger-menu{
+        text-align: left;
+    }
+    
+    .THIS .hamburger-menu-display{
+        display: block;
+        width: 100% !important;
+        position: fixed;
+        background: #e0e0e0;
+        height: 60px;    
+        color: black !important;
+    }
+    
+    .THIS .first-menu{
+        bottom: 60px;
+    }
+    .THIS .second-menu{
+        bottom: 120px;
+    }
+    .THIS .third-menu{
+        bottom: 180px;
+    }
+    .THIS .fourth-menu{
+        bottom: 240px;
+    }
+    .THIS .display-none{
+        display: none !important;
+    }
+    .THIS .menu-bar-remove{
+        bottom: 150px;
+        display: block;
+        width: 25%;
+        position: fixed;
+        background: #e0e0e0;
+        height: 50px;
+        right: 0;
+    }
+    .THIS .main{
+        display: block;
+        /*padding: .75rem .5rem !important;*/
+    }
+    
+    .THIS .backtomain{
+        padding: .75rem .5rem !important;
+    }
+    
+    .THIS .hero-section{
+        background-size: 100% !important;
+        background-repeat: no-repeat !important;
+        height: auto;
+    }
+    
+    .THIS .btn-base{
+        font-size: 16px;
+        margin: 2%;
+        cursor: pointer;
+        width: 96%;
+    }
+    .THIS .navbar-logo{
+        background-color: #011e41;
+    }
+}

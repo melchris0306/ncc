@@ -1,0 +1,77 @@
+<template>
+	<!-- Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 -->
+	<div class="container">
+		<div class="container-inner">
+
+			<template if:true={showGrouped}>
+				<template for:each={materials} for:item="item">
+					<div class="group-container-grouped" key={item.Id}>
+						<c-materials-details 
+							title={item.Title} 
+							description={item.Description} 
+							url={item.DownloadURL} 
+							is-video={item.isVideo}
+						></c-materials-details>
+					</div>
+				</template>	
+			</template>
+
+			<template if:false={showGrouped}>
+				<!-- Start CCN-912 RiannoRizarri Sept212022 -->
+				<template if:false={hasGMG}>
+					<template for:each={materials} for:item="item">
+						<div class="group-container-grouped" key={item.Id}>
+							<c-materials-details 
+								title={item.Title} 
+								description={item.Description} 
+								url={item.DownloadURL} 
+								is-video={item.isVideo}
+							></c-materials-details>
+						</div>
+					</template>
+				</template>
+				<!-- End CCN-912 RiannoRizarri Sept212022 -->
+				<template for:each={materialsGrouped} for:item="group">
+					<div class="group-container" key={group.LinkedEntityId}>
+						<a class="group-header">{group.MaterialHeader}</a>
+						<!--CCN-EVE-2170-DV JC Espino Oct132022 -->
+						<!--p class="group-description">{group.MaterialDescription}</p-->
+						<lightning-formatted-rich-text
+							value={group.MaterialDescription}
+						></lightning-formatted-rich-text>
+						<div class="slds-hide" name={group.Name}>
+							<template if:true={group.materialList}>
+								<!--<p class="group-material-header">Materials</p>-->
+								<template for:each={group.materialList} for:item="item">
+									<div key={item.Id}>
+										<c-materials-details 
+											title={item.Title} 			
+											description={item.Description} 
+											url={item.DownloadURL} 
+											is-video={item.isVideo}
+										></c-materials-details>
+									</div>
+								</template>
+							</template>
+						</div>
+
+	<!-- Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 -->
+						<template if:true={group.materialList}>
+							<div class="expand-button-container" onclick={toggleMaterial}>
+								<lightning-icon 
+									class="expand-button"
+									icon-name="utility:chevrondown" 
+									alternative-text="Add" 
+									title={group.Name}
+									size="small"
+								></lightning-icon>
+							</div>
+						</template>
+
+					</div>
+				</template>
+			</template>
+
+		</div>
+	</div>
+</template>

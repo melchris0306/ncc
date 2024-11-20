@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multiselect_Question_Type_Validation</fullName>
+    <active>true</active>
+    <description>[Xen Reyes CCN-SUR-1454-DV] Checks the question type and requires option for multi-select question type.</description>
+    <errorConditionFormula>IF(
+    AND(
+        ISPICKVAL(Question_Type__c, &quot;Multi-select&quot;),
+        OR(
+            NOT(REGEX( Options__c , &apos;(.*\r?\n.*)*&apos;)),
+            ISBLANK(Options__c)
+        )
+    ),
+    true,
+    false
+)</errorConditionFormula>
+    <errorDisplayField>Options__c</errorDisplayField>
+    <errorMessage>Multiple options are required for multi-select question.</errorMessage>
+</ValidationRule>

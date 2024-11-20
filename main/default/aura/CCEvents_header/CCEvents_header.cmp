@@ -1,0 +1,24 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="CCEHeroController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="eventId" type ="String"/>
+    <aura:attribute name="surveyId" type ="String"/>
+    
+    <ltng:require styles="{!$Resource.octavia_css + '/octavia-ui-min.css'}" />
+    <ltng:require styles="{!$Resource.octavia_css + '/octavia-ui-mobile-min.css'}" />
+    <ltng:require styles="{!$Resource.octavia_css + '/octavia-ui-tablet-min.css'}" />
+    <ltng:require styles="{!$Resource.octavia_css + '/octavia-ui-font-min.css'}" />
+    
+    <div class="nav-box" >
+        <div aura:id="myNavbar" class="navbar">
+            <a class="icon" onclick="{!c.onClick}">&#9776;</a>
+            <a href="{!'/Compass/s/events?id=' + v.eventId}" class="transparent-none">HOME</a>
+            <a href="{!'/Compass/s/sessions?id=' + v.eventId}" class="transparent-none">SESSIONS</a>
+            <a href="{!'/Compass/s/speakers?id=' + v.eventId}" class="transparent-none">SPEAKERS</a>
+            <a href="{!'/Compass/s/materials?id=' + v.eventId}" class="transparent-none">MATERIALS</a>
+            <a href="{!'/Compass/s/contact-us?id=' + v.eventId}">CONTACT US</a>
+            <a href="{!'/Compass/s/survey?id=' + v.surveyId}" class="transparent-none">SURVEY</a> 
+        </div>
+    </div>  
+     
+</aura:component>

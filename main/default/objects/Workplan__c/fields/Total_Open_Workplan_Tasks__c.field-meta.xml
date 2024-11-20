@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Open_Workplan_Tasks__c</fullName>
+    <label>Total Open Workplan Tasks</label>
+    <summaryFilterItems>
+        <field>Workplan_Item__c.Status__c</field>
+        <operation>notEqual</operation>
+        <value>Completed, Withdrawn</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Workplan_Item__c.Workplan__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

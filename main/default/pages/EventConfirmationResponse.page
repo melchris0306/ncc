@@ -1,0 +1,8 @@
+<apex:page controller="EventConfirmationResponseController" action="{!updateSessionParticipantStatus}">
+    <apex:form >
+        <br/>
+        <center style="font-size:16px">You have <b>{!$CurrentPage.parameters.response}</b> your session(s). Thank you!</center>
+        <apex:param name="id" value="{!$CurrentPage.parameters.id}" />
+        <apex:param name="response" value="{!$CurrentPage.parameters.response}" />
+    </apex:form>
+</apex:page>

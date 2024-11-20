@@ -1,0 +1,72 @@
+.THIS {
+    font-family: 'Roboto-Light';
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src:url(/resource/Roboto/Roboto-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src:url(/resource/Roboto/Roboto-Bold.ttf);
+}
+
+.THIS.container .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: 'Roboto-Light';
+    float: center;
+}
+
+.THIS.container {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    /*background-color: white;*/
+    border-left: black;
+}
+
+.THIS.container .body {
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 0 15px;
+    align-items: left;
+    justify-content: left;
+    float: left;
+}
+
+.THIS.container .no-items{
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 0 15px;
+    align-items: center;
+    justify-content: center;
+    float: center;
+    font-size: 2rem;
+}
+
+.THIS.container .body a{
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.THIS.container .footer{
+    display: grid;
+    place-items: center;
+    margin-top: auto;
+}
+
+.THIS.container .footer .see-all{
+    margin: 10px 0;
+    font-size: large;
+}
+
+.THIS.backgroundInverse {
+    position: relative;
+    background-color: #16325c;
+    height: 500px;
+}

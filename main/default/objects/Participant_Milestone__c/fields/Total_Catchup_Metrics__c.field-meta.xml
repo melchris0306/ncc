@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Catchup_Metrics__c</fullName>
+    <label>Total Catchup Metrics</label>
+    <summaryFilterItems>
+        <field>Participant_Milestone_Metric__c.Metric_Used__c</field>
+        <operation>equals</operation>
+        <value>Catch-Up Date</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Participant_Milestone_Metric__c.Milestone__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

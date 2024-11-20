@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Feedback</fullName>
+                <default>false</default>
+                <label>Feedback</label>
+            </value>
+            <value>
+                <fullName>Domain</fullName>
+                <default>false</default>
+                <label>Domain</label>
+            </value>
+            <value>
+                <fullName>Workflow</fullName>
+                <default>false</default>
+                <label>Workflow</label>
+            </value>
+            <value>
+                <fullName>Site Specific</fullName>
+                <default>false</default>
+                <label>Site Specific</label>
+            </value>
+            <value>
+                <fullName>Functionality</fullName>
+                <default>false</default>
+                <label>Functionality</label>
+            </value>
+            <value>
+                <fullName>Preferences</fullName>
+                <default>false</default>
+                <label>Preferences</label>
+            </value>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>Permissions</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Permissions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

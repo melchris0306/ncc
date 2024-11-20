@@ -1,0 +1,190 @@
+/*Added [CCN-EVE-2173-DV] MelMallorca Nov262022*/
+.THIS .sort-modal{
+    width: auto !important;
+}
+.THIS .sort-modal .slds-form-element__control {
+   display: inline-flex;
+}
+.THIS .select-btn-grp{
+    padding-top: .5rem;
+}
+
+.THIS .fc-head {
+    background-color: #0083c2 !important;
+    color: white;
+}
+
+.THIS .fc-widget-header{
+    color: white;
+    height: 30px;
+    font-size: 18px;
+    font-weight: lighter !important;
+}
+
+.THIS .fc-scroller {
+    overflow: hidden !important;
+    height: 30rem !important;
+}
+
+.THIS .fc-week {
+    height: 6rem !important;
+}
+
+
+.THIS .fc-bg .fc-other-month {
+    background: #EEEEEE !important;
+}
+.THIS .fc-bg .fc-today {
+    background: #EBF8FB !important;
+}
+
+.THIS .fc-other-month a {
+    color : #AAAAAA !important;
+    font-size: 14px;
+}
+
+.THIS .fc-future a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-past a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-today a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-button {
+    height: 35px;
+    background: #ECECEC 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #ebebeb;
+    opacity: 1;
+    color: #707070;
+    text-shadow: none !important;
+    border-color: #dadada;
+    font-size: 18px;
+}
+
+.THIS .fc-today-button {
+    text-transform: capitalize; 
+    width: 88px;
+    background: var(--unnamed-color-0083c2) 0% 0% no-repeat padding-box;
+    background: #0083C2 0% 0% no-repeat padding-box !important;
+    color: white;
+}
+
+.THIS .fc-prev-button {
+    width: 72px;
+    margin-right: 2px;
+}
+
+.THIS .fc-next-button  {
+    width: 72px;
+}
+
+.THIS .fc-agendaDay-button {
+    width: 72px;
+    margin-right: 2px;
+}
+
+.THIS .fc-agendaWeek-button {
+    width: 72px;
+    margin-left: 1px;
+}
+
+.THIS .fc-month-button {
+    width: 88px;
+    margin-left: 2px;
+}
+
+.THIS .fc-state-active {
+    background: #0083C2 0% 0% no-repeat padding-box !important;
+    color: white;
+}
+
+.THIS .fc-toolbar h2  {
+    color: #707070;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+.THIS .main-header-section-content {
+    padding-right: 73px !important;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+.THIS .save-schedule-button {
+    height: 35px;
+    background: #FFAE5E;
+    box-shadow: 0px 3px 6px #EBF8FB;
+    border-radius: 5px;
+    border-color: #FFAE5E;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.THIS .header-table {
+    margin-bottom: 15px;
+}
+
+.THIS .header-title {
+    font-size: 18px;
+}
+
+.THIS .header-button {
+    text-align: right;
+}
+
+.THIS .fc-toolbar h2 {
+    text-align: right !important;
+}
+
+/**
+.THIS .anyCalendar{
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+.THIS .fc-toolbar h2 {
+    margin: 0;
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: rgb(22, 50, 92);
+}
+.THIS button.fc-button {
+    text-transform: capitalize;
+}
+.THIS .fc-icon {
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+
+
+.THIS .fc-widget-header{
+    color: white;
+}
+
+.THIS .fc-state-active{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-state-disabled{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-day-header{
+    color: white;
+}
+
+.THIS h2{
+    color: rgb(3 45 96);
+    font-weight: bold;
+}
+
+.THIS .fc-row.fc-widget-header table thead tr th a {
+    color: white !important;
+}
+**/

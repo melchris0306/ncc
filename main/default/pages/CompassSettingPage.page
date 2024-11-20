@@ -1,0 +1,15 @@
+<apex:page lightningStylesheets="true" standardController="Compass_Setting__c" extensions="CompassSettingController">
+    <apex:form >
+        <script>
+        window.onload=function(){
+           var executed = false;
+            if (!executed) {
+                executed = true;
+                constructParams();
+            }
+        };
+        </script> 
+        <apex:actionFunction name="constructParams" action="{!constructParams}" rerender="detailPage"/> 
+    </apex:form>
+    <apex:detail subject="{!Compass_Setting__c.Id}" relatedList="true" inlineEdit="true" id="detailPage"/> 
+</apex:page>

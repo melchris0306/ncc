@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stakeholder_Engagement_Plan</fullName>
+    <columns>NAME</columns>
+    <columns>Category_Value__c</columns>
+    <columns>Site_Value__c</columns>
+    <columns>Functional_Clinical_Area_Value__c</columns>
+    <columns>Capture_Title__c</columns>
+    <columns>Capture_Description__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type_Values__c</field>
+        <operation>equals</operation>
+        <value>Stakeholder Engagement Plan</value>
+    </filters>
+    <label>Stakeholder Engagement Plan</label>
+</ListView>

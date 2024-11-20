@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Final_Design</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISBLANK(Final_Design__c),
+ISPICKVAL(Status__c,&apos;Completed&apos;),
+RecordType.Name = &apos;Dev&apos;,
+RecordType.Name = &apos;Bug&apos;,
+RecordType.Name = &apos;Story&apos;)</errorConditionFormula>
+    <errorDisplayField>Final_Design__c</errorDisplayField>
+    <errorMessage>Add a value</errorMessage>
+</ValidationRule>

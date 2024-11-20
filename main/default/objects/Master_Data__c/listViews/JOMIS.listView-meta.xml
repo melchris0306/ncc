@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JOMIS</fullName>
+    <columns>NAME</columns>
+    <columns>Field_Label__c</columns>
+    <columns>Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>equals</operation>
+        <value>JOMIS</value>
+    </filters>
+    <label>JOMIS</label>
+</ListView>

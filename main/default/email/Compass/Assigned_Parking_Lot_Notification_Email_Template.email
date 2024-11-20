@@ -1,0 +1,12 @@
+Hello {!Parking_Lot__c.Assigned_To__c},
+
+A Parking Lot has been assigned to you!
+
+Event: {!Parking_Lot__c.Event_Name__c}
+Session: {!Parking_Lot__c.Session_Name__c}
+Type: {!Parking_Lot__c.Type__c}
+Description: {!Parking_Lot__c.Description__c}
+Raised by: {!Parking_Lot__c.Raised_By__c}
+
+
+View Parking Lot: {!Parking_Lot__c.Link}

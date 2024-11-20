@@ -1,0 +1,85 @@
+<!--
+  @description       : 
+  @author            : adavid@ulapp.co
+  @group             : 
+  @last modified on  : 07-22-2022
+  @last modified by  : adavid@ulapp.co
+-->
+<aura:component
+    implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId"
+    access="global" controller="EventRegistrationFieldPickerController">
+
+    <aura:attribute name="registrationFields" type="List" />
+    <aura:attribute name="registrationFieldsCopy" type="List" />
+    <aura:attribute name="selectAll" type="Boolean" />
+    <aura:attribute name="requiredAll" type="Boolean" />
+    <aura:attribute name="isReadOnly" type="Boolean" default="true" />
+    <aura:attribute name="showLoader" type="Boolean" default="true" />
+
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+
+    <aura:if isTrue="{!v.showLoader}">
+        <div class="spinnerContainer slds-is-fixed">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+
+    <lightning:accordion activeSectionName="EventRegFieldConfig" aura:id="accordion" allowMultipleSectionsOpen="true">
+        <!--Start [CCN-EVE-1867-DV]: [7/22/2022] [Rexie Aaron David] -->
+        <lightning:accordionSection name="EventRegFieldConfig"
+            label="Logistics Coordination: Event Registration Field Configuration">
+            <!--End [CCN-EVE-1867-DV]: [7/22/2022] [Rexie Aaron David] -->
+            <aura:if isTrue="{!v.isReadOnly}">
+                <lightning:button variant="neutral" onclick="{! c.handleEdit }" label="Edit"
+                    class="slds-float_right slds-m-bottom_x-small" />
+
+                <aura:set attribute="else">
+                    <lightning:button variant="neutral" onclick="{! c.handleCancel }" label="Cancel"
+                        class="slds-float_right slds-m-bottom_x-small" />
+                    <lightning:button variant="brand" onclick="{! c.handleRegistrationForm }" label="Save"
+                        class="slds-float_right slds-m-bottom_x-small slds-m-right_x-small" />
+                </aura:set>
+            </aura:if>
+
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <lightning:input disabled="{!v.isReadOnly}" checked="{!v.selectAll}"
+                                aura:id="selectAllFieldCheckbox" onchange="{!c.checkAllFields}" type="checkbox" label=""
+                                name="allSelected" class="input-inline" />
+                            <div class="slds-truncate input-inline" title="Fields">Fields</div>
+                        </th>
+                        <th class="slds-align_absolute-center" scope="col">
+                            <lightning:input disabled="{!v.isReadOnly}" checked="{!v.requiredAll}"
+                                aura:id="requiredAllFieldCheckbox" onchange="{!c.checkAllFields}" type="checkbox"
+                                label="" name="allRequired" class="input-inline" />
+                            <div class="slds-truncate input-inline" title="Is Required?">Is Required?</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.registrationFields}" var="item">
+                        <tr class="slds-hint-parent">
+                            <th data-label="{!item.label}" scope="row">
+                                <div class="slds-truncate" title="{!item.label}">
+                                    <lightning:input disabled="{!v.isReadOnly}" class="input-inline" type="checkbox"
+                                        name="inputActive" checked="{!item.active}"
+                                        onchange="{!c.checkSelectAllAndSetRequired}" />
+                                    <span class="input-inline">{!item.label}</span>
+                                </div>
+                            </th>
+                            <td data-label="Is Required?">
+                                <div class="slds-truncate slds-align_absolute-center" title="Is Required?">
+                                    <lightning:input disabled="{!v.isReadOnly}" type="checkbox" name="inputRequired"
+                                        checked="{!item.required}" onchange="{!c.checkRequiredAll}" />
+                                </div>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </lightning:accordionSection>
+    </lightning:accordion>
+</aura:component>

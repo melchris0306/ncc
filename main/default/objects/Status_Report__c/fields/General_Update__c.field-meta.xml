@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_Update__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>General Update</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>You can only choose general update value into this field</errorMessage>
+        <filterItems>
+            <field>Status_Report__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Section</value>
+        </filterItems>
+        <filterItems>
+            <field>Status_Report__c.Name</field>
+            <operation>contains</operation>
+            <value>General Update Section</value>
+        </filterItems>
+        <infoMessage>To select the General update section content into the template</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Status_Report__c</referenceTo>
+    <relationshipLabel>Status Reports(General Updates Headers)</relationshipLabel>
+    <relationshipName>General_Updates</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

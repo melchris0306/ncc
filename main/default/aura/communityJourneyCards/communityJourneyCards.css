@@ -1,0 +1,919 @@
+.THIS .journeySurveyBeginBtn{
+    color: black;
+    background: #93d500;
+    border: unset;
+    border-radius: 20px;
+    font-weight: 600;
+}
+.THIS .milestoneQuickCheck{
+    background-color: #93d500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.THIS .journeyQuickCheck{
+    border-top: 40px solid #93d500;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+}
+.THIS .question-ctr-div{
+    font-weight: 700;
+    display: inline-flex;
+    padding-right: 5px;
+    font-size: 16px;
+}
+.THIS .question-grid{
+    margin: 0 30px;
+    background: #efefef;
+    border-radius: 10px;
+}
+.THIS .question-col{
+    padding: 2%;
+}
+.THIS .question-label p, .THIS .question-label span,
+.THIS .journeyDescription p, .THIS .journeyDescription span,
+.THIS .question-div p, .THIS .question-div span,
+.THIS .result-greeting p, .THIS .result-greeting span
+{
+    display: inline !important;
+    font-size: 14px !important;
+    background-color: unset !important;
+	font-weight: 500 !important;
+    color: black !important;
+}
+
+.THIS .slds-form-element__label,
+.THIS .slds-grid p,
+.THIS .slds-checkbox_button__labels,
+.THIS .slds-select,
+.THIS .slds-input{
+    font-size: 14px !important;
+    color: black !important;
+}
+
+.THIS .slds-checkbox_button__labels{
+    padding-left: 5px !important;
+}
+.THIS .slds-checkbox_buttons {
+    line-height: 12px !important;
+}
+.THIS .slds-form-element .slds-select_container,
+.THIS .slds-form-element .slds-input{
+    max-width: 90%;
+}
+.THIS .display{
+    display: inline;
+}
+
+.THIS .answer-list-div{
+    display: inline-block;
+    vertical-align: top;
+}
+.THIS .none{
+    display: none;
+}
+
+.THIS .journeySurveyBeginBtn:disabled{    
+    background-color: rgb(201, 199, 197);
+    border-color: rgb(201, 199, 197);
+    color: rgb(255, 255, 255);
+}
+.THIS .journeySubmit{
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.THIS .result-div{
+    font-size: 14px !important;
+}
+
+.THIS .result-div div{
+    display: inline-block;
+}
+.THIS .result-div div:nth-child(2){
+	padding-left: 10px;
+}
+.THIS .result-greeting{
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+.THIS .icon-div{
+    padding-right: 3px;
+}
+.THIS .question-div{
+    padding-right: 5px;
+}
+.THIS .correct-icon{
+     --sds-c-icon-color-foreground-default: #49A54C;
+}
+.THIS .correct-div{
+	color: #49A54C;
+    padding-right: 5px;
+    font-size: 14px;
+}
+    
+.THIS .incorrect-icon{
+     --sds-c-icon-color-foreground-default: #CB0015;
+}
+.THIS .incorrect-div{
+    color: #CB0015;
+    padding-right: 5px;
+    font-size: 14px;
+}
+.THIS .answer-div{
+	color: black;
+    font-size: 14px;
+}
+.THIS .final-correct-div div,
+.THIS .final-incorrect-div div {
+    display: inline;
+}
+.THIS .spinner-div{
+	position: fixed;
+}
+
+
+
+.THIS .journeycard-card {
+  background-color: white;
+  border-radius: 12px;
+  min-height: 20rem;
+  width: 50rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+.THIS .journeycard-header {
+  height: 3rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.THIS .journeycard-card-des {
+  padding-top: 2.5rem;
+  font-size: 2rem;
+}
+
+.THIS .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  width: 55%;
+}
+
+.THIS .journeycard-footer {
+  margin-top: 1rem;
+}
+
+.THIS .progress-border {
+  border-radius: 25px;
+  width: 10rem;
+  height: 1.25rem;
+  background-color: lightgray;
+}
+
+.THIS .progress-border-inner {
+  border-radius: 25px;
+  width: 7.5rem;
+  height: 1.25rem;
+  background-color: #93d500;
+}
+
+.THIS .Event {
+  background-color: #002e5f;
+}
+
+.THIS .Survey {
+  background-color: #25a7d2;
+}
+
+.THIS .Communication {
+  background-color: #93d500;
+}
+
+/* desktop view */
+@media only screen and (min-width: 1025px) {
+  .THIS .journeycard-container {
+        margin-left: auto;
+    	margin-right: auto;
+    	max-width: 700px; 
+  }
+  .THIS .journeycard-box {
+    margin: 0rem 2rem;
+  }
+
+  .THIS .journeycard-welcome {
+    padding: 2rem;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .THIS .journeyimage {
+    /*display: inline-block !important;*/
+    margin-top: 10px;
+    width: 90px;
+    height: 90px;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 50%;
+  }
+   
+  .THIS .journeytitle {
+      font-size: 21px!important;
+      font-style: Roboto !important;
+      color: #1a1a1a;
+      opacity: 1;
+      margin-left: 25px;
+  }
+    
+  .THIS .vertical-aligntext-center{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+  .THIS .journeyDescription {
+    /* text-align: center; */
+    margin-top: 15px;
+    margin-left: 30px;
+    width: 90%;
+  }
+
+  .THIS .imgCheckpointContainer {
+    display: inline-block !important;
+    margin-right: 10px;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+
+  .THIS .journeyimageCkpoint {
+    margin-top: 10px;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .THIS .journeyprogress {
+     margin-top: 5px;
+    width: 40%!important;
+    margin-left: 0;
+  }
+  .THIS .journeylevel {
+    margin-top: 5px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-left: 1px solid #f2f1f1;
+    border-bottom: 1px solid #f2f1f1;
+    border-right: 1px solid #f2f1f1;
+    min-height: 270px;
+    border-radius: 15px;
+    min-width: 140px;
+  }
+
+  .THIS .journeyInformation {
+    border-top: 40px solid #FD4A5C;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyAttestation {
+    border-top: 40px solid #F3BD48;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCommunication {
+    border-top: 40px solid #002E5F;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyEvent {
+    border-top: 40px solid #0d8ce5;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeySurvey {
+    border-top: 40px solid green;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCheckpoint {
+    border-top: 40px solid darkblue;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+  .THIS .progresscount {
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: 20px;
+  }
+  .THIS .progressbar {
+    height: 24px;
+    width: 70%;
+    background-color: #99ca3c;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 180px;
+    height: 20px;
+    border-radius: 25px;
+    background: #b1b1b1;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 20px;
+  }
+  .THIS .slds-progress-bar__value {
+    background: #93d500;
+    border-radius: 25px;
+  }
+    
+  .THIS .journeySurveyComplete{ 
+    margin-top: 15px;
+    margin-left: 30px;
+  }
+    
+  .THIS .journeySurveyCompleteBtn{
+	border-radius: 20px;
+    height: 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: 10px;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) {
+    
+  .THIS .journeycard-container {
+        margin-left: auto;
+    	margin-right: auto;
+    	max-width: 630px; 
+  }
+    
+  .THIS .journeycard-box {
+    margin: 0rem 1rem;
+  }
+
+  .THIS .journeycard-welcome {
+    padding: 1rem;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .THIS .journeyimage {
+    width: 80px;
+    height: 80px;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 50%;
+  }
+
+  .THIS .journeytitle {
+    margin-top: 10px;
+    font-size: 21px!important;
+    padding: 0 5px;
+  }
+    
+	.THIS .vertical-aligntext-center{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+  .THIS .journeyDescription {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 90%;
+  }
+
+  .THIS .imgCheckpointContainer {
+    display: inline-block !important;
+    margin-right: 10px;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+
+  .THIS .journeyimageCkpoint {
+    margin-left: 0 !important;
+    /* margin-top: 0!important; */
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .THIS .journeyprogress {
+    margin-top: 11px;
+    width: 40%!important;
+  }
+
+  .THIS .journeylevel {
+    margin-top: 5px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-left: 1px solid #f2f1f1;
+    border-bottom: 1px solid #f2f1f1;
+    border-right: 1px solid #f2f1f1;
+    min-height: 250px;
+    border-radius: 15px;
+    min-width: 140px;
+    max-width: 630px;
+  }
+
+  .THIS .journeyInformation {
+    border-top: 35px solid #FD4A5C;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyAttestation {
+    border-top: 35px solid #F3BD48;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCommunication {
+    border-top: 35px solid #002E5F;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyEvent {
+    border-top: 35px solid #0d8ce5;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeySurvey {
+    border-top: 35px solid green;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCheckpoint {
+    border-top: 35px solid darkblue;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+  .THIS .progresscount {
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  .THIS .progressbar {
+    height: 24px;
+    width: 70%;
+    background-color: #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 165px;
+    height: 20px;
+    border-radius: 25px;
+    background: #b1b1b1;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 20px;
+  }
+  .THIS .slds-progress-bar__value {
+    background: #93d500;
+    border-radius: 25px;
+  }
+    
+    .THIS .journeySurveyComplete{
+      margin-top: 20px;
+      margin-left: 40px;
+    }
+    
+    .THIS .journeySurveyCompleteBtn{
+		    border-radius: 20px;
+    height: 42px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 812px) {
+  .THIS .journeycard-box {
+    margin: 0 10px;
+  }
+
+  .THIS .journeycard-welcome {
+    padding: 0.8rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .THIS .journeyimage {
+    width: 60px;
+    height: 60px;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 15px;
+    border-radius: 50%;
+  }
+    
+	.THIS .vertical-aligntext-center{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+  .THIS .journeytitle {
+    font-size: 15px !important;
+    padding: 0 5px;
+  }
+
+  .THIS .journeyDescription {
+    margin-left: 5px;
+    margin-top: 15px;
+    font-size: 13px !important;
+    width: 90%;
+  }
+    
+  .THIS .journeyDescription p {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeyDescription b {
+    font-size: 13px !important;
+  }
+
+  .THIS .journeyDescription span {
+    font-size: 13px !important;
+  }
+    
+  .THIS .journeyDescription i {
+    font-size: 13px !important;
+  }
+
+  .THIS .imgCheckpointContainer {
+    display: inline-block !important;
+    margin-right: 10px;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+
+  .THIS .journeyimageCkpoint {
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+
+  .THIS .journeyprogress {
+    margin-top: 2px;
+  }
+
+  .THIS .journeylevel {
+    margin: 5px 0px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-left: 1px solid #f2f1f1;
+    border-bottom: 1px solid #f2f1f1;
+    border-right: 1px solid #f2f1f1;
+    min-height: 160px;
+    border-radius: 15px;
+  }
+
+
+  .THIS .journeyInformation {
+    border-top: 30px solid #FD4A5C;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyAttestation {
+    border-top: 30px solid #F3BD48;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCommunication {
+    border-top: 30px solid #002E5F;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyEvent {
+    border-top: 30px solid #0d8ce5;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeySurvey {
+    border-top: 30px solid green;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .journeyCheckpoint {
+    border-top: 30px solid darkblue;
+    border-radius: 15px;
+    border-bottom-width: 3px;
+  }
+
+  .THIS .progresscount {
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-right: 5px;
+    font-size: 10px;
+  }
+  .THIS .progressbar {
+    height: 15px;
+    width: 80%;
+    background-color: #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 90px;
+    height: 15px;
+    border-radius: 25px;
+    background: #b1b1b1;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 20px;
+  }
+  .THIS .slds-progress-bar__value {
+    background: #93d500;
+    border-radius: 25px;
+  }
+    
+    .THIS .journeySurveyComplete{
+        margin-top: 15px;
+    	margin-left: 0;
+    }
+    
+    .THIS .journeySurveyCompleteBtn{
+		border-radius: 20px;
+    	height: 30px;
+    	font-family: sans-serif;
+    	font-weight: bold;
+    	font-size: 10px;
+        margin-top: 13px;
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+    .THIS .journeySurveyComplete{
+        margin-top: 28px;
+    	margin-left: 0px;
+    }
+}
+
+.THIS a {
+  color: black;
+}
+
+.THIS .journey {
+  background-color: #f8fcfd;
+  width: 100%;
+  height: 100%;
+  padding: 5% 5% 0 5%;
+}
+.THIS .journeyhighlights {
+  background-color: #f8fcfd;
+  padding-bottom: 50px;
+  vertical-align: top;
+}
+.THIS .journeyhighlightsleft {
+  background-color: #0083c1;
+  color: #fefefe;
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+}
+.THIS .journeyhighlightsimage {
+  width: 24%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #f8fcfd;
+}
+.THIS .doctorimage {
+  height: 600px;
+}
+
+.THIS .journeyhighlightsright {
+  width: 41%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #f8fcfd;
+}
+.THIS .providerheader {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -30px;
+}
+.THIS .dividerlinered {
+  width: 50%;
+  margin: 20px auto;
+  height: 6px;
+  background-color: #f3bd48;
+}
+.THIS .dividerlineredcoms {
+  width: 18%;
+  margin: 20px auto;
+  height: 6px;
+  background-color: #f3bd48;
+}
+
+.THIS .providervalue {
+  font-size: 20px;
+}
+
+.THIS .journeyhighlightsleft-header {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 30px;
+}
+.THIS .journeyhighlightsleft-header1 {
+  padding: 20px 50px 0;
+  font-size: 30px;
+  width: 100%;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+.THIS .dividerline {
+  width: 65%;
+  background: white;
+  height: 3px;
+  margin: 20px 0 20px 0;
+}
+.THIS .journeyhighlightsleft-header2 {
+  padding: 10px 0 0 50px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  display: inline-block;
+}
+.THIS .highlightsbutton {
+  width: 100%;
+  text-align: center;
+}
+.THIS .highlightsbutton .slds-button_neutral {
+  background-color: #f3bd48;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  color: white;
+}
+
+.THIS .communication {
+  background-color: #f8fcfd;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-top: 30px;
+}
+.THIS .communicationvalues {
+  background-color: #f8fcfd;
+  font-size: 20px;
+  letter-spacing: 0.25px;
+  padding-bottom: 30px;
+}
+
+.THIS .personalizedjourneyparent {
+  background-color: #f4f4f4;
+  padding-top: 30px;
+}
+.THIS .personalizedjourney {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 60px;
+}
+
+
+.THIS .journeystatusimage {
+  text-align: center;
+  width: 20%;
+  display: inline-block;
+}
+.THIS .journeylinks {
+  text-decoration: underline;
+  font-size: 15px;
+  width: 50%;
+  display: inline-block;
+}
+
+.THIS .mybar {
+  height: 24px;
+  background-color: #99ca3c;
+}
+.THIS .zero {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+.THIS .half {
+  width: 50%;
+  border-radius: 10px 0 0 10px;
+}
+.THIS .perfect {
+  width: 100%;
+  border-radius: 10px;
+}
+.THIS .divider {
+  width: 100%;
+  text-align: center;
+}
+
+.THIS .journey1 {
+  border-top: 20px solid #dfa511;
+  border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey2 {
+  border-top: 20px solid #0d8ce5;
+  border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey3 {
+  border-top: 20px solid #2e5a7a;
+  border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey4 {
+  border-top: 20px solid #65cd80;
+  border-radius: 10px 10px 5px 5px;
+}
+
+.THIS .milestoneAttestation {
+  background-color: #F3BD48;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.THIS .milestoneInformation {
+  background-color: #FD4A5C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.THIS .milestoneEvent {
+  background-color: #0d8ce5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.THIS .milestoneSurvey {
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.THIS .milestoneCommunication {
+  background-color: #002E5F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.THIS .milestoneCheckpoint {
+  background-color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

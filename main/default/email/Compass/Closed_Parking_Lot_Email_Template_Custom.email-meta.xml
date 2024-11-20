@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Closed Parking Lot Email Template - Custom</name>
+    <style>none</style>
+    <subject>{!Parking_Lot__c.Name} | Parking Lot for {!Parking_Lot__c.Session__c} ({!Parking_Lot__c.Event__c})</subject>
+    <textOnly>Parking Lot_Notification email
+
+Hello {!Parking_Lot__c.RaisedByDefaultName__c},
+
+
+Your Parking Lot item has been addressed!
+
+Parking Lot Number {!Parking_Lot__c.Name}
+
+
+{!Parking_Lot__c.Event__c}
+
+
+
+Session
+{!Parking_Lot__c.Session__c}
+{!Session_Start_End_Date_Time__c
+
+Description
+{!Parking_Lot__c.Description__c}
+
+Resolution/Answer
+{!Parking_Lot__c.Resolution_Answer__c}
+
+
+Please reply to this email with any follow up questions.
+You can review all Parking Lot items and their response on the Parking Lot page.
+
+
+View More
+
+
+Thank you!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,113 @@
+.THIS {
+
+}
+
+.THIS .main-section-add {
+    display: flex;
+    /* display: -webkit-inline-box; */
+    color: black;
+    background-color: white;
+    min-height: unset;
+    width: 100%;
+    box-shadow: inset 0 8px 6px -6px grey;
+}
+
+.THIS .add-button {
+    color: white;
+    text-align: center;
+    /* font: normal normal bold 18px/34px Calibri; */
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 0;
+     width: 222px;
+    height: 35px;
+    background: #ffae5e 0% 0% no-repeat padding-box;
+    box-shadow: 0 3px 6px #d3d3d3;
+    border-radius: 5px;
+    opacity: 1;
+    margin: auto;
+    cursor: pointer;
+}
+
+.THIS .main-header-section-content {
+    min-height: 25rem;
+}
+
+.THIS .submit-button-section {
+    margin-top: 2.5rem;
+}
+
+.THIS .header-label {
+    margin-top : 0px;
+}
+
+/* Added By JaysonLabnao [CCN-EVE-2160-DV] OCT092022 */
+.THIS .required {
+    color: red;
+}
+
+.THIS .slds-select_container {
+    margin-bottom: 0px;
+}
+
+.THIS .secondRow {
+    margin-top: 20px;
+}
+
+.THIS .input-text .slds-select_container:before {
+    content: none !important;
+}
+
+.THIS .input-text .slds-select_container:before {
+    content: none !important;
+}
+
+.THIS .input-text .slds-select_container:after {
+    content: none !important;
+}
+
+.THIS .input-text .slds-select_container:after {
+    content: none !important;
+}
+
+.THIS .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+}
+
+.THIS .titleField .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+}
+
+.THIS .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+.THIS .titleField .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+
+.THIS .slds-select:disabled + ::after {
+    content: '' !important;
+}
+
+/* Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 */
+.THIS .main-header-section-content-form .slds-input{
+    width: -webkit-fill-available;
+
+}
+
+/* Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 */
+.THIS .main-header-section-content-form .slds-select_container {
+    width:100%;
+}

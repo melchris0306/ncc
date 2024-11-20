@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Production_Items_Current</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Due_Date_Client_Delivery__c</columns>
+    <columns>Draft_Due_Date_to_Production__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Production_Support_Requested__c</columns>
+    <columns>Status__c</columns>
+    <columns>Stage__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Production_Support_Requested__c</field>
+        <operation>notEqual</operation>
+        <value>RCIS SGRR Support: Prepare,RCIS SGRR Support: Package</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Not Started,In Progress</value>
+    </filters>
+    <filters>
+        <field>Stage__c</field>
+        <operation>equals</operation>
+        <value>Request Received,File Submission,Tech Editing,Tech Editing: Check,POC Incorporating Feedback,Graphic Support,QA,QA: Check</value>
+    </filters>
+    <label>Production Items - Current</label>
+</ListView>

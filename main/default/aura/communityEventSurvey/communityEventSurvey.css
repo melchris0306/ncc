@@ -1,0 +1,109 @@
+/* Added [EVENT REFRESH FIXES] JaysonLabnao Jan202021 */
+/* SLDS Overrides */
+.THIS .slds-input {
+    max-width: unset;
+}
+
+.THIS .slds-combobox__input {
+    margin-top: 5px !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border: 1px solid #B1B1B1 !important;
+    opacity: 1 !important;
+    line-height: normal !important;
+    border-radius: 8px;
+    height: 49px;
+}
+
+.THIS .slds-combobox__input > span {
+    align-self: center;
+}
+
+.THIS .clear-section {
+    clear:both;
+}
+
+.THIS .survey-section{
+    /*min-height : calc(100vh - 250px);*/
+}
+
+.THIS .field-label {
+    font-size: 1rem;
+}
+
+.THIS .no-min-max-height{
+    height: auto !important;
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+.THIS .survey-section-title{
+    text-transform: uppercase;
+    border-left: none!important;
+    letter-spacing: 2px;
+    padding-left: 5px;
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+.THIS .survey-section-title:after {
+    content: "";
+    display: block;
+    width: .25rem;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #FFAE5E;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 2px;
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+.THIS .survey-section-title-wrap:after{
+    background: unset !important;
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .THIS .float-left {
+        /*margin-left: 0rem;*/
+    }
+    
+    /* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+    .THIS .survey-section-title {
+        writing-mode: unset;
+        transform: none;
+        text-align: left;
+        margin: .5rem 0 .5rem 0;
+        height: 2rem;
+        border-bottom: .25rem solid #FFAE5E;
+        border-left: none;
+        font-size: 1.4rem;
+        letter-spacing: 3.5px;
+    }
+
+    /* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+    .THIS .survey-section-title:after {
+        display: none;
+    }
+
+    .THIS .survey-container-outer{
+        display: inline-block;
+    }
+
+    /* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+    .THIS .slds-text-heading_large[c-surveyDetails_surveyDetails]{
+        font-size: 18px;
+        /* text-align: center; */
+        margin-top: 5px;
+        /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan202021 */
+        margin-bottom: 1rem;
+    }
+    .THIS .slds-input {
+        border: 1px solid #eae7e7;
+    }
+
+    /* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+    .THIS .survey[c-surveyDetails_surveyDetails]{
+        padding: 0 0rem 0 0rem;
+    }
+}

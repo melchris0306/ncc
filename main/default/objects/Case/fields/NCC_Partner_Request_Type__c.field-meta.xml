@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NCC_Partner_Request_Type__c</fullName>
+    <inlineHelpText>Please select one of the reasons for the contact so we can ensure to route it to the correct person on our team.</inlineHelpText>
+    <label>NCC Partner Request Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Change Cloud</fullName>
+                <default>false</default>
+                <label>Change Cloud</label>
+            </value>
+            <value>
+                <fullName>Consulting Services (Clinical)</fullName>
+                <default>false</default>
+                <label>Consulting Services (Clinical)</label>
+            </value>
+            <value>
+                <fullName>Consulting Services (Revenue Cycle)</fullName>
+                <default>false</default>
+                <label>Consulting Services (Revenue Cycle)</label>
+            </value>
+            <value>
+                <fullName>givebackRx</fullName>
+                <default>false</default>
+                <label>givebackRx</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

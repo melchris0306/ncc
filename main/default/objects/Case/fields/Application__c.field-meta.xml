@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application__c</fullName>
+    <label>Application</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Compass Connect</fullName>
+                <default>false</default>
+                <label>Compass Connect</label>
+            </value>
+            <value>
+                <fullName>CCN</fullName>
+                <default>false</default>
+                <label>Compass Change Navigator</label>
+            </value>
+            <value>
+                <fullName>CPM</fullName>
+                <default>false</default>
+                <label>Compass Project Manager</label>
+            </value>
+            <value>
+                <fullName>CAPM</fullName>
+                <default>false</default>
+                <label>Compass Agile Project Management</label>
+            </value>
+            <value>
+                <fullName>AMZN</fullName>
+                <default>false</default>
+                <label>AWS/Amazon Build</label>
+            </value>
+            <value>
+                <fullName>Salesforce</fullName>
+                <default>false</default>
+                <label>Salesforce</label>
+            </value>
+            <value>
+                <fullName>NCC</fullName>
+                <default>false</default>
+                <label>NCC</label>
+            </value>
+            <value>
+                <fullName>Compass Change Navigator (CCN)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compass Change Navigator (CCN)</label>
+            </value>
+            <value>
+                <fullName>Compass Project Management (CPM)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compass Project Management (CPM)</label>
+            </value>
+            <value>
+                <fullName>Compass_Agile_Project_Management_CAPM</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compass_Agile_Project_Management_CAPM</label>
+            </value>
+            <value>
+                <fullName>Compass_Change_Navigator_CCN</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compass_Change_Navigator_CCN</label>
+            </value>
+            <value>
+                <fullName>Compass_Project_Management_CPM</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compass_Project_Management_CPM</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,182 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome" access="global" controller="MassSessionInternalAllocationController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <!--<aura:attribute name="SignUpInstructions" type="String"/>-->
+    <aura:attribute name="hasData" type="Boolean" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true" />
+    <aura:attribute name="IntRes" type="Object" />
+    <aura:attribute name="sessionId" type ="String"/>
+    <aura:attribute name="eventId" type ="String"/>
+    <aura:attribute name="eventName" type ="String"/>
+    <aura:attribute name="title" type="string"/>
+    <aura:attribute name="startDate" type="string"/>
+    <aura:attribute name="endDate" type="string"/>
+    <aura:attribute name="location" type="string"/>
+    <aura:attribute name="sessionTimeZone" type="string"/>
+    
+    <aura:attribute name="sessionMonth" type="string"/>
+    <aura:attribute name="sessionDay" type="string"/>
+    <aura:attribute name="showSave" type="Boolean" default="false" />
+    <aura:attribute name="showEdit" type="Boolean" default="false" />
+    <aura:attribute name="showCancel" type="Boolean" default="false" />
+    <aura:attribute name="isDisabled" type="Boolean" default="false" />
+    <aura:attribute name="emptyRows" type="List" />
+    <aura:attribute name="filledUpRows" type="List" />
+
+    <!-- Gian Bata - CCN-EVE-3398-DV-->
+    <aura:attribute name="isSubmitDisabled" type="Boolean" default="true" />
+    
+    <aura:handler name="massSessionEventReg" event="c:MassSessionEvent" action="{!c.handleComponentEvent}"/>
+    
+    <aura:if isTrue="{! v.isLoading }">
+        <div class="slds-spinner_container">
+            <lightning:spinner variant="brand" alternativeText="Loading..." />
+        </div>
+    </aura:if>
+    <div class="session-section">
+        <div class="main-section">
+            <div class="main-header-section float-left">
+                <div class="main-header-section-title height-auto">Internal Allocation</div>
+            </div>
+            
+            <div class="main-session-box">
+                
+                <div class="session-sign-up-top">
+                    <div class="session-top-title-container" >
+                        <span class="session-top-title">{!v.eventName}</span>
+                    </div>
+                    <div class="session-top-button-container" >
+                    </div>
+                </div>
+                <div style="clear: both"><br /></div>
+                <aura:if isTrue="{!v.hasData}">
+                    <!--<div class="session-instruction-box">
+                        <div class="session-instruction-label">
+                            <span>Sign-Up Instructions</span>
+                        </div>
+                        <div class="session-instruction-text">
+                            <span><lightning:formattedRichText value="{!v.SignUpInstructions}"/></span>
+                        </div>
+                    </div>-->
+                    
+                    <div class="session-signup-box">
+                        
+                        <div class="session-signup-date">
+                            <div class="session-signup-date-month">
+                                {!v.sessionMonth}
+                            </div>
+                            <div class="session-signup-date-date">
+                                {!v.sessionDay}
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="session-signup-table">
+                            <div class="session-signup-table-detail">
+                                <span class="session-top-title">{!v.title}</span>
+                                <div class="sessionDateTime">
+                                    {!v.startDate} - {!v.endDate} | {!v.sessionTimeZone}
+                                </div>
+                                <div class="sessionLocation">
+                                    {!v.location}
+                                    <div class="required-text">
+                                        *Required Field
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="slds-truncate columnFont" title="Role">Role</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate columnFont required-field" title="First Name">First Name</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate columnFont required-field" title="Last Name">Last Name</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate columnFont required-field" title="Email">Email</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+     
+                                    <aura:iteration items="{! v.data }" var="IntRes">
+                                        <!--<c:MassSessionInternalAllocation IntRes = "{!IntRes}" disableButton = "{!v.isDisabled}"/>-->
+                                        <tr class="slds-hint-parent required-div">
+                                            <td data-label="Role" scope="row" class="roleContainer">
+                                                <div class="roleClass">
+                                                    <span >{!IntRes.Role}</span>
+                                                </div>    
+                                                <div class="roleDescClass">
+                                                    <p>{!IntRes.RoleDescription}</p>
+                                                </div>
+                                            </td>
+                                            <td data-label="First Name" scope="row">
+                                                <div class="slds-truncate2 rowPadding" title="First Name">
+                                                    <lightning:input aura:id="FirstName" class="input-field" name="FirstName" value="{!IntRes.FirstName}" onblur="{!c.removeCustomValidation}" onchange="{!c.removeCustomValidation}" disabled="{!v.isDisabled}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Last Name" scope="row">
+                                                <div class="slds-truncate2 rowPadding" title="Last Name">
+                                                    <lightning:input aura:id="LastName" class="input-field" name="LastName" value="{!IntRes.LastName}" onblur="{!c.removeCustomValidation}" onchange="{!c.removeCustomValidation}" disabled="{!v.isDisabled}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Email" scope="row">
+                                                <div class="slds-truncate2 rowPadding" title="Email">
+                                                    <!-- Gian Bata - CCN-EVE-3398-DV: addedd pattern and patter mismatch message"-->
+                                                    <lightning:input aura:id="Email" class="input-field" 
+                                                        type="email"
+                                                        name="Email"
+                                                        value="{!IntRes.Email}" 
+                                                        onblur="{!c.removeCustomValidation}"
+                                                        onchange="{!c.handleEmailOnChange}"
+                                                        pattern=".+@.+(\.[a-zA-Z]{1,})+"
+                                                        disabled="{!v.isDisabled}"
+                                                        messageWhenPatternMismatch="Invalid Email Format"
+                                                        messageWhenTypeMismatch="Invalid Email Format"/>
+                                                </div>
+                                            </td>
+                                            
+                                            <aura:if isTrue="{!and(v.isDisabled)}">
+                                                <aura:set attribute="else">
+                                                    <td data-label="Save" scope="row" class="remove-div">
+                                                       <!-- <div class="slds-truncate rowPadding slds-p-top_medium remove-div" title="Save">-->
+                                                            <aura:if isTrue="{!IntRes.IdChk != null}">
+                                                                <lightning:button value="{!IntRes.Id}" onclick="{!c.handleRemove}" class="">
+                                                                    <img src="{!$Resource.communityBin}" value="{!IntRes.Id}" width="36" height="36" class="icon-remove"/>
+                                                                </lightning:button>
+                                                            </aura:if>
+                                                       <!-- </div>-->
+                                                    </td>
+                                                </aura:set>
+                                            </aura:if>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                            <div class="session-signup-buttons">
+                                <aura:if isTrue="{!v.showSave}">
+                                    <!-- Gian Bata - CCN-EVE-3398-DV: added disabled="{!v.isSubmitDisabled}"-->
+                                    <lightning:button class="button-save" variant="brand" label="Submit" title="Brand action" onclick="{! c.handleSaveSignUp }" disabled="{!v.isSubmitDisabled}" />
+                                </aura:if>
+                                <aura:if isTrue="{!v.showEdit}">
+                                    <lightning:button variant="brand" label="Edit" title="Brand action" onclick="{! c.handleEditSignUp }" />
+                                </aura:if>
+                                <aura:if isTrue="{!v.showCancel}">
+                                    <lightning:button variant="destructive" label="Cancel" title="Brand action" onclick="{! c.handleCancelSignUp }" />
+                                </aura:if>
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+            </div>
+        </div>
+    </div>
+</aura:component>

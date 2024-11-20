@@ -1,0 +1,103 @@
+.THIS {
+    font-family: 'Roboto-Light';
+    max-height: calc(100% - 2.5rem) !important;
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src:url(/resource/Roboto/Roboto-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src:url(/resource/Roboto/Roboto-Bold.ttf);
+}
+
+.THIS .description ul, .THIS .description ol {
+    padding: revert;
+    margin-bottom: 1rem;
+    list-style-type: unset;
+}
+
+.THIS.title {
+    font-size: 1.4rem;
+    font-family: 'Roboto-Bold';
+}
+
+.THIS.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.THIS.container .avatar-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.THIS.container .avatar-image {
+    height: 120px;
+    width: 120px;
+    margin: 3%;
+}
+
+.THIS.container .change-agent-name{
+    font-family: 'Roboto-Bold';
+    font-size: 1.6rem;
+}
+
+.THIS.container .change-agent-title{
+    font-size: 1.2rem;
+}
+
+.THIS.container .navigator-button-icon{
+    padding: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 120px;
+    border-radius: 10px;
+    font-size: x-large;
+    color: white;
+    cursor: pointer;
+}
+
+.THIS.container .theme-color1{
+    background-color: var(--theme-color1);
+}
+
+.THIS.container .theme-color2{
+    background-color: var(--theme-color2);
+}
+
+.THIS.container .theme-color3{
+    background-color: var(--theme-color3);
+}
+
+.THIS.container .theme-color4{
+    background-color: var(--theme-color4);
+}
+
+.THIS.container .navigator-button-icon img{
+    width: 35%;
+    margin-right: 9px;
+}
+
+.THIS .button-label{
+    font-size: 1rem;
+}
+
+.THIS.container .description{
+    font-size: 1.2rem;
+}
+
+.THIS .live-call-details{
+    display: grid;
+}
+
+.THIS .live-call-number{
+    margin-top: -1.25rem;
+    justify-self: center;
+}

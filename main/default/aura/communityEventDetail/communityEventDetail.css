@@ -1,0 +1,195 @@
+.THIS .detail-section-body{
+    margin: 3rem 0rem !important;
+    width: auto;
+}
+
+/* Fix formatting address bug [CCN-2027] RexieDavid Aug112022 */
+.THIS .addre a {
+    color: #ffffff !important;
+    pointer-events: none !important;
+}
+
+.THIS .detail-section-title {
+    height: 11.6rem !important;
+    margin: 0rem 1rem 3rem 1rem;
+    border-left: none !important;
+}
+.THIS .detail-section-title:after {
+    content: "";
+    display: block;
+    width: .15rem;
+    height: 55%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+}
+
+.THIS .map-box{
+    height: 22rem;
+}
+
+.THIS .c1{
+    min-height: 22rem;
+    height: auto;
+}
+
+.THIS .clear-section{
+    clear:both;
+}
+.THIS .detail-section {
+    background-color: #54565A !important;
+}
+.THIS .c1 {
+    background-color: #54565A !important;
+}
+.THIS .detail-section{
+    display: inline;
+}
+
+/*when browser is resize*/
+@media only screen and (max-width: 1300px) {
+    .THIS .detail-section .c1, .THIS .detail-section .c2{
+        /*height: auto;*/
+        height: auto;
+        /*width: 100%;*/
+    }
+    .THIS .map-box {
+        height: auto;
+    }
+    .THIS .float-left {
+        margin-left: .5rem;
+        margin-right: 1rem;
+    }
+
+   
+    .THIS .font-header, .THIS .font-body{
+        font-size: 1rem;
+    }
+    
+    .THIS .slds-map_container{
+        padding: 0;
+    }
+    
+    .THIS .slds-map  {
+    	min-width: 0;
+    }
+}
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    .THIS .event-details-header{
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: lighter;
+    }
+    .THIS .event-details-body{
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+    .THIS .slds-map_container {
+        padding: 0;
+    }
+    
+    .THIS .detail-section-title {
+        height: 8rem!important;
+        margin: 0 1rem 3rem 1rem;
+    }
+    .THIS .font-section-header {
+        font-size: 1rem;
+    }
+    .THIS .detail-section-body {
+        /*width: 12rem!important;*/
+        margin: 3rem 4rem !important;
+    }
+}
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : landscape) { 
+    .THIS .detail-section-body {
+        margin: 3rem 5rem !important;
+    }
+    .THIS .event-details-header{
+        font-weight: lighter;
+    }
+}
+
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .THIS .detail-section .c1, .THIS .detail-section .c2{
+        height: auto;
+        width: 100%;
+    }
+    .THIS .map-box {
+        height: auto;
+    }
+    .THIS .detail-section-title:after {
+    	display: none;
+    }
+    .THIS .float-left {
+        margin-left: .5rem;
+        margin-right: 1rem;
+    }
+    .THIS .event-details-header{
+        position: relative;
+        font-weight: lighter;
+    }
+    .THIS .font-section-header{
+        font-size: 1rem;
+    }
+    .THIS .detail-section-title{
+        margin: 1rem 0 0.2rem;
+        writing-mode: unset;
+        transform: none;
+        text-align: right;
+        height: auto;
+        border-bottom: .15rem solid white;
+        border-left: none;
+        height: auto!important;
+        font-size: 1.4rem;
+        margin-left: 1rem;
+        border-bottom: none!important;
+    }
+    .THIS .detail-section-title:after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: .15rem;
+        padding: 0;
+        margin: 0 0 0 1rem;
+        background-color: #ffb369;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .THIS .detail-section-body{
+        /*width: auto !important;*/
+        margin: 1rem 1.5rem 1rem!important;
+    }
+    .THIS .font-header, .THIS .font-body{
+        font-size: 1rem;
+    }
+    
+    .THIS .detail-section{
+        display: inline;
+    }
+    .THIS .slds-map_container{
+        padding: 0;
+    }
+    
+    .THIS .slds-map  {
+    	min-width: 0;
+    }
+    
+    
+    
+}

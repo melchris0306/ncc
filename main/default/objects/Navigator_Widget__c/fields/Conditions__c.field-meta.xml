@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conditions__c</fullName>
+    <label>Widget Data Condition</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Widget_Child_Object__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Missed</fullName>
+                <default>false</default>
+                <label>Milestone Missed Status</label>
+            </value>
+            <value>
+                <fullName>On-Going</fullName>
+                <default>false</default>
+                <label>Milestone Ongoing Status</label>
+            </value>
+            <value>
+                <fullName>All Email Activity</fullName>
+                <default>false</default>
+                <label>All Email Activity</label>
+            </value>
+            <value>
+                <fullName>Event/Session Registration Status</fullName>
+                <default>false</default>
+                <label>Event/Session Registration Status</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>N/A</controllingFieldValue>
+            <controllingFieldValue>Participant_Milestone__c</controllingFieldValue>
+            <valueName>Missed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N/A</controllingFieldValue>
+            <controllingFieldValue>Participant_Milestone__c</controllingFieldValue>
+            <valueName>On-Going</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N/A</controllingFieldValue>
+            <controllingFieldValue>Communication_Recipient__c</controllingFieldValue>
+            <valueName>All Email Activity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N/A</controllingFieldValue>
+            <controllingFieldValue>Session_Participant__c</controllingFieldValue>
+            <valueName>Event/Session Registration Status</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

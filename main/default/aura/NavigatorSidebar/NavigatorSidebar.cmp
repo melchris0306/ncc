@@ -1,0 +1,54 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global"  controller="NavigatorMenuConfigurationController">
+    <!-- load Lodash scripts -->
+    <ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+
+    <aura:attribute name="FileDirectory" type="String"  default="" />
+    <!-- Attributes -->
+    <aura:attribute name="navigationData" type="List" description="The list of sections and their items." />
+    <aura:attribute name="contactId" type="String" />
+    <aura:attribute name="token" type="String" />
+    <aura:attribute name="currentUrl" type="String"  default="" />
+    <aura:attribute name="currentPagePath" type="String"  default="" />
+    
+    <!-- Leif CCN-NAV-3557-DV -->
+    <aura:attribute name="menuConfigurationList" type="List" />
+
+    <!-- Handlers -->
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:handler name="navigationItemClick" event="c:navigationItemClick" action="{!c.handleNavigationItemClick}"/>
+    <aura:handler event="c:NavigatorRecord" action="{!c.handleNavigatorRecord}" />
+
+    <div class="navigation-items" style="--theme-color1:rgb(220, 220, 220);--theme-color2:white;--theme-color3:white;--theme-color3-intense:white;">
+        <aura:iteration items="{! v.menuConfigurationList }" var="tab">
+            <div class="slds-m-bottom_xx-small">
+                <aura:if isTrue="{!tab.active}">
+                    
+                <!-- Leif CCN-NAV-3557-DV -->
+                    <aura:if isTrue="{!tab.pageUrl == v.currentPagePath}">
+                        <c:navigationItem aura:id="{!tab.key}"
+                                          label="{!tab.fieldLabel}" 
+                                          name="{!tab.key}" 
+                                          link="{!tab.pageUrl}" 
+                                          sldsIcon="{!tab.sldsIconName}"
+                                          iconUrl="{!tab.iconimageurl}"
+                                          currentURL="{!v.currentUrl}"
+                                          isSelected="true">
+                        </c:navigationItem>
+                        <aura:set attribute="else">
+                            <c:navigationItem aura:id="{!tab.key}"
+                                              label="{!tab.fieldLabel}" 
+                                              name="{!tab.key}" 
+                                              link="{!tab.pageUrl}" 
+                                              sldsIcon="{!tab.sldsIconName}"
+                                              iconUrl="{!tab.iconimageurl}"
+                                              currentURL="{!v.currentUrl}"
+                                              isSelected="false">
+                            </c:navigationItem>
+                        </aura:set>
+                    </aura:if>
+                    <!-- Leif CCN-NAV-3557-DV END-->
+                </aura:if>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

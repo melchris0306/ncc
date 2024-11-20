@@ -1,0 +1,152 @@
+<aura:component controller="MassSessionSignUpController">
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+    
+    <!-- For Rank Type Values -->
+    <aura:attribute name="optionsRank" type="List"/>
+    <aura:attribute name="selectedValueRank" type="String"/>
+    
+    <!-- Session Participant Record -->
+    <aura:attribute name="sessionPart" type="Object" />
+    <aura:attribute name="disableButton" type="Boolean"/>
+    <aura:attribute name="loading" type="Boolean"/>
+
+    <!-- Event -->
+    <aura:registerEvent name="massSessionEventReg" type="c:MassSessionEvent"/>
+    <aura:if isTrue="{!v.loading}">
+        <lightning:spinner alternativeText="Loading" size="large" />
+    </aura:if>
+
+    <!--XEN REYES March 5, 2023 CCN-EVE-2631-DV -->
+    <aura:attribute name="dataCollectionRecords" type="Object"/>
+    <aura:attribute type="String" name="rankHolder" default=""/>
+    <aura:attribute type="String" name="rankGroup" default=""/>
+    
+    <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+    <aura:attribute name="shouldShowRank" type="Boolean" default="false" />
+    <aura:attribute name="shouldShowTitle" type="Boolean" default="false" />
+    <aura:attribute name="isDoneLoadingItem" type="Boolean" default="false" />
+    <aura:attribute name="titleItem" type="Object" default="" />
+
+    <tr class="slds-hint-parent">
+        <td data-label="Role" scope="row" class="roleContainer">
+            <div class="roleClass">
+                <span >{!v.sessionPart.Role}</span>
+            </div>    
+            <div class="roleDescClass">
+                <p>{!v.sessionPart.RoleDescription}</p>
+            </div>
+        </td>
+        
+        <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+        <!-- Mel Mallorca - CCN-EVE-3304-DV -->
+        <aura:if isTrue="{!v.shouldShowRank}">
+            <td data-label="Rank">
+                <div class="slds-truncate rowPadding" title="Rank">
+                    <!-- This is where we get the dyanamic values from the client-side
+                controller and display it here -->
+                    <lightning:select name="Rank" aura:id="field" value="{!v.sessionPart.Rank}"  
+                                      onchange="{!c.handleRankChange}" disabled="{!v.disableButton}"
+                                      class="required-field row-field">
+                        
+                        <!--XEN REYES March 5, 2023 CCN-EVE-2631-DV -->
+                        <!--aura:iteration items="{!v.optionsRank}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                    </aura:iteration!-->
+                        
+                        <aura:iteration items="{!v.dataCollectionRecords}" var="mapKey" indexVar="key">  
+                            <optgroup label="{!mapKey.key}"></optgroup>
+                            <aura:iteration items="{!mapKey.value}" var="mapValue">
+                                <option text="{!mapValue}" value="{!mapValue + '|' + mapKey.key}" selected="{!mapValue == v.selectedValueRank}"/>
+                            </aura:iteration>
+                        </aura:iteration>
+                    </lightning:select>
+                    <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                </div>
+            </td> 
+        </aura:if>
+        
+        
+        <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+        <!-- Mel Mallorca - CCN-EVE-3303-DV -->
+        <aura:if isTrue="{!v.shouldShowTitle}">
+            <td data-label="Rank">
+                <aura:if isTrue="{!v.isDoneLoadingItem}">
+                    <div class="slds-truncate rowPadding titleField" title="Rank">
+                        <lightning:select name="Rank" aura:id="field" value="{!v.sessionPart.Rank}"  
+                                          onchange="{!c.handleRankChange}"
+                                          variant="label-hidden"
+                                          messageWhenValueMissing="{!v.titleItem.messageWhenRequired}"
+                                          disabled="{!v.disableButton}"
+                                          class="required-field row-field">
+                            <!-- CCN-EVE-3303-DV - Jonah Baldero - September 26, 2023 -->
+                            <aura:iteration items="{!v.titleItem.picklistOptions}" var="option">
+                                <option value="{!option.value}">{!option.label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                        <lightning:formattedText class="required-field-indicator" value="Required Field" />
+                    </div>
+                </aura:if>
+            </td>
+        </aura:if>
+        
+        <td data-label="First Name" scope="row">
+            <div class="slds-truncate rowPadding" title="First Name">
+                <lightning:input
+                    aura:id="field" 
+                    name="FirstName" 
+                    placeholder="First Name"
+                    value="{!v.sessionPart.FirstName}" 
+                    onblur="{!c.handleFirstNameChange}" 
+                    onchange="{!c.handleFirstNameChange}" 
+                    disabled="{!v.disableButton}"
+                    class="required-field row-field"/>
+                <lightning:formattedText class="required-field-indicator" value="Required Field" />
+            </div>
+        </td>
+        <td data-label="Last Name" scope="row">
+            <div class="slds-truncate rowPadding" title="Last Name">
+                <lightning:input 
+                    aura:id="field" 
+                    name="LastName" 
+                    placeholder="Last Name" 
+                    value="{!v.sessionPart.LastName}" 
+                    onblur="{!c.handleLastNameChange}" 
+                    onchange="{!c.handleLastNameChange}" 
+                    disabled="{!v.disableButton}"
+                    class="required-field row-field"/>
+                <lightning:formattedText class="required-field-indicator" value="Required Field" />
+            </div>
+        </td>
+        <td data-label="Email" scope="row">
+            <div class="slds-truncate rowPadding" title="Email">
+                <!-- Gian Bata - CCN-EVE-2323-DV: addedd pattern and patter mismatch message"-->
+                <lightning:input 
+                    aura:id="field" 
+                    type="email" 
+                    name="Email" 
+                    class="required-field row-field"
+                    placeholder="Email@Email.com" 
+                    value="{!v.sessionPart.Email}" 
+                    disabled="{!v.disableButton}"
+                    onblur="{!c.handleEmailChange}"
+                    onchange="{!c.handleEmailChange}" 
+                    pattern=".+@.+(\.[a-zA-Z]{1,})+"
+                    messageWhenPatternMismatch="Invalid Email Format"
+                    messageWhenTypeMismatch="Invalid Email Format"/>
+                <lightning:formattedText class="required-field-indicator" value="Required Field" />
+            </div>
+        </td>
+        
+        <aura:if isTrue="{!v.disableButton}"><!--CCN-802-->
+            <aura:set attribute="else">
+                <td data-label="Save" scope="row">
+                    <div class="slds-truncate rowPadding slds-p-top_medium" title="Save">
+                        <!--<lightning:button variant="brand" label="Remove" title="Brand action" onclick="{! c.handleRemove }" disabled="{!v.disableButton}" />-->
+                        <img src="{!$Resource.communityBin}" onclick="{! c.handleRemove }" width="36" height="36" class="icon-remove"/>
+                    </div>
+                </td>
+            </aura:set>
+        </aura:if>
+    </tr>
+    
+</aura:component>

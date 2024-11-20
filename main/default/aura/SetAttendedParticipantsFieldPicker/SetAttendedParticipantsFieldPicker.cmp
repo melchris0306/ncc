@@ -1,0 +1,62 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId" access="global"
+                controller="SetAttendedParticipantsFieldPickerCtrl">
+    
+    <aura:attribute name="attendedParticipantsFields" type="List"/>
+    <aura:attribute name="attendedParticipantsFieldsCopy" type="List"/>
+    <aura:attribute name="selectAll" type="Boolean"/>
+    <aura:attribute name="requiredAll" type="Boolean"/>
+    <aura:attribute name="isReadOnly" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+
+    <lightning:card aura:id="lightCard" class="slds-card_boundary" title="Set Attended Participants Fields" iconName="utility:chevrondown">   
+        
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.isReadOnly}">
+                <lightning:button variant="neutral" onclick="{! c.handleEdit }" label="Edit" />
+                
+                <aura:set attribute="else">
+                    <lightning:button variant="neutral" onclick="{! c.handleCancel }" label="Cancel"/>
+                    <lightning:button variant="brand" onclick="{! c.handleAttendedParticipantFields }" label="Save" />        
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small" 
+               aria-labelledby="element-with-table-label other-element-with-table-label">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <lightning:input disabled="{!v.isReadOnly}" checked="{!v.selectAll}" aura:id="selectAllFieldCheckbox" 
+                                         onchange="{!c.checkAllFields}" type="checkbox" label="" name="allSelected" class="input-inline"/>   
+                        <div class="slds-truncate input-inline" title="Fields">Fields</div>
+                    </th>
+                    <th class="slds-align_absolute-center" scope="col">
+                        <lightning:input disabled="{!v.isReadOnly}" checked="{!v.requiredAll}" aura:id="requiredAllFieldCheckbox" 
+                                         onchange="{!c.checkAllFields}" type="checkbox" label="" name="allRequired" class="input-inline"/>   
+                        <div class="slds-truncate input-inline" title="Is Required?">Is Required?</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.attendedParticipantsFields}" var="item">
+                    <tr class="slds-hint-parent">
+                        <th data-label="{!item.label}" scope="row">
+                            <div class="slds-truncate" title="{!item.label}">
+                                <lightning:input disabled="{!v.isReadOnly}" class="input-inline" type="checkbox" name="inputActive" 
+                                                 checked="{!item.active}" onchange="{!c.checkSelectAllAndSetRequired}"/>    
+                                <span class="input-inline">{!item.label}</span>
+                            </div>
+                        </th>
+                        <td data-label="Is Required?">
+                            <div class="slds-truncate slds-align_absolute-center" title="Is Required?">
+                                <lightning:input disabled="{!v.isReadOnly}" type="checkbox" name="inputRequired" checked="{!item.required}" 
+                                                 onchange="{!c.checkRequiredAll}"/> 
+                            </div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+</aura:component>

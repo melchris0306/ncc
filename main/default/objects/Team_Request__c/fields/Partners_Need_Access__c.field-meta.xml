@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partners_Need_Access__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Will the partern/client ever need access to site?</inlineHelpText>
+    <label>Partners Need Access?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

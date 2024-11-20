@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MutuallyExclusiveFilterObjectAndField</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISBLANK(Filter_Object__c) &amp;&amp; !ISBLANK(Filter_Object_Field__c)) || (!ISBLANK(Filter_Object__c) &amp;&amp; ISBLANK(Filter_Object_Field__c))</errorConditionFormula>
+    <errorMessage>Filter Object and Filter Field is mutually Exclusive</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ApplicationValidation</fullName>
+    <active>false</active>
+    <description>Whenever the case is closed the application is blank, add an error in the Application field &quot;Add a value&quot;.</description>
+    <errorConditionFormula>IF(AND(OR(ISPICKVAL(Status, &apos;Closed&apos;),Create_Project_Task__c = true), ISBLANK(TEXT(Application__c))), true, false)</errorConditionFormula>
+    <errorDisplayField>Application__c</errorDisplayField>
+    <errorMessage>Add a value</errorMessage>
+</ValidationRule>

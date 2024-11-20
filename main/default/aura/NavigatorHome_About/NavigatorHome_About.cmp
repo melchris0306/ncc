@@ -1,0 +1,21 @@
+<aura:component>
+    <header class="title">
+        About MHS Genesis
+    </header>
+    <div class="container">
+        <img src="{!$Resource.AboutGenesisDemo}"/>
+        <p class="description">
+            <b>MHS GENESIS,</b> the new electronic health record for the Military Health System (MHS), provides
+            enhanced, secure technology to manage your health information. MHS GENESIS integrates inpatient
+            and outpatient solutions that will connect medical and dental information across the continuum of
+            care, from point of injury to the military treatment facility. This includes garrison, operational, and en
+            route care, increasing efficiencies for beneficiaries and healthcare professionals.
+        </p>
+        <br/>
+        <p class="description">
+            When fully deployed, MHS GENESIS will provide a single health record for service members, veterans,
+            and their families.
+        </p>
+
+    </div>
+</aura:component>

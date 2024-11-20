@@ -1,0 +1,6 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <!-- TODO: Make all images configurable in Salesforce -->
+    <footer class="footer-bar">
+        <img src="{!$Resource.CompassChangeNavigator_Logo_Demo}" />
+    </footer>
+</aura:component>

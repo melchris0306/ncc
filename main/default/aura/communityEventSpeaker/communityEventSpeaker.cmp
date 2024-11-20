@@ -1,0 +1,55 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ChangeCloudController">
+    <aura:attribute name="showComponent" type="Boolean" default="true" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="speakerList" type="CCESpeakerWrapper"/>
+    <div>
+        <aura:if isTrue="{!v.showComponent}">
+            <div class="speaker-section">
+                <div>
+                    <div class="float-lefts speaker-title">
+                        <div class="speaker-section-title font-section-header">SPEAKERS</div>
+                    </div>
+                    <div class="speaker-container-outer">
+                        <div class="speaker-container">
+                            <aura:iteration items="{!v.speakerList}" var="speaker">
+                                <div class="speaker-item">
+                                    <div class="float-lefts profile-float">
+                                        <div class="speaker-profile">
+                                            <aura:if isTrue="{!!speaker.isHideProfilePic}">
+                                                <div class="speaker-profile-image" style="{!'background-image:url('+ speaker.ProfilePicUrl +')'}"></div>
+                                            	<aura:set attribute="else">
+                                                    <aura:if isTrue="{!!$Browser.isPhone}">
+                                                        <div class="speaker-profile-image" style="border:none"></div>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                    <div class="float-lefts speaker-float">
+                                        <aura:if isTrue="{!speaker.isHideProfilePic}">
+                                            <div class="speaker-detail-full">
+                                                <div class="font-header">{!speaker.FirstName} {!speaker.LastName}</div>
+                                                <div class="slds-text-heading_small">{!speaker.Title}</div>
+                                                <div class="font-body"><lightning:formattedRichText value="{!speaker.Description}"/></div>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!!speaker.isHideProfilePic}">
+                                            <div class="speaker-detail">
+                                                <div class="font-header">{!speaker.FirstName} {!speaker.LastName}</div>
+                                                <div class="slds-text-heading_small">{!speaker.Title}</div>
+                                                <div class="font-body"><lightning:formattedRichText value="{!speaker.Description}"/></div>
+                                            </div>    
+                                        </aura:if>
+                                    </div>
+                                    <div class="clear-section"></div>
+                                </div>
+                            </aura:iteration>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aura:if>
+    </div>
+    <div class="clear-section"></div>
+    
+</aura:component>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Medical Issue</fullName>
+                <default>false</default>
+                <label>Medical Issue</label>
+            </value>
+            <value>
+                <fullName>Medical Inquiry</fullName>
+                <default>false</default>
+                <label>Medical Inquiry</label>
+            </value>
+            <value>
+                <fullName>Acute Illness</fullName>
+                <default>false</default>
+                <label>Acute Illness</label>
+            </value>
+            <value>
+                <fullName>Annual Labs</fullName>
+                <default>false</default>
+                <label>Annual Labs</label>
+            </value>
+            <value>
+                <fullName>Care Coordination</fullName>
+                <default>false</default>
+                <label>Care Coordination</label>
+            </value>
+            <value>
+                <fullName>Chronic Condition</fullName>
+                <default>false</default>
+                <label>Chronic Condition</label>
+            </value>
+            <value>
+                <fullName>Preventive Care</fullName>
+                <default>false</default>
+                <label>Preventive Care</label>
+            </value>
+            <value>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+                <label>Wellness</label>
+            </value>
+            <value>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+                <label>Follow-up</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

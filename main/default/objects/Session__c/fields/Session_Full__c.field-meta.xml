@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_Full__c</fullName>
+    <description>Identifies if the Session Participants for the Session has reached the Max No. of Participants Allowed</description>
+    <formula>Total_Participants_Registered__c &gt;= Session_Registration_Limit__c</formula>
+    <label>Session Full</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

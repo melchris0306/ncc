@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L1_Days__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Level 1 Notification:
+The number of days prior to Event/Session Start Date.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Level 1 Notification:
+A number of days prior to Event/Session Start Date or Catchup Start Date.</inlineHelpText>
+    <label>L1 Days</label>
+    <precision>18</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

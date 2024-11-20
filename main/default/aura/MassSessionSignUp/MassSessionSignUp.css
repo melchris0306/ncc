@@ -1,0 +1,226 @@
+.THIS {
+    background-color : white;
+}
+.THIS .session-signup-box{
+    display: flex;
+}
+.THIS .session-signup-date {
+    float : left;
+    background: #003B71;
+    padding : 11px 13px;
+    text-align: center;
+    height: 81px;
+    width: 81px;
+    color: white;
+    margin-right: 2rem;
+
+}
+
+/* CCN-EVE-2323-DV added :not([disabled]) to the selector */
+.THIS .button-save:not([disabled]) {
+    background: #FFAE5E;
+    box-shadow: 0px 3px 6px lightgrey;
+    border-color: lightgrey;
+}
+.THIS .session-signup-buttons {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.THIS .session-signup-date-month {
+    font-size: 29px;
+}
+.THIS .session-signup-date-date {
+    font-size: 17px;
+    line-height: 50%;
+}
+
+.THIS .sessionLocation {
+    font-size: 16px;
+}
+
+.THIS .session-signup-table-detail {
+    margin-bottom: 1rem;
+}
+
+.THIS .session-signup-table {
+    float : left;
+    width: 100%;
+    background: #ECECEC;
+    padding: 20px 25px;
+}
+
+.THIS .session-top-title-container{
+    float : left;
+}
+
+.THIS .session-top-button-container {
+    float : right;
+}
+
+.THIS .session-instruction-box {
+    background: #ECECEC;
+    margin: 1rem 0rem;
+    padding : 1.5rem;
+    border-left-color: #0083C1;
+    border-left-width: 0.5rem;
+    border-left-style: solid;
+}
+
+.THIS .session-instruction-label {
+    font-size: 18px;
+    font-weight: bold;
+}
+.THIS .session-instruction-text
+{
+    font-size: 16px;
+}
+
+.THIS .session-top-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.THIS .main-session-box {
+    padding: 3rem 2rem;
+    padding-right : 4rem;
+    width : 100%;
+}
+
+.THIS .columnFont{
+    font-size:      16px;
+    color: MidnightBlue;
+}
+
+.THIS .sessionDateTime {
+    font-size:      16px;
+    font-weight:    normal;
+}
+
+.THIS .signUpIns {
+    height: 30%;
+    width: 70%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    border: 2px solid none;
+}
+
+.THIS .signUpInsLabel{
+    font-size:      16px;
+    font-weight:    bold;
+    padding: 7px 7px 7px 7px;
+    background-color: lightgray;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.THIS .signUpInsText{
+    min-height: 10vh;
+    font-size:      14px;
+    padding: 7px 7px 7px 7px;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.THIS .tableClass{
+    min-height: 50vh;
+    width: 70%;
+   	margin-left: auto;
+    margin-right: auto;
+    background-color: none;
+    overflow-x: auto;
+}
+
+.THIS .saveClass{
+    margin-right: 5px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.THIS .saveClass2{
+    margin-right: 5px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.THIS .returnClassContainer{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.THIS .returnClass{
+    float : right;
+    margin-bottom: 30px;
+}
+
+.THIS .titleClass{
+    float : left;
+    font-size:      16px;
+    font-weight:    bold;
+    margin-bottom: 30px;
+}
+
+.THIS .clearfix::after {
+  clear: both;
+  display: block;
+}
+
+.THIS .noRolesClass{
+    min-height: 50vh;
+    font-size:      18px;
+    font-weight:    bold;
+    background-color: none;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 50px;
+   	margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50vh;       /* The same as your div height */
+}
+
+
+/* Leif de Gracia CCN-EVE-3304-DV */
+.THIS .required-field.required-error select {
+    border: 1px solid red;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .slds-truncate.columnFont.required-header::before {
+    content: '* ';
+    color: red;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .session-signup-table > .required-field-indicator {
+    color: red;
+    float: right;
+    margin-bottom: 29.2px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+/*Tablet*/
+@media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)
+    and (orientation : portrait) {
+    .THIS .containerDiv {
+        width: 100%;
+        padding: 2rem .5rem;
+        min-height: 1224px;
+    }
+}
+
+/*Phone*/
+@media screen and (max-device-width: 640px) {
+    .THIS .containerDiv {
+        width: 100%;
+        padding: 2rem .5rem;
+    }
+}

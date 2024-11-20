@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Logo_URL2__c</fullName>
+    <inlineHelpText>Email Logo URL for Event Invitation Notification and Event Registration Reminder</inlineHelpText>
+    <label>Email Logo URL2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

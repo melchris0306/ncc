@@ -1,0 +1,155 @@
+<aura:component access="global" controller="CommunicationEmail_Controller">
+    <!--  this tag sets modal size -->
+    <aura:html tag="style">
+    	.slds-modal__container {
+    		min-height: 60vh !important;
+         	min-width: 90vw !important;
+        }
+        .slds-spinner_container{
+            background: none;
+        }
+    </aura:html>     
+    <!-- load Lodash scripts -->
+    <ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <!-- public attributes -->
+    <aura:attribute name="communication" type="Communication__c" default="{ Id : null,
+                                                                            Name : '',
+                                                                            Organization_Wide_Email_Id__c : null,
+                                                                            Subject__c : '',
+                                                                            Body__c : '',
+                                                                            Email_Recipient_CC__c : '',
+                                                                            Email_Recipient_BCC__c : '',
+                                                                            Reply_Email_Address__c : null,
+                                                                            Sender_Name__c : '',
+                                                                            Sender_Email_Address__c : '',
+                                                                            Milestone__c : false,
+                                                                            Email_Date__c : null,
+                                                                            Email_Template_Id__c : null}"/>
+
+    <aura:attribute name="user" type="User" />
+    <aura:attribute name="orgWideEmailAddressRecord" type="OrgWideEmailAddress" />
+    <aura:attribute name="orgWideEmailList" type="OrgWideEmailAddress[]" />
+    
+    <!-- private attribute -->
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="orgWideEmailAddressOptions" type="Object[]"/>
+    <aura:attribute name="selectedSender" type="String"/>
+    <aura:attribute name="selectedReplyReceiver" type="String"/>
+    <aura:attribute name="isReplyReceiverDisabled" type="Boolean"/>
+    <aura:attribute name="selectedEmailTemplate" type="Object[]" access="private"/>
+    
+    <!-- Updated by XenReyes Oct282022 CCN-814 -->
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="attachmentRecords" type="List" default="[]"/>
+
+    <aura:registerEvent name="commsEvent" type="c:CommunicationEmailEvent"/>
+    
+        <aura:renderIf isTrue="{!v.isLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            <aura:set attribute="else">
+                <div class="slds-m-vertical_small slds-var-p-around_small">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-12">
+                            <lightning:input name="communication-name" 
+                                             label="Communication Name" 
+                                             value="{!v.communication.Name}" 
+                                             onchange="{!c.handleCommunicationNameChange}"
+                                             required="true"/>
+                                             
+                            <lightning:input label="Subject" 
+                                             onchange="{handleSubjectChange}" 
+                                             value="{!v.communication.Subject__c}"
+                                             required="true"/>
+                            <lightning:combobox name="sender"
+                                                label="From"
+                                                value="{!v.selectedSender}"
+                                                placeholder="Select an Email"
+                                                options="{!v.orgWideEmailAddressOptions}"
+                                                onchange="{!c.handleSenderChange}" />
+                            <!-- Reply Email Address -->
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="reply-receiver">Set Reply Email Address</label>
+                                <lightning:helptext content="{!$Label.c.Compass_Email_Reply_Email_HelpText}" />
+                                <div id="reply-receiver" class="slds-grid slds-gutters slds-form-element__control">
+                                    <div class="slds-col slds-col_bump-left slds-size_1-of-12 reply-email-chexbox">
+                                        <lightning:input type="checkbox-button"
+                                                        name="replyEmailCheckbox"
+                                                        onchange="{!c.toggleReplyReceiver}"
+                                                        checked="{! !v.isReplyReceiverDisabled}"/>
+                                    </div>
+                                    <div class="slds-col reply-email-input">
+                                        <lightning:combobox name="replyEmail"
+                                                            value="{!v.selectedReplyReceiver}"
+                                                            placeholder="Select an Email"
+                                                            options="{!v.orgWideEmailAddressOptions}"
+                                                            onchange="{!c.handleReplyReceiverChange}" 
+                                                            disabled="{!v.isReplyReceiverDisabled}"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <lightning:fileUpload label="Upload Attachment"
+                                name="fileUploader"
+                                multiple="true"
+                                recordId="{!v.recordId}"
+                                onuploadfinished="{!c.handleUploadFinished}"/>
+                            <br/>
+
+                            <!-- Updated by XenReyes Oct282022 CCN-814 !-->
+                            <aura:renderif isTrue="{!not(empty(v.attachmentRecords))}">
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <tr class="slds-line-height_reset">
+                                      <th><b>ATTACHMENTS</b></th>
+                                    </tr>
+                                    <aura:iteration items="{!v.attachmentRecords}" var="item">
+                                        <tr class="slds-hint-parent">
+                                            <td class="slds-truncate">{!item.name}</td>
+                                            <td>
+                                                <div id="{!item.documentId}" onclick="{!c.handledeleteAttachment}" style="cursor: pointer">
+                                                    <lightning:icon iconName="utility:delete" alternativeText="Delete!" size="x-small"/>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </aura:iteration>
+                                  </table>
+                            </aura:renderif>
+
+                        </div>
+                        <div class="slds-col slds-size_6-of-12">
+                            <lightning:input type="date" 
+                                             name="email-date" 
+                                             label="Email Date" 
+                                             value="{!v.communication.Email_Date__c}" 
+                                             onchange="{!c.handleEmailDateChange}"/>
+                            <c:lookup aura:id="templateLookup"
+                                      selection="{!v.selectedEmailTemplate}"         
+                                      onsearch="{!c.handleTemplateSearch}"
+                                      onselectionchange="{!c.handleTemplateChange}"
+                                      label="Email Template"
+                                      placeholder="Search Email Template"
+                                      required="true"/>
+                            
+                            <div class="slds-grid">
+                                <div class="slds-col slds-col_bump-left slds-size_6-of-12 slds-p-left_none">
+                                    <lightning:input type="datetime" 
+                                                name="email-time" 
+                                                label="Email Delivery Schedule"
+                                                value="{!v.communication.Email_Delivery_Date_Time_Schedule__c}"/>
+                                </div>
+                                <div class="slds-col slds-col_bump-left slds-size_6-of-12">
+                                    <lightning:input class="milestone-checkbox" 
+                                             type="toggle" 
+                                             label="Milestone" 
+                                             name="milestone" 
+                                             checked="{!v.communication.Milestone__c}"
+                                             onchange="{!c.handleMilestoneChange}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aura:set>
+        </aura:renderIf>
+</aura:component>

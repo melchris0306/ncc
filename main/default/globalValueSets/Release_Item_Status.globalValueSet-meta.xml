@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Not Ready</fullName>
+        <default>false</default>
+        <label>Not Ready</label>
+    </customValue>
+    <customValue>
+        <fullName>For Release (UAT)</fullName>
+        <default>false</default>
+        <label>For Release (UAT)</label>
+    </customValue>
+    <customValue>
+        <fullName>For Release (Demo)</fullName>
+        <default>false</default>
+        <label>For Release (Demo)</label>
+    </customValue>
+    <customValue>
+        <fullName>For Release (Prod)</fullName>
+        <default>false</default>
+        <label>For Release (Prod)</label>
+    </customValue>
+    <customValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Blocked</fullName>
+        <default>false</default>
+        <label>Blocked</label>
+    </customValue>
+    <customValue>
+        <fullName>Deployed</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Deployed</label>
+    </customValue>
+    <customValue>
+        <fullName>In Deployment</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In Deployment</label>
+    </customValue>
+    <customValue>
+        <fullName>Ready for Deployment</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ready for Deployment</label>
+    </customValue>
+    <customValue>
+        <fullName>In UAT Testing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In UAT Testing</label>
+    </customValue>
+    <customValue>
+        <fullName>In Unit Testing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In Unit Testing</label>
+    </customValue>
+    <customValue>
+        <fullName>In Development</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In Development</label>
+    </customValue>
+    <customValue>
+        <fullName>In Smoke Testing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In Smoke Testing</label>
+    </customValue>
+    <masterLabel>Release Item Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,196 @@
+/* DEFAULT STYLING */
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #E5E5E5;
+}
+
+.required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.custom-button {
+    background: #003B71 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font-size: 16px;
+    line-height: 21px;
+    color: white;
+    width: 90px;
+    height: 31px;
+    padding: 18px;
+    border-radius: 7px;
+}
+
+.custom-button:active {
+    opacity: 1;
+    background: #007CBA 0% 0% no-repeat padding-box;
+}
+
+.custom-button:hover {
+    opacity: 1;
+    background: #76BC43 0% 0% no-repeat padding-box;
+}
+
+.field-label {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-family: Calibri;
+    text-align: left;
+}
+
+.survey-questions {
+    border-top: 2px solid #93D500;
+    opacity: 1;
+    padding-top: 18px;
+}
+
+.slds-button{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.survey-independent {
+    width: 64% !important;
+    margin: 0 auto;
+    flex: 1 0 auto;
+    width: 100%;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    background-color: white;
+}
+
+.survey-title {
+    text-align: left;
+    font: normal normal normal 22px/26px Calibri-Bold;
+    letter-spacing: 0px;
+    color: #54565A;
+    opacity: 1;
+    font-size: 22px !important;
+    line-height: 26.4px !important;
+    font-family: Calibri;
+    font-weight: Bold;
+    margin-bottom: 20px;
+}
+
+.survey-description {
+    margin-bottom: 20px;
+    font-family: Calibri !important;
+    font-size: 18px !important;
+}
+
+.slds-text-heading_large{
+    font-size: 40px;
+    margin-bottom:15px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.slds-text-heading_medium{
+    font-size: 25px;
+    margin-bottom:15px;
+    font-weight: 500;
+}
+
+.slds-form-element__control{
+    margin-bottom: 15px;
+}
+
+.slds-form-element{
+    margin-bottom: 15px;
+}
+
+.slds-form-element__label{
+    font-weight: 700;
+}
+
+.slds-form-element__help{
+    color: #c23934;
+    font-size: .75rem;
+    margin-top: .125rem;
+    display: block;
+}
+
+.disclaimer{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-family: calibri;
+}
+
+.disabled{
+    pointer-events: none;
+}
+
+.footer{
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.footer-logo-image{
+    width: 250px;
+    height: 200px;
+}
+
+abbr.slds-required{
+    display: none !important;
+}
+
+.survey-logo{
+    max-height: 8rem !important;
+    max-width: 250px;
+}
+
+.slds-input{
+    margin: 0 !important;
+}
+
+.disclaimer-text {
+    white-space: pre-wrap !important;
+    margin-bottom: 20px;
+}
+
+.body {
+    margin-top: 20px;
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .slds-text-heading_large{
+        font-size: 1.4rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .survey-independent {
+        padding: 1rem 2rem;
+        width: 100% !important;
+    }
+
+    .survey-title {
+        text-align: center;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .slds-text-heading_large{
+        font-size: 1.7rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .survey-independent {
+        padding: 1rem 2rem;
+        width: 79% !important;
+    }
+
+    .survey-title {
+        text-align: center;
+    }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Oracle_Cerner_Compass_Requirements</fullName>
+    <columns>NAME</columns>
+    <columns>Capture_Title__c</columns>
+    <columns>Capture_Description__c</columns>
+    <columns>Functional_Clinical_Area_Value__c</columns>
+    <columns>Status__c</columns>
+    <columns>Current_State_Process_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Campaign__c</field>
+        <operation>equals</operation>
+        <value>Oracle Cerner Compass Implementation</value>
+    </filters>
+    <filters>
+        <field>Type_Values__c</field>
+        <operation>equals</operation>
+        <value>Requirement</value>
+    </filters>
+    <label>Oracle Cerner Compass Requirements</label>
+</ListView>

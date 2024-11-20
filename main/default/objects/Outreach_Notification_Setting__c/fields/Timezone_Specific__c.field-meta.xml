@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Timezone_Specific__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Indicates whether to use Timezone of Event/Session OR System Time when sending the notification.</description>
+    <inlineHelpText>If unchecked, the system/organization timezone will be used when sending the Outreach Notification and not the timezone set from the Event/Session.</inlineHelpText>
+    <label>Timezone Specific</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,10 @@
+.THIS .slds-accordion__summary{
+    background-color: rgb(243 242 242);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.THIS .input-inline {
+    display: inline-block !important;
+    vertical-align: middle;
+}

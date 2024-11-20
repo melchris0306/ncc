@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Process_Capture_For_Editing</fullName>
+    <columns>NAME</columns>
+    <columns>Capture_Title__c</columns>
+    <columns>In_House__c</columns>
+    <columns>Referred_to_Community__c</columns>
+    <columns>Current_Process_State_Email__c</columns>
+    <columns>Notes__c</columns>
+    <columns>Entity_Value_L1__c</columns>
+    <columns>Entity_L2__c</columns>
+    <columns>Entity_Value_L2__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Compass_Capture__c.Process_Capture</value>
+    </filters>
+    <filters>
+        <field>Campaign__c</field>
+        <operation>equals</operation>
+        <value>Oracle Cerner Deployment CSR Compass Demo</value>
+    </filters>
+    <label>All Process Capture - For Editing</label>
+</ListView>

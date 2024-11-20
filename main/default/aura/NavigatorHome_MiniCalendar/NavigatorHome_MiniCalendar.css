@@ -1,0 +1,67 @@
+.THIS {
+    font-family: 'Roboto-Light';
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src:url(/resource/Roboto/Roboto-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src:url(/resource/Roboto/Roboto-Bold.ttf);
+}
+
+.THIS.title {
+    font-size: 1.4rem;
+    font-family: 'Roboto-Bold';
+}
+
+.THIS .anyCalendar{
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+.THIS .fc-toolbar h2 {
+    margin: 0;
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: rgb(22, 50, 92);
+}
+.THIS button.fc-button {
+    text-transform: capitalize;
+}
+.THIS .fc-icon {
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+
+.THIS .fc-head {
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-widget-header{
+    color: white;
+}
+
+.THIS .fc-state-active{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-state-disabled{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-day-header{
+    color: white;
+}
+
+.THIS h2{
+    color: rgb(3 45 96);
+    font-weight: bold;
+}
+
+.THIS .fc-row.fc-widget-header table thead tr th a {
+    color: white !important;
+}

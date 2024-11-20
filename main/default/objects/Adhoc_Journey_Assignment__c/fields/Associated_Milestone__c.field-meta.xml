@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Associated_Milestone__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Displays the Name of the Event or Survey</description>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL(Type__c,&quot;Event&quot;), HYPERLINK(&quot;/&quot; &amp; Event__r.Id, Event__r.Name),
+IF( ISPICKVAL(Type__c,&quot;Survey&quot;), HYPERLINK(&quot;/&quot; &amp; Survey__r.Id, Survey__r.Name),
+HYPERLINK(&quot;/&quot; &amp; Quick_Check__r.Id, Quick_Check__r.Name))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Associated Milestone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

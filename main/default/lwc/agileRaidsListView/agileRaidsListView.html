@@ -1,0 +1,25 @@
+<template>
+   <div>
+    <lightning-card title = "Agile RAID²">  
+        
+        <lightning-button-icon style="padding-right:5px;" icon-name="utility:refresh" label="Refresh" slot="actions" onclick = {refreshComponent}></lightning-button-icon>
+        <lightning-button label="New" slot="actions" onclick = {createNew}></lightning-button>
+        
+        <template if:true = {mydata}>  
+                
+            <div style="height: 500px;">  
+            <lightning-datatable
+                        key-field="Id"
+                        data={mydata}
+                        columns={mycolumns}
+                        show-row-number-column="true"
+                        onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </div>
+        </template>
+        <template if:true = {error}>  
+            {error}
+        </template>  
+    </lightning-card>
+    </div>
+</template>

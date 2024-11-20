@@ -1,0 +1,69 @@
+<template>
+    <!--RecordId: {recordId} -->
+    <template if:true={showLoadingSpinner}>
+        <div style="z-index: 10000 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:false={importData}>
+        <div>
+            <lightning-button variant="brand"
+                label="Import Survey Answers & Questions"
+                title="Import Survey Answers & Questions"
+                onclick={handleImportButton}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </template>
+
+    <template if:true={importData}>
+        <lightning-card title="Up loading Survey Questions & Answers">
+            <div style="margin-left:4%; margin:0px auto; width: 300px;">
+    
+                <div>
+                    <lightning-input label="Survey Questions" 
+                        name="file uploader" 
+                        onchange={handleFilesChangeQ} 
+                        type="file" 
+                        multiple="false">
+                    </lightning-input>
+                </div><br/>
+                <div class="slds-text-body_small slds-text-color_success"><b>{fileNameQ}</b>
+                </div><br/>
+    
+                <div>
+                    <lightning-input label="Survey Answer" 
+                        name="file uploader" 
+                        onchange={handleFilesChangeA} 
+                        type="file" 
+                        multiple="false">
+                    </lightning-input>
+                </div><br/>
+                <div class="slds-text-body_small slds-text-color_success"><b>{fileNameA}</b>
+                </div><br/>
+    
+                <div>
+                    <lightning-button 
+                        class="slds-m-top--medium" 
+                        label={UploadFile}
+                        onclick={handleSave}
+                        variant="brand" 
+                        disabled={isTrue}>
+                    </lightning-button>
+                </div>
+
+                </div><br/>
+                <div class="slds-text-body_small slds-text-color_error">
+                    <template for:each={errMessage} for:item="msg">
+                        <li key={msg}>
+                            <b>{msg}</b>
+                        </li>
+                    </template>
+                </div><br/>
+    
+            </div><br/><br/>
+        </lightning-card>
+
+    </template>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Chief_Missing_Available_or_Referr__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Referred_to_Community__c , &apos;Referred to Community&apos;,  IF( In_House__c , &apos;Available&apos;, &apos;Not Offered&apos;) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Report Chief Missing Available or Referr</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

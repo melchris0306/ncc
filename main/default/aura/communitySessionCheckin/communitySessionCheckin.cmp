@@ -1,0 +1,129 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="ChangeCloudController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="attendancePageTitle" type="String" default="Attendance"/>
+    <aura:attribute name="participantList" type="Session_Participant__c"/>
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="startDate" type="DateTime" />
+    <aura:attribute name="endDate" type="DateTime" />
+    
+    <!--CCN-EVE-3303-DV - Leif -->
+    <aura:attribute name="finalDate" type="String" />
+    
+    <!--CCN-EVE-3303-DV - Jonah - Sept 26, 2023 -->
+    <aura:attribute name="shouldShowRank" type="Boolean" default="false" />
+    <aura:attribute name="shouldShowTitle" type="Boolean" default="false" />
+    
+    <!-- CCN-EVE-3303-DV - Jonah - Sept 23, 2023 - Added timezone -->
+    <aura:attribute name="timeZone" type="String" />
+    <aura:attribute name="spinner" type="boolean" default="false"/> 
+
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+
+    <div>
+        <div class="main-section">
+            <div class="main-section-content">
+                <div class="main-header-section float-left">
+                    <div class="main-header-section-title height-auto">{!v.attendancePageTitle}</div>
+                </div>
+                <div class="main-header-section-content" id="contactus-section-top">
+                    <div>
+
+                        <div class="attendance-section-header">{!v.name}</div>
+                        <!--
+                        <div class="attendance-section-date"><lightning:formattedDateTime timeZone="EDT" value="{!v.startDate}" year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit" hour12="true"/> - <lightning:formattedDateTime value="{!v.endDate}" year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit" hour12="true"/></div>
+                        -->
+
+                        <!-- CCN-EVE-3303-DV - Jonah - Sept 23, 2023 - Added timezone -->
+                        <div class="attendance-section-date">{!v.finalDate} | {!v.timeZone}</div>
+
+                        <div class="attendance-section-table-container">
+                            <table class="attendance-section-table">
+                                <tr>
+                                    <th class="column-10"></th>
+                                    
+                                    <!--CCN-EVE-3303-DV - Jonah - Sept 26, 2023 -->
+                                    <aura:if isTrue="{!v.shouldShowTitle || v.shouldShowRank}">
+                                    	<th class="column-10">Title</th>
+                                    </aura:if>
+                                    <th class="column-20">First Name</th>
+                                    <th class="column-20">Last Name</th>
+                                    <th class="column-25">Email</th>
+                                    <th>Role</th>
+                                </tr>
+                                <aura:iteration items="{!v.participantList}" var="participant" indexVar="index">
+                                    <tr>
+                                        <td>
+                                            <div style="padding-top : 8px">
+                                                <aura:if isTrue="{!participant.Status__c == 'Attended'}">
+                                                    <div class="{! 'id' + participant.Id + ' button-disabled'}">
+                                                        Check-In
+                                                    </div>
+                                                    <aura:set attribute="else">
+                                                        <div class="{! 'id' + participant.Id + ' button-checkin'}" onclick="{!c.handleCheckin}">
+                                                            Check-In
+                                                        </div>
+                                                    </aura:set>
+                                                </aura:if> 
+                                            </div>
+                                        </td>
+                                        <!-- Added By JaysonLabnao [CCN-EVE-2160-DV] OCT092022 -->
+                                        <!--CCN-EVE-3303-DV - Jonah - Sept 26, 2023 -->
+                                        <aura:if isTrue="{!v.shouldShowTitle || v.shouldShowRank}">
+                                            <td>
+                                                <div style="padding-top : 8px">
+                                                    <div class="output-box">
+                                                        {!participant.Rank__c}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </aura:if>
+                                        <td>
+                                            <div style="padding-top : 8px">
+                                                <div class="output-box">
+                                                    {!participant.Contact__r.FirstName}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="padding-top : 8px">
+                                                <div class="output-box">
+                                                    {!participant.Contact__r.LastName}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="padding-top : 8px">
+                                                <div class="output-box">
+                                                    {!participant.Contact__r.Email}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="role-title">{!participant.Role__c}</div>
+                                                <div class="role-description">{!participant.Role_Description__c}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+
+
+
+</aura:component>

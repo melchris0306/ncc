@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_Birthday_Email__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is related to the Birthday Emailer AppExchange package</description>
+    <inlineHelpText>Check this field to enable an automated birthday email to be sent to this contact, using the &quot;Birthday Email&quot; email template.</inlineHelpText>
+    <label>Send Birthday Email</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

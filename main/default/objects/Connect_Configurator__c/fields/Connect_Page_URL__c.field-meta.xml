@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Page_URL__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Active__c , SUBSTITUTE(
+           LEFT($Api.Partner_Server_URL_260,FIND(&quot;/services&quot;, $Api.Partner_Server_URL_530)),
+           &apos;salesforce.com/&apos;,
+           &apos;site.com/&apos;
+) + &apos;Connect/s/user-page?configId=&apos;+ Id , &apos;&apos;)</formula>
+    <label>Connect Page URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

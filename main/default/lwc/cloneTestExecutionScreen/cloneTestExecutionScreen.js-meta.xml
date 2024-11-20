@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>true</isExposed>
+	<targets>
+		<target>lightning__RecordAction</target>
+		<target>lightning__FlowScreen</target>
+	</targets>
+	<targetConfigs>
+    <targetConfig targets="lightning__FlowScreen">
+        <property name="recordId" type="String" label="Record Id" description="Input Record Id as a string or use variable {!recordId}"/>
+		<property name="selectedIds" type="String[]" label="Selected Id" description="Selected Ids"/>
+		<property name="step" type="String" label="Current Step" description="1 = Record Selection, 2 = Record Modification, 3 = Record Update"/>
+		<property name="extraMessage" type="String" label="Extra Message" description="Extra Message" role="inputOnly"/>
+		<property name="redirectId" type="String" label="Redirect ID" description="Redirect ID" role="inputOnly"/>
+		<property name="recordsToClone" type="@salesforce/schema/Test_Execution__c[]" label="Records to Clone" description="Records to Clone" role="outputOnly"/>
+		<property name="selectedRecords" type="@salesforce/schema/Test_Execution__c[]" label="Selected Records" description="Selected Records" role="outputOnly"/>
+    </targetConfig>
+</targetConfigs>
+</LightningComponentBundle>

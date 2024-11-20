@@ -1,0 +1,279 @@
+body {
+	/*background-color : #e0e0e0;
+	padding : 0 20rem;*/
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.main-body {
+	background-color : white;
+}
+
+/*BOX SECTION*/
+.box {
+	min-height: 20rem;
+	padding : 5rem 10rem;
+	background-color : white;
+}
+
+.light-box {
+	background-color : white;
+}
+
+.dark-box {
+	background-color : #C4DBF6;
+}
+
+.nav-box {
+	
+}
+
+.hero-box {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: 30rem;
+	padding : 5rem 5rem;
+}
+
+.hero-box-info {
+	background: rgba(0, 0, 0, 0.3) ;
+	min-height : 20rem;
+	min-width: 15rem;
+	max-width: 20rem;
+	border-radius: 10px;
+	padding : 2.5rem 2.5rem;
+}
+
+.hero-box-info-inside {
+	color : white;
+}
+
+.hero-box-info-button {
+	margin-top : 2.5rem;
+}
+
+.info-box {
+	min-height: 5rem;
+	background-color: #B23850;
+	/*display: inline-block;*/
+	width : 100%;
+}
+
+.info-box-inside { 
+	margin : 0 10rem;
+	min-height : 2rem;
+	min-width : 15rem;
+	color : white;
+}
+
+.info-box-row { 
+	margin : 1rem 0;
+	float: left;
+	margin-right : 1rem;
+}
+
+.speaker-box {
+	background-color: #f8f8f8;
+}
+
+.session-box {
+	background-color: #f8f8f8;
+}
+
+.map-box {
+	min-height : 20rem;
+}
+
+.footer-box {
+	min-height : 20rem;
+	background-color: #292929;
+}
+
+.copyright-box {
+	color : white;
+	text-align: center;
+	background-color: #232323;
+	padding : 1rem;
+}
+
+/*SESSION SECTION*/
+
+.session-page-date {
+
+}
+
+.session-page-card {
+	background-color: white;
+}
+
+.session-header {
+	margin-bottom : 1rem;
+}
+
+.session-page-card {
+	background-color: white;
+	margin: 1rem auto;
+	padding : 0.8rem;
+	box-shadow: 0px 2px 3px rgba(0,0,0,.13) ,1px 2px 2px rgba(0,0,0,.1) , -1px -2px 2px rgba(0,0,0,.05);
+	/*
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	*/
+}
+
+.session-page-card-label {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.session-page-card-label-name {
+	margin-right: 1rem;
+}
+.session-page-card-label-time {
+	color : #b84bbf;
+}
+
+.session-page-card-label-detail {
+	margin-top: 1rem;
+
+}
+
+/*SPEAKER SECTION*/
+
+
+.speaker-header {
+	margin-bottom : 1rem;
+}
+
+.speaker-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 10px auto;
+	position: relative;
+	text-align:center;
+}
+
+.speaker-card {
+	float: left;
+	width : 14rem;
+	background-color: #f9f9f9;
+	box-shadow: 0px 2px 3px rgba(0,0,0,.13) ,1px 2px 2px rgba(0,0,0,.1) , -1px -2px 2px rgba(0,0,0,.05) ;
+	margin : 0.5rem;
+}
+
+.speaker-picture:hover + .speaker-label {
+	background-color: white;
+}
+
+.speaker-label:hover {
+	background-color: white;
+}
+
+.speaker-label {
+	background-color: #f9f9f9;
+	padding : 1rem;
+}
+
+.speaker-picture {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: 14rem;
+	width : 14rem;
+}
+
+.speaker-page-container {
+
+}
+
+.speaker-page-card {
+	background-color: white;
+	margin: 1rem auto;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	box-shadow: 0px 2px 3px rgba(0,0,0,.13) ,1px 2px 2px rgba(0,0,0,.1) , -1px -2px 2px rgba(0,0,0,.05) ;
+
+}
+
+.speaker-page-picture {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: 14rem;
+	width : 14rem;
+}
+
+.speaker-page-label {
+	padding : 1rem;
+}
+
+.speaker-page-detail {
+	margin-top : 1rem;
+	overflow: auto;
+	max-width: 35rem;
+
+}
+
+/*PADDING SECTION*/
+
+/*BUTTON SECTION*/
+
+.btn-base {
+	max-width: 15rem;
+	border-radius: 25px;
+	text-align: center;
+	margin: 0.5rem auto;
+	border-style: solid;
+	border-width: 0.5px;
+	padding : 0.5rem 0;
+}
+
+.btn-basic {
+	background-color: #3B8BED;	
+}
+
+.btn-base:hover{
+	background-color: white;
+	color : gray;
+}
+
+/*NAVIGATION SECTION*/
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+

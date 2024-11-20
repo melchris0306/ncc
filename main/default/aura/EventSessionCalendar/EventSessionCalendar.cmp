@@ -1,0 +1,114 @@
+<aura:component controller="AnyEventCalCtrl" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <ltng:require styles="{!$Resource.AnyEventCal + '/fullcalendar.min.css'}"/>
+    <aura:attribute name="events" type="Map"/>
+    <aura:attribute name="objectLabel" type="String"/>
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="titleField" type="String"/>
+    <aura:attribute name="startDateTimeField" type="String"/>
+    <aura:attribute name="proposeStartDateTimeField" type="String" default="Propose_Start_Date_Time__c"/>
+    <aura:attribute name="endDateTimeField" type="String"/>
+    <aura:attribute name="proposeEndDateTimeField" type="String" default="Propose_End_Date_Time__c"/>
+    <aura:attribute name="descriptionField" type="String"/>
+    <aura:attribute name="userField" type="String"/>
+    <aura:attribute name="sessionId" type="String"/>
+    <aura:attribute name="calendarButtons" type="String"/>
+    <aura:attribute name="weekends" type="Boolean"/>
+    <aura:attribute name="eventBackgroundColor" type="String"/>
+    <aura:attribute name="eventBorderColor" type="String"/>
+    <aura:attribute name="eventTextColor" type="String"/>
+    <aura:attribute name="idVal" type="String"/>
+    <aura:attribute name="titleVal" type="String"/>
+    <!-- [CCN-EVE-2870-DV] MAY222023 - Updated to add Time Zone -->
+    <aura:attribute name="timezoneAbbr" type="String"/>
+    <!-- Added by RRizarri [CCN-2620] Mar102023 -->
+    <aura:attribute name="statusVal" type="String"/>
+    <!-- End of additional code [CCN-2620] -->
+    <aura:attribute name="descriptionVal" type="String"/>
+    <aura:attribute name="startDateTimeVal" type="DateTime"/>
+    <aura:attribute name="endDateTimeVal" type="DateTime"/>
+    <aura:attribute name="newOrEdit" type="String" default="New"/>
+    <aura:handler name="change" value="{!v.events}" action="{!c.renderCalendar}"/>
+    <aura:attribute name="defaultDate" type="String"/>
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute name="eventRecId" type="String"/>
+    <aura:attribute name="location" type="String"/>
+    <aura:attribute name="locationVal" type="String"/>
+    <aura:attribute name="titleDisabled" type="Boolean" default="false" />
+    <aura:attribute name="timezoneVal" type="String"/>
+    <aura:attribute name="userSFTimezone" type="String"/>
+    <!--aura:attribute name="errorType" type="String"/-->
+    <!--aura:attribute name="errorMessage" type="String"/-->
+    <!--aura:attribute name="isError" type="boolean" default="false"/-->
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="isDST" type="boolean" default="false"/>
+    <!-- Added by DinoBrinas [CCN1039] Dec032021 -->
+    <aura:attribute name="dateDisabled" type="Boolean" default="false" />
+    
+    
+    <!-- Added by RLugpatan [CCN-1110] 14.Jan.2022 -->
+    <aura:attribute name="isSaving" type="boolean" default="false"/>
+	<!-- End of additional code [CCN-1110] -->
+    
+    <aura:attribute name="date" type="string"/>
+    <aura:attribute name="startTime" type="string"/>
+    <aura:attribute name="endTime" type="string"/>
+    
+    <div id="calendar" class="anyCalendar"></div>
+    
+    <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="header43" class="slds-text-heading--medium">{!v.newOrEdit}&nbsp;{!v.objectLabel}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <!-- CCN-EVE-3113-DV - Gian: Updated UI -->
+                        <lightning:input aura:id="title" label="Title" value="{!v.titleVal}" disabled="{!v.titleDisabled}" required="true"/>
+                        <lightning:input aura:id="location" label="Location" value="{!v.locationVal}" disabled="{!v.dateDisabled}"/>
+                        <lightning:input aura:id="dateField" type="date" name="dateFieldInput" label="Date" value="{!v.date}" required="true" messageWhenValueMissing="Please enter a time value." disabled="{!v.statusVal == 'Approved'}"/>
+                        <div class="start-end-time-container">
+                            <lightning:input aura:id="startTimeField" timezone="UTC" type="time" name="startTimeInput" label="Start Time" value="{!v.startTime}" required="true" disabled="{!v.statusVal == 'Approved'}"/>
+                            <lightning:input aura:id="endTimeField" timezone="UTC" type="time" name="endTimeInput" label="End Time" value="{!v.endTime}" required="true" disabled="{!v.statusVal == 'Approved'}"/>
+                            <lightning:input aura:id="timeZone" label="Time Zone" value="{!v.timezoneAbbr}" disabled="true"/>
+                        </div>
+                        <!-- CCN-EVE-3113-DV - Gian : Updated UI -->
+                        
+                        <!-- CCN-EVE-3113-DV - Gian: Commented out old UI -->
+                        <!--ui:inputText aura:id="timezone" label="Time zone" value="{!v.timezoneVal}" disabled="true"/-->
+                        <!--ui:inputTextArea aura:id="description" label="Description" value="{!v.descriptionVal}" rows="5"/-->
+                        <!-- Updated by Gabriel Delavin [CCN-EVE-2561-DV] Feb022023 [Added logic to disable Location when Approved] -->
+                        <!-- <ui:inputText aura:id="location" label="Location" value="{!v.locationVal}" disabled="{!v.dateDisabled}"/>  -->
+                        <!-- Updated by DinoBrinas [CCN1039] Dec032021 -->
+                        
+                        <!--
+                                <div style="position: relative">      
+                                    <span style="position: absolute; bottom: 20%; right: 8%;">{!v.timezoneAbbr}aa</span>
+                                    <lightning:input class="dateTime" type="datetime" aura:id="startTime" label="Start Time" 
+                                    required="true" value="{!v.startDateTimeVal}" timezone="UTC" disabled="{!v.dateDisabled}"/>
+                                </div>
+                                <div style="position: relative">
+                                    <span style="position: absolute; bottom: 20%; right: 8%;">{!v.timezoneAbbr}bb</span>
+                                    <lightning:input class="dateTime" type="datetime" aura:id="endTime" label="End Time"
+                                    required="true" value="{!v.endDateTimeVal}" timezone="UTC" disabled="{!v.dateDisabled}"/>
+                                </div>
+                          -->
+                        <!-- CCN-EVE-3113-DV - Gian: Commented out old UI -->
+                    </div>
+                    <!-- End of update DinoBrinas [CCN1039] -->
+                    <footer class="slds-modal__footer">
+                        <aura:if isTrue="{!v.titleDisabled}"><lightning:button variant="brand" iconPosition="left"
+                                          label="Sign-Up Roles"
+                                          title="Sign-Up Roles"
+                                          onclick="{!c.signUpRoles}"/></aura:if>
+                		<lightning:button class="footer-button" onclick="{!c.closeModal}" label="Cancel" variant="neutral"/>
+                        <!-- Updated by RLugpatan [CCN-1110] 14.Jan.2022 -->
+                        <!-- Updated by RRizarri [CCN-2620] Mar102023 - added logic || v.statusVal == 'Approved. -->
+                        <lightning:button class="footer-button" value="{!v.idVal}" onclick="{!c.createRecord}" disabled="{!v.isSaving || v.statusVal == 'Approved'}" label="{!v.isSaving == true ? 'Saving...' : 'Save'}" variant="brand"/>
+                        <!-- End of Update [CCN-1110] -->
+                        <!-- End of additional code [CCN-2620] -->
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div> 
+        </aura:if>
+</aura:component>

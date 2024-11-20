@@ -1,0 +1,25 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CCEHeroController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="backgroundImageURL" type="string"/>
+    <aura:attribute name="title" type="string"/>
+    <aura:attribute name="subtitle" type="string"/>
+    <aura:attribute name="eventId" type ="String"/>
+    
+    <div class="hero-box" style="{!'background-image: url(' + v.backgroundImageURL +');'}">
+        <div class="hero-box-info"> 
+            <div class="hero-box-info-inside">
+                <div class="font-medium">{!v.title}</div>
+                <div class="font-small">{!v.subtitle}</div>
+                
+                <div class="hero-box-info-button">
+                    <div class="btn-base">Learn More</div>
+                    <div class="btn-base btn-basic">Register</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Story_Conversion</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Status__c,&apos;Converted&apos;),OR(AND(ISCHANGED(Convert_To_Feature__c), Convert_To_Functionality__c == True),AND(ISCHANGED(Convert_To_Functionality__c), Convert_To_Feature__c == True))), true, false)</errorConditionFormula>
+    <errorMessage>This story can only be converted once.</errorMessage>
+</ValidationRule>

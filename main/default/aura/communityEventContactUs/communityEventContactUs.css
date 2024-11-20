@@ -1,0 +1,51 @@
+/* Updated by <devName> Oct202021 [CCN799,CCN800,CCN801] */
+
+.THIS .slds-input {
+    /*width : 100% !important;*/
+}
+
+.THIS .slds-textarea {
+    /*width : 100% !important;*/
+}
+
+.THIS .contact-us-col {
+   /*margin-left: 5%;*/
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-text-class {
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .slds-textarea {
+    margin-bottom: 0px;
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+    .THIS .float-left {
+        margin-right: 0rem;
+        margin-left: .5rem;
+    }
+}
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    /*.THIS .float-left {
+        margin-left: 5%;
+        margin-right: 0rem;
+    } */
+}

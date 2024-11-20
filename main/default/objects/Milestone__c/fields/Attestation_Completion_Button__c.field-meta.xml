@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attestation_Completion_Button__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Toggles on off the Attestation Completion Button in the journey dashboard</description>
+    <label>Attestation Completion Button</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

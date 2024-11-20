@@ -1,0 +1,109 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="NavigatorController">
+    
+    <aura:attribute name="contactId" type="String" />
+    <aura:attribute name="token" type="String" />
+    <aura:attribute name="navigatorRecord" type="Object" />
+    <aura:attribute name="greeting" type="String" />
+    <!-- <aura:attribute name="scrollPosition" type="Integer" default="0" /> -->
+    <aura:attribute name="isSumerianModalOpen" type="Boolean" default="true" />
+
+    <!-- Design attributes -->
+    <aura:attribute name="enableMissedMilestones" type="Boolean" />
+    <aura:attribute name="enableInProgressMilestones" type="Boolean" />
+    <aura:attribute name="enableCompletedMilestones" type="Boolean" />
+    <aura:attribute name="milestonesSize" type="Integer" />
+    
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler event="c:NavigatorRecord" action="{!c.handleNavigatorRecord}" />
+	
+    <aura:attribute name="contactRecord" type="Object" />
+    <aura:attribute name="navigatorWidgetsList" type="Object[]" />
+    <aura:attribute name="navigatorComponentClass" type="String" />
+    
+    <div class="home-greeting">
+        <aura:unescapedHtml value="{!v.greeting}"/>
+    </div>
+
+    <div class="widgets-container" style="{!join('',
+        '--theme-color1:', 
+        !empty(v.navigatorRecord.themeColor1) ? v.navigatorRecord.themeColor1 : '#001733', 
+        ';--theme-color2:', 
+        !empty(v.navigatorRecord.themeColor2) ? v.navigatorRecord.themeColor2 : '#0083C1',
+        ';--theme-color3:', 
+        !empty(v.navigatorRecord.themeColor3) ? v.navigatorRecord.themeColor3 : '#dcdcdc', 
+        ';--theme-color4:', 
+        !empty(v.navigatorRecord.themeColor4) ? v.navigatorRecord.themeColor4 : '#93D500'
+    )}">
+        <aura:iteration items="{!v.navigatorWidgetsList}" var="widget">
+            <aura:if isTrue="{! widget.componentType == 'activityCalendarType'}">
+                <div class="box1 widget">
+                    <c:NavigatorHome_MyEvents navWidget = "{! widget}"/>
+                </div>
+            </aura:if>
+            <aura:if isTrue="{! widget.componentType == 'boxType'}">
+                <!--div class="box3 widget"-->
+                <div class = "{! widget.componentClass + ' widget'}" style="overflow-y: scroll;">
+                    <!--c:NavigatorHome_ParticipantMilestones milestoneStatus="Missed"/-->
+                    <c:NavigatorHome_BoxType navWidget = "{! widget}" 
+                                             contact = "{! v.contactRecord}"
+                                             token = "{! v.token}"
+                                             navigatorRecord = "{! v.navigatorRecord}"
+                                             />
+                </div>
+            </aura:if>
+            <!--aura:if isTrue="{! widget.Widget_Size__c == '4'}">
+                <div class="box4 widget">
+                    <c:NavigatorHome_BoxType navWidget = "{! widget}" contact = "{! v.contactRecord}"/>
+                </div>
+            </aura:if-->
+        </aura:iteration>
+        <div class="box2 widget">
+            <c:NavigatorHome_MyChangeAgent />
+        </div>
+        <!--div class="box5 widget">
+            <c:NavigatorHome_CommunicationList />
+        </div-->
+        <div class="box6 widget">
+            <c:NavigatorHome_About/>
+        </div>
+        <!--div class="box7 widget">
+            <c:NavigatorHome_MiniCalendar/>
+        </div-->
+    </div>
+    
+    <!-- Cambi iFrame -->
+    <aura:if isTrue="{! v.navigatorRecord.awsLink }">
+        <aura:renderIf isTrue="{! v.isSumerianModalOpen }" >
+            <div class="popup-container">
+                <lightning:buttonIcon class="slds-float_right slds-m-vertical_small " 
+                                        iconName="utility:close" 
+                                        variant="brand" 
+                                        size="large" 
+                                        onclick="{! c.closePopup }" 
+                                        alternativeText="Close" 
+                                        title="Close" />
+                <div class="iframe-container">
+                    <lightning:spinner class="iframe-spinner" alternativeText="Loading" size="medium" variant="brand"/>
+                    <iframe class="white-background" width="1000" height="600" style="border: 1px solid" src="{!v.navigatorRecord.awsLink}" />
+                    <p class="slds-p-horizontal_medium">
+                        If the frame won't load please close and reopen by clicking the floating image on the right side of the screen
+                    </p>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <aura:set attribute="else">
+                <div class="chat-mascot-container">
+                    <div class="chat-message-box">
+                        <div class="chat-greeting">
+                            <p>{!v.navigatorRecord.mascotMessage}</p>
+                        </div>
+                        <div class="chat-triangle"></div>
+                    </div>
+                    <div aura:id='chat-background' class="chat-background"></div>
+                </div>
+                <img class="mascot-image" src="{!v.navigatorRecord.mascotImage}" title="Open Cambi Sumerian" onclick="{!c.openPopup}"/>
+            </aura:set>
+        </aura:renderIf>
+    </aura:if>
+
+</aura:component>

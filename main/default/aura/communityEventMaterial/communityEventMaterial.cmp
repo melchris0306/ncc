@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CCEHeroController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute type="String" name="eventId" default="" />
+    <aura:attribute name="materialsPageTitle" type="String"/>
+    
+    <div class="material-section">
+        <!-- Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 -->
+        <div class="main-section">
+            <div class="main-header-section">
+                <div class="main-header-section-title height-auto">{!v.materialsPageTitle}</div>
+            </div>
+            <div class="material-container-outer">
+                <c:materialsList/>
+            </div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <div class="clear-section"></div>
+    
+</aura:component>

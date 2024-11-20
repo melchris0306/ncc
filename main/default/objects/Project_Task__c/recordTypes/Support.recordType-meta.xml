@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support</fullName>
+    <active>true</active>
+    <label>Support</label>
+    <picklistValues>
+        <picklist>Confidence__c</picklist>
+        <values>
+            <fullName>100%25 - High Confidence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50%25 - Low Confidence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>80%25 - Medium Confidence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Effort__c</picklist>
+        <values>
+            <fullName>1 - 0-40 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - 41-80 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - 81-160 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 - 161-240 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5 - More than 240 hours</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Impact__c</picklist>
+        <values>
+            <fullName>1 - Minor%2FLocalized %281-5 Users%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - Moderate%2FLimited %281 Team%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - Significant%2FLarge %2850%25 of Users%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 - Extensive%2FWidespread %28100%25 of Users%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Impact_rice__c</picklist>
+        <values>
+            <fullName>0%2E25 - Minimal Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>0%2E5 - Low Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1 - Medium Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - High Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - Massive Impact</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Organization__c</picklist>
+        <values>
+            <fullName>DEV</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>DEV2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UAT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Phase__c</picklist>
+        <values>
+            <fullName>Implementation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobilization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Normal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rework__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Severity__c</picklist>
+        <values>
+            <fullName>1 - Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - Normal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 - Critical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feedback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress - At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress - Off-Track</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress - On-Track</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On-hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawn</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Story_Type__c</picklist>
+        <values>
+            <fullName>Enhancement to Existing Functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Functionality</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Testing_Types__c</picklist>
+        <values>
+            <fullName>Prod Smoke Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>System Integration Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UAT Testing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Workstream__c</picklist>
+        <values>
+            <fullName>Business Development %28BD%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contract Management%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Management%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing and Strategic Communications%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners and Subcontracts Management%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Production Support%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Program Management%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Systems Administration%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Team Management %28Edera%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QA_Test_Execution</fullName>
+    <columns>QA_Task__c</columns>
+    <columns>NAME</columns>
+    <columns>Testing_Phase__c</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Test_Scenario__c</columns>
+    <columns>Expected_Results__c</columns>
+    <columns>Actual_Results__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>QA Test Execution</label>
+</ListView>

@@ -1,0 +1,614 @@
+.THIS .session-container {
+    width: 100%;
+}
+.THIS .main-section {
+    display: flex;
+    box-shadow: unset;
+}
+.THIS .slds-section .slds-section__title{
+    border: unset;
+}
+.THIS .slds-section__content{
+	box-shadow: 0px 1px 4px 1px grey;
+}
+.THIS {
+    font-family: Calibri Regular;
+}
+.THIS .material-section{
+    width: 100%;
+}
+.THIS .material-section {
+    background-color: unset;
+    margin: unset;
+}
+.THIS .arrow-up {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.THIS .arrow-down {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+  
+.THIS .session-head {
+    font-size: 18px;
+    margin-top: 0px;
+}
+
+.THIS .arrow-toggle {
+    margin-top: 10px;
+}
+
+.THIS .material-drop-button {
+    color : black;
+    text-align:right;
+}
+
+.THIS .material-card {
+    margin-top: .5rem;
+    margin-bottom: 0.5rem;
+    max-width:  30rem;
+}
+
+.THIS .material-title {
+    font-weight: heavy; 
+    font-size: 18px;
+    color: #0083C2;
+}
+
+.THIS .material-description {
+    font-weight: Lightest; 
+    font-size: 16px; 
+}
+
+.THIS .hideme {
+    display : none;
+}
+
+.THIS .showme {
+    display : block;
+}
+
+.THIS .session-date-header-box{
+    background-color: #003b71;
+    width: 81px;
+    height : 85px;
+    color : white;
+    padding-top : 0.5rem;
+}
+
+.THIS .session-date-header-month{
+    text-align: center;
+    font-size: 29px;
+}
+
+.THIS .session-date-header-day{
+    text-align: center;
+    font-size: 17px;
+}
+
+.THIS .session-detail-card {
+    text-align: left;
+    padding : 1rem 1.5rem;
+    /*padding-top : 0.25rem;*/
+    padding-bottom : 1rem;
+    min-height : 7rem;
+    margin-bottom: 1rem;
+    background-color: #ececec;
+}
+
+.THIS .session-material-card {
+    text-align: left;
+    padding : 0 2.5rem 2.5rem 2.5rem;
+    min-height : 7rem;
+
+    margin-bottom: 1rem;
+    border-left: 1px solid black;
+    width: 100%;
+}
+
+.THIS .session-main-card {
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #868686;
+}
+
+.THIS .check-in-button {
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    width: 130px;
+    color:white !important;
+    background-color:#0083C1 !important;
+    margin-top: 20px;
+}
+
+.THIS .check-in-button:disabled {
+    color: #0083C1 !important;
+    background-color:#ffffff !important;
+}
+
+.THIS .check-in-button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.THIS .font-section-header{
+    margin : 3rem 1rem;
+    border-color: #ffad5f;
+    text-transform: uppercase; 
+}
+
+.THIS .download-all-button {
+    font-size: 18px;
+    text-decoration: underline;
+    color: black;
+}
+
+.THIS .download-link:hover {
+    cursor: pointer;
+}
+
+.THIS .font-right {
+    text-align: right;
+}
+
+.THIS .session-time-detail{
+    font-weight: Lightest; 
+    font-style: italic;
+}
+
+.THIS .session-subtitle{
+    font-weight: Lightest; 
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.THIS .clear-section{
+    clear:both;
+}
+
+.THIS .session-section{
+    min-height : calc(100vh - 250px);
+}
+
+.THIS .no-min-max-height{
+    height: auto !important;
+}
+
+.THIS .vertical-align-top {
+    vertical-align: top;
+}
+
+.THIS .main-session-table{
+    width: 94%;
+}
+
+.THIS .main-session-table tr{
+    vertical-align: top;
+}
+
+
+.THIS .table-main {
+    width: 100%;
+}
+
+.THIS .table-main {
+    width: 90%;
+}
+
+.THIS .session-material-header {
+    margin-top: 30px;
+}
+
+.THIS .session-section-title {
+    border-width: 4px;
+    letter-spacing: 3px;
+    font-size: 30px;
+}
+
+.THIS .session-material-title {
+    font-size: 20px;
+}
+
+.THIS .general-material-title {
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4.8px;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+    margin-top: -12px;
+}
+
+.THIS .general-material-title:after {
+    background: none repeat scroll 0 0 #93D500;
+    content: "";
+    display: block;
+    height: 4px;
+    position: relative;
+    width: 50%;
+}
+.THIS .session-td{
+    padding-right: 2.5rem;
+}
+.THIS .date-td{
+    width: 7rem;
+}
+.THIS .session-table{
+    width: 85%;
+    margin-left: .5rem;
+}
+.THIS .font-section-header {
+    /*border-color: #a1da23;*/
+}
+/*Tablet
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    .THIS .session-container-outer{
+        min-height: 1224px;
+    }
+}
+*/
+
+/* Phone */
+@media screen and (max-device-width: 640px)
+    and (orientation: portrait) {
+    
+    .THIS .material-section .slds-button .gen-title{
+        padding-left: 1rem !important;
+    }
+    .THIS .session-section-title {
+        writing-mode: unset;
+        transform: none;
+        text-align: right;
+        margin: 1rem 0rem;
+        /*border-bottom: 0.15rem solid #8b8c4a;*/
+        border-left: none;
+        font-size: 1.4rem !important;
+    }
+
+    .THIS .session-container {
+        margin: .5rem;
+        width: 95%;
+        /*width: auto;*/
+    }
+
+    .THIS .font-section-header{
+        margin: .5rem 0 0 0;
+        font-size: 1.2rem;
+    }
+
+    .THIS .session-section-header{
+        margin: 0 0 1rem 0;
+    }
+
+    .THIS .session-item{
+        background-color: #e8dfd8;
+    }
+
+    .THIS .session-detail{
+        background: none;
+        padding: .25rem;
+    }
+
+    .THIS .float-left {
+        /*margin-right: 0rem;
+        margin-left: .5rem;*/
+    }
+
+    .THIS .float-session-details{
+        margin-left: 0rem;
+    }
+    
+    .THIS .font-header {
+        font-size: 1rem;
+    }
+    .THIS .font-section-header {
+        /*margin: 0rem 1rem;*/
+        margin: 0;
+        /*border-color: #a1da23;*/
+    }
+    .THIS .session-container {
+        margin: 1rem .75rem;
+    }
+    .THIS .session-section-title {
+        writing-mode: unset;
+        transform: unset;
+    }
+    .THIS .session-td{
+        padding-right: 0rem !important;
+    }
+    .THIS .date-td{
+        width: 100%;
+    }
+    .THIS .slds-grid{
+        /*width: 100%;
+        display: unset;*/
+    }
+    .THIS .material-section .session-material-card{
+    	margin-bottom: .5rem;
+        border-bottom: none !important;
+    }
+    .THIS .session-table{
+        width: 95%;
+        margin-left: .5rem;
+    }
+    .THIS .material-section .slds-button{
+        background: #b1b1b1 !important;
+        letter-spacing: 2px;
+    }
+    .THIS .session-main-card {
+        margin-bottom: none;
+        /*border-bottom: none;*/
+    }
+    .THIS .session-date-header-box {
+        background-color: white;
+        color: black;
+        width: unset;
+        height: unset;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        font-size: 1.25rem;
+    }
+    .THIS .slds-gutters .slds-col {
+        padding-left: 0;
+    }
+    .THIS .material-title {
+        font-size: 15px;
+    }
+    .THIS .slds-section__title {
+    	border: unset;
+    }
+    .THIS .slds-section {
+    	margin-top: 0px;
+    }
+    .THIS .session-head {
+        font-size: 16px;
+        margin-top: 0;
+    }
+    .THIS .relative{
+        position: relative;
+    }
+    .THIS .download-btn{
+        right: 0%;
+        top: -20%;
+        position: absolute;
+    }
+    .THIS .material-card {
+        margin-top: 0rem;
+    }
+    
+    .THIS .session-subtitle{
+        margin-top: 0px;
+    }
+}
+
+
+/* Phone */
+@media screen and (max-device-width: 1000px)
+    and (orientation: landscape) {
+    
+    .THIS .session-section-title {
+        writing-mode: unset;
+        transform: none;
+        text-align: right;
+        margin: 1rem 0rem;
+        /*border-bottom: 0.15rem solid #8b8c4a;*/
+        border-left: none;
+        font-size: 1.4rem !important;
+    }
+
+    .THIS .session-container {
+        margin: .5rem;
+        width: 95%;
+        /*width: auto;*/
+    }
+
+    .THIS .font-section-header{
+        margin: .5rem 0 0 0;
+        font-size: 1.2rem;
+    }
+
+    .THIS .session-section-header{
+        margin: 0 0 1rem 0;
+    }
+
+    .THIS .session-item{
+        background-color: #e8dfd8;
+    }
+
+    .THIS .session-detail{
+        background: none;
+        padding: .25rem;
+    }
+
+    .THIS .float-left {
+        /*margin-right: 0rem !important;
+        margin-left: 0rem !important;*/
+    }
+
+    .THIS .float-session-details{
+        margin-left: 0rem;
+    }
+    
+    .THIS .font-header {
+        font-size: 1rem;
+    }
+    .THIS .font-section-header {
+        margin: 0rem 1rem;
+        /*border-color: #a1da23;*/
+    }
+    .THIS .session-container {
+        margin: 1rem .75rem;
+    }
+    .THIS .session-section-title {
+        writing-mode: unset;
+        transform: unset;
+    }
+    .THIS .session-td{
+        padding-right: 0rem !important;
+    }
+    .THIS .date-td{
+        width: 100%;
+    }
+    .THIS .slds-grid{
+        /*width: 100%;
+        display: unset;*/
+    }
+    .THIS .material-section .session-material-card{
+    	margin-bottom: .5rem;
+        border-bottom: none !important;
+    }
+    .THIS .session-table{
+        width: 100%;
+        margin-left: .5rem;
+    }
+    .THIS .material-section .slds-button{
+        background: #b1b1b1 !important;
+        letter-spacing: 2px;
+    }
+    .THIS .session-main-card {
+        margin-bottom: none;
+        /*border-bottom: none;*/
+    }
+    .THIS .session-date-header-box {
+        background-color: white;
+        color: black;
+        width: unset;
+        height: unset;
+        padding-top: 0rem;
+        padding-bottom: .5rem;
+        font-size: 1.25rem;
+    }
+    .THIS .slds-gutters .slds-col {
+        padding-left: 0;
+    }
+    .THIS .material-title {
+        font-size: 15px;
+    }
+    .THIS .slds-section__title {
+    	border: unset;
+    }
+    .THIS .slds-section {
+    	margin-top: 0px;
+    }
+    .THIS .session-head {
+        font-size: 16px;
+        margin-top: 0;
+    }
+    .THIS .relative{
+        position: relative;
+    }
+    .THIS .download-btn{
+        right: 0%;
+        top: -20%;
+        position: absolute;
+    }
+    .THIS .material-card {
+        margin-top: 0rem;
+    }
+    
+    .THIS .session-subtitle{
+        margin-top: 0px;
+    }
+    .THIS .main-header-section-title:after{
+        /*display: none !important;*/
+    }
+}
+
+/*for Mobile/Table*/
+.THIS .material-section{
+    
+}
+.THIS .material-section .slds-button{
+    background: #ffad5f;
+    color: white;
+    border-radius: 0;
+        padding: 0;
+}
+.THIS .slds-is-close .slds-button__icon_left{
+    transform: rotate(0deg) !important;
+}
+.THIS .slds-is-open .slds-section__title-action-icon {
+    transform: rotate(180deg);
+}
+.THIS .material-section .slds-button span{
+    text-transform: uppercase;
+}
+.THIS .material-section .slds-button .gen-title{
+    padding-left: 10%;
+    width: 100%;
+}
+.THIS .material-section .slds-button .gen-arrow{
+    position: absolute;
+    right: 10%;
+}
+.THIS .material-section .slds-button .slds-button__icon_left svg{
+    fill: white;
+}
+
+.THIS .material-section .session-container{
+    margin: 0;
+}
+.THIS .material-section .session-material-card{
+    padding: 10px 10%;
+    /*border-bottom: 1px solid black;*/
+    border-left: none;
+}
+.THIS .material-section .material-card {
+    margin-top: 0.75rem;
+    margin-bottom: .75rem;
+}
+
+
+
+/*Tablet*/
+@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)
+    and (orientation : portrait) { 
+    .THIS .font-section-header {
+        margin: 1rem 1rem;
+        /*border-color: #a1da23;*/
+    }
+    .THIS .session-container {
+        margin: 1rem 1rem;
+    }
+    .THIS .float-left {
+        /*margin-left: 5%;
+        margin-right: 0rem;*/
+    }
+    
+    .THIS .session-table{
+        width: 80%;
+        margin-left: 1rem;
+    }
+    .THIS .download-btn{
+        right: 0%;
+        top: -20%;
+        position: absolute;
+    }
+    .THIS .relative{
+        position: relative;
+    }
+    .THIS .session-head {
+        margin-top: 0;
+    }
+    .THIS .session-detail-card{
+        padding-top: 1rem;
+    }
+    .THIS .session-subtitle{
+        margin-top: 0px;
+    }
+    
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_can_we_help__c</fullName>
+    <inlineHelpText>Please let us know how we can help. We will assign the right person from our team to connect with you.</inlineHelpText>
+    <label>How Can We Help?</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

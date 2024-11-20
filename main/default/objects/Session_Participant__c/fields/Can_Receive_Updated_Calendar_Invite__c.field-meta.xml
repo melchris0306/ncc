@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Can_Receive_Updated_Calendar_Invite__c</fullName>
+    <description>This field indicates whether or not a Session Participant should be able to receive an updated Calendar Invite</description>
+    <formula>OR(
+ AND(
+  ISPICKVAL(Status__c, &apos;Confirmed&apos;),
+  ISPICKVAL(Event__r.Session_Calendar_Invite_Delivery__c, &apos;Send on session confirmation&apos;)
+ ), 
+ AND(
+  OR(
+   ISPICKVAL(Status__c, &apos;Registered&apos;), 
+   ISPICKVAL(Status__c, &apos;Confirmed&apos;)
+  ), 
+  ISPICKVAL(Event__r.Session_Calendar_Invite_Delivery__c, &apos;Send on session registration&apos;)
+ )
+)</formula>
+    <label>Can Receive Updated Calendar Invite</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

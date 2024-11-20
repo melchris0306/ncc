@@ -1,0 +1,153 @@
+<template>
+        <template if:true={showTable}>
+            
+        <template if:true={isStepTwo}>
+                <strong>
+                    
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_4-of-12 slds-text-align_center">
+                            <span>TEST EXECUTION NAME</span>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12 slds-text-align_center">
+                            <span>EPIC</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12 slds-text-align_center">
+                            <span>
+                                ASSIGNED TO
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12 slds-text-align_center">
+                            <span>
+                                TESTING PHASE
+                            
+                            </span>
+                        </div>
+                    </div>
+                    
+                </strong>
+            <template for:each={displayedRecords} for:item="record">
+                <div class="slds-grid slds-wrap slds-box" key={record.Id}>
+                    <div class="slds-col slds-size_4-of-12 slds-p-top_large slds-truncate">
+                        <span>
+                            <a href={record.testExecutionUrl} target="_blank">{record.Name}</a>
+
+                        </span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-p-top_large slds-truncate">
+                        <span>
+                            <a href={record.epicUrl} target="_blank">{record.epicName}</a>
+                        </span>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <span>
+                            <c-lookup-version-two
+                            parentid={record.Id}
+                            placeholder="Search..."
+                            label="User"
+                            object-api-name="User"
+                            field-api-name="Name"
+                            sub-field-api-name="Email"
+                            value={record.currentassignedtouser}
+                            required
+                            icon-name="standard:contact"
+                            onselect={handleSelected}
+                            ></c-lookup-version-two>
+                        </span>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12 slds-p-left_x-small">
+                        <span>
+                            <lightning-combobox
+                                data-id={record.Id}
+                                required
+                                label="Testing Phase"
+                                name="testingphase"
+                                value={record.Testing_Phase__c}
+                                placeholder="Select One"
+                                options={testingPhaseValues}
+                                onchange={handleChange} ></lightning-combobox>
+                        </span>
+                    </div>
+                </div>
+            </template>
+        </template>
+        
+        
+        <div data-id="testExecutionSelectionTable">
+            <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_6-of-12 slds-text-align_center">
+                            <span>
+                              
+                                    <c-lookup-version-two
+                                    label="ASSIGNED TO"
+                                    class="slds-text-align_left"
+                                    placeholder="Assign to all clones"
+                                    object-api-name="User"
+                                    field-api-name="Name"
+                                    sub-field-api-name="Email"
+                                    value=""
+                                    icon-name="standard:contact"
+                                    onselect={handleMassUserSelect}
+                                    ></c-lookup-version-two>
+                               
+
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_6-of-12 slds-text-align_center">
+                            <span>
+                                <lightning-combobox
+                                    label="TESTING PHASE"
+                                    class="slds-text-align_left slds-m-left_x-small"
+                                    name="testingphase"
+                                    value=""
+                                    placeholder="Apply to all clones"
+                                    options={testingPhaseValues}
+                                    onchange={handleMassPhaseSelect} ></lightning-combobox>
+                            
+                            </span>
+                        </div>
+                    </div>
+            <br/>
+            <c-datatable 
+            data-id="testExecutionTable"
+            key-field="Id"
+            columns={columns} 
+            records={records}
+            searchable
+            show-page-entries
+            show-filter-column
+            show-pagination
+            onrowselection={onRowsSelection}>
+        </c-datatable>
+        </div>
+    </template>
+    <template if:true={isStepThree}>
+        <div class="slds-m-around_x-large">
+            <center>
+                <div class="slds-text-heading_large">{extraMessage}</div>
+            </center>
+            <br/>
+            <lightning-button variant="brand" label="Finish" title="Finish" onclick={onfinish} class="slds-m-left_x-small slds-float_right"></lightning-button>
+        </div>
+        
+    </template>
+    <br/>
+    <template if:false={isStepThree}>
+        <template if:true={isStepTwo}>
+            <lightning-button variant="brand" label="Save" title="Next" onclick={onNext} class="slds-m-left_x-small slds-float_right"></lightning-button>
+        </template>
+        <template if:false={isStepTwo}>
+            <template if:false={noSelectedRows}>
+                <lightning-button variant="brand" label="Next" title="Next" onclick={onNext} class="slds-m-left_x-small slds-float_right"></lightning-button>
+            </template>
+        </template>
+        
+    </template>
+    <template if:true={isStepTwo}>
+
+        <lightning-button label="Previous" title="Previous" onclick={onPrevious} class="slds-m-left_x-small slds-float_right"></lightning-button>
+
+    </template>
+
+    
+    
+</template>

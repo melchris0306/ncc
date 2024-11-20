@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Site_Role_Has_Updates__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(In_CSR__c, NOT( ISBLANK( Current_Process_State_Email__c ))), &apos;Attending CSR Update&apos;, IF( AND( In_WS__c, NOT( ISBLANK( Current_Process_State_Email__c ))) , &apos;Attending WS Update&apos;,  IF(AND(OR(In_WS__c,In_CSR__c), ISBLANK( Current_Process_State_Email__c )) , &apos;Email Address Update&apos;, &apos;&apos;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Report Site Role Has Updates</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

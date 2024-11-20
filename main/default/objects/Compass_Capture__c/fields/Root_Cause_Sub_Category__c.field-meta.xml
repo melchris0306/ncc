@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Root_Cause_Sub_Category__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Root Cause Sub Category</label>
+    <referenceTo>Master_Data__c</referenceTo>
+    <relationshipLabel>Compass Capture (Root Cause Sub Category)</relationshipLabel>
+    <relationshipName>Compass_Capture_Root_Cause_Sub_Category</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

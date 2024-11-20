@@ -1,0 +1,374 @@
+/* DEFAULT STYLING */
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    margin-top: 32px;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282022 */
+.header-page{
+    /* width: 88%; */
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Calibri' !important;
+}
+
+.fixedLogo{
+    max-height: 50px;
+}
+
+.dynamicLogo{
+    max-height: 50px;
+}
+
+.logoContainer img{
+    max-height: inherit;
+    margin-right: 16px;
+}
+
+.logoContainer{
+    max-width: 1140px;
+    display: flex;
+    justify-content: start;
+    margin: 32px auto 0;
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan202022 */
+.survey{
+    width: 100%;
+}
+
+.survey-section-title{
+    margin: 2rem 1rem;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282022 */
+.survey-form{
+    width: 60%;
+    /* margin: 0 auto; */
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+.slds-text-heading_large{
+    font-size: 25px;
+    margin-bottom:15px;
+    font-weight: 700;
+    margin-top: 32px;
+}
+
+.slds-text-heading_medium{
+    font-size: 25px;
+    margin-bottom:15px;
+    font-weight: 500;
+}
+
+.slds-form-element__control{
+    margin-bottom: 15px;
+}
+
+.slds-form-element{
+    margin-bottom: 15px;
+}
+
+.slds-form-element__label{
+    font-weight: 700;
+}
+
+.slds-form-element__help{
+    color: #c23934;
+    font-size: .75rem;
+    margin-top: .125rem;
+    display: block;
+}
+
+.survey-description {
+    margin-bottom: 20px;
+    font-size: 14px !important;
+}
+
+.required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* Added [EVENT REFRESH FIXES] JaysonLabnao Feb022022 */
+.disclaimer-container {
+    width: 60%;
+    display: flex;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan202022 */
+.disclaimer-title{
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.slds-button{
+    margin-top: 15px;
+    margin-bottom: 32px;
+}
+
+.disabled{
+    pointer-events: none;
+}
+
+.footer{
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+abbr.slds-required{
+    display: none !important;
+}
+
+.disclaimer-text {
+    white-space: pre-wrap !important;
+    margin-bottom: 20px;
+    /* Updated [EVENT REFRESH FIXES] JaysonLabnao Feb022022 */
+    /* text-align: justify; */
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+.body {
+    margin-top: 20px;   
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    padding-right: 370px;
+    padding-left: 370px;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan202022 */
+.survey-info-body{
+    display: flex;
+    margin-top: 2rem;
+}
+
+.submit-button {
+    border: 0.08rem solid white;
+    width: auto;
+    padding: 5px 25px;
+    color: white;
+    background: #ffae5e;
+    box-shadow: 1px 1px #d3d3d3;
+    border-radius: 5px;
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Feb112022 */
+.question-title {
+    font-size: 1.125rem;
+    font-weight: bold; 
+    color: #0083C1
+}
+
+/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282022 */
+.survey-questions{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.float-left{
+    margin-left: 1rem;
+}
+
+.btn-base-parking {
+    color: white;
+    text-align: center;
+    font: normal normal bold 18px/34px Calibri;
+    letter-spacing: 0;
+    width: 100px;
+    height: 35px;
+    background: #ffae5e 0% 0% no-repeat padding-box;
+    box-shadow: 0 3px 6px #d3d3d3;
+    border-radius: 5px;
+    opacity: 1;
+    margin: 15px auto 32px;
+    cursor: pointer; /* Added [CCN-1229] RexieDavid Mar42022  */
+}
+
+/* Added [EVENT REFRESH FIXES] JaysonLabnao Jan202022  */
+.main-section {
+    background-color: #F5F5F5;
+}
+
+.main-header-section {
+    width: unset;
+}
+
+.survey-container-outer {
+    min-height: 40rem;
+    min-width: 88%;
+    padding: 0 4rem;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.required-text-class {
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+/*Phone*/
+@media (max-width: 600px) {
+    
+    .body {
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan202022 */
+    .main-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-header-section {
+        align-self: flex-start;
+        /* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282022 */
+        margin: 0 1rem;
+    }
+
+    .middle {
+        padding: unset;
+    }
+
+    .header-page {
+        width: unset;
+        margin: 1rem 1rem 0;
+    }
+
+    .submit-button {
+        border: 0.08rem solid white;
+        width: 90%;
+        padding: 5px 25px;
+        color: white;
+        background: #ffae5e;
+        box-shadow: 1px 1px #d3d3d3;
+        border-radius: 5px;
+    }
+
+    .survey-questions{
+        padding: 0;
+    }
+
+    
+    /* Added [EVENT REFRESH FIXES] JaysonLabnao Jan282022 */
+    .survey-form{
+        width: 100%;
+    }
+
+    .disclaimer-container {
+        width: 100%;
+    }
+
+    .btn-base-parking {
+        width: 100%;
+    }
+
+    .survey-section-title{
+        margin-top: 0px;
+        padding-left: 0px;
+        margin-bottom: 25px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .float-left {
+        margin-left: 0px;
+        margin-bottom: 20px;
+        margin-right: 0px;
+    }
+
+    .main-header-section-title {
+        padding-left: 0px;
+    }
+
+    .survey-title-2 {
+        display: none;
+    }
+
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+/*Tablet*/
+@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px)
+	and (orientation : portrait) { 
+	
+    .body {
+        margin-top: 20px;
+        padding: 15px;
+        padding-right: 165px;
+        padding-left: 165px;
+    }
+	
+}
+
+/* Updated by Xen Reyes Nov012021 CCN-796/797/798 */
+/*Tablet*/
+@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px)
+	and (orientation : landscape) { 
+	
+    .body {
+        margin-top: 20px;
+        padding: 15px;
+        padding-right: 165px;
+        padding-left: 165px;
+    }
+
+    .left, .right {
+       min-width: 10%; 
+    }
+    
+    .middle {
+        min-width: 80%;
+        /* padding: 0 2rem; */
+    }
+    
+    .main-header-section-title, .slds-text-heading_large {
+        color: var(--pantone-cool-gray-11-c);
+    }
+}
+
+/* Updated [Event Refresh Fixes] JaysonLabnao Feb022022 */
+/* Smaller Phone Landscape (Iphone SE, Samsung S8+, etc.)*/
+@media screen and (max-device-width: 740px)
+              and (orientation : landscape) { 
+
+    .main-header-section {
+        margin-left: 1rem;
+    }
+
+    .survey-form {
+        width: 95%;
+    }
+
+    .disclaimer-container {
+        width: 95%;
+    }
+
+    .left, .right {
+        min-width: unset;
+    }
+
+}

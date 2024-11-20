@@ -1,0 +1,1 @@
+DATEDIFF(%InceptionDate%,MOMENT(%CancellationEffDate%).subtract(1,'day'))

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Picklist_Question_Type_Validation</fullName>
+    <active>true</active>
+    <description>[Pamela Kiang 10082021 CCN-822] Checks the question type and requires option for picklists.</description>
+    <errorConditionFormula>IF(
+OR(ISPICKVAL(Question_Type__c, &quot;Radio&quot;), ISPICKVAL(Question_Type__c, &quot;Picklist&quot;)),
+ISBLANK(Options__c),
+false
+)</errorConditionFormula>
+    <errorDisplayField>Options__c</errorDisplayField>
+    <errorMessage>Options are required for Radio or Picklist questions</errorMessage>
+</ValidationRule>

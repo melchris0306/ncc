@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Started__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates that milestone has started based on the start date
+
+Current date &gt;= start date 
+and
+Current date &lt;= end date</description>
+    <label>Milestone Started</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

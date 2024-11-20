@@ -1,0 +1,330 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CC_EventRegistrationClass">
+    
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-min.css'}" />
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-font-min.css'}" />
+    <ltng:require styles="{!$Resource.CompassEventPage + '/Css/CompassEventMain.css'}" />
+    
+    <aura:attribute name="sessionList" type="List"/>
+    <!--<aura:attribute name="FirstName" type="string"/>
+    <aura:attribute name="LastName" type="string"/>
+    <aura:attribute name="Email" type="string"/> 
+    <aura:attribute name="Company" type="string"/>-->
+    <aura:attribute name="dynamicFields" type="List" />
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <!-- Updated [CCN859,CCN860,CCN861] JaysonLabnao Nov042021 -->
+    <aura:attribute name="isSortOpen" type="Boolean" default="false" />
+    <aura:attribute name="selectedSortOption" type="String" default="Date" />
+    <!-- Updated [CCN859,CCN860,CCN861] JaysonLabnao Dec102021 -->
+    <aura:attribute name="sortOptions" type="List" default="[ 
+        {label: 'Session Name', value: 'EventName'}, 
+        {label: 'Date', value: 'EventDate'}
+    ]" />
+    
+    <aura:attribute name="EventId" type="string" />
+    <!-- Added [CCN1052] RLugpatan Dec302021 -->
+    <aura:attribute name="ParticipantId" type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- For Rank Type Values -->
+    <aura:attribute name="showTitleRankValidation" type="Boolean" default="false"/>
+    <aura:attribute name="hasSelectedInvalidValue" type="Boolean" default="false"/>
+    <aura:attribute name="optionsRank" type="List"/>
+    <aura:attribute name="selectedValueRank" type="String"/>
+    <aura:attribute name="dataCollectionRecords" type="Object"/>
+    <aura:attribute type="String" name="rankHolder" default=""/>
+    <aura:attribute type="String" name="rankGroup" default=""/>
+    
+    <aura:attribute name="showEmailFormatValidation" type="Boolean" default="false"/>
+    <aura:attribute name="patternMismatchMessage" type="string"/>
+    
+    <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+    <aura:attribute name="hasRequiredField" type="Boolean" default="false"/>
+    <!-- CCN-EVE-2482-DV Gabriel Delavin Jan182023 !-->
+    <aura:attribute name="RegistrationMessage" type="string"/>
+    <aura:attribute name="RegistrationTagline" type="string"/>
+    
+    <!-- Start CCN-EVE-3594-DV Von Pernicia 11/24/2023 !-->
+    <aura:attribute name="isSubmitActive" type="boolean" default="false"/>
+
+    <aura:html tag="style">
+        .cCenterPanel{
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    </aura:html>
+    
+    <!-- spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+            <div class="slds-modal__container" aura:id="block">
+                <div class="slds-modal__header spinner-text">
+                    <aura:if isTrue="{!v.isLoading}">
+                        <lightning:spinner aura:id="loadSpinner" alternativeText="Loading page content..." />
+                        Loading page content...
+                    </aura:if>
+                    <aura:if isTrue="{!!v.isLoading}">
+                        <lightning:spinner aura:id="mySpinner" alternativeText="Hang on a second... We're processing your request..." />
+                        Hang on a second... We're processing your request...
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+    
+    <aura:if isTrue="{!!v.showSpinner}">
+        <form class="registration-section"> <!-- Updated [CCN859] JaysonLabnao Oct182021 -->
+            <div class="registration-container">
+                
+                <!-- Updated [CCN859,CCN860,CCN861] JaysonLabnao Nov042021 -->
+                <div class="main-section-content">
+                    <div class="main-header-section left">
+                        <div class="main-header-section-title height-auto">REGISTRATION</div>
+                    </div>
+                    
+                    <div class="main-header-section-content middle slds-grid slds-wrap">
+                        <div class="registration-form">
+                            <div class="form-header">
+                                <!-- CCN-EVE-2482-DV Gabriel Delavin Jan182023 !-->
+                                <div class="form-title">{!v.RegistrationTagline}</div>
+                                <div class="form-message">{!v.RegistrationMessage}</div>
+
+                                <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+                                <aura:if isTrue="{!v.hasRequiredField}">
+                                    <div class="required-text-class">* Required Field</div>
+                                </aura:if>
+                            </div>
+
+                            <!-- Updated [CCN859] JaysonLabnao Oct182021 -->
+                            <div class="registration-element-container">
+                                <aura:iteration items="{!v.dynamicFields}" var="item">
+                                    <!-- Updated [CCN859] JaysonLabnao Oct182021 -->
+                                    <!-- Start [CCN-2530] RIANNO RIZARRI Feb01.2023  - Add the activation of field on the event registration field picker component. - Add active conditional rendering -->
+                                    <aura:if isTrue="{!item.Field.active}">
+                                        
+                                        <div class="{!item.Field.label == 'Title/Rank' || item.Field.label == 'Title' ? 'registration-element registration-element-alt' : 'registration-element'}">
+                                            <label class="field-label">
+                                                <aura:if isTrue="{!item.Field.required}">
+                                                    <span class="required-mark">*</span>
+                                                </aura:if>
+                                                <aura:if isTrue="{!item.Field.label == 'Title/Rank'}">
+                                                    Title
+                                                    <aura:set attribute="else">
+                                                        {!item.Field.label}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </label>
+                                            
+                                            <!-- Updated [CCN3301] title override -->
+                                            <aura:if isTrue="{!item.Field.label == 'Title/Rank'}">
+                                                <!-- title override start -->
+                                                <div class="slds-truncate rowPadding" title="Rank"  data-is-required="{!item.Field.required}">
+                                                    <!-- This is where we get the dyanamic values from the client-side controller and display it here -->
+                                                    <lightning:select value="{!item.Field.inputValue}" required="{!item.Field.required}" name="{!item.Field.label}" aura:id="registrationFormFieldsPicklist" variant="label-hidden"
+                                                        messageWhenValueMissing="{!item.Field.messageWhenRequired}" onblur="{!c.handleTitleChange}">
+                                                        
+                                                        <!--XEN REYES March 5, 2023 CCN-EVE-2631-DV -->
+                                                        <!--aura:iteration items="{!v.optionsRank}" var="option">
+                                                            <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"/>
+                                                        </aura:iteration!-->
+                                                        <option value="{!null}">-----</option>
+                                                        <aura:iteration items="{!v.dataCollectionRecords}" var="mapKey" indexVar="key">  
+                                                            <optgroup label="{!mapKey.key}"></optgroup>
+                                                            <aura:iteration items="{!mapKey.value}" var="mapValue">
+                                                                <option text="{!mapValue}" value="{!mapValue + '|' + mapKey.key}" selected="{!mapValue == v.selectedValueRank}"/>
+                                                            </aura:iteration>
+                                                        </aura:iteration>
+                                                        
+                                                    </lightning:select>
+                                                    <aura:if isTrue="{!v.showTitleRankValidation}">
+                                                    	<div aria-live="assertive" class="slds-form-element__help slds-text-color_error" >{!item.Field.messageWhenRequired}</div>
+                                                    </aura:if>
+                                                </div>
+                                                <!-- title override end -->
+                                                <aura:set attribute="else">
+                                                    <!-- Updated [CCN859] JaysonLabnao Oct182021 -->
+                                                    <aura:if isTrue="{!item.IsPicklist}">
+                                                        <lightning:select value="{!item.Field.inputValue}" required="{!item.Field.required}" name="{!item.Field.label}" aura:id="registrationFormFieldsPicklist" variant="label-hidden"
+                                                                          messageWhenValueMissing="{!item.Field.messageWhenRequired}" onchange="{!c.handleTitleChange}">
+                                                            <aura:iteration items="{!item.Field.picklistOptions}" var="option">
+                                                                <option value="{!option.value}">{!option.label}</option>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <!-- Start  11/21/2023 CCN-EVE-3594-DV Von Pernicia - Added messageWhenTypeMismatch and comment out div-->
+                                                            <lightning:input class="field" type="{!item.Field.fieldType}" required="{!item.Field.required}" name="registrationField" aura:id="registrationFormFields" label="" 
+                                                                             variant="label-hidden" messageWhenValueMissing="{!item.Field.messageWhenRequired}" messageWhenTypeMismatch="{!v.patternMismatchMessage}" value="{!item.Field.inputValue}" onblur="{!c.onInputBlur}"/>
+                                                        	<!--<div class="{!item.Field.fieldType != 'Email' ? 'slds-hide' : 'slds-show'}">
+                                                                <aura:if isTrue="{!v.showEmailFormatValidation}">
+                                                                    <div aria-live="assertive" class="slds-form-element__help slds-text-color_error" >{!v.patternMismatchMessage}</div>
+                                                                </aura:if>
+                                                    		</div>-->
+                                                            <!-- End  11/21/2023 CCN-EVE-3594-DV Von Pernicia - Added messageWhenTypeMismatch and comment out div-->
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </aura:if>
+                                </aura:iteration>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right"></div>
+                </div>
+            </div>
+            
+            <!-- Updated [CCN859,CCN860,CCN861] JaysonLabnao Nov042021 -->
+            <aura:if isTrue="{! $Browser.isPhone || $Browser.isIPhone || $Browser.isWindowsPhone }">
+                
+                <!-- Phone -->
+                <table id="customers"  class="table">
+                    <tr class="table-header">
+                        <th class="table-select">Sessions</th>
+                        <th></th>
+                        <th class="sort-column">
+                            <div class="sort-container">
+                                <div class="sort-button" onclick="{!c.handleOpenSortModal}">
+                                    <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                                    <p>Sort</p>
+                                </div>
+                                <aura:if isTrue="{!v.isSortOpen}">
+                                    <div class="sort-modal">
+                                        <span class="sort-by">Sort by</span>
+                                        <lightning:radioGroup name="radioGroup"
+                                                              options="{! v.sortOptions }"
+                                                              value="{! v.selectedSortOption }"
+                                                              type="radio"
+                                                              onchange="{!c.handleSort}"/>
+                                    </div>
+                                </aura:if>
+                            </div>
+                        </th>
+                    </tr>
+                    <aura:iteration items="{!v.sessionList}" var="session">
+                        <tr class="table-row">
+                            <td class="table-checkbox">
+                                <ui:inputCheckbox text="{!session.EventId}" aura:id="boxPack" value="false" click="{!c.onInputBlur}"/>
+                            </td>
+                            <td class="session-column">{!session.EventName}</td>
+                            <td><lightning:formattedText value="{!session.MobileDate}"/></td>
+                        </tr>
+                    </aura:iteration>
+                </table>
+                <!-- Phone -->
+                
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!$Browser.isTablet}">
+                        
+                        <!-- Tablet -->
+                        <table id="customers"  class="table">
+                            <tr class="table-header">
+                                <th class="table-select">Select</th>
+                                <th class="session-column">Session Name</th>
+                                <th class="sort-column">
+                                    <div>Date</div>
+                                    <div class="sort-container">
+                                        <div class="sort-button" onclick="{!c.handleOpenSortModal}">
+                                            <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                                            <p>Sort</p>
+                                        </div>
+                                        <aura:if isTrue="{!v.isSortOpen}">
+                                            <div class="sort-modal">
+                                                <span class="sort-by">Sort by</span>
+                                                <lightning:radioGroup name="radioGroup"
+                                                                      options="{! v.sortOptions }"
+                                                                      value="{! v.selectedSortOption }"
+                                                                      type="radio"
+                                                                      onchange="{!c.handleSort}"/>
+                                            </div>
+                                        </aura:if>
+                                    </div>
+                                </th>
+                            </tr>
+                            <aura:iteration items="{!v.sessionList}" var="session">
+                                <tr class="table-row">
+                                    <td class="table-checkbox">
+                                        <ui:inputCheckbox text="{!session.EventId}" aura:id="boxPack" value="false" click="{!c.onInputBlur}"/>
+                                    </td>
+                                    <td class="session-column">{!session.EventName}</td>
+                                    <td><lightning:formattedText value="{!session.MobileDate}"/></td>
+                                </tr>
+                            </aura:iteration>
+                        </table>
+                        <!-- Tablet -->
+                        
+                        <aura:set attribute="else">
+                            
+                            <!-- Desktop -->
+                            <table id="customers"  class="table">
+                                <tr class="table-header">
+                                    <th class="table-space"></th>
+                                    <th class="table-select">Select</th>
+                                    <th class="session-column">Session Name</th>
+                                    <th class="field-column">Date</th>
+                                    <th class="field-column">Start Time</th>
+                                    <th class="end-time-column">End Time</th>
+                                    <th class="sort-column">
+                                        <div class="sort-container">
+                                            <div class="sort-button" onclick="{!c.handleOpenSortModal}">
+                                                <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                                                <p>Sort</p>
+                                            </div>
+                                            <aura:if isTrue="{!v.isSortOpen}">
+                                                <div class="sort-modal">
+                                                    <span class="sort-by">Sort by</span>
+                                                    <lightning:radioGroup name="radioGroup"
+                                                                          options="{! v.sortOptions }"
+                                                                          value="{! v.selectedSortOption }"
+                                                                          type="radio"
+                                                                          onchange="{!c.handleSort}"/>
+                                                </div>
+                                            </aura:if>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <aura:iteration items="{!v.sessionList}" var="session">
+                                    <tr class="table-row">
+                                        <th class="table-space"></th>
+                                        <td class="table-checkbox">
+                                            <ui:inputCheckbox text="{!session.EventId}" aura:id="boxPack" value="false" click="{!c.onInputBlur}"/>
+                                        </td>
+                                        <td class="session-column"><span>{!session.EventName}</span></td>
+                                        <td class="field-column"><lightning:formattedText value="{!session.FormattedDate}"/></td>
+                                        <td class="field-column"><lightning:formattedText value="{!session.StartTime}"/></td>
+                                        <td class="end-time-column"><lightning:formattedText value="{!session.EndTime}"/></td>
+                                        <td></td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>
+                            <!-- Desktop -->
+                            
+                        </aura:set>
+                    </aura:if>
+                    
+                </aura:set>
+                
+            </aura:if>
+            <!-- Updated [CCN859,CCN860,CCN861] JaysonLabnao Nov042021 -->
+            
+            <div class="slds-p-around_xx-large slds-grid slds-grid_align-center">
+                <!-- Updated [CCN859] JaysonLabnao Oct182021 -->
+                <!-- Start CCN-EVE-3594-DV Von Pernicia 11/24/2023 !-->
+                <!-- <lightning:button variant="brand" label="Submit" title="Submit" onclick="{! c.handleSubmit }"  class="submit-button"/> --> 
+                
+                <aura:if isTrue="{!v.isSubmitActive}">
+                    <div class="slds-col slds-size_1-of-12 submit-button" onclick="{! c.handleSubmit }">Submit</div>
+
+                    <aura:set attribute="else">
+                        <div class="slds-col slds-size_1-of-12 submit-buttondisabled" >Submit</div>    
+                    </aura:set>
+                </aura:if>
+                <!-- End CCN-EVE-3594-DV Von Pernicia 11/24/2023 !-->
+            </div>
+            
+        </form>
+    </aura:if>
+</aura:component>

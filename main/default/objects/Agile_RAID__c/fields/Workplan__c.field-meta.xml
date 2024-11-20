@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Workplan__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Workplan</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Workplan does not match either the Project or Epic of the Agile Raid.</errorMessage>
+        <filterItems>
+            <field>$Source.CAPM_Project__c</field>
+            <operation>equals</operation>
+            <valueField>Workplan__c.Project__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Epic__c</field>
+            <operation>equals</operation>
+            <valueField>Workplan__c.Epic__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Workplan__c</referenceTo>
+    <relationshipLabel>Agile RAIDs</relationshipLabel>
+    <relationshipName>Agile_RAIDs</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

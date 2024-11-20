@@ -1,0 +1,52 @@
+.THIS {
+    font-family: 'Roboto-Light';
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src:url(/resource/Roboto/Roboto-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src:url(/resource/Roboto/Roboto-Bold.ttf);
+}
+
+.THIS.container .title {
+    font-size: 1.4rem;
+    font-family: 'Roboto-Bold';
+}
+
+.THIS.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.THIS.container .body {
+    margin-top: 10px;
+    padding: 0 15px;
+    height: 16rem;
+}
+
+.THIS.container .no-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    flex: 1 1 250px;
+}
+
+.THIS.container .body a{
+    font-size: 1.2rem;
+}
+
+.THIS.container .footer{
+    display: grid;
+    place-items: center;
+    margin-top: auto;
+}
+
+.THIS.container .footer .see-all{
+    margin: 10px 0;
+    font-size: large;
+}

@@ -1,0 +1,9 @@
+<apex:page extensions="ONSEmailTemplateController" standardController="Outreach_Notification_Setting__c">
+    <apex:form >
+        <apex:selectList size="1" value="{!emailTemplate}"> 
+            <apex:outputLabel value="Email Template    "/> 
+            <apex:selectOptions value="{!SelectedEmailTemplates}"/>  
+        </apex:selectList>
+        <apex:commandButton action="{!save}" value="Save"/>
+    </apex:form>
+</apex:page>

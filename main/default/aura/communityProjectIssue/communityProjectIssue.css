@@ -1,0 +1,43 @@
+.THIS .slds-col .header-label:first-child{
+    margin-top: -5px;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-mark {
+    color: red;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .required-text-class {
+    text-align: right;
+    font-style: italic;
+    color: red;
+}
+
+/* CCN-EVE-2074-DV XEN REYES Oct2022 */
+.THIS .slds-textarea {
+    margin-bottom: 0px;
+}
+
+/* PHONE */
+@media screen and (max-device-width: 760px) { 
+    .THIS .slds-col .header-label:first-child{
+        margin-top: 1rem;
+    }
+}
+/* PHONE LANDSCAPE*/
+@media screen and (max-device-width: 1000px) and (orientation: landscape) { 
+	.THIS .slds-grid .mobile-header-parent:first-child .header-label:first-child{
+        margin-top: -5px;
+    }
+    .THIS .slds-col .header-label:first-child{
+        margin-top: 1rem;
+    }
+}
+
+/* Updated by Jayson Labnao Jan162022 [EVENT REFRESH FIXES] */
+.THIS .mobile-row:nth-child(odd) {
+    background: #f5f5f5;
+}

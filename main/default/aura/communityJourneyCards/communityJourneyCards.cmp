@@ -1,0 +1,581 @@
+<!--
+* @author APR Rivera
+* @date
+* @group Journey
+* @description Journey Cards - Milestones and checkpoints
+* @revision  -  - Initial Create
+* @revision  15.12.2023 - APR - Added new milestone types (Attestation and Information)
+ -->
+
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+                access="global"
+                controller="TheProviderJourney">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="journeyID" type="String" />
+    <aura:attribute name="userJourney" type="sObject" />
+    <aura:attribute name="journeyData" type="sObject" />
+    <aura:attribute name="userMilestones" type="List" />
+    <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+    <aura:attribute name="journeyMilestoneList" type="List"/>
+    <aura:attribute name="urlFromJourney" type="Boolean"/>
+    <aura:attribute name="spinner" type="Boolean" default="false" />
+    
+    <!-- MMALLORCA 03/04/2024 CCN-JOU-3713-DV-->
+    <aura:attribute name="quickCheckQuestions" type="List" />
+    <aura:attribute name="curQuickCheck" type="String" />
+    <aura:attribute name="curQuestion" type="Object" />
+    <aura:attribute name="quickCheckQuesOrder" type="Map" />
+    <aura:attribute name="curQuestToValidate" type="Object" />
+    <aura:attribute name="finalResult" type="List" />
+    <aura:attribute name="finalResultVal" type="Object" />
+    <aura:attribute name="contactId" type="String" />
+    
+    <div>
+        <div class="journeycard-box">
+            <aura:if isTrue="{!v.spinner}">
+                <lightning:spinner alternativeText="Loading" class="spinner-div"/>
+            </aura:if>
+            
+            <div class="journeycard-welcome">
+                {!v.userJourney.Contact__r.FirstName}, your journey starts here!
+            </div>
+            
+            <div class="journeycard-loop journeycard-container">
+                <!-- userMilestones is participant milestone-->
+                <aura:iteration items="{!v.userMilestones}" var="userMilestones">
+                    <div class="{!userMilestones.Checkpoint__c ? 'journeylevel journeyCheckpoint' : (userMilestones.Type__c == 'Quick Check' ? 'journeylevel journeyQuickCheck':'journeylevel journey'+userMilestones.Type__c)}">
+                      
+                        <aura:if isTrue="{!or($Browser.formFactor == 'DESKTOP', $Browser.formFactor == 'TABLET')}">
+                            <!-- Icon-->
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                    <div class="{!'journeyimage milestone'+ (userMilestones.Type__c == 'Quick Check' ? 'QuickCheck' : userMilestones.Type__c)}">
+                                        <aura:if isTrue="{!userMilestones.Checkpoint__c == true}">
+                                            <img src="{!$Resource.JourneyIcons + '/JourneyIcons/Checkpoint.png'}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!userMilestones.Type__c == 'Quick Check'}">
+                                                    <img src="{!$Resource.JourneyIcons + '/JourneyIcons/QuickCheck.png'}"/>
+                                                    <aura:set attribute="else">
+                                                        <img src="{!$Resource.JourneyIcons + '/JourneyIcons/' + userMilestones.Type__c + '.png'}"/>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                <!-- Parent Milestone Title-->
+                                <aura:if isTrue ="{!userMilestones.milestone__r.Parent_Milestone__c == null}">
+                                    <div class="{!and(userMilestones.Checkpoint__c == true, userMilestones.Milestone_Progress__c == 100) ?  'slds-col slds-size_2-of-4 vertical-aligntext-center' : 'slds-col slds-size_3-of-4 vertical-aligntext-center'}">
+                                        <div class="journeytitle" >
+                                            <aura:if isTrue="{!userMilestones.Milestone_URL__c != null}">
+                                                <lightning:formattedUrl value="{!userMilestones.Milestone_URL__c}" label="{!userMilestones.Milestone__r.Name}" target="_blank" /><br/>
+                                                <aura:set attribute="else">
+                                                    {!userMilestones.Milestone__r.Name}
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                </aura:if>
+                                
+                                <aura:if isTrue="{!and(userMilestones.Checkpoint__c == true, userMilestones.Milestone_Progress__c == 100)}">
+                                    <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                        <div class="imgCheckpointContainer">
+                                            <div class="journeyimageCkpoint">
+                                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/ckpoint.png'}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aura:if>
+                            </div>
+                            
+                            <div class="slds-grid">
+                                <div class=" journeyDescription slds-col slds-size_1-of-1">
+                                    <lightning:formattedRichText value="{!userMilestones.Description__c}" class="slds-text-body_small " />
+                                </div>
+                            </div>
+                            
+                            <aura:iteration items="{!v.userMilestoneRelatedInfo}" var="relatedInfo" indexVar="key">
+                                <aura:if isTrue="{!userMilestones.Name == relatedInfo.key}">
+                                    <div class="journeylinks">
+                                        
+                                        <aura:iteration items="{!relatedInfo.value}" var="relatedInformation" >
+                                            <aura:if isTrue="{!relatedInformation.Description != null}">
+                                                <lightning:formattedUrl value="{!relatedInformation.Description}" label="{!relatedInformation.Subject}" target="_blank" /><br/>
+                                                <aura:set attribute="else">
+                                                    {!relatedInformation.Subject} <br/>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:iteration>
+                                    </div>
+                                </aura:if>
+                            </aura:iteration>
+                            
+                            <ul>
+                                <aura:iteration items="{!userMilestones.childMilestone}" var="childMilestone" indexVar="key">
+                                    <li>{!childMilestone.Milestone__r.Name}</li>
+                                </aura:iteration>
+                            </ul>
+                            
+                            <!-- MMALLORCA 03/04/2024 CCN-JOU-3713-DV-->
+                            <br />
+                            <!-- Question Start -->
+                            <aura:if isTrue="{!and(userMilestones.Type__c == 'Quick Check', userMilestones.Milestone_Progress__c == 100, userMilestones.Milestone__r.Related_RecordId__c)}">
+                                <div class="slds-grid question-grid">
+                                    <div class="slds-col slds-size_1-of-1 question-col">
+                                        <aura:iteration items="{!v.finalResultVal}" var="f" indexVar="i">
+                                            <aura:if isTrue="{!i == 0}">
+                                        	<div class="result-greeting"><b>
+                                                                <lightning:formattedRichText value="{!f.Quick_Check_Question_Number__r.Completion_Message__c}"/>
+                                                </b></div>
+                                            </aura:if>
+                                            <aura:if isTrue="{!f.Id != null}">
+                                                <aura:if isTrue="{!and(f.isLatest__c == true ,f.Quick_Check_Question_Number__r.Quick_Check__c == userMilestones.Milestone__r.Related_RecordId__c)}">
+                                                    <aura:if isTrue="{!f.Answer_Checking__c == 'Correct'}">
+                                                        <div class="final-correct-div">
+                                                            <div class="icon-div">
+                                                                <lightning:icon iconName="utility:check" size="xx-small" class="correct-icon"/>
+                                                            </div>
+                                                            <div class="correct-div">
+                                                                {!f.counter}.
+                                                            </div>
+                                                            <div class="question-div">
+                                                                <lightning:formattedRichText value="{!f.Question__c}"/>
+                                                            </div>
+                                                            <div class="answer-div">
+                                                                {!f.Quick_Check_Question_Number__r.Correct_Answer_s__c}
+                                                            </div>
+                                                        </div>
+                                                        <aura:set attribute="else">
+                                                            <div class="final-incorrect-div">
+                                                                <div class="icon-div">
+                                                                    <lightning:icon iconName="utility:close" size="xx-small" class="incorrect-icon"/>
+                                                                </div>
+                                                                <div class="incorrect-div">
+                                                                    {!f.counter}.
+                                                                </div>
+                                                                <div class="question-div">
+                                                                    <lightning:formattedRichText value="{!f.Question__c}"/>
+                                                                </div>
+                                                                <div class="answer-div">
+                                                                    {!f.Quick_Check_Question_Number__r.Correct_Answer_s__c}
+                                                                </div>
+                                                            </div>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:if>                                                
+                                            </aura:if>
+                                        </aura:iteration>
+                                    </div>
+                                </div>
+                            </aura:if>
+                            <div class="slds-grid question-grid none" id="{!userMilestones.Milestone__r.Related_RecordId__c+'question-grid'}">
+                                <div class="slds-col slds-size_1-of-1 question-col">
+                                    <aura:if isTrue="{!and(v.curQuickCheck == userMilestones.Milestone__r.Related_RecordId__c, userMilestones.Milestone__r.Related_RecordId__c != null)}">
+                                        <aura:if isTrue="{!v.curQuestion.Question_Type__c == 'Radio buttons'}">
+                                            <fieldset id="{!v.curQuestion.Id}" required="{!v.curQuestion.Required_Question__c}" class="slds-form-element">
+                                                <legend class="slds-form-element__legend slds-form-element__label question-label">
+                                                    <div class="question-ctr-div">{!v.curQuestion.QuestionCtr}</div>
+                                                    <lightning:formattedRichText value="{!v.curQuestion.Question__c}"/>
+                                                </legend>
+                                                <div class="slds-form-element__control default-control" id="{!v.curQuestion.LastQuestion}">
+                                                    <div class="slds-col slds-size_3-of-6 answer-list-div">
+                                                        <aura:iteration items="{!v.curQuestion.options}" var="op">
+                                                            <span class="slds-radio">
+                                                                <input type="radio" class="{!v.curQuestion.Quick_Check__c}" id="{!v.curQuestion.Id+op}" value="{!op}" name="{!v.curQuestion.Id}" data-participantmilestone-id="{!userMilestones.Id}" data-quickcheck-id="{!v.curQuestion.Quick_Check__c}" data-question="{!v.curQuestion.Question__c}" data-correctanswers="{!v.curQuestion.Correct_Answer_s__c}" required="{!v.curQuestion.Required_Question__c}" data-question-id="{!v.curQuestion.Id}" onclick="{!c.handleOnClick}"/>
+                                                                <label class="slds-radio__label" for="{!v.curQuestion.Id+op}">
+                                                                    <span class="slds-radio_faux"></span>
+                                                                    <span class="slds-form-element__label">{!op}</span>
+                                                                </label>
+                                                            </span>
+                                                        </aura:iteration>
+                                                        <div style="display:none;color:#c23934;" data-error-id="{!v.curQuestion.Id}" aura:id="{!'data-error-id='+v.curQuestion.Id" id="{!'data-error-id='+v.curQuestion.Id}">
+                                                            This is required
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-correct'}" class="result-div correct-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:check" size="xx-small" class="correct-icon"/>
+                                                                Correct
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-val-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-correct'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-incorrect'}" class="result-div incorrect-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:close" size="xx-small" class="incorrect-icon" />
+                                                                Incorrect
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label"  id="{!v.curQuestion.Id+'answer-list-div-val-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-incorrect'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </aura:if>
+                                        
+                                        <aura:if isTrue="{!v.curQuestion.Question_Type__c == 'Multi-select'}" >
+                                            <fieldset id="{!v.curQuestion.Id}" class="slds-form-element multiselect" required="{!v.curQuestion.Required__c}">
+                                                <legend class="slds-form-element__legend slds-form-element__label question-label">
+                                                    <div class="question-ctr-div">{!v.curQuestion.QuestionCtr}</div>
+                                                    <lightning:formattedRichText value="{!v.curQuestion.Question__c}"/>
+                                                </legend>
+                                                <div class="slds-form-element__control default-control" id="{!v.curQuestion.LastQuestion}">
+                                                    <div class="slds-col slds-size_3-of-6 answer-list-div">
+                                                        <div class="slds-checkbox_button-groups">
+                                                            <aura:iteration items="{!v.curQuestion.options}" var="op">
+                                                                <span class="slds-button slds-checkbox_buttons">
+                                                                    <input type="checkbox" class="{!v.curQuestion.Quick_Check__c}" id="{!v.curQuestion.Id+op}" value="{!op}" name="{!v.curQuestion.Id}" data-participantmilestone-id="{!userMilestones.Id}" data-quickcheck-id="{!v.curQuestion.Quick_Check__c}" data-question="{!v.curQuestion.Question__c}" data-correctanswers="{!v.curQuestion.Correct_Answer_s__c}" required="{!v.curQuestion.Required_Question__c}" data-question-id="{!v.curQuestion.Id}" onclick="{!c.handleOnClick}"/>
+                                                                    <label class="slds-checkbox_button__labels" for="{!v.curQuestion.Id+op}">
+                                                                        <span class="slds-checkbox_fauxs">{!op}</span>
+                                                                    </label>
+                                                                </span>
+                                                                <br />
+                                                            </aura:iteration>
+                                                        </div>
+                                                        <br />
+                                                        <div style="display:none;color:#c23934;" data-error-id="{!v.curQuestion.Id}"  aura:id="{!'data-error-id='+v.curQuestion.Id" id="{!'data-error-id='+v.curQuestion.Id}">
+                                                            This is required
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-correct'}" class="result-div correct-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:check" size="xx-small" class="correct-icon"/>
+                                                                Correct
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-val-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-correct'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-incorrect'}" class="result-div incorrect-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:close" size="xx-small" class="incorrect-icon" />
+                                                                Incorrect
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label"  id="{!v.curQuestion.Id+'answer-list-div-val-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-incorrect'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </aura:if>
+                                        
+                                        <aura:if isTrue="{!v.curQuestion.Question_Type__c == 'Picklist'}">
+                                            <div class="slds-form-element">
+                                                <legend class="slds-form-element__legend slds-form-element__label question-label">
+                                                    <div class="question-ctr-div">{!v.curQuestion.QuestionCtr}</div>
+                                                    <lightning:formattedRichText value="{!v.curQuestion.Question__c}"/>
+                                                </legend>
+                                                <div class="slds-form-element__control default-control" id="{!v.curQuestion.LastQuestion}">
+                                                    <div class="slds-col slds-size_3-of-6 answer-list-div">
+                                                        <div class="slds-select_container">
+                                                            <select name="{!v.curQuestion.Id}" class="{!v.curQuestion.Quick_Check__c+' slds-select'}"  id="{!v.curQuestion.Id}" onchange="{!c.handleOnClick}" question="{!v.curQuestion.Question__c}" data-participantmilestone-id="{!userMilestones.Id}" data-quickcheck-id="{!v.curQuestion.Quick_Check__c}" data-question="{!v.curQuestion.Question__c}" data-correctanswers="{!v.curQuestion.Correct_Answer_s__c}" required="{!v.curQuestion.Required_Question__c}" data-question-id="{!v.curQuestion.Id}">
+                                                                <option value="">Please select</option>
+                                                                <aura:iteration items="{!v.curQuestion.options}" var="op">
+                                                                    <option value="{!op}">{!op}</option>
+                                                                </aura:iteration>
+                                                            </select>
+                                                        </div>
+                                                        <div style="display:none;color:#c23934;" data-error-id="{!v.curQuestion.Id}" aura:id="{!'data-error-id='+v.curQuestion.Id}" id="{!'data-error-id='+v.curQuestion.Id}">
+                                                            This is required
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-correct'}" class="result-div correct-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:check" size="xx-small" class="correct-icon"/>
+                                                                Correct
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-val-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-correct'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-incorrect'}" class="result-div incorrect-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:close" size="xx-small" class="incorrect-icon" />
+                                                                Incorrect
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label"  id="{!v.curQuestion.Id+'answer-list-div-val-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-incorrect'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        
+                                        <aura:if isTrue="{!v.curQuestion.Question_Type__c == 'Date'}">
+                                            <fieldset id="{!v.curQuestion.Id}" required="{!v.curQuestion.Required_Question__c}" class="slds-form-element datetype">
+                                                <legend class="slds-form-element__legend slds-form-element__label question-label">
+                                                    <div class="question-ctr-div">{!v.curQuestion.QuestionCtr}</div>
+                                                    <lightning:formattedRichText value="{!v.curQuestion.Question__c}"/>
+                                                </legend>
+                                                <div class="slds-form-element__control default-control" id="{!v.curQuestion.LastQuestion}">
+                                                    <div class="slds-col slds-size_3-of-6 answer-list-div">
+                                                        <input type="date" label="" class="{!v.curQuestion.Quick_Check__c+' slds-input'}" id="{!v.curQuestion.Id}" name="{!v.curQuestion.Id}"  data-participantmilestone-id="{!userMilestones.Id}" data-quickcheck-id="{!v.curQuestion.Quick_Check__c}" data-question="{!v.curQuestion.Question__c}" data-correctanswers="{!v.curQuestion.Correct_Answer_s__c}" required="{!v.curQuestion.Required_Question__c}" data-question-id="{!v.curQuestion.Id}" onchange="{!c.handleOnClick}"/>
+                                                        <div style="display:none;color:#c23934;" data-error-id="{!v.curQuestion.Id}" aura:id="{!'data-error-id='+v.curQuestion.Id" id="{!'data-error-id='+v.curQuestion.Id}">
+                                                            This is required
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-correct'}" class="result-div correct-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:check" size="xx-small" class="correct-icon"/>
+                                                                Correct
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-val-correct'}">
+                                                        <div id="{!v.curQuestion.Id+'result-correct'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-6 answer-list-div question-label" id="{!v.curQuestion.Id+'answer-list-div-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-div-incorrect'}" class="result-div incorrect-div none"> 
+                                                            <div>
+                                                                <lightning:icon iconName="utility:close" size="xx-small" class="incorrect-icon" />
+                                                                Incorrect
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-6 answer-list-div question-label"  id="{!v.curQuestion.Id+'answer-list-div-val-incorrect'}">
+                                                        <div id="{!v.curQuestion.Id+'result-incorrect'}" class="correct-value">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </aura:if>
+                                    </aura:if>                                        
+                                </div>
+                            </div>
+                            <div class="slds-grid" >
+                                <div class="journeySurveyComplete slds-col slds-size_1-of-2 slds-float_left">
+                                    <aura:if isTrue="{!and(userMilestones.Milestone__r.Related_RecordId__c != null, or(userMilestones.Milestone_Progress__c == 0, userMilestones.Milestone_Progress__c == null))}">
+                                        <aura:if isTrue="{!userMilestones.Milestone__r.Add_Quick_Check_Begin_Button__c}">
+                                            <button type="button"
+                                                    onclick="{!c.beginQuestion}"
+                                                    value="{!userMilestones.Milestone__r.Related_RecordId__c}"
+                                                    name="{!userMilestones.Milestone__r.Related_RecordId__c}"
+                                                    id="{!userMilestones.Milestone__r.Related_RecordId__c+'begin-btn'}" 
+                                                    class="journeySurveyBeginBtn slds-button slds-button_brand">
+                                                
+                                                {!userMilestones.Milestone__r.Quick_Check_Begin_Button_Text__c}
+                                                
+                                            </button>
+                                        </aura:if>
+                                    </aura:if>
+                                    <button type="button"
+                                            onclick="{!c.validate}"
+                                            id="{!userMilestones.Milestone__r.Related_RecordId__c+'submit-btn'}" 
+                                            class="journeySubmit slds-button slds-button_brand none"
+                                            disabled="true">
+                                        Submit
+                                    </button> 
+                                    <button type="button"
+                                            onclick="{!c.beginQuestion}"
+                                            value="{!userMilestones.Milestone__r.Related_RecordId__c}"
+                                            id="{!userMilestones.Milestone__r.Related_RecordId__c+'next-btn'}" 
+                                            class="journeySurveyBeginBtn slds-button slds-button_brand none"
+                                            disabled="true">
+                                        Next
+                                    </button>
+                                    <button type="button"
+                                            onclick="{!c.finish}"
+                                            value="{!userMilestones.Milestone__r.Related_RecordId__c}"
+                                            id="{!userMilestones.Milestone__r.Related_RecordId__c+'finish-btn'}" 
+                                            class="journeySurveyBeginBtn slds-button slds-button_brand none"
+                                            disabled="true">
+                                        Finish
+                                    </button>
+                                    <!-- MMALLORCA 03/14/2024 CCN-JOU-3713-DV Commented-->
+                                    <aura:if isTrue="{!and(userMilestones.Type__c == 'Survey', userMilestones.Milestone__r.Survey_Completion_Button__c == true)}">
+                                        <lightning:button class="journeySurveyCompleteBtn" variant="brand" label="{!userMilestones.Milestone__r.Survey_Completion_Button_Text__c}" 
+                                                          title="{!userMilestones.Milestone__r.Survey_Completion_Button_Text__c}" onclick="{! c.handleSurveyCompletion }"
+                                                          disabled="{!userMilestones.Progress__c == 100}"
+                                                          name="{!userMilestones.Id}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!and(userMilestones.Type__c == 'Event', userMilestones.Milestone__r.isCatchupAvailable == true)}">
+                                        
+                                        <lightning:button class="journeySurveyCompleteBtn" variant="brand" label="Catch-Up" 
+                                                          title="Catch-Up" onclick="{! c.handleEventCatchUp }"
+                                                          disabled="{!userMilestones.Progress__c == 100}"
+                                                          name="{!userMilestones.Id}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!and(userMilestones.Type__c == 'Attestation', userMilestones.Milestone__r.Attestation_Completion_Button__c == true)}">
+                                        <lightning:button class="journeySurveyCompleteBtn" variant="brand" label="{!userMilestones.Milestone__r.Attestation_Completion_Button_Text__c}"
+                                                          title="{!userMilestones.Milestone__r.Attestation_Completion_Button_Text__c}" onclick="{! c.handleSurveyCompletion }"
+                                                          disabled="{!userMilestones.Progress__c == 100}"
+                                                          name="{!userMilestones.Id}"/>
+                                    </aura:if>
+                                    <!-- MMALLORCA 03/14/2024 CCN-JOU-3713-DV Commented END-->
+                                </div>
+                                
+                                <aura:if isTrue="{!userMilestones.Type__c != 'Information' }">
+                                    <div class="journeyprogress slds-col slds-size_1-of-2">
+                                        <div class="slds-float_right">
+                                            <div class="progresscount">
+                                                <aura:if isTrue="{!userMilestones.Type__c == 'Checkpoint' }">
+                                                    <aura:if isTrue="{!not(userMilestones.Checkpoint_Progress__c > 0)}">
+                                                        Not Started
+                                                        <aura:set attribute="else">
+                                                            <lightning:formattedNumber value="{!userMilestones.Checkpoint_Progress__c}"/>%
+                                                        </aura:set>
+                                                    </aura:if>
+                                                    
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!not(userMilestones.Milestone_Progress__c > 0)}">
+                                                            Not Started
+                                                            <aura:set attribute="else">
+                                                                <lightning:formattedNumber value="{!userMilestones.Milestone_Progress__c}"/>%
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </aura:set>                                                    
+                                                </aura:if>
+                                            </div>
+                                            <aura:if isTrue="{!userMilestones.Type__c == 'Checkpoint' }"> 
+                                                    <lightning:progressBar value="{!userMilestones.Checkpoint_Progress__c}" size="large" />
+                                                <aura:set attribute="else">
+                                                    <lightning:progressBar value="{!userMilestones.Milestone_Progress__c}" size="large" />
+                                                </aura:set>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                </aura:if>
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                    <div class="{!'journeyimage milestone'+ userMilestones.Type__c}">
+                                         <aura:if isTrue="{!userMilestones.Checkpoint__c == true}">
+                                            <img src="{!$Resource.JourneyIcons + '/JourneyIcons/Checkpoint.png'}"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!userMilestones.Type__c == 'Quick Check'}">
+                                                    <img src="{!$Resource.JourneyIcons + '/JourneyIcons/QuickCheck.png'}"/>
+                                                    <aura:set attribute="else">
+                                                        <img src="{!$Resource.JourneyIcons + '/JourneyIcons/' + userMilestones.Type__c + '.png'}"/>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                
+                                <div class="{!and(userMilestones.Checkpoint__c == true, userMilestones.Milestone_Progress__c == 100) ?  'slds-col slds-size_2-of-4 vertical-aligntext-center' : 'slds-col slds-size_3-of-4 vertical-aligntext-center'}">
+                                    <div class="journeytitle">
+                                        <aura:if isTrue="{!userMilestones.Milestone_URL__c != null}">
+                                            <lightning:formattedUrl value="{!userMilestones.Milestone_URL__c}" label="{!userMilestones.Milestone__r.Name}" target="_blank" /><br/>
+                                            <aura:set attribute="else">
+                                                {!userMilestones.Milestone__r.Name}<br/>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                
+                                <aura:if isTrue="{!and(userMilestones.Checkpoint__c == true, userMilestones.Milestone_Progress__c == 100)}">
+                                    <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                        <div class="imgCheckpointContainer">
+                                            <div class="journeyimageCkpoint">
+                                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/ckpoint.png'}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aura:if>
+                            </div>
+                            
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-1">
+                                    <lightning:formattedRichText value="{!userMilestones.Description__c}" class="journeyDescription slds-text-body_small " />
+                                </div>
+                            </div>
+                            
+                            <aura:iteration items="{!v.userMilestoneRelatedInfo}" var="relatedInfo" indexVar="key">
+                                <aura:if isTrue="{!userMilestones.Name == relatedInfo.key}">
+                                    <div class="journeylinks">
+                                        
+                                        <aura:iteration items="{!relatedInfo.value}" var="relatedInformation" >
+                                            <aura:if isTrue="{!relatedInformation.Description != null}">
+                                                <lightning:formattedUrl value="{!relatedInformation.Description}" label="{!relatedInformation.Subject}" target="_blank" /><br/>
+                                                <aura:set attribute="else">
+                                                    {!relatedInformation.Subject} <br/>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:iteration>
+                                    </div>
+                                </aura:if>
+                            </aura:iteration>
+                            
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2" >
+                                    <aura:if isTrue="{!and(userMilestones.Type__c == 'Survey', userMilestones.Milestone__r.Survey_Completion_Button__c == true)}">
+                                        <lightning:button class="journeySurveyCompleteBtn" variant="brand" label="{!userMilestones.Milestone__r.Survey_Completion_Button_Text__c}" 
+                                                          title="{!userMilestones.Milestone__r.Survey_Completion_Button_Text__c}" onclick="{! c.handleSurveyCompletion }"
+                                                          disabled="{!userMilestones.Milestone_Progress__c == 100}"
+                                                          name="{!userMilestones.Id}"/>
+                                    </aura:if>                
+                                </div>
+                                <div class="journeyprogress slds-col slds-size_1-of-2" >
+                                    <div class="slds-float_right">
+                                        <div class="progresscount">
+                                            <aura:if isTrue="{!userMilestones.Type__c == 'Checkpoint' }">
+                                                <aura:if isTrue="{!not(userMilestones.Checkpoint_Progress__c > 0)}">
+                                                    Not Started
+                                                    <aura:set attribute="else">
+                                                        <lightning:formattedNumber value="{!userMilestones.Checkpoint_Progress__c}"/>%
+                                                    </aura:set>
+                                                </aura:if>
+                                                
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!not(userMilestones.Milestone_Progress__c > 0)}">
+                                                        Not Started
+                                                        <aura:set attribute="else">
+                                                            <lightning:formattedNumber value="{!userMilestones.Milestone_Progress__c}"/>%
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>                                                    
+                                            </aura:if>
+                                        </div>
+                                        <aura:if isTrue="{!userMilestones.Type__c == 'Checkpoint' }"> 
+                                            <lightning:progressBar value="{!userMilestones.Checkpoint_Progress__c}" size="large" />
+                                            <aura:set attribute="else">
+                                                <lightning:progressBar value="{!userMilestones.Milestone_Progress__c}" size="large" />
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:if>
+                    </div>
+                    <div class="divider">
+                        <aura:if isTrue="{!$Browser.formFactor != 'PHONE'}">
+                            <br/> 
+                        </aura:if>
+                        <br/>
+                    </div>
+                </aura:iteration>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

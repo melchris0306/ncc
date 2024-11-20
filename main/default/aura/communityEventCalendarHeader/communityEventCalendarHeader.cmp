@@ -1,0 +1,106 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="ChangeCloudController">
+    
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-min.css'}" />
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-font-min.css'}" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="eventId" type ="String"/>
+    <aura:attribute name="parameterURL" type="string"/>
+    <aura:attribute name="title" type="string"/>
+    <aura:attribute name="status" type="string"/>
+    
+    <aura:attribute name="backgroundImageURL" type="string"/>
+    <aura:attribute name="campaignLogoURL" type="string"/>
+    <aura:attribute name="isPhone" type ="Boolean" default="false"/>
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    
+    
+    <div>
+        
+        <aura:if  isTrue="{!v.isPhone==FALSE}" >
+            <div class="nav-box">
+                <div class="navbar" id="myTopnav">
+                    
+                    <aura:if  isTrue="{!v.isPhone==FALSE}" >
+                        <div class="navbar-left navbar-logo">
+                            <span class="img-logo">	
+                                <img src="{!$Resource.communityEventHeaderLogo}" alt="Change Cloud" class="navbar-logo-img"></img>
+                            </span>
+                        </div>
+                        <div class="navbar-left campaign-logo">
+                            <div class="campaignlogo" style="{!'background-image: url(' + v.campaignLogoURL +'); background-size: 15rem 6rem;'}"></div>
+                        </div>
+                        
+                        <div class="hero-title">
+                            <div class="font-hero-header-content">
+                                <div class="vertical-center">
+                                    	<div>
+                                    	</div>
+                                    	<div class="event-container">
+                                            <div class="event-title-container"><br/>
+                                                <p class="font-hero-header"> {!v.title}  </p>
+                                            </div>
+                                            <div class="event-action-container">
+                                                <lightning:button class="" value="" onclick="{!c.refreshPage}" label="Save Proposed Schedule" variant="brand"/>
+                                            </div>
+                                    	</div>
+                                        <lightning:spinner variant="brand" alternativeText="Loading..." class="{!(v.loaded? 'slds-show': 'slds-hide')}" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </aura:if>
+
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </aura:if>
+        
+        <aura:if  isTrue="{!v.isPhone==TRUE}" >
+            <div class="hero-section"  id="hero-section-id">
+                <div class="nav-box">
+                    <div class="navbar" id="myTopnav">
+
+
+
+
+                        <!--<a href="javascript:void(0);" onclick="{!c.removeHamburger}" class="hamburger backtomain" aura:id="menu-bar-remove">
+                                <lightning:icon iconName="utility:picklist_type"  size="small" />
+                                <i class="fa fa-bars"></i>
+                            </a>-->
+
+
+                        <!--<a href="{!'/CompassEvents/s/speakers?' + v.parameterURL}">SPEAKERS</a>	-->	
+                        
+
+                        <!--<a href="{!'/CompassEvents/s/details?' + v.parameterURL}" >EVENT DETAILS</a>-->
+
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <div>
+                    <div class="hero-section-infobox">
+                        <div class="hero-info-box-inside">
+                            <div class="hero-title">
+                                <div class="navbar-content">
+                                    <div class="navbar-left navbar-logo">
+                                        <a class="img-logo">	
+                                            <img src="{!$Resource.communityEventHeaderLogo}" alt="Compass" class="navbar-logo-img"></img>
+                                        </a>
+                                    </div>
+                                    <div class="navbar-left campaign-logo">
+                                        <div class="campaignlogo" style="{!'background-image: url(' + v.campaignLogoURL +');'}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </aura:if>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,56 @@
+.survey-field-section .slds-accordion__summary {
+    background-color: var(--lwc-colorBackground,rgb(243, 242, 242));
+}
+
+/** Styles for the Independent Survey **/
+.detailElementIndependent .slds-input, .survey-independent .slds-input{
+    padding: 10px !important;
+	margin: 0 !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border: 1px solid #B1B1B1 !important;
+    border-radius: 8px !important;
+    opacity: 1 !important;
+	line-height: normal !important;
+    font-size: 13px !important;
+}
+
+.detailElementIndependent .slds-form-element__control, .survey-independent .slds-form-element__control{
+    /* font-family: Calibri !important;
+    font-size: 16px !important; */
+}
+
+.detailElementIndependent .slds-select{
+	font-size: 13px !important;
+    border-radius: 8px;
+}
+
+/** Styles for the Event Survey **/
+
+.detailElement .slds-input {
+    padding: 10px !important;
+	margin: 0 !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border: 1px solid #B1B1B1 !important;
+    opacity: 1 !important;
+	line-height: normal !important;
+}
+
+.survey .slds-input {
+    /* padding: 5px !important;*/
+	margin-top: 5px !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border: 1px solid #B1B1B1 !important;
+    opacity: 1 !important;
+	line-height: normal !important;
+    border-radius: 8px;
+}
+
+.detailElement .slds-select{
+	font-size: 13px !important;
+    border-radius: 8px;
+}
+
+.detailElement .slds-button_neutral {
+    padding-left: 5px;
+    padding-right: 5px;
+}

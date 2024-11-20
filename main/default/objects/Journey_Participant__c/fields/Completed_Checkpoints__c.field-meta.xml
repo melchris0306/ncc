@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed_Checkpoints__c</fullName>
+    <description>Total number of completed checkpoints</description>
+    <label>Completed Checkpoints</label>
+    <summaryFilterItems>
+        <field>Participant_Milestone__c.Type__c</field>
+        <operation>equals</operation>
+        <value>Checkpoint</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Participant_Milestone__c.Progress__c</field>
+        <operation>equals</operation>
+        <value>100</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Participant_Milestone__c.Journey__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

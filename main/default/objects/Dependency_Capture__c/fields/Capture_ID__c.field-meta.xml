@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capture_ID__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Capture ID</label>
+    <referenceTo>Compass_Capture__c</referenceTo>
+    <relationshipLabel>Dependency Capture</relationshipLabel>
+    <relationshipName>Dependency_Capture</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_entry_validation</fullName>
+    <active>true</active>
+    <description>Enforces user to link the Journey to either Event or Survey not both.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(Survey__c)),NOT(ISBLANK(Event__c)))</errorConditionFormula>
+    <errorMessage>A Journey cannot be linked to both Event and Survey.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NCC Onboarding</name>
+    <queueMembers>
+        <users>
+            <user>aretha.henderson@edera.com</user>
+            <user>bill.thach@nationalcoordinationcenter.com</user>
+            <user>kristine.exton@edera.com</user>
+            <user>octavia.boykin@nationalcoordinationcenter.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

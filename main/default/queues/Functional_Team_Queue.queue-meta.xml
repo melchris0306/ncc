@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Functional Team Queue</name>
+    <queueMembers>
+        <users>
+            <user>salesforce@nationalcoordinationcenter.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Project_Task__c</sobjectType>
+    </queueSobject>
+</Queue>

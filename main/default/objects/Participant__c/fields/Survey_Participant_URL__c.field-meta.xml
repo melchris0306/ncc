@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Survey_Participant_URL__c</fullName>
+    <description>Generates a URL that is sent via email for when a participant has to answer a survey</description>
+    <externalId>false</externalId>
+    <formula>Event__r.Event_Page_URL__c + &quot;&amp;pm=&quot; + Name + &quot;&amp;email=&quot; + IF(ISBLANK( Member_Contact__c ), Member_Lead__r.Email,  Member_Contact__r.Email  )</formula>
+    <label>Survey Participant URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

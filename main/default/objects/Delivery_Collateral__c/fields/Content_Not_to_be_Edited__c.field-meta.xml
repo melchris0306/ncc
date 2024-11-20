@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Content_Not_to_be_Edited__c</fullName>
+    <inlineHelpText>Content that CANNOT be edited/changed (e.g., contract content placed into a deliverable, names of client documents,processes that may not be altered, etc.)</inlineHelpText>
+    <label>Content Not to be Edited</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

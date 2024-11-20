@@ -1,0 +1,338 @@
+@media only screen and (max-width: 960px) {
+    .THIS .journeyhighlights{
+        display: flex;
+        flex-direction: column-reverse;
+        padding-bottom: 20px !important;
+    }
+    .THIS .journeyhighlightsleft{
+        width: 100% !important;
+    }
+    .THIS .journeyhighlightsright{
+        width: 100% !important;
+    }
+    .THIS .journeyhighlightsimage{
+        width: 100% !important;
+        text-align: center;
+    }
+    .THIS .providerheader{
+        font-size: 25px !important;
+        margin-top: 0px !important;
+    }
+    .THIS .providervalue{
+        font-size: 15px !important;
+    }
+
+    .THIS .doctorimage{
+        height:300px !important;
+    }
+    .THIS .journeylevel{
+        margin: 5px 5% !important;
+        padding: 5px !important;
+        padding-bottom: 60px;
+    }
+    .THIS .journeyhighlightsleft-header1{
+        padding: 10px 20px 0 !important;
+        font-size: 20px !important;
+    }
+    .THIS .journeyhighlightsleft-header2{
+        padding: 5px 0 0 20px !important;
+        font-size: 12px !important;
+        line-height: 24px !important;
+    }
+    .THIS .highlightsbutton .slds-button_neutral{
+        font-size: 12px !important;
+        padding: 5px 10px !important;
+    }
+    .THIS .dividerlineredcoms{
+        width: 60% !important;
+        height: 3px !important;
+    }
+    .THIS .communication{
+        font-size: 25px !important;
+        padding-top: 15px !important;
+    }
+    .THIS .communicationvalues{
+        font-size: 15px !important;
+    }
+    .THIS .personalizedjourney{
+        font-size: 20px !important;
+    }
+    .THIS .journeytitle{
+        font-size: 12px !important;
+    }
+    .THIS .journeylinks{
+        font-size: 10px !important;
+    }
+    .THIS .progresscount{
+        font-size: 10px !important;
+        width: auto !important;
+    }
+    .THIS .progressbar{
+        height: 10px !important;
+        border-radius: 5px !important;
+
+    }
+    .THIS .mybar{
+        height: 10px !important;
+    }
+}
+
+
+
+.THIS a{
+    color:black;
+}
+
+.THIS .journey{
+    background-color: #f8fcfd;
+    width: 100%;
+    height: 100%;
+    padding: 5% 5% 0 5%;
+}
+.THIS .journeyhighlights{
+    background-color: #f8fcfd;
+    padding-bottom: 50px;
+    vertical-align: top;
+}
+.THIS .journeyhighlightsleft{
+    background-color: #0083C1;
+    color: #fefefe;
+    width: 35%;
+    display: inline-block;
+    vertical-align: top;
+}
+.THIS .journeyhighlightsimage{
+    width: 24%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f8fcfd;
+}
+.THIS .doctorimage{
+    height:600px;
+}
+
+.THIS .journeyhighlightsright{
+    width: 41%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f8fcfd;
+}
+.THIS .providerheader{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -30px;
+}
+.THIS .dividerlinered{
+    width: 50%;
+    margin: 20px auto;
+    height: 6px;
+    background-color: #F3BD48;
+}
+.THIS .dividerlineredcoms{
+    width: 18%;
+    margin: 20px auto;
+    height: 6px;
+    background-color: #F3BD48;
+}
+
+.THIS .providervalue{
+    font-size: 20px;
+}
+
+.THIS .journeyhighlightsleft-header{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 30px;
+}
+.THIS .journeyhighlightsleft-header1{
+    padding: 20px 50px 0;
+    font-size: 30px;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+.THIS .dividerline{
+    width: 65%;
+    background: white;
+    height: 3px;
+    margin: 20px 0 20px 0;
+}
+.THIS .journeyhighlightsleft-header2{
+    padding: 10px 0 0 50px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 40px;
+    display: inline-block;
+}
+.THIS .highlightsbutton{
+    width: 100%;
+    text-align:center;
+}
+.THIS .highlightsbutton .slds-button_neutral{
+    background-color: #F3BD48;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    color: white;
+}
+
+.THIS .communication{
+    background-color: #f8fcfd;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-top: 30px;
+}
+.THIS .communicationvalues{
+    background-color: #f8fcfd;
+    font-size: 20px;
+    letter-spacing: .25px;
+    padding-bottom: 30px;
+}
+
+
+.THIS .personalizedjourneyparent{
+    background-color:#f4f4f4;
+    padding-top: 30px;
+}
+.THIS .personalizedjourney{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+}
+
+.THIS .journeylevel{
+    margin: 5px 20%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 70px;
+    background-color: white;
+    border-left: 1px solid #f2f1f1;
+    border-bottom: 1px solid #f2f1f1;
+    border-right: 1px solid #f2f1f1;
+}
+.THIS .journeyimage{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.THIS .journeyimageCkpoint{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-left: 45px;
+    margin-top: 10px;
+    /*margin-bottom: 40px;*/
+}
+
+.THIS .journeytitle{
+    font-size: 25px;
+    vertical-align:middle;
+    letter-spacing: 1px;
+    color: black;
+    display: inline-block;
+    width: 60%;
+    margin-left: 100px;
+}
+.THIS .journeystatusimage{
+    text-align: center;
+    width: 20%;
+    display: inline-block;
+}
+.THIS .journeylinks{
+    margin-left: 20%;
+    text-decoration: underline;
+    font-size: 15px;
+    width: 50%;
+    display: inline-block;
+}
+.THIS .journeyprogress{
+    display: inline-block;
+    width: 30%;
+    float: right;
+    margin-left: 100%;
+}
+.THIS .progresscount{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+.THIS .progressbar{
+    height: 24px;
+    width: 70%;
+    background-color: #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.THIS .mybar{
+    height: 24px;
+    background-color: #99CA3C;
+}
+.THIS .zero{
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+.THIS .half{
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+}
+.THIS .perfect{
+    width: 100%;
+    border-radius: 10px;
+}
+.THIS .divider{
+    width: 100%;
+    text-align: center;
+}
+
+.THIS .journey1{
+    border-top: 20px solid #dfa511;
+    border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey2{
+    border-top: 20px solid #0d8ce5;
+    border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey3{
+    border-top: 20px solid #2e5a7a;
+    border-radius: 10px 10px 5px 5px;
+}
+.THIS .journey4{
+    border-top: 20px solid #65cd80;
+    border-radius: 10px 10px 5px 5px;
+}
+
+.THIS .journeyCommunication{
+    border-top: 20px solid black;
+    border-radius: 10px 10px 5px 5px;
+}
+
+.THIS .journeyEvent{
+    border-top: 20px solid #0d8ce5;
+    border-radius: 10px 10px 5px 5px;
+}
+
+.THIS .journeySurvey{
+    border-top: 20px solid green;
+    border-radius: 10px 10px 5px 5px;
+}
+
+.THIS .journeyCheckpoint{
+    border-top: 20px solid darkblue;
+    border-radius: 10px 10px 5px 5px;
+}

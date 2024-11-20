@@ -1,0 +1,91 @@
+<!--
+  @description       : 
+  @author            : adavid@ulapp.co
+  @group             : 
+  @last modified on  : 08-11-2022
+  @last modified by  : adavid@ulapp.co
+-->
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ChangeCloudController">
+
+
+	<ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-min.css'}" />
+	<ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-font-min.css'}" />
+
+	<aura:attribute name="StartDate" type="Date" />
+	<aura:attribute name="StartTime" type="Time" />
+	<aura:attribute name="EndDate" type="Date" />
+	<aura:attribute name="EndTime" type="Time" />
+	<aura:attribute name="ShowMap" type="boolean" default="false" />
+	<aura:attribute name="Street" type="String" />
+	<aura:attribute name="City" type="String" />
+	<aura:attribute name="PostCode" type="String" />
+	<aura:attribute name="State" type="String" />
+	<aura:attribute name="Country" type="String" />
+	<aura:attribute name="OrgTimeZone" type="String" />
+	<aura:attribute name="StartDateTime" type="DateTime" />
+	<aura:attribute name="EndDateTime" type="DateTime" />
+	<aura:attribute name="LocationName" type="String" />
+	<aura:attribute name="showComponent" type="Boolean" default="true" />
+	<aura:attribute name="CompleteAddress" type="String" />
+	<aura:attribute name="detailPageTitle" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div>
+		<aura:if isTrue="{!v.showComponent}">
+			<div class="detail-section">
+				<div class="c1">
+					<div>
+						<div class="float-left event-details-header">
+							<div class="detail-section-title font-section-header event-details">{!v.detailPageTitle}
+							</div>
+						</div>
+						<aura:if isTrue="{!or($Browser.formFactor == 'PHONE')}">
+							<div class="clear-section"></div>
+						</aura:if>
+						<div>
+							<div class="detail-section-body">
+								<div class="font-header">WHEN</div>
+								<div class="font-body">
+									<lightning:formattedText value="{!v.StartDateTime}"/>
+									<br/>
+									to
+									<br/>
+									<lightning:formattedText value="{!v.EndDateTime}"/>
+								</div>
+								<br/>
+								<div class="font-header">WHERE</div>
+
+								<div class="font-body">
+									<aura:if
+										isTrue="{!and(v.City != '', v.State != '', v.Country != '', v.PostCode != '')}">
+										<!-- Fix formatting address bug [CCN-2027] RexieDavid Aug112022  -->
+										<lightning:formattedAddress class="addre" street="{!v.Street}"
+											province="{!v.State}" city="{!v.City}" country="{!v.Country}"
+											postalCode="{!v.PostCode}" />
+										<aura:set attribute="else">
+											{!v.LocationName}
+										</aura:set>	
+									</aura:if>
+								</div>
+							</div>
+						</div>
+						<div class="clear-section"></div>
+					</div>
+				</div>
+				<div class="c2">
+					<div class="map-box">
+						
+						<aura:if isTrue="{!v.ShowMap}">
+							<c:CCE_Map Street="{!v.Street}" City="{!v.City}" PostCode="{!v.PostCode}" State="{!v.State}"
+								Country="{!v.Country}" />
+						</aura:if>
+						
+					</div>
+				</div>
+			</div>
+		</aura:if>
+        <div class="clear-section"></div>
+    </div>
+    
+    
+</aura:component>

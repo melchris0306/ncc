@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT">
+	<aura:attribute name="attachmentsList" type="List"/>
+	<aura:attribute name="options" type="List"/>
+	<aura:attribute name="excludedIds" type="List"/>
+</aura:event>

@@ -1,0 +1,24 @@
+<template>
+    <div>
+        <lightning-card title={Title} icon-name="utility:connected_apps">
+            <lightning-button label="New" slot="actions" onclick = {createNew}></lightning-button>
+            <template if:true={error}>{error}</template>
+            <template if:true={recordCount}>
+                <template for:each={record} for:item="rec">
+                    <div key={rec.Id} class="slds-box">
+                        <lightning-tile label={rec.Name} href={rec.conName}>
+                            <p>Owner: {rec.Owner.Name}</p>
+                            <p>Description: {rec.Description__c}</p>
+                            <p>Target Resolution Date: {rec.Target_Resolution_Date__c}</p>
+                            <p>Type: {rec.Type__c}</p>
+                            <p>Status: {rec.Status__c}</p>
+                        </lightning-tile>
+                    </div>
+                </template>
+                <footer class="slds-card__footer">
+                    <a class="slds-card__footer-action" onclick={handleNavigate}>View All</a>
+                </footer>
+            </template>
+        </lightning-card>
+    </div>
+</template>

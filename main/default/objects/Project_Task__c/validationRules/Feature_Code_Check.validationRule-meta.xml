@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Feature_Code_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(ISNEW(),RecordType.Name = &apos;Functionality&apos;,From_Functionality_Button__c = true,Feature__r.Feature_Code__c = null),true,false)</errorConditionFormula>
+    <errorMessage>Please add a Feature Code in the feature record</errorMessage>
+</ValidationRule>

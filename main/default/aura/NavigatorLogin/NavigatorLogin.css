@@ -1,0 +1,212 @@
+.THIS .loginForm{
+    margin: auto;
+    width: 30%;
+    padding: 50px;
+    background-color: white;
+    border-radius: 5%;
+        box-shadow: 0 6px 9px rgba(0,0,0,.220);
+
+}
+
+/*Jonah*/
+
+.THIS .logoImageSize{
+    width: 300px;
+    height: 100%;
+}
+.THIS .loginFormLogoCSS{
+    text-align: center;
+}
+
+.THIS .header-logo-image {
+    height: auto;
+}
+.THIS .header-section {
+    border-top: none;
+    background: #041731;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    top: 0; left: 0; 
+}
+.THIS .loginContent{
+     position: relative;
+    z-index: 1 !important;
+}
+
+.THIS .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #041731;
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.THIS .footer-section {
+    border-top: none;
+    background: #011E41;
+    text-align: center;
+}
+
+.THIS .footer-logo-image {
+    text-align: center;
+}
+
+.THIS .header-logo-image {
+    height: 100%;
+    width: 50px;
+}
+
+@media (max-width: 768px) {
+            .THIS .loginFormToTheRight {
+        		margin-top: 15% !important;
+        		margin-right: 10px !important;
+        		margin-left: 10px !important;
+                /* Center the div horizontally on smaller screens */
+                margin: 0 auto;
+            }
+        }
+
+@media (min-width: 769px) { 
+            .THIS .loginFormToTheRight {
+                /* Position the div on the right side of the screen on larger screens */
+        		margin-right: 10%;
+        		margin-top: 10%;
+        		margin-bottom: 0px !important;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+
+.THIS .loginFormToTheRight{
+    border-radius:20px;
+    /*margin-right: 300px; */
+    /*margin-left: auto;*/
+    /*margin-top: 150px;*/
+    /*margin-bottom: 0px !important;*/
+    /*width: 30%;*/
+    background: white;
+}
+
+.THIS .loginFormToTheRightInner{
+    background: #F5F5F5;
+    margin-top: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+   
+}
+.THIS .formMargin{
+    margin: 30px 30px 30px;
+    background: #F5F5F5;
+}
+
+.THIS .welcomeCSS{
+   font-weight: bold;
+   font-family: Arial;
+   font-size: 45px;
+   color: #143b6d;
+   margin: 30px 0px 0px 30px;
+}
+
+.THIS .bottomSpacing{
+    display:inline-block;
+}
+.THIS .spanMargin{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.THIS .spanEmail{
+    margin-left: 30px;
+}
+
+.THIS .spanButton{
+    margin-left: 30px;
+    margin-bottom: 80% !important;
+    
+}
+.THIS .promptCSS{
+   font-family: Arial;
+   font-size: 16px;
+}
+
+.THIS .signInButtonCSS{
+    /* background-color: rgb(22 50 92); */
+    margin-top: 20px;
+    font-family: Arial;
+}
+
+.THIS .slds-button_neutral {
+    --slds-c-button-color-background: #081e3f;
+    --sds-c-button-text-color: white;
+    --slds-c-button-text-color-hover: white;
+    --slds-c-button-neutral-color-background-hover: #143b6d;
+     
+}
+    
+    .THIS .slds-input{
+        height: 33px;
+        width: 94%;
+    }
+    
+.THIS button {
+        background-color:#081e3f;
+        color: white;
+        border:none;
+        border-radius:5px;
+        min-height: 33px; 
+        min-width: 80px;
+}
+    
+.THIS button:hover:enabled {
+        background-color:#143b6d;
+        transition: 0.2s;
+}
+
+.THIS .headerCSS {
+  padding: 15px 30px;
+  background-color: #041731;
+  position: fixed;
+width: 100%;
+    
+}
+
+/* jonah end*/
+.THIS .Toast{  
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Full width */
+    height: 0px; /* Full height */ 
+    top: 10%;
+    position: fixed;
+    margin: auto; 
+}
+.THIS .mainToast{
+    height: 0px;
+    width: 100%;
+    opacity: 0; /* Hidden by default. Visible on click */
+    padding: 0;
+    -webkit-transition: 0.7s linear;
+    -moz-transition: 0.7s linear;
+    -ms-transition:  0.7s linear;
+    -o-transition:  0.7s linear;
+    transition: 0.3s linear;
+}
+.THIS .show{        
+    height: 50px;
+    width: 100%;
+    opacity: 1; /* Hidden by default. Visible on click */
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -ms-transition:  0.3s linear;
+    -o-transition:  0.3s linear;
+	transition: 0.3s linear;	
+}
+.THIS .return{
+    display: flex;
+    justify-content: flex-end;
+}

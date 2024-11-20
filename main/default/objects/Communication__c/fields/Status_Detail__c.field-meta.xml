@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Detail__c</fullName>
+    <inlineHelpText>Status of each chunk of communication. Note: Near real-time sending of communication is in chunk. Number of recipients per chunk is defined in the Communication Batch Size custom label.</inlineHelpText>
+    <label>Status Detail</label>
+    <length>30000</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

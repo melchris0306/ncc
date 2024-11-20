@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INPT_Estimated_Value__c</fullName>
+    <description>This field is used by the GovWin IQ Connector. This field defines the estimated contract value of the GovWin IQ Opportunity.</description>
+    <inlineHelpText>This field is used by the GovWin IQ Connector. This field defines the estimated contract value of the GovWin IQ Opportunity.</inlineHelpText>
+    <label>IQ Estimated Value</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

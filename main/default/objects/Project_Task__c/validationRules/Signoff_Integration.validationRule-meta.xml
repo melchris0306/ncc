@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Signoff_Integration</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+RecordType.Name = &apos;QA&apos;,
+ISPICKVAL(Status__c,&apos;QA UAT&apos;),
+Sign_off_Integration__c = false)</errorConditionFormula>
+    <errorDisplayField>Sign_off_Integration__c</errorDisplayField>
+    <errorMessage>Integration Sign-off is not yet given.</errorMessage>
+</ValidationRule>

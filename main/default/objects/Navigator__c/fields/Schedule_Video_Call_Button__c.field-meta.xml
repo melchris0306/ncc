@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Schedule_Video_Call_Button__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Display Schedule a Video Call button on My Change Agent section when checkbox is selected</description>
+    <inlineHelpText>Display Schedule a Video Call button on My Change Agent section when checkbox is selected</inlineHelpText>
+    <label>Add Schedule Video Call Button</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

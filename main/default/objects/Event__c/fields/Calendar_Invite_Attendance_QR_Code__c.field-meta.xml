@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calendar_Invite_Attendance_QR_Code__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox to determine if QR Code is to be used for Attendance Tracking</description>
+    <label>Calendar Invite Attendance QR Code</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

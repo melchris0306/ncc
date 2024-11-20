@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sign_Up_Roles</fullName>
+    <availability>online</availability>
+    <description>Button for mass session sign-up</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Sign-Up Roles</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>https://dev3-nationalcoordinationcenter.cs90.force.com/Compass/s/mass-session-sign-up?id={!Session__c.Id}</url>
+</WebLink>

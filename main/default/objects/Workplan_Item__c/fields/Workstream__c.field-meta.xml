@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Workstream__c</fullName>
+    <label>Workstream</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Business Development (BD)​</fullName>
+                <default>false</default>
+                <label>Business Development (BD)​</label>
+            </value>
+            <value>
+                <fullName>Contract Management​</fullName>
+                <default>false</default>
+                <label>Contract Management​</label>
+            </value>
+            <value>
+                <fullName>Financial Management​</fullName>
+                <default>false</default>
+                <label>Financial Management​</label>
+            </value>
+            <value>
+                <fullName>Marketing and Strategic Communications​</fullName>
+                <default>false</default>
+                <label>Marketing and Strategic Communications​</label>
+            </value>
+            <value>
+                <fullName>Partners and Subcontracts Management​</fullName>
+                <default>false</default>
+                <label>Partners and Subcontracts Management​</label>
+            </value>
+            <value>
+                <fullName>Production Support​</fullName>
+                <default>false</default>
+                <label>Production Support​</label>
+            </value>
+            <value>
+                <fullName>Program Management​</fullName>
+                <default>false</default>
+                <label>Program Management​</label>
+            </value>
+            <value>
+                <fullName>Systems Administration​</fullName>
+                <default>false</default>
+                <label>Systems Administration​</label>
+            </value>
+            <value>
+                <fullName>Team Management (Edera)​</fullName>
+                <default>false</default>
+                <label>Team Management (Edera)​</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

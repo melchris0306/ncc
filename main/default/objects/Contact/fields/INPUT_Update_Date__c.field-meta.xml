@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INPUT_Update_Date__c</fullName>
+    <description>This field is used by the GovWin IQ Connector. This field defines the date that the related GovWin IQ contact was last updated.</description>
+    <inlineHelpText>This field is used by the GovWin IQ Connector. This field defines the date that the related GovWin IQ contact was last updated.</inlineHelpText>
+    <label>IQ Update Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Date</type>
+</CustomField>

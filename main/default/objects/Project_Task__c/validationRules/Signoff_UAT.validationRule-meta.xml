@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Signoff_UAT</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+RecordType.Name = &apos;QA&apos;,
+ISPICKVAL(Status__c,&apos;QA Smoke&apos;),
+Sign_off_UAT__c = false)</errorConditionFormula>
+    <errorDisplayField>Sign_off_UAT__c</errorDisplayField>
+    <errorMessage>UAT sign-off is not yet given.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Event_Field__c</fullName>
+    <defaultValue>false</defaultValue>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Field will only be available for selection if the survey is related to an event</inlineHelpText>
+    <label>Is Event Field?</label>
+    <type>Checkbox</type>
+</CustomField>

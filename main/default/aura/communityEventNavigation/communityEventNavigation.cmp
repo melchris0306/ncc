@@ -1,0 +1,227 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="ChangeCloudController">
+
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-min.css'}" />
+    <ltng:require styles="{!$Resource.community_event_ui + '/cc-ui-font-min.css'}" />
+    <ltng:require styles="{!$Resource.CompassEventPage + '/Css/CompassEventMain.css'}" />
+    <!--ltng:require styles="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic" /!-->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    <aura:attribute name="campaignLogoURL" type="string"/>
+    <!-- Start CCN-EVE-1841-DV  -->
+    <aura:attribute name="CompanyLogoURL" type="string" default=""/>
+    <aura:attribute name="loadLogo" type="Boolean" default="false"/>
+    <!-- End CCN-EVE-1841-DV  -->
+
+    <aura:attribute name="homePageTitle" type="String"/>
+    <aura:attribute name="sessionPageTitle" type="String"/>
+    <aura:attribute name="materialsPageTitle" type="String"/>
+    <aura:attribute name="issueTrackerPageTitle" type="String"/>
+    <aura:attribute name="parkingPageTitle" type="String"/>
+    <aura:attribute name="surveyPageTitle" type="String"/>
+    <aura:attribute name="contactUsPageTitle" type="String"/>
+    
+    <aura:attribute name="showHome" type ="Boolean" default="false"/>
+    <aura:attribute name="showSession" type ="Boolean" default="false"/>
+    <aura:attribute name="showMaterials" type ="Boolean" default="false"/>
+    <aura:attribute name="showIssue" type ="Boolean" default="false"/>
+    <aura:attribute name="showParking" type ="Boolean" default="false"/>
+    <aura:attribute name="showSurvey" type ="Boolean" default="false"/>
+    <aura:attribute name="showContactUs" type ="Boolean" default="false"/>
+    <aura:attribute name="showLogin" type ="Boolean" default="false"/>
+    <aura:attribute name="showPhoto" type ="Boolean" default="false"/>
+
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    <aura:attribute name="parameterURL" type="String"/>
+    <aura:attribute name="eventId" type="String"/>
+    <aura:attribute name="email" type="String"/>
+    <aura:attribute name="FirstName" type="String"/>
+    <aura:attribute name="LastName" type="String"/>
+    <aura:attribute name="ContactId" type="String"/>
+    <aura:attribute name="ProfilePicURL" type="String" default=""/> 
+    <div class="compass-navigation-section">
+        <div class="compass-topnav">
+            <div class="compass-topnav-logo" href="#home">
+                <span class="helper"></span>
+
+                <!-- Start CCN-EVE-1841-DV  -->
+                <aura:if isTrue="{!v.loadLogo}">
+                    <aura:if isTrue="{!v.CompanyLogoURL}">
+                        <img src="{!v.CompanyLogoURL}" alt="Change Cloud" class="compass-topnav-logo-img"></img>
+                        <aura:set attribute="else">
+                            <img src="{!$Resource.communityEventHeaderLogo}" alt="Change Cloud" class="compass-topnav-logo-img"></img>
+                        </aura:set>
+                    </aura:if>
+                </aura:if>
+                <!-- End CCN-EVE-1841-DV  -->
+
+                <!--<img src="{!$Resource.communityEventHeaderLogo}" alt="Change Cloud" class="compass-topnav-logo-img"></img>-->
+            </div>
+            <div class="compass-topnav-event-logo" href="#home">
+                <span class="helper"></span>
+                <img src="{!v.campaignLogoURL }" alt="Change Cloud" class="compass-topnav-event-logo-img"></img>
+            </div>
+            <div class="compass-topnav-right" id="compass-topnav-right-id">
+
+       
+                <aura:if  isTrue="{!v.showHome}" >
+                   <a href="{!'/Compass/s/events?' + v.parameterURL}" class="hide-mobile"><span>{!v.homePageTitle}</span></a>
+                </aura:if>
+                <aura:if  isTrue="{!v.showSession}" >
+                    <a href="{!'/Compass/s/sessions?' + v.parameterURL}" class="hide-mobile"><span>{!v.sessionPageTitle}</span></a>	
+                </aura:if>
+                <aura:if  isTrue="{!v.showMaterials}" >
+                    <a href="{!'/Compass/s/materials?' + v.parameterURL}" class="hide-mobile"><span>{!v.materialsPageTitle}</span></a>
+                </aura:if>
+                <aura:if  isTrue="{!v.showIssue}" >
+                    <a href="{!'/Compass/s/issue-tracker?' + v.parameterURL}" class="hide-mobile"><span>{!v.issueTrackerPageTitle}</span></a>
+                </aura:if>
+                <aura:if  isTrue="{!v.showParking}" >
+                    <a href="{!'/Compass/s/parking-lot?' + v.parameterURL}" class="hide-mobile"><span>{!v.parkingPageTitle}</span></a>
+                </aura:if>
+                <aura:if  isTrue="{!v.showSurvey}" >
+                    <a href="{!'/Compass/s/survey?' + v.parameterURL}" class="hide-mobile"><span>{!v.surveyPageTitle}</span></a>
+                </aura:if>
+                <aura:if  isTrue="{!v.showContactUs}" >
+                    <a href="{!'/Compass/s/contact-us?' + v.parameterURL}" class="hide-mobile"><span>{!v.contactUsPageTitle}</span></a>		
+                </aura:if>
+             
+                <aura:if  isTrue="{!v.showLogin}" >
+                    
+                    <div aura:id="compass-topnav-login" class="compass-topnav-login">
+                        <span class="helper"></span>
+                        <button class="compass-topnav-login-button" onclick="{!c.toggleLogin}">Login</button>
+                    </div>
+                    <div aura:id="compass-topnav-profile" class="compass-topnav-profile compass-topnav-login-dropdown-inactive">
+                        <span class="helper"></span>
+                        <div class="compass-topnav-profile-card">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p class="compass-topnav-profile-FirstName" onclick="{!c.togglePhoto}">{!v.FirstName}</p>
+                                        <p class="compass-topnav-profile-LastName"  onclick="{!c.togglePhoto}">{!v.LastName}</p>
+                                    </td>
+                                    <td>
+                                        <!--
+                                            <img src="{!v.ProfilePicURL}" class="compass-topnav-event-profile-img"  onclick="{!c.togglePhoto}"></img>
+                                        --> 
+                                        <aura:if isTrue="{!v.ProfilePicURL != ''}">
+                                            <img src="{!v.ProfilePicURL}" class="compass-topnav-event-profile-img"  onclick="{!c.togglePhoto}"></img>
+                                            <aura:set attribute="else">
+                                                <img
+                                                src="{!$Resource.communityJourneyAvatar1}"
+                                                alt="Profile Picture"
+                                                class="compass-topnav-event-profile-img" 
+                                                onclick="{!c.togglePhoto}"
+                                                />
+                                            </aura:set>
+                                        </aura:if>
+                                           
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </aura:if>
+                <a class="compass-topnav-burger">
+                    <img src="{!$Resource.menu_circular_button_burger_icon}" alt="Change Cloud" class="compass-topnav-burger-img"  onclick="{!c.toggleMobileLogin}"></img>
+                </a>
+            </div>
+            <div aura:id="compass-topnav-login-card" class="compass-topnav-login-dropdown compass-topnav-login-dropdown-inactive">
+                <div class="compass-topnav-login-dropdown-login-txt">Login</div>
+                <div class="compass-topnav-login-dropdown-email-txt">Enter email here</div>
+                <ui:inputText aura:id="email" value="{!v.email}" class="compass-topnav-login-dropdown-email-input" placeholder="email@example.com"/>
+                <div class="compass-topnav-submit-card">
+                    <button class="compass-topnav-submit-button" onclick="{!c.actionSubmit}">Submit</button>
+                </div>
+            </div>
+            <div aura:id="compass-topnav-photo-card" class="compass-topnav-photo-dropdown compass-topnav-photo-dropdown-inactive">
+                <c:LightningFileUploadComponent
+                    aura:id="communityJourneyFileUpload"
+                    contactRecordFirstName="{!v.FirstName + ' '}" 
+                    contactRecordLastName="{!v.LastName}"
+                    userRecordId="{!v.ContactId}"
+                    profilePictureURL="{!v.ProfilePicURL}"
+                    uploadImageModal="{!v.uploadImageModal}"
+                    contactUsBtnIsActive="true"/>
+                <div class="compass-topnav-photo-dropdown-menu-txt"  onclick="{!c.actionLogout}">Sign out</div>
+            </div>
+
+            <div aura:id="compass-topnav-mobile-menu" class="compass-topnav-mobile-menu  compass-topnav-login-dropdown-inactive">
+                <div class="compass-topnav-mobile-menu-main">
+                    <div class="compass-topnav-mobile-menu-avatar">
+                        
+                        <aura:if isTrue="{!v.showPhoto}">
+                            <aura:if isTrue="{!v.ProfilePicURL != ''}">
+                                    <img  aura:id="compass-topnav-mobile-menu-avatar" src="{!v.ProfilePicURL}" class="compass-topnav-event-profile-img-mobile"  onclick="{!c.togglePhoto}"></img>
+                                <aura:set attribute="else">
+                                    <img  aura:id="compass-topnav-mobile-menu-avatar2" src="{!$Resource.communityJourneyAvatar1}" class="compass-topnav-event-profile-img-mobile"  onclick="{!c.togglePhoto}"></img>
+                                </aura:set>
+                            </aura:if>
+                        </aura:if>
+                        
+                        <img src="{!$Resource.cancel_button_close_delete_icon_white}" alt="Change Cloud" class="compass-topnav-cancel-img"  onclick="{!c.toggleMobileLogin}"></img>
+                    </div>
+                    <div  aura:id="compass-topnav-mobile-menu-name" class="compass-topnav-mobile-menu-name  compass-topnav-login-dropdown-inactive">{!v.FirstName}&nbsp;{!v.LastName}</div>
+                    <aura:if  isTrue="{!v.showLogin}" >
+                        <div  aura:id="compass-topnav-mobile-menu-login" class="compass-topnav-mobile-menu-name compass-topnav-mobile-menu-login" onclick="{!c.toggleLogin}">Login</div>
+                    </aura:if>
+                </div>
+                <div class="compass-topnav-mobile-menu-main-scrollable">
+                    <aura:if  isTrue="{!v.showHome}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/events?' + v.parameterURL}">{!v.homePageTitle}</a>
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showSession}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/sessions?' + v.parameterURL}">{!v.sessionPageTitle}</a>	
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showMaterials}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/materials?' + v.parameterURL}">{!v.materialsPageTitle}</a>
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showIssue}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/issue-tracker?' + v.parameterURL}">{!v.issueTrackerPageTitle}</a>
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showParking}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/parking-lot?' + v.parameterURL}">{!v.parkingPageTitle}</a>
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showSurvey}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/survey?' + v.parameterURL}">{!v.surveyPageTitle}</a>
+                        </div>
+                    </aura:if>
+                    <aura:if  isTrue="{!v.showContactUs}" >
+                        <div class="compass-topnav-mobile-menu-a">
+                            <a href="{!'/Compass/s/contact-us?' + v.parameterURL}">{!v.contactUsPageTitle}</a>		
+                        </div>
+                    </aura:if>
+                    <div aura:id="compass-topnav-mobile-menu-logout" class="compass-topnav-mobile-menu-a  compass-topnav-login-dropdown-inactive">
+                        <a  onclick="{!c.actionLogout}">Sign out</a>
+                    </div>
+                </div>
+
+
+                <div class="compass-topnav-event-mobile-footer">
+                    <img  src="{!$Resource.communityEventMobileFooterLogo}" class="compass-topnav-event-mobile-footer-img"></img>
+                </div>      
+            </div>
+
+
+        </div>
+        <div  aura:id="compass-topnav-login-mobile-back" class="compass-topnav-mobile-menu-background  compass-topnav-login-dropdown-inactive">
+        </div>
+    </div>
+
+
+    
+</aura:component>

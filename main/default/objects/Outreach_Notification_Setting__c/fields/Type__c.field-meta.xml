@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>Notification Type</description>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Invitation Registration Reminder</fullName>
+                <default>false</default>
+                <label>Invitation Registration Reminder</label>
+            </value>
+            <value>
+                <fullName>Registration Confirmation Reminder</fullName>
+                <default>false</default>
+                <label>Registration Confirmation Reminder</label>
+            </value>
+            <value>
+                <fullName>Session Attendance Thank you</fullName>
+                <default>false</default>
+                <label>Session Attendance Thank you</label>
+            </value>
+            <value>
+                <fullName>Session Catchup</fullName>
+                <default>false</default>
+                <label>Session Catchup</label>
+            </value>
+            <value>
+                <fullName>Session Catchup Reminder</fullName>
+                <default>false</default>
+                <label>Session Catchup Reminder</label>
+            </value>
+            <value>
+                <fullName>Session Catchup Thank you</fullName>
+                <default>false</default>
+                <label>Session Catchup Thank you</label>
+            </value>
+            <value>
+                <fullName>Survey Catchup</fullName>
+                <default>false</default>
+                <label>Survey Catchup</label>
+            </value>
+            <value>
+                <fullName>Survey Catchup Reminder</fullName>
+                <default>false</default>
+                <label>Survey Catchup Reminder</label>
+            </value>
+            <value>
+                <fullName>Survey Reminder</fullName>
+                <default>false</default>
+                <label>Survey Reminder</label>
+            </value>
+            <value>
+                <fullName>Survey Thank You</fullName>
+                <default>false</default>
+                <label>Survey Thank You</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

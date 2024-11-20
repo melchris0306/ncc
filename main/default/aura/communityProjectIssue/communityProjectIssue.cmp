@@ -1,0 +1,269 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CommunityIssueController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute type="String" name="eventId" default="" /> <!--Event__Id__c-->
+    <aura:attribute type="String" name="contactId" default="" /> <!--Event__Id__c-->
+    <aura:attribute type="String" name="eventRecordId" default="" /><!--Event.Id-->
+    <aura:attribute type="String" name="eventName" default="" />
+    <aura:attribute type="String" name="firstname" default="" />
+    <aura:attribute type="String" name="lastname" default="" />
+    <aura:attribute type="String" name="email" default="" />
+    <aura:attribute type="String" name="phone" default="" />
+    <aura:attribute type="String" name="description" default="" />
+    <aura:attribute type="String" name="location" default="" />
+    <aura:attribute type="String" name="session" default="" />
+    <aura:attribute type="String" name="type" default="" />
+    <aura:attribute type="Boolean" name="showSpinner" default="false" />
+    <aura:attribute type="List" name="sessionList" default="" />
+    <aura:attribute type="List" name="types" default="" />
+    <aura:attribute type="List" name="parkingLots"/>
+    <aura:attribute type="String" name="selectedSessionId"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="errors" type="Object" default="[]"/>
+    <aura:attribute name="draftValues" type="Object" default="[]"/>
+    
+    <aura:attribute type="String" name="commentTag" default="" />
+    <aura:attribute type="String" name="commentMessage" default="" />
+    <aura:attribute name="issueTrackerPageTitle" type="String"/>
+    <!-- Added by JaysonLabnao [NamespaceIssueFixes] August172022 -->
+    <aura:attribute type="String" name="namespacePrefix" default="" />
+    
+    <!-- Updated by Mel Mallorca Oct202021 [CCN793,794,795] -->
+    <aura:attribute name="isFilter" type="Boolean" default="false" /> 
+    <aura:attribute name="sortByOptions" 
+                    type="List" 
+                    default="[
+                             {'label': 'Issue Id', 'value': 'Name'},
+                             {'label': 'Date Raised', 'value': 'Date_Raised__c'},
+                             {'label': 'Raised By', 'value': 'Raised_By_Email__c'},
+                             {'label': 'Session', 'value': 'Session_Name'},
+                             {'label': 'Issue Type', 'value': 'Type__c'},
+                             {'label': 'Status', 'value': 'Status__c'}
+                             ]"/>
+    <aura:attribute name="sortByValue" type="String"/>
+
+    <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+    <aura:attribute name="RequiredFieldErrorMessage" type="String" default="Required Field"/>
+    
+    <div>
+        <!-- Updated by Mel Mallorca Oct202021 [CCN793,794,795] -->
+        <div class="main-section">
+            <div class="main-section-content">
+                <aura:if isTrue="{!v.showSpinner}">
+                    <div class="spinnerHolder">
+                        <lightning:spinner alternativeText="Loading" size="small" />
+                    </div>
+                    
+                    <aura:set attribute="else">
+                        <div class="main-header-section float-left">
+                            <div class="main-header-section-title height-auto">{!v.issueTrackerPageTitle}</div>
+                        </div>
+                        <div class="main-header-section-content slds-grid slds-wrap">
+                            <!--<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                            <div class="contactus-detail">
+                                <div class="font-header">
+                                    {!v.commentTag}
+                                </div>
+                                <div class="font-body">
+                                    {!v.commentMessage}
+                                </div>
+                            </div>
+                        </div>-->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+
+                                <!-- CCN-EVE-2074-DV XEN REYES Oct2022 !-->
+                                <div class="required-text-class">* Required Field</div>
+                                
+                                <form action="/action_page.php" class="main-header-section-content-form">
+                                    <!-- START //commented 0201231 JL bug fix#00641:Events - Parking Lot Item Entry -->
+                                    <!-- Email -->
+                                    
+                                    <aura:if  isTrue="{!not($Browser.isPhone)}" >
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="email">Email</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input label="hidden" type="email" id="email" name="email" value="{!v.email}" placeholder="john.doe@gmail.com" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                </div>
+                                                
+                                                <!-- Session -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="session">Session</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:select label="hidden" name="session" aura:id="sessionInput"  required="true"  variant="label-hidden" onchange="{!c.handleSessionChange}" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}">
+                                                        <option value="">------</option>
+                                                        <aura:iteration items="{!v.sessionList}" var="session">
+                                                            <option value="{!session.recordId}" selected="{!session.selected}" text="{!session.sessionFullName}"></option>
+                                                        </aura:iteration>
+                                                    </lightning:select>
+                                                </div>
+                                                
+                                                <!-- Type -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="Type">Issue Type</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:select label="hidden" name="type" value="{!v.type}" aura:id="typeInput"  required="true"  variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}">
+                                                        <option value="">-----</option>
+                                                        <aura:iteration items="{!v.types}" var="type">
+                                                            <option value="{!type}">{!type}</option>
+                                                        </aura:iteration>
+                                                    </lightning:select>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                                <!-- Description -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="subject">Description</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:textarea label="hidden" id="description" name="description" value="{!v.description}" placeholder="Description" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    
+                                    <aura:if  isTrue="{!$Browser.isPhone}" >
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 mobile-header-parent">
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="email">Email</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:input label="hidden" type="email" id="email" name="email" value="{!v.email}" placeholder="john.doe@gmail.com" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Session -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="session">Session</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:select label="hidden" name="session" aura:id="sessionInput"  required="true"  variant="label-hidden" onchange="{!c.handleSessionChange}" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}">
+                                                        <option value="">------</option>
+                                                        <aura:iteration items="{!v.sessionList}" var="session">
+                                                            <option value="{!session.recordId}" selected="{!session.selected}" text="{!session.sessionFullName}"></option>
+                                                        </aura:iteration>
+                                                    </lightning:select>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Type -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="Type">Issue Type</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:select label="hidden" name="type" value="{!v.type}" aura:id="typeInput"  required="true"  variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}">
+                                                        <option value="">-----</option>
+                                                        <aura:iteration items="{!v.types}" var="type">
+                                                            <option value="{!type}">{!type}</option>
+                                                        </aura:iteration>
+                                                    </lightning:select>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <!-- Description -->
+                                                <div class="header-label">
+                                                    <span class="required-mark">*</span>
+                                                    <label for="subject">Description</label>
+                                                </div>
+                                                <div class="input-text">
+                                                    <lightning:textarea label="hidden" id="description" name="description" value="{!v.description}" placeholder="Description" required="true" aura:id="contactUsForm" variant="label-hidden" messageWhenValueMissing="{!v.RequiredFieldErrorMessage}"/>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </aura:if>
+                                    
+                                    <div class="submit-button-section" align="center">
+                                        <div class="submit-button" onclick="{!c.handleSubmit}">Submit</div>
+                                    </div>
+                                    <!-- END //commented 0201231 JL bug fix#00641:Events - Parking Lot Item Entry -->
+                                </form> 
+                            </div>
+                        </div>
+                    </aura:set>
+                </aura:if>
+            </div> 
+        </div>
+    </div>
+    <div>
+        
+        <!-- Updated by Mel Mallorca Oct202021 [CCN793,794,795] -->
+        <aura:if  isTrue="{!not($Browser.isPhone)}" >
+            <!-- Updated by Jayson Labnao Jan112021 [EVENT REFRESH FIXES] -->
+            <div class="main-section-info" aura:id="table-container"></div>  
+        </aura:if>
+        
+        <!-- Updated by Mel Mallorca Oct202021 [CCN793,794,795] -->
+        <aura:if  isTrue="{!$Browser.isPhone}" >
+            <!-- Updated by Jayson Labnao Jan162022 [EVENT REFRESH FIXES] -->
+            <div class="mobile-table">
+                <div class="mobile-header">
+                    <div class="mobile-header-title">Issue Information</div>
+                    <div class="sort-container">
+                        <div class="sort-button" onclick="{!c.toggleFilter}">
+                            <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                            <p>Sort</p>
+                        </div>
+
+                        <aura:if isTrue="{!v.isFilter}">
+                            <div class="sort-modal">
+                                <span class="sort-by">Sort by</span>
+                                <lightning:radioGroup options="{! v.sortByOptions }"
+                                                    value="{! v.sortByValue }"
+                                                    type="radio"
+                                                    onchange="{!c.handleSort}"/>
+                            </div>
+                        </aura:if>
+                    </div>
+                </div>
+                <!-- Updated by Jayson Labnao Jan162022 [EVENT REFRESH FIXES] -->
+                <aura:iteration items="{!v.parkingLots}" var="parkingLot">
+                    <div class="mobile-row">
+                        <div class="mobile-initial-details">
+                            <div class="mobile-inner-column">
+                                <span><b>{!parkingLot.Name}</b></span>
+                                <span>{!parkingLot.Raised_By_Email__c}</span>
+                                <span><lightning:formattedDateTime value="{!parkingLot.Date_Raised__c}" year="numeric" month="numeric" day="2-digit"/></span>
+                            </div>
+                            <div class="mobile-inner-column">
+                                <span><b>{!parkingLot.Session_Name}</b></span>
+                                <span>Status: <i>{!parkingLot.Status__c}</i></span>
+                                <span>Type: <i>{!parkingLot.Type__c}</i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-field">
+                            <div><b>Description</b></div>
+                            <div>
+                                <span><lightning:formattedText value="{!parkingLot.Description__c}"/></span>
+                            </div> 
+                        </div>
+
+                        <div class="mobile-field">
+                            <div><b>Resolution/Answer</b></div>
+                            <div>
+                                <span><lightning:formattedText value="{!parkingLot.Resolution__c}"/></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </aura:iteration>
+            </div>
+        </aura:if>
+        
+    </div> 
+</aura:component>

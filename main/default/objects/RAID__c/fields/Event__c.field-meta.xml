@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Event</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.Campaign__c</field>
+            <operation>equals</operation>
+            <valueField>Event__c.Campaign__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Event__c.IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Event__c</referenceTo>
+    <relationshipLabel>RAID</relationshipLabel>
+    <relationshipName>RAID</relationshipName>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

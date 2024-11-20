@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Column__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Which side of the form would you like the field placed?</inlineHelpText>
+    <label>Column</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Left</fullName>
+                <default>true</default>
+                <label>Left</label>
+            </value>
+            <value>
+                <fullName>Right</fullName>
+                <default>false</default>
+                <label>Right</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

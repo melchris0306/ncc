@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Agile_RAIDs</fullName>
+    <columns>NAME</columns>
+    <columns>Description__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>Assigned_To__c</columns>
+    <columns>Raised_By__c</columns>
+    <columns>Status__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Addressed</value>
+    </filters>
+    <label>Open Agile RAIDs</label>
+</ListView>

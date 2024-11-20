@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="NavigatorHomeComponentsController">
+
+    <!-- <ltng:require scripts="{!join(',', 
+                           $Resource.AnyEventCal + '/jquery.min.js', 
+                           $Resource.AnyEventCal + '/jquery-ui.min.js',
+                           $Resource.AnyEventCal + '/moment.min.js', 
+                           $Resource.AnyEventCal + '/fullcalendar.min.js')}"
+                  styles="{!$Resource.AnyEventCal + '/fullcalendar.min.css'}"
+                  
+                  afterScriptsLoaded="{!c.scriptsLoaded}" /> -->
+    <ltng:require scripts="{!join(',', $Resource.AnyEventCal + '/moment.min.js', $Resource.AnyEventCal + '/moment-timezone.min.js', $Resource.AnyEventCal + '/jquery.min.js', $Resource.AnyEventCal + '/fullcalendar.min.js')}"
+                afterScriptsLoaded="{!c.scriptsLoaded}" />
+    <ltng:require styles="{!$Resource.AnyEventCal + '/fullcalendar.min.css'}"/>
+    <div id='calendar'></div>
+
+</aura:component>

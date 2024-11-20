@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DOD_Quality_Assurance_Approvers_Status_Report</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Quality Assurance Approvers</label>
+    <queue>Quality_Assurance_Approvers</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

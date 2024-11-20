@@ -1,0 +1,70 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="spinnerHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-accordion active-section-name={accordionSection} onsectiontoggle={handleToggleSection} allow-multiple-sections-open>
+        <lightning-accordion-section name="SurveyFields" label="Survey Fields" class="survey-field-section">
+            <template if:true={isReadOnly}>
+                <lightning-button variant="neutral" label="Edit" onclick={enableEdit} 
+                    class="slds-m-left_x-small input-inline" slot="actions">
+                </lightning-button>
+            </template>
+            <template if:false={isReadOnly}>
+                <lightning-button variant="brand" label="Save" onclick={handleSaveSelectedFields} 
+                    class="slds-m-left_x-small input-inline" slot="actions">
+                </lightning-button>
+                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel} 
+                    class="slds-m-left_x-small input-inline" slot="actions">
+                </lightning-button>
+            </template>
+
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small" 
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <lightning-input type="checkbox" label="" class="input-inline" disabled={isReadOnly} 
+                                onchange={selectAllCheckBoxInSameColumn} data-id="selectAllFieldCheckbox">
+                            </lightning-input>
+                            <div class="slds-truncate input-inline" title="Fields">Fields</div>
+                        </th>
+                        <th class="horizontal-align" scope="col">
+                            <lightning-input type="checkbox" label="" class="input-inline" disabled={isReadOnly} 
+                                onchange={selectAllCheckBoxInSameColumn} data-id="selectAllRequiredCheckbox">
+                            </lightning-input>
+                            <div class="slds-truncate input-inline" title="Is Required?">Is Required?</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={fieldList} for:item="field">
+                        <tr class="slds-hint-parent" key={field.apiName}>
+                            <th data-label={field.label} scope="row">
+                                <div class="slds-truncate" title={field.label}>
+                                    <lightning-input type="checkbox" label=""
+                                        class="input-inline" disabled={isReadOnly}
+                                        data-id="fieldCheckbox" checked={field.isSelected} 
+                                        data-api-name={field.apiName} data-object-name={field.objectName}
+                                        onchange={checkIfAllRequiredCheckboxSelected}>
+                                    </lightning-input>
+                                    <span class="input-inline">{field.label}</span>
+                                </div>
+                            </th>
+                            <td data-label="Is Required?">
+                                <div class="slds-truncate horizontal-align" title="Is Required?">
+                                    <lightning-input data-id="requiredCheckbox" disabled={isReadOnly} 
+                                        type="checkbox" label="" checked={field.isRequired} 
+                                        onchange={checkIfAllRequiredCheckboxSelected} data-related={field.apiName}>
+                                    </lightning-input>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

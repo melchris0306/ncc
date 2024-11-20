@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ChangeCloudController">
+    <aura:attribute name="detailString" type="String" />
+	<aura:attribute name="learnMorePageTitle" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div>
+        <div class="main-section">
+            <div class="main-section-content">
+               <!-- /* Updated by XenReyes CCN-864 Oct262021 */ -->
+                <!--div class="float-left">
+                    <div class="material-section-title font-section-header">{!v.learnMorePageTitle}</div>
+                </div!-->
+                <div class="main-header-section float-left">
+                    <div class="main-header-section-title height-auto">{!v.learnMorePageTitle}</div>
+                </div>
+                <div class="main-header-section-content slds-grid slds-wrap">
+                    <div class="detail-content">
+                        <ui:outputRichText class="slds-text-longform" value="{!v.detailString}"/>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="clear-section"></div>  
+    </div>
+</aura:component>

@@ -1,0 +1,7 @@
+.THIS .compass-topnav-mobile-menu-main-scrollable {
+    position: absolute;
+    top: 150px;
+    overflow-y: scroll;
+    height: calc(100% - 300px);
+    width: 100%;
+}

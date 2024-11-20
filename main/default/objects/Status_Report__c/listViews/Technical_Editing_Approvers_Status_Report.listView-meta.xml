@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technical_Editing_Approvers_Status_Report</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Technical Editing Approvers</label>
+    <queue>Technical_Editing_Approvers</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

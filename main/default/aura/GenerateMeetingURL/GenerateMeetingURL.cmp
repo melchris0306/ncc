@@ -1,0 +1,52 @@
+<!--
+ - Created by angelorivera on 7/10/20.
+ -->
+
+<aura:component description="GenerateMeetingURL"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes"
+                access="global"
+                controller="GenerateMeetingURL" >
+
+    <aura:attribute name="showSpinner" type="Boolean"/>
+    <aura:attribute name="setMeetingType" type="String[]" default="['--- None ---']"/>
+    <aura:attribute name="setMeetingName" type="String[]" default="['--- None ---']"/>
+    <aura:attribute name="strMeetingType" type="String"/>
+    <aura:attribute name="disableButton" type="Boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+            <div class="slds-form-element__control">
+                <lightning:layoutItem size="12" padding="around-small">
+                    <lightning:select name="controllerFld"
+                                      value="{!v.strMeetingType}"
+                                      label="Select Meeting Application"
+                                      onchange="{!c.onControllerFieldChange}">
+                        <option value="--- None ---">--- None ---</option>
+                        <aura:iteration items="{!v.setMeetingName}" var="val">
+                            <option value="{!val}">{!val}</option>
+                        </aura:iteration>
+                    </lightning:select>
+                </lightning:layoutItem>
+            </div>
+        </div>
+        </header>
+    </div>
+    <footer class="slds-card__footer">
+        <lightning:button variant="brand" label="Submit" onclick="{!c.handleSubmit}" disabled="{!v.disableButton}"/>
+    </footer>
+
+
+    <!-- spinner -->
+<!--    <aura:if isTrue="{!v.showSpinner}">-->
+<!--        <div class="backgroundInverse">-->
+<!--            <lightning:spinner alternativeText="Loading" variant="inverse">Creating Milestones</lightning:spinner>-->
+<!--        </div>-->
+<!--        <div class="slds-text-align_center slds-text-heading_medium slds-p-top_small">Hang on, we're creating the milestones...</div>-->
+<!--    </aura:if>-->
+
+
+
+</aura:component>

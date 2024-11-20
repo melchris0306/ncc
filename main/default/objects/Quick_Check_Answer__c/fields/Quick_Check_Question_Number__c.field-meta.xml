@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quick_Check_Question_Number__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Quick Check Question Number</description>
+    <externalId>false</externalId>
+    <label>Quick Check Question Number</label>
+    <referenceTo>Quick_Check_Question__c</referenceTo>
+    <relationshipLabel>Quick Check Answers</relationshipLabel>
+    <relationshipName>Quick_Check_Answers</relationshipName>
+    <required>false</required>
+    <securityClassification>Public</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

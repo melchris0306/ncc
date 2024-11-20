@@ -1,0 +1,33 @@
+<aura:component controller="CampaignHierarchyPage" access="global" 
+        implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="objectType" type="String" />
+    
+    <aura:attribute name="gridColumns" type="List" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="List" access="PRIVATE" />
+    
+    <aura:set attribute="body">
+        <div>
+            <div class="campaign-hierarchy-page">
+                <div class="campaign-hierarchy-header">
+                    <lightning:icon iconName="standard:hierarchy" title="Campaign Hierarchy" size="small" />
+                    <span class="header-title">Campaign Hierarchy</span>
+                </div>
+                <div class="campaign-hierarchy-content">
+                    <lightning:treeGrid
+                        aura:id="treeGridTest"
+                        columns="{! v.gridColumns }"
+                        data="{! v.gridData }"
+                        keyField="Name"
+                        hideCheckboxColumn="true"
+                        expandedRows="{! v.gridExpandedRows }"
+                        />
+                </div>
+            </div>
+        </div>
+    </aura:set>
+</aura:component>

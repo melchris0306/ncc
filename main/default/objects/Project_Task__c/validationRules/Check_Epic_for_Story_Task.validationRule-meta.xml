@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Epic_for_Story_Task</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(RecordType.Name == &apos;Story&apos;, Epic__c == Null, OR(AND(ISCHANGED(Convert_To_Functionality__c), Convert_To_Functionality__c == True),AND(ISCHANGED(Convert_To_Feature__c), Convert_To_Feature__c = True))) , true, false)</errorConditionFormula>
+    <errorDisplayField>Epic__c</errorDisplayField>
+    <errorMessage>Please add an Epic</errorMessage>
+</ValidationRule>

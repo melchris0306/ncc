@@ -1,0 +1,48 @@
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+  access="global"
+  controller="TheProviderJourney"
+>
+  <aura:attribute name="journeyID" type="String" />
+  <aura:attribute name="inputEmail" type="String" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div class="slds-hide" aura:id="validateLogin">
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <div class="slds-align_absolute-center header">Login</div>
+          <p class="label">Enter email here</p>
+          <div class="input-login-field-container slds-align_absolute-center">
+            <lightning:input
+              class="input-login-field"
+              type="email"
+              value="{!v.inputEmail}"
+              name="contactEmail"
+              placeholder="email@example.com"
+            />
+          </div>
+          <div class="slds-align_absolute-center">
+            <lightning:button
+              variant="brand"
+              label="Submit"
+              title="Brand action"
+              onclick="{! c.handleSubmit }"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
+</aura:component>

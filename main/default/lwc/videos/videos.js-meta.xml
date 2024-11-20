@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>47.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="videoWidth" type="String" label="Video width" description="Width of video" default="500"/>
+            <property name="videoHeight" type="String" label="Video height" description="Height of video" default="300"/>
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record Id" description="Set recordId {!recordId}"/>
+            <property name="communityUrl" type="String" label="Community URL" description="Community url"/>
+            <property name="videoWidth" type="String" label="Video width" description="Width of video" default="400"/>
+            <property name="videoHeight" type="String" label="Video height" description="Height of video" default="225"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

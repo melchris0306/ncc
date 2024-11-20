@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Proj_And_ProjCode_Check_For_QAStoryFun</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(OR(RecordType.Name = &apos;Bug&apos;,RecordType.Name = &apos;Dev&apos;), OR(From_DevQA_Button_Story__c = true, From_DevQA_Button_Functionality__c = true, From_Bug_Button__c= true), OR(Project__c = Null, Project__r.Project_Code__c = Null)),True,False)</errorConditionFormula>
+    <errorDisplayField>Project__c</errorDisplayField>
+    <errorMessage>Please add a Project Record or make sure that the Project Record assigned has a Project Code</errorMessage>
+</ValidationRule>

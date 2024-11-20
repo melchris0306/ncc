@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProjectTaskValidation</fullName>
+    <active>false</active>
+    <description>Whenever the Case Type is New Feature and the Project Task is Blank, add an error to the Project Task field &quot;Add a value&quot;.</description>
+    <errorConditionFormula>IF(AND(OR(ISPICKVAL(Type, &apos;New feature&apos;), ISPICKVAL(Type, &apos;Incident&apos;)), 
+							ISBLANK(Project_Task__c), ISPICKVAL(Status, &apos;Closed&apos;), Create_Project_Task__c = false), true, false)</errorConditionFormula>
+    <errorDisplayField>Project_Task__c</errorDisplayField>
+    <errorMessage>Add a value</errorMessage>
+</ValidationRule>

@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <div class="copyright-box font-small">
+        Copyright © 2020 Change Cloud Events. All Rights Reserved.
+    </div>
+</aura:component>

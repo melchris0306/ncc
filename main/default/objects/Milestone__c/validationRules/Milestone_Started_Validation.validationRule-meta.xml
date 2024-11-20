@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Started_Validation</fullName>
+    <active>true</active>
+    <description>Whenever the user updates the Start Date of a Milestone and Milestone Started checkbox=true</description>
+    <errorConditionFormula>AND(   ISCHANGED(Start_Date__c) , Milestone_Started__c )</errorConditionFormula>
+    <errorDisplayField>Milestone_Started__c</errorDisplayField>
+    <errorMessage>Please deselect the Milestone Started checkbox.</errorMessage>
+</ValidationRule>

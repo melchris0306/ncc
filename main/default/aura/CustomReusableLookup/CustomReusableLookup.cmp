@@ -1,0 +1,99 @@
+<aura:component
+  controller="CustomReusableLookupController"
+  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+  access="global"
+>
+  <aura:attribute name="listOfSelectedRecords" type="List" />
+  <aura:attribute name="listOfSearchRecords" type="List" />
+  <aura:attribute name="searchKeyword" type="String" />
+  <aura:attribute name="objectAPIName" type="String" default="" />
+  <aura:attribute name="iconName" type="String" default="" />
+  <aura:attribute name="label" type="String" default="" />
+  <aura:attribute
+    name="resultListTitle"
+    type="String"
+    default="Selected Records"
+  />
+
+  <aura:handler
+    name="selectedRecordEvent"
+    event="c:CustomReusableLookupSelectObjectEvent"
+    action="{!c.handleSelectedRecord}"
+  />
+
+  <div
+    onmouseleave="{!c.onblur}"
+    aura:id="searchRes"
+    class="slds-form-element slds-lookup slds-is-close"
+    data-select="single"
+  >
+    <label class="slds-form-element__label" for="lookup-348">{!v.label}</label>
+
+    <div class="slds-form-element__control">
+      <div class="slds-input-has-icon slds-input-has-icon--right">
+        <!-- This markup is for when a record is selected -->
+        <div aura:id="lookupField" class="slds-show">
+          <lightning:icon
+            class="slds-input__icon slds-show"
+            iconName="utility:search"
+            size="x-small"
+            alternativeText="search"
+          />
+          <span
+            class="slds-icon_container slds-combobox__input-entity-icon"
+            title="record"
+          >
+            <lightning:icon
+              class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+              iconName="{!v.IconName}"
+              size="x-small"
+              alternativeText="icon"
+            />
+            <span class="slds-assistive-text"></span>
+          </span>
+          <ui:inputText
+            click="{!c.onfocus}"
+            updateOn="keyup"
+            keyup="{!c.keyPressController}"
+            class="slds-lookup__search-input slds-input slds-p-left_small"
+            value="{!v.searchKeyword}"
+            placeholder="Search..."
+          />
+        </div>
+      </div>
+    </div>
+
+    <ul
+      class="
+        custom-listbox
+        slds-listbox slds-listbox_vertical
+        slds-dropdown slds-dropdown_fluid
+        slds-lookup__menu
+        slds
+      "
+      role="listbox"
+    >
+      <lightning:spinner
+        class="slds-hide"
+        variant="brand"
+        size="small"
+        aura:id="mySpinner"
+      />
+
+      <aura:iteration items="{!v.listOfSearchRecords}" var="singleRec">
+        <c:CustomReusableLookupResult
+          recordObj="{!singleRec}"
+          iconName="{!v.iconName}"
+        />
+      </aura:iteration>
+    </ul>
+  </div>
+
+  <div aura:id="searchResultList" class="slds-m-top_medium">
+    <div class="slds-text-heading_medium">{!v.resultListTitle}</div>
+    <c:CustomReusableLookupResultList
+      listOfSelectedRecords="{!v.listOfSelectedRecords}"
+      iconName="{!v.iconName}"
+    />
+  </div>
+</aura:component>

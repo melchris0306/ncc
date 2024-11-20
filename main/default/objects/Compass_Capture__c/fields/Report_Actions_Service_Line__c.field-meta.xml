@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Actions_Service_Line__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(In_House__c, &apos;Available&apos;, IF(Referred_to_Community__c, &apos;Referred to Community&apos;,  IF( AND(In_House__c,Referred_to_Community__c) , &apos;Not Offered&apos;,  IF(ISBLANK( Current_Process_State_Email__c), &apos;Missing Validation&apos;, &apos;&apos;) ) ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Report Actions Service Line</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

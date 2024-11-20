@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Progress_Total__c</fullName>
+    <description>All milestones progress summary</description>
+    <label>Milestone Progress Total</label>
+    <summarizedField>Participant_Milestone__c.Milestone_Progress__c</summarizedField>
+    <summaryFilterItems>
+        <field>Participant_Milestone__c.Is_Active__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Participant_Milestone__c.Checkpoint__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Participant_Milestone__c.Child_Milestone__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Participant_Milestone__c.Journey__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

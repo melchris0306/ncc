@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description>To identify the current status of Project task</description>
+    <inlineHelpText>For TR: For Technical Review, For UI/UX
+For QA: For Quality Assurance</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>For Estimate</fullName>
+                <default>false</default>
+                <label>For Estimate</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>For TR</fullName>
+                <default>false</default>
+                <label>For TR</label>
+            </value>
+            <value>
+                <fullName>For QA</fullName>
+                <default>false</default>
+                <label>For QA</label>
+            </value>
+            <value>
+                <fullName>For Release</fullName>
+                <default>false</default>
+                <label>For Release</label>
+            </value>
+            <value>
+                <fullName>Deployed</fullName>
+                <default>false</default>
+                <label>Deployed</label>
+            </value>
+            <value>
+                <fullName>Blocked</fullName>
+                <default>false</default>
+                <label>Blocked</label>
+            </value>
+            <value>
+                <fullName>On-hold</fullName>
+                <default>false</default>
+                <label>On-hold</label>
+            </value>
+            <value>
+                <fullName>Backlog</fullName>
+                <default>false</default>
+                <label>Backlog</label>
+            </value>
+            <value>
+                <fullName>Monitoring</fullName>
+                <default>false</default>
+                <label>Monitoring</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <label>Withdrawn</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Converted</fullName>
+                <default>false</default>
+                <label>Converted</label>
+            </value>
+            <value>
+                <fullName>For Approval</fullName>
+                <default>false</default>
+                <label>For Approval</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Not Ready</fullName>
+                <default>false</default>
+                <label>Not Ready</label>
+            </value>
+            <value>
+                <fullName>Ready</fullName>
+                <default>false</default>
+                <label>Ready</label>
+            </value>
+            <value>
+                <fullName>SIT</fullName>
+                <default>false</default>
+                <label>SIT</label>
+            </value>
+            <value>
+                <fullName>UAT</fullName>
+                <default>false</default>
+                <label>UAT</label>
+            </value>
+            <value>
+                <fullName>Prod Validation</fullName>
+                <default>false</default>
+                <label>Prod Validation</label>
+            </value>
+            <value>
+                <fullName>Fail</fullName>
+                <default>false</default>
+                <label>Fail</label>
+            </value>
+            <value>
+                <fullName>Pass</fullName>
+                <default>false</default>
+                <label>Pass</label>
+            </value>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>In Progress - Off-Track</fullName>
+                <default>false</default>
+                <label>In Progress - Off-Track</label>
+            </value>
+            <value>
+                <fullName>In Progress - At Risk</fullName>
+                <default>false</default>
+                <label>In Progress - At Risk</label>
+            </value>
+            <value>
+                <fullName>In Progress - On-Track</fullName>
+                <default>false</default>
+                <label>In Progress - On-Track</label>
+            </value>
+            <value>
+                <fullName>Feedback</fullName>
+                <default>false</default>
+                <label>Feedback</label>
+            </value>
+            <value>
+                <fullName>Started</fullName>
+                <default>false</default>
+                <label>Started</label>
+            </value>
+            <value>
+                <fullName>Discovery</fullName>
+                <default>false</default>
+                <label>Discovery</label>
+            </value>
+            <value>
+                <fullName>Requirements Tracking</fullName>
+                <default>false</default>
+                <label>Requirements Tracking</label>
+            </value>
+            <value>
+                <fullName>Live</fullName>
+                <default>false</default>
+                <label>Live</label>
+            </value>
+            <value>
+                <fullName>In Development</fullName>
+                <default>false</default>
+                <label>In Development</label>
+            </value>
+            <value>
+                <fullName>Roadmap</fullName>
+                <default>false</default>
+                <label>Roadmap</label>
+            </value>
+            <value>
+                <fullName>Canceled</fullName>
+                <default>false</default>
+                <label>Canceled</label>
+            </value>
+            <value>
+                <fullName>Awaiting Feedback</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Awaiting Feedback</label>
+            </value>
+            <value>
+                <fullName>For QA (Integration)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>For QA (Integration)</label>
+            </value>
+            <value>
+                <fullName>For QA (Smoke)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>For QA (Smoke)</label>
+            </value>
+            <value>
+                <fullName>For QA (UAT)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>For QA (UAT)</label>
+            </value>
+            <value>
+                <fullName>In-Progress At Risk</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In-Progress At Risk</label>
+            </value>
+            <value>
+                <fullName>In-Progress Off-Track</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In-Progress Off-Track</label>
+            </value>
+            <value>
+                <fullName>In-Progress On-Track</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In-Progress On-Track</label>
+            </value>
+            <value>
+                <fullName>QA Integration</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>QA Integration</label>
+            </value>
+            <value>
+                <fullName>QA Smoke</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>QA Smoke</label>
+            </value>
+            <value>
+                <fullName>QA UAT</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>QA UAT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

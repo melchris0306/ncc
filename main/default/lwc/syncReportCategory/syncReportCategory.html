@@ -1,0 +1,29 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Syncing Report Category..." variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    {error}
+    <div style="text-align: center;">
+        {reportCategories}
+    </div>
+    <template if:true={syncReport}>
+        <br/>
+        <div style="text-align: center;">
+            <p>
+                <font color="RED">
+                    Please press the 'Sync Report Category' button below.<br/>
+                </font>
+            </p>
+            <br/>
+            <lightning-button variant="brand"
+                label="Sync Report Category"
+                title="Sync Report Category"
+                onclick={syncRecords}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </template>
+</template>

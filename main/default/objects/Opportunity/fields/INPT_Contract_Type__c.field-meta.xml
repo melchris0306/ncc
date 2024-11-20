@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INPT_Contract_Type__c</fullName>
+    <description>This field is used by the GovWin IQ Connector. This field defines the GovWin IQ Opportunity contract type. An example of a contract type is: &quot;Cost Plus Award Fee&quot;.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used by the GoWin IQ Connector. This field defines the GovWin IQ Opportunity contract type. An example of a contract type is: &quot;Cost Plus Award Fee&quot;.</inlineHelpText>
+    <label>IQ Contract Type</label>
+    <length>140</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

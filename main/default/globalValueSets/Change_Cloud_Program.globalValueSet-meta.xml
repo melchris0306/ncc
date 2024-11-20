@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>None</fullName>
+        <default>true</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>Cerner VA EHRM Change Management</fullName>
+        <default>false</default>
+        <label>Cerner VA EHRM Change Management</label>
+    </customValue>
+    <description>Change Cloud Programs to which the contact is enrolled</description>
+    <masterLabel>Change Cloud Program</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

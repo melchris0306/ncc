@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage__c</fullName>
+    <label>Stage</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Production_Support_Requested__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Request Received</fullName>
+                <default>false</default>
+                <label>Request Received</label>
+            </value>
+            <value>
+                <fullName>File Submission</fullName>
+                <default>false</default>
+                <label>File Submission</label>
+            </value>
+            <value>
+                <fullName>Tech Editing</fullName>
+                <default>false</default>
+                <label>Tech Editing</label>
+            </value>
+            <value>
+                <fullName>Tech Editing: Check</fullName>
+                <default>false</default>
+                <label>Tech Editing: Check</label>
+            </value>
+            <value>
+                <fullName>POC Incorporating Feedback</fullName>
+                <default>false</default>
+                <label>POC Incorporating Feedback</label>
+            </value>
+            <value>
+                <fullName>Graphic Support</fullName>
+                <default>false</default>
+                <label>Graphic Support</label>
+            </value>
+            <value>
+                <fullName>QA</fullName>
+                <default>false</default>
+                <label>QA</label>
+            </value>
+            <value>
+                <fullName>QA: Check</fullName>
+                <default>false</default>
+                <label>QA: Check</label>
+            </value>
+            <value>
+                <fullName>File Delivery</fullName>
+                <default>false</default>
+                <label>File Delivery</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.1 TE</fullName>
+                <default>false</default>
+                <label>Prepare: 2.1 TE</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.2 TE-IBPA</fullName>
+                <default>false</default>
+                <label>Prepare: 2.2 TE-IBPA</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.3 TE-QC</fullName>
+                <default>false</default>
+                <label>Prepare: 2.3 TE-QC</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.4 QA</fullName>
+                <default>false</default>
+                <label>Prepare: 2.4 QA</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.5 QA-IBPA</fullName>
+                <default>false</default>
+                <label>Prepare: 2.5 QA-IBPA</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.6 QA-QC</fullName>
+                <default>false</default>
+                <label>Prepare: 2.6 QA-QC</label>
+            </value>
+            <value>
+                <fullName>Prepare: 2.7 GS</fullName>
+                <default>false</default>
+                <label>Prepare: 2.7 GS</label>
+            </value>
+            <value>
+                <fullName>Prepare: File Delivery</fullName>
+                <default>false</default>
+                <label>Prepare: File Delivery</label>
+            </value>
+            <value>
+                <fullName>Package: 5.1 TE</fullName>
+                <default>false</default>
+                <label>Package: 5.1 TE</label>
+            </value>
+            <value>
+                <fullName>Package: 5.2 TE-IBPA</fullName>
+                <default>false</default>
+                <label>Package: 5.2 TE-IBPA</label>
+            </value>
+            <value>
+                <fullName>Package: 5.3 TE-QC</fullName>
+                <default>false</default>
+                <label>Package: 5.3 TE-QC</label>
+            </value>
+            <value>
+                <fullName>Package: 5.4 QA</fullName>
+                <default>false</default>
+                <label>Package: 5.4 QA</label>
+            </value>
+            <value>
+                <fullName>Package: 5.5 QA-IBPA</fullName>
+                <default>false</default>
+                <label>Package: 5.5 QA-IBPA</label>
+            </value>
+            <value>
+                <fullName>Package: 5.6 QA-QC</fullName>
+                <default>false</default>
+                <label>Package: 5.6 QA-QC</label>
+            </value>
+            <value>
+                <fullName>Package: 5.7 GS</fullName>
+                <default>false</default>
+                <label>Package: 5.7 GS</label>
+            </value>
+            <value>
+                <fullName>Package: File Delivery</fullName>
+                <default>false</default>
+                <label>Package: File Delivery</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Graphics Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>Request Received</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Graphics Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>File Submission</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>Tech Editing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>Tech Editing: Check</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>POC Incorporating Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Editorial Support Only</controllingFieldValue>
+            <controllingFieldValue>Graphics Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>File Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Graphics Support Only</controllingFieldValue>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>Graphic Support</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>QA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Full Creative and QA Support</controllingFieldValue>
+            <valueName>QA: Check</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

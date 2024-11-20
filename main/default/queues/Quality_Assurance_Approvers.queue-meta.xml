@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>bill.thach@nationalcoordinationcenter.com</email>
+    <name>Quality Assurance Approvers</name>
+    <queueMembers>
+        <users>
+            <user>bill.thach@nationalcoordinationcenter.com</user>
+            <user>jyothiswari.vanapalli@nationalcoordinationcenter.com</user>
+            <user>kate.hegwood@edera.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Status_Report__c</sobjectType>
+    </queueSobject>
+</Queue>

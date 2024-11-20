@@ -1,0 +1,17 @@
+.THIS .list-item{
+    border-top: 1px solid rgb(221, 219, 218);
+    padding: 3px 3px;
+}
+
+.THIS .list-item:hover{
+    background-color: rgb(216, 237, 255);
+    cursor: pointer;
+}
+
+.THIS .list-last{
+    border-bottom: 1px solid rgb(221, 219, 218);
+}
+
+.THIS .center-vertical{
+    margin-top: 20%;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Closed Issue Email Template - Custom</name>
+    <style>none</style>
+    <subject>{!Issue__c.Name} | Issue Tracker for {!Issue__c.Session__c} ({!Event__c.Name})</subject>
+    <textOnly>Issue Tracker_Notification email
+
+Hello {!Issue__c.Raised_By_First_Name__c},
+
+Your Issue has been addressed!
+
+Issue ID {!Issue__c.Name}
+{!Event__c.Name}
+
+Session
+{!Session__c.Name}
+
+Date Raised
+{!Issue__c.Date_Raised__c}
+
+Type
+{!Issue__c.Type__c}
+
+Description
+{!Issue__c.Description__c}
+
+Resolution/Answer
+{!Issue__c.Resolution__c}
+
+Please reply to this email with any questions.
+
+You can review all Issues and their response on the Issue Tracker page.
+
+View More
+
+Thank you!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

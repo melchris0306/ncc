@@ -1,0 +1,189 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="ChangeCloudController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="sessionRole" type="Session_Role__c"/>
+    <aura:attribute type="String" name="firstName" default=""/>
+    <aura:attribute type="String" name="lastName" default=""/>
+    <aura:attribute type="String" name="email" default=""/>
+    <aura:attribute type="String" name="role" default=""/>
+    <!-- Added By JaysonLabnao [CCN-EVE-2160-DV] OCT092022-->
+    <aura:attribute type="String" name="rank" default=""/>
+    <aura:attribute type="List" name="rankOptions"/>
+
+    <!--XEN REYES March 5, 2023 CCN-EVE-2631-DV -->
+    <aura:attribute name="dataCollectionRecords" type="Object"/>
+    <aura:attribute type="String" name="rankHolder" default=""/>
+    <aura:attribute type="String" name="rankGroup" default=""/>
+    
+    <!-- Leif Erickson de Gracia - CCN-EVE-3303-DV -->
+    <aura:attribute name="shouldShowRank" type="Boolean" default="false" />
+    <aura:attribute name="shouldShowTitle" type="Boolean" default="false" />
+    <aura:attribute name="shouldShowSite" type="Boolean" default="false" />
+    <aura:attribute name="isRequired" type="Boolean" default="false" />
+    <aura:attribute name="titleItem" type="Object"/>
+    <aura:attribute name="siteItem" type="Object"/>
+
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+    <div class="main-section-content">
+        <div class="main-header-section float-left">
+            <div class="main-header-section-title height-auto">ADD PARTICIPANTS</div>
+        </div>
+        <div class="main-header-section-content slds-grid slds-wrap" id="contactus-section-top">
+                    
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                        
+                <!-- Updated By JaysonLabnao [CCN-EVE-2160-DV] OCT092022-->
+                <form action="/action_page.php" class="main-header-section-content-form"> 
+                    
+                    <div class="slds-grid slds-wrap slds-gutters"> <!-- Added gutters - Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 -->
+                        
+                        <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+                        <aura:if isTrue="{!v.shouldShowTitle || v.shouldShowRank}">
+                            
+                            <!-- START - Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 -->
+                            <!--div class="slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3 slds-p-right_small"-->
+                            <div class="slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <!-- END - Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 -->
+                                
+                                <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+                                <aura:if isTrue="{!v.shouldShowTitle || v.shouldShowRank}">
+                                    <aura:if isTrue="{!!v.isRequired}">
+                                        <label for="lname"> Title</label>
+                                        <aura:set attribute="else">
+                                            <label for="lname"><span class="required">*</span> Title</label>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:if>
+                                
+                                <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV: added condition shouldShowRank and shouldShowTitle-->
+                                <div class="input-text">
+                                    <lightning:select aura:id="rankPicklist" value="{!v.rank}" onchange="{!c.handleRankChange}" name="rankPicklist" label="Rank" required="{!v.isRequired}" messageWhenValueMissing="Required Field">
+                                        
+                                        
+                                        <!--XEN REYES March 5, 2023 CCN-EVE-2631-DV -->
+                                        <!--aura:iteration items="{!v.rankOptions}" var="rank">
+                                        <option text="{!rank.label}" value="{!rank.value}"/>
+                                    </aura:iteration!-->
+                                        <aura:if isTrue="{!v.shouldShowRank}">
+                                            <option value="{!null}">-----</option>
+                                            <aura:iteration items="{!v.dataCollectionRecords}"  var="mapKey" indexVar="key">  
+                                                <optgroup label="{!mapKey.key}"></optgroup>
+                                                <aura:iteration items="{!mapKey.value}" var="mapValue">
+                                                    <option text="{!mapValue}" value="{!mapValue + '|' + mapKey.key}"/>
+                                                </aura:iteration>
+                                            </aura:iteration>
+                                        </aura:if>
+                                        
+                                        <aura:if isTrue="{!v.shouldShowTitle}">
+                                            <aura:iteration items="{!v.titleItem.picklistOptions}" var="option">
+                                                <option value="{!option.value}">{!option.label}</option>
+                                            </aura:iteration>
+                                        </aura:if>
+                                        
+                                    </lightning:select>
+                                </div>
+                            </div>
+                         
+                        </aura:if>
+                      
+                        
+                        <!-- START - Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 -->
+                        
+                        <div class="{!v.shouldShowTitle || v.shouldShowRank ? 'slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3' : 'slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2'}">
+                        <!--div class="{!v.shouldShowTitle || v.shouldShowRank ? 'slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3 slds-p-right_small' : 'slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2 slds-p-right_small'}"-->
+                        
+                        <!-- END - Jonah Belle Baldero - CCN-EVE-3303-DV (Consistent Margin) 09/16/2023 -->    
+                            
+                            <div class="header-label">
+                                <label for="lname"><span class="required">*</span> First Name</label>
+                            </div>
+                            <div class="input-text">
+                                <lightning:input aura:id="firstName" type="text"  name="firstName" value="{!v.firstName}" required="true"  variant="label-hidden" messageWhenValueMissing="Required Field"/>
+                            </div>
+                        </div>
+                        
+                        <div class="{!v.shouldShowTitle || v.shouldShowRank ? 'slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3' : 'slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2'}">
+                            <div>
+                                <label for="phone"><span class="required">*</span> Last Name</label>
+                            </div>
+                            <div class="input-text">
+                                <lightning:input aura:id="lastName" type="text"  name="lastName" value="{!v.lastName}" required="true"  variant="label-hidden" messageWhenValueMissing="Required Field"/>
+                            </div>
+                        </div>
+                        
+                        <div class="{!v.shouldShowSite ? 'slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3 secondRow' : 'slds-col slds-size_2-of-3 slds-medium-size_2-of-3 slds-large-size_2-of-3 secondRow'}">
+                            <div class="header-label">
+                                <label for="lname"><span class="required">*</span>Email</label>
+                            </div>
+                            <div class="input-text">
+                                <lightning:input aura:id="email" type="email"  name="email" value="{!v.email}" required="true"  
+                                                 variant="label-hidden" messageWhenValueMissing="Required Field" messageWhenTypeMismatch="Invalid Email Format"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+                        <aura:if isTrue="{!v.shouldShowSite}">
+                            <div class="slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3 secondRow">
+                                <div class="header-label">
+                                    <aura:if isTrue="{!!v.siteItem.required}">
+                                        <label for="lname"> Site</label>
+                                        <aura:set attribute="else">
+                                            <label for="lname"><span class="required">*</span> Site</label>
+                                        </aura:set>
+                                    </aura:if>
+                                </div>
+                                <div class="input-text">
+                                    <!-- CCN-EVE-3303-DV - Jonah Baldero - Sept 26, 2023- Updated aura:id from registrationFormFieldsPicklist to site -->
+                                    <lightning:select value="{!v.siteItem.inputValue}" required="{!v.siteItem.required}" name="selectField" aura:id="site" variant="label-hidden"
+                                                      messageWhenValueMissing="{!v.siteItem.messageWhenRequired}">
+                                        <aura:iteration items="{!v.siteItem.picklistOptions}" var="option">
+                                            <option value="{!option.value}">{!option.label}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </aura:if>
+                        
+                        <div class="slds-col slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3 secondRow">
+                                <div class="header-label">
+                                    <label for="phone"><span class="required">*</span> Role</label>
+                                </div>
+                                <div class="input-text">
+                                    <!--<lightning:input aura:id="role" type="text"  name="role" value="{!v.role}" required="true"  variant="label-hidden"/>-->
+                                    <lightning:select aura:id="sessionRolePicklist"  value="{!v.role}" onchange="{!c.handleRolePick}" name="Role" label="Role" required="true"  messageWhenValueMissing="Required Field">
+                                        <option value="{!null}">-----</option>
+                                        <aura:iteration items="{!v.sessionRole}" var="role" indexVar="key">
+                                            <option text="{!role.Role_Title__c}" value="{!role.key}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-1 slds-align-middle slds-is-relative ">
+                        <span>
+                            <div class="submit-button-section">
+                                <div class="add-button" onclick="{!c.handleSubmit}">Add Participant</div>
+                            </div>
+                        </span>
+                        
+                        <div class="required" style="font-weight: 100;
+                                                     position: absolute;
+                                                     right: 0;
+                                                     top: 0;"><i>* Required Field</i></div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</aura:component>

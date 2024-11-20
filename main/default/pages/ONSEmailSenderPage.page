@@ -1,0 +1,9 @@
+<apex:page extensions="ONSEmailSenderController" standardController="Outreach_Notification_Setting__c">
+    <apex:form >
+        <apex:selectList size="1" value="{!orgWideAddress}"> 
+            <apex:outputLabel value="Email Sender    "/> 
+            <apex:selectOptions value="{!SelectedOrgWideAddress}"/>  
+        </apex:selectList>
+        <apex:commandButton action="{!save}" value="Save"/>
+    </apex:form>
+</apex:page>

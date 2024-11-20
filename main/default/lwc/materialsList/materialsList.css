@@ -1,0 +1,123 @@
+/* Added [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+:host {
+	--calibri-bold: normal normal bold 1.125rem 'Calibri';
+	--calibri-normal: normal normal normal 1rem 'Calibri';
+	--calibri-bold-phone: normal normal bold 1rem/1.25rem 'Calibri';
+	--calibri-normal-phone: normal normal normal 0.875rem/1.25rem 'Calibri';
+	--materials-black: #231F20;
+}
+
+.container {
+	background: white;
+}
+
+/* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.container-inner {
+	/* Updated [EVENT REFRESH FIXES] JaysonLabnao Jan282021 */
+	padding: 2.5rem 0;		
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+}
+
+/* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.group-header {
+	font: var(--calibri-bold);
+	font-weight: var(--lwc-fontWeightBold,700);
+	color : var(--materials-black);
+	text-decoration: none;
+	/* Updated [Event Refresh Fixes] JaysonLabnao Feb062022 */
+	margin-top: 1rem;
+}
+
+/* Updated [CCN1074,CCN863,CCN862] JaysonLabnao Dec192021 */
+.group-description {
+	font: var(--calibri-normal);
+	margin-top: 0.25rem;
+	color : var(--materials-black);
+}
+
+.group-material-header {
+	margin-top : 1rem;
+	font-size : 20px;
+	font-weight : bolder;
+	color : black;
+}
+
+.group-container {
+	background: #ECECEC;
+	width: 96%;
+	max-width: 54.5rem;
+	margin: 0 2%;
+	margin-bottom : 1rem;
+	border-left: 8px solid #0083C1;
+	padding: 2.3125rem;
+}
+
+/* Removed [EVENT REFRESH FIXES] JaysonLabnao Feb062022 */
+/* .group-container-has-dropdown {
+	padding-bottom: 1rem;
+} */
+
+.group-container-grouped {
+	background: #ECECEC;
+	width: 96%;
+	max-width: 54.5rem;
+	margin: 0 2%;
+	margin-bottom : 1rem;
+	border-left: 8px solid #0083C1;
+	padding: 2.3125rem;
+	padding-top : 1rem;	
+}
+
+.expand-button-container {
+	margin-top: 0.25rem;
+	margin-bottom: -1.25rem;
+	text-align:center;
+}
+
+.expand-button {
+	cursor: pointer;
+}
+
+/* Phone */
+@media screen and (max-device-width: 640px) { 
+	.container {
+		color: var(--materials-black);
+	}
+
+	.inner-box {
+		margin-top: unset;
+	}
+	
+
+	/* Removed [EVENT REFRESH FIXES] JaysonLabnao Feb032022 */
+	/* .group-header {
+		font: var(--calibri-bold-phone);
+	} */
+
+	.group-description {
+		font: var(--calibri-normal-phone);
+	}
+
+	.group-container {
+		border-left: unset;
+		padding: 1.5rem;
+	}
+
+	.container-inner {
+		padding-top : 1.5rem;	
+		padding-right: unset;
+	}
+
+	.group-container-grouped {
+		border-left: unset;
+		padding: 0 1.5rem 1.5rem;
+	}
+
+	/* Removed [EVENT REFRESH FIXES] JaysonLabnao Feb062022 */
+	/* .group-container-has-dropdown {
+		padding-bottom: 1rem;
+	} */
+	
+}

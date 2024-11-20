@@ -1,0 +1,409 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"  controller="ChangeCloudController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="sessionList" type="childSessionDetail"/>
+    <aura:attribute name="pstrue" type="Boolean" default="false"/>
+    <aura:attribute name="pname" type="String" default="Participant"/>
+    <aura:attribute name="sessionPageTitle" type="String"/>
+    <aura:attribute name="materialList" type="object"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <aura:attribute name="SessionsWithGeneralMaterial" type="Boolean" default="false"/>
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="spinnerHolder">
+            <lightning:spinner alternativeText="Loading" size="small" />
+        </div>
+    </aura:if>
+    <!-- SESSION SECTION   -->
+    <div class="session-section">
+        
+        <aura:if isTrue="{!and($Browser.formFactor == 'DESKTOP')}">
+            <div class="main-section">
+                <div class="main-header-section float-left">
+                    <div class="main-header-section-title height-auto">{!v.sessionPageTitle}</div> 
+                </div>
+                
+                <table class="main-session-table">
+                    <tr>
+                        <td class="content-box" style ="padding-right: 2.5rem;">
+                            <div class="session-container">
+                                <aura:iteration items="{!v.sessionList}" var="session" indexVar="index">
+                                    
+                                    <div class="session-main-card">
+                                        
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td class="sidebar vertical-align-top" style="width: 7rem; ">
+                                                    
+                                                    <div class="session-date-header-box">
+                                                        <div>
+                                                            <div class="session-date-header-month">{!session.SessionMonth}</div>
+                                                            <div class="session-date-header-day">{!session.SessionDate}</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="content-box vertical-align-top" >
+                                                    <span>
+                                                        <aura:iteration items="{!session.SessionDetailList}" var="session2" indexVar="index2">
+                                                            <div class="session-detail-card">
+                                                                <div class="slds-grid slds-gutters">
+                                                                    <div class="slds-col session-head">
+                                                                        <b>{!session2.title}</b>&nbsp;&nbsp;<lightning:formattedText value="{!session2.StartTime}"/>&nbsp;-&nbsp;<lightning:formattedText value="{!session2.EndTime}"/>&nbsp;{!session2.TimeZone}
+                                                                    </div>
+                                                                    <div class="slds-col font-right">
+                                                                        <aura:if isTrue="{!v.pstrue}">
+                                                                            <lightning:button variant="brand" class="check-in-button" label="Check-in" title="{! session2.isAttended ? 'You have already attended this session' : (!session2.isActive ? 'This session is not active' : 'Check-in')}" onclick="{! c.handleAttend }" value="{!session2.participantSessionId + '|' + index + '|' + index2}" disabled="{!session2.isAttended || !session2.isActive}"/>
+                                                                            <aura:if isTrue="{!and(session2.isCatchup, session2.isCatchupAvailable)}">
+                                                                                <lightning:button variant="brand" class="check-in-button" label="Catch-Up" title="{! session2.isAttended ? 'You have already attended this session' : (!session2.isActive ? 'This session is not active' : 'Check-in')}" onclick="{! c.handleCatchup }" value="{!session2.participantSessionId + '|' + index + '|' + index2}"/>
+                                                                            </aura:if>
+                                                                        </aura:if>  
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="session-subtitle"><ui:outputRichText class="slds-text-longform" value="{!session2.subtitle}"/> </div>
+                                                                
+                                                                <aura:if isTrue="{!not(empty(session2.materialList))}"> 
+                                                                    <div id="{!session2.sessionId}" class ="hideme"> 
+                                                                        <div class="font-header session-material-header">
+                                                                            <div class="slds-grid slds-gutters">
+                                                                                <div class="slds-col session-material-title">
+                                                                                    Session Materials
+                                                                                </div>
+                                                                                <div class="slds-col font-right">
+                                                                                    <!--<lightning:button aura:id="downloadGeneric" class="download-all-button" iconName="utility:download" iconPosition="left" variant="base" label="download All" title="Download All" onclick="{!c.downloadAllMaterial}" value="{!session2.materialList}"/>-->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                        <aura:iteration items="{!session2.materialList}" var="material">
+                                                                            <div class="material-card">
+                                                                                <a class="material-title" href="{!material.DownloadURL}" target="_blank" download="true"><b>{!material.Title}</b></a>
+                                                                                <div class="material-description">{!material.Description}</div>
+                                                                                <aura:if isTrue="{!material.isVideo}">
+                                                                                    <video width="400" controls = "TRUE">
+                                                                                        <source src="{!material.DownloadURL}" type="video/mp4"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/ogg"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/avi"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/wmv"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/wma"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/wav"/>
+                                                                                        <source src="{!material.DownloadURL}" type="video/mov"/>
+                                                                                        Your browser does not support HTML5 video.
+                                                                                    </video>
+                                                                                </aura:if>                                        
+                                                                            </div>
+                                                                        </aura:iteration>
+                                                                    </div>
+                                                                    <div id="{!session2.sessionId + 'toggle'}" style="text-align:center;" class="arrow-toggle">
+                                                                        <lightning:buttonIcon variant="bare" aura:id="{!session2.sessionId}" iconName="utility:chevrondown" alternativeText="Add" title="{!session2.Id}" onclick="{!c.toggleMaterial}" size="large" value="{!session2.sessionId}"/>
+                                                                        <!--<lightning:button class="arrow-down" aura:id="{!session2.sessionId}" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/> Jan.10.2022 -->
+                                                                        <!--<lightning:button aura:id="{!session2.sessionId}"  class="arrow-up" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/>        -->                                
+                                                                    </div> 
+                                                                </aura:if> 
+                                                                
+                                                            </div>
+                                                        </aura:iteration>
+                                                    </span>
+                                                </td>
+                                                
+                                            </tr>
+                                        </table>
+                                        <div class="clear-section"></div>
+                                    </div>
+                                </aura:iteration>
+                            </div>
+                        </td>
+                        <aura:if isTrue="{!and((not(empty(v.materialList))),(v.SessionsWithGeneralMaterial))}"> 
+                            
+                            <td class="sidebar vertical-align-top" style=" width:20rem; vertical-align: top;">
+                                
+                                <div class="session-container"> 
+                                    <div class="session-material-card">
+                                        
+                                        <div class="general-material-title">General Materials</div> 
+                                        <aura:iteration items="{!v.materialList}" var="material">
+                                            <div class="material-card">
+                                                <a class="material-title" href="{!material.DownloadURL}"  target="_blank"  download="true"><b>{!material.Title}</b></a>
+                                                <div class="material-description">{!material.Description}</div>
+                                            </div>
+                                            <aura:if isTrue="{!material.isVideo}">
+                                                <video width="400" controls = "TRUE">
+                                                    <source src="{!material.DownloadURL}" type="video/mp4"/>
+                                                    <source src="{!material.DownloadURL}" type="video/ogg"/>
+                                                    <source src="{!material.DownloadURL}" type="video/avi"/>
+                                                    <source src="{!material.DownloadURL}" type="video/wmv"/>
+                                                    <source src="{!material.DownloadURL}" type="video/wma"/>
+                                                    <source src="{!material.DownloadURL}" type="video/wav"/>
+                                                    <source src="{!material.DownloadURL}" type="video/mov"/>
+                                                    Your browser does not support HTML5 video.
+                                                </video>
+                                            </aura:if>
+                                        </aura:iteration>
+                                        
+                                        <!--<div class="font-right font-header material-download-all" style="margin-top : 2.5rem;">
+                                                <lightning:button aura:id="downloadGeneric" variant="base" label="Download All" title="Base action" onclick="{!c.downloadAllMaterial}" value="{!v.materialList}"/>
+                                            </div>-->
+                                    </div>
+                                </div>
+                                
+                                
+                            </td>
+                            
+                        </aura:if>
+                        <td class="sidebar" style="width: 4rem;">
+                            
+                        </td>
+                        
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- for mobile/tablet -->
+            <aura:set attribute="else">
+                <div class="main-section">
+                    <aura:if isTrue="{!and((not(empty(v.materialList))),(v.SessionsWithGeneralMaterial))}"> 
+                        <div class="slds-section slds-is-close material-section" aura:id="GeneralMaterials">
+                            <!--section header-->
+                            
+                            <h3 class="slds-section__title">
+                                <button aria-controls="GeneralMaterialsList" class="slds-button slds-section__title-action">
+                                    <span onclick="{!c.toggleSection}" data-auraId="GeneralMaterials" class="gen-arrow">
+                                        <lightning:icon iconName="utility:switch"
+                                                        size="x-small"
+                                                        class="slds-section__title-action-icon slds-button__icon_left"
+                                                        alternativeText="button icon" 
+                                                        />
+                                    </span>
+                                    <span class="slds-truncate gen-title" title="General Materials">General Materials</span>
+                                </button>
+                            </h3>
+                            <!--section body-->
+                            <!--section body-->
+                            <div class="slds-section__content" id="GeneralMaterialsList">
+                                <table> 
+                                    <td class="sidebar vertical-align-top" style=" width:20rem; vertical-align: top;">
+                                        
+                                        <div class="session-container"> 
+                                            <div class="session-material-card">
+                                                
+                                                <!--<div class="font-header">General Materials</div>-->
+                                                <aura:iteration items="{!v.materialList}" var="material">
+                                                    <div class="material-card">
+                                                        <a class="material-title" href="{!material.DownloadURL}"  target="_blank"  download="true"><b>{!material.Title}</b></a>
+                                                        <div class="material-description">{!material.Description}</div>
+                                                    </div>
+                                                    <aura:if isTrue="{!material.isVideo}">
+                                                        <video width="250" controls = "TRUE">
+                                                            <source src="{!material.DownloadURL}" type="video/mp4"/>
+                                                            <source src="{!material.DownloadURL}" type="video/ogg"/>
+                                                            <source src="{!material.DownloadURL}" type="video/avi"/>
+                                                            <source src="{!material.DownloadURL}" type="video/wmv"/>
+                                                            <source src="{!material.DownloadURL}" type="video/wma"/>
+                                                            <source src="{!material.DownloadURL}" type="video/wav"/>
+                                                            <source src="{!material.DownloadURL}" type="video/mov"/>
+                                                            Your browser does not support HTML5 video.
+                                                        </video>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                                
+                                                <div class="font-right font-header material-download-all" style="margin-top : 2.5rem;">
+                                                    <!--<lightning:button aura:id="downloadGeneric" variant="base" label="Download All" title="Base action" onclick="{!c.downloadAllMaterial}" value="{!v.materialList}"/>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </table>
+                            </div>
+                        </div>
+                    </aura:if>
+                </div>
+                <div class="main-section">       
+                    <div class="main-section-content">
+                        <div class="main-header-section float-left">
+                            <div class="main-header-section-title height-auto">{!v.sessionPageTitle}</div> 
+                        </div>
+                        
+                        <div class="main-header-section-content slds-grid slds-wrap">
+                            
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                
+                                <div class="main-header-section-content-form">
+                            <table class="session-table-xxx"> 
+                                <tr>
+                                    <td class="content-box session-td" >
+                                        <div class="session-container-xxx">
+                                            <aura:iteration items="{!v.sessionList}" var="session" indexVar="index">
+                                                
+                                                <div class="session-main-card">
+                                                    
+                                                    <aura:if isTrue="{!and($Browser.formFactor == 'TABLET')}">
+                                                        <table style="width: 100%">
+                                                            <tr>
+                                                                <td class="sidebar vertical-align-top date-td" >
+                                                                    
+                                                                    <div class="session-date-header-box">
+                                                                        <div>
+                                                                            <div class="session-date-header-month">{!session.SessionMonth}</div>
+                                                                            <div class="session-date-header-day">{!session.SessionDate}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="content-box vertical-align-top" >
+                                                                    <span>
+                                                                        <aura:iteration items="{!session.SessionDetailList}" var="session2" indexVar="index2">
+                                                                            <div class="session-detail-card">
+                                                                                <div class="session-head">
+                                                                                    <b>{!session2.title}</b><br/>
+                                                                                    <lightning:formattedText value="{!session2.StartTime}"/>&nbsp;-&nbsp;<lightning:formattedText value="{!session2.EndTime}"/>&nbsp;{!session2.TimeZone}
+                                                                                </div>
+                                                                                <div class="slds-col font-right session-subtitle">
+                                                                                    <aura:if isTrue="{!v.pstrue}">
+                                                                                        <lightning:button variant="brand" class="check-in-button" label="Check-in" title="{! session2.isAttended ? 'You have already attended this session' : (!session2.isActive ? 'This session is not active anymore' : 'Check-in')}" onclick="{! c.handleAttend }" value="{!session2.participantSessionId + '|' + index + '|' + index2}" disabled="{!session2.isAttended || !session2.isActive}"/>
+                                                                                    </aura:if>  
+                                                                                </div>
+                                                                                
+                                                                                <div class="session-subtitle"><ui:outputRichText class="slds-text-longform" value="{!session2.subtitle}"/> </div>
+                                                                                
+                                                                                <aura:if isTrue="{!not(empty(session2.materialList))}"> 
+                                                                                    <div id="{!session2.sessionId}" class ="hideme"> 
+                                                                                        <div class="font-header session-material-header">
+                                                                                            <div class="slds-grid slds-gutters">
+                                                                                                <div class="slds-col session-material-title relative">
+                                                                                                    Session Materials
+                                                                                                    <div class="slds-col font-right download-btn">
+                                                                                                        <!--<lightning:button aura:id="downloadGeneric" class="download-all-button" iconName="utility:download" iconPosition="left" variant="base" label="download All" title="Download All" onclick="{!c.downloadAllMaterial}" value="{!session2.materialList}"/>-->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        
+                                                                                        <aura:iteration items="{!session2.materialList}" var="material">
+                                                                                            <div class="material-card">
+                                                                                                <a class="material-title" href="{!material.DownloadURL}" target="_blank" download="true"><b>{!material.Title}</b></a>
+                                                                                                <div class="material-description">{!material.Description}</div>
+                                                                                                <aura:if isTrue="{!material.isVideo}">
+                                                                                                    <video width="300" controls = "TRUE">
+                                                                                                        <source src="{!material.DownloadURL}" type="video/mp4"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/ogg"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/avi"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wmv"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wma"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wav"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/mov"/>
+                                                                                                        Your browser does not support HTML5 video.
+                                                                                                    </video>
+                                                                                                </aura:if>                                        
+                                                                                            </div>
+                                                                                        </aura:iteration>
+                                                                                    </div>
+                                                                                    <div id="{!session2.sessionId + 'toggle'}" style="text-align:center;" class="arrow-toggle session-head">
+                                                                                        <lightning:buttonIcon variant="bare" aura:id="{!session2.sessionId}" iconName="utility:chevrondown" alternativeText="Add" title="{!session2.Id}" onclick="{!c.toggleMaterial}" size="large" value="{!session2.sessionId}"/>
+                                                                                        <!--<lightning:button class="arrow-down" aura:id="{!session2.sessionId}" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/>      Jan.10.2022 -->
+                                                                                        <!--<lightning:button aura:id="{!session2.sessionId}"  class="arrow-up" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/>        -->                                
+                                                                                    </div> 
+                                                                                </aura:if> 
+                                                                                
+                                                                            </div>
+                                                                        </aura:iteration>
+                                                                    </span>
+                                                                </td>                                                    
+                                                            </tr>
+                                                        </table>
+                                                    </aura:if>
+                                                    
+                                                    <aura:if isTrue="{!and($Browser.formFactor == 'PHONE')}">
+                                                        <table style="width: 100%">
+                                                            <tr>
+                                                                <td class="sidebar vertical-align-top date-td" >
+                                                                    <div class="session-date-header-box">
+                                                                        {!session.SessionMonthName}&nbsp;{!session.SessionDate}, {!session.SessionYear}
+                                                                        <!--<div>
+                                                                    <div class="session-date-header-month">{!session.SessionMonth}</div>
+                                                                    <div class="session-date-header-day">{!session.SessionDate}</div>
+                                                                </div>-->
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content-box vertical-align-top" >
+                                                                    <span>
+                                                                        <aura:iteration items="{!session.SessionDetailList}" var="session2" indexVar="index2">
+                                                                            <div class="session-detail-card">
+                                                                                <div class="session-head">
+                                                                                    <b>{!session2.title}</b><br/>
+                                                                                    <lightning:formattedText value="{!session2.StartTime}"/>&nbsp;-&nbsp;<lightning:formattedText value="{!session2.EndTime}"/>&nbsp;{!session2.TimeZone}
+                                                                                </div>
+                                                                                <div class="slds-col font-right session-subtitle">
+                                                                                    <aura:if isTrue="{!v.pstrue}">
+                                                                                        <lightning:button variant="brand" class="check-in-button" label="Check-in" title="{! session2.isAttended ? 'You have already attended this session' : (!session2.isActive ? 'This session is not active anymore' : 'Check-in')}" onclick="{! c.handleAttend }" value="{!session2.participantSessionId + '|' + index + '|' + index2}" disabled="{!session2.isAttended || !session2.isActive}"/>
+                                                                                    </aura:if>  
+                                                                                </div>
+                                                                                
+                                                                                <div class="session-subtitle"><ui:outputRichText class="slds-text-longform" value="{!session2.subtitle}"/> </div>
+                                                                                
+                                                                                <aura:if isTrue="{!not(empty(session2.materialList))}"> 
+                                                                                    <div id="{!session2.sessionId}" class ="hideme"> 
+                                                                                        <div class="font-header session-material-header">
+                                                                                            <div class="slds-grid slds-gutters">
+                                                                                                <div class="slds-col session-material-title relative">
+                                                                                                    Session Materials
+                                                                                                    <div class="slds-col font-right download-btn">
+                                                                                                        <!--<lightning:button aura:id="downloadGeneric" class="download-all-button" iconName="utility:download" iconPosition="left" variant="base" label="download All" title="Download All" onclick="{!c.downloadAllMaterial}" value="{!session2.materialList}"/>-->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        
+                                                                                        <aura:iteration items="{!session2.materialList}" var="material">
+                                                                                            <div class="material-card">
+                                                                                                <a class="material-title" href="{!material.DownloadURL}" target="_blank" download="true"><b>{!material.Title}</b></a>
+                                                                                                <div class="material-description">{!material.Description}</div>
+                                                                                                <aura:if isTrue="{!material.isVideo}">
+                                                                                                    <video width="250" controls = "TRUE">
+                                                                                                        <source src="{!material.DownloadURL}" type="video/mp4"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/ogg"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/avi"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wmv"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wma"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/wav"/>
+                                                                                                        <source src="{!material.DownloadURL}" type="video/mov"/>
+                                                                                                        Your browser does not support HTML5 video.
+                                                                                                    </video>
+                                                                                                </aura:if>                                        
+                                                                                            </div>
+                                                                                        </aura:iteration>
+                                                                                    </div>
+                                                                                    <div id="{!session2.sessionId + 'toggle'}" style="text-align:center;" class="arrow-toggle session-head">
+                                                                                        <lightning:buttonIcon variant="bare" aura:id="{!session2.sessionId}" iconName="utility:chevrondown" alternativeText="Add" title="{!session2.Id}" onclick="{!c.toggleMaterial}" size="large" value="{!session2.sessionId}"/>
+                                                                                        <!--<lightning:button class="arrow-down" aura:id="{!session2.sessionId}" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/> Jan.10.2022 -->
+                                                                                        <!--<lightning:button aura:id="{!session2.sessionId}"  class="arrow-up" variant="base" label="" title="Base action" onclick="{!c.toggleMaterial}" value="{!session2.sessionId}"/>        -->                                
+                                                                                    </div> 
+                                                                                </aura:if> 
+                                                                                
+                                                                            </div>
+                                                                        </aura:iteration>
+                                                                    </span>
+                                                                </td>                                                    
+                                                            </tr>
+                                                        </table>
+                                                        
+                                                    </aura:if>
+                                                    
+                                                    <div class="clear-section"></div>
+                                                </div>
+                                            </aura:iteration>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aura:set>
+        </aura:if>
+        
+    </div>
+    <div class="clear-section"></div>
+</aura:component>

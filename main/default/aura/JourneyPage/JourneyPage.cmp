@@ -1,0 +1,193 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+                access="global"
+                controller="TheProviderJourney">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="journeyID" type="String" />
+    <aura:attribute name="userJourney" type="Journey_Participant__c" />
+    <aura:attribute name="journeyData" type="Journey__c" />
+    <aura:attribute name="userMilestones" type="List" />
+    <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+    <aura:attribute name="journeyMilestoneList" type="List"/>
+    <aura:attribute name="urlFromJourney" type="Boolean"/>
+
+    <div>
+        <div class="journey">
+            <div class="journeyhighlights">
+                <div class="journeyhighlightsleft">
+                    <div class="journeyhighlightsleft-header">
+                        <div class="journeyhighlightsleft-header1">
+                            Journey Highlights <br />
+                            <div class="dividerline"></div>
+
+                        </div>
+                        <br />
+                        <div  class="journeyhighlightsleft-header2">
+                            Training <br />
+                            Communications <br />
+                            Events <br />
+                            Learning Opportunities <br />
+                            Testing <br />
+                            Feedback <br />
+                            Progress Tracking <br />
+                            Whats on Deck <br />
+                            Links to Information <br />
+                            <br />
+                        </div>
+<!--                        <div class="highlightsbutton">-->
+<!--                            <lightning:button variant="Neutral" label="Back to My Dashboard" title="Back to My Dashboard"/>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="journeyhighlightsimage">
+                    <img src="{!$Resource.doctor}" class="doctorimage"/>
+                </div>
+                <aura:if isTrue="{!v.urlFromJourney == false}">
+                    <div class="journeyhighlightsright">
+                        <div class="providerheader">
+                            {!v.userJourney.Journey__r.Name}</div>
+                        <div class="dividerlinered"></div>
+                        <div class="providervalue">
+                            <lightning:formattedRichText value="{!v.userJourney.Description__c}" />
+                        </div>
+                    </div>
+                    <aura:set attribute="else">
+                        <div class="journeyhighlightsright">
+                            <div class="providerheader">
+                                {!v.journeyData.Name}</div>
+                            <div class="dividerlinered"></div>
+                            <div class="providervalue">
+                                <lightning:formattedRichText value="{!v.journeyData.Description__c}" />
+                            </div>
+                        </div>
+                    </aura:set>
+                </aura:if>
+                
+            </div>
+            <!--    -->
+            <div class="communication">
+                Communication
+            </div>
+            <div class="dividerlineredcoms"></div>
+            <div class="communicationvalues">
+                Within your journey, you will have automated notifications, communications and invitations
+                to events. You also have one-touch access to all kinds of project information, just by
+                selecting a link within your Journey. We make it that easy to stay informed! And you can
+                keep us informed by adding in your feedback in the same way.
+            </div>
+        </div>
+        <!---->
+
+        <div class="personalizedjourneyparent">
+            
+            <div class="personalizedjourney">
+                <aura:if isTrue="{!v.urlFromJourney == false}">
+                    Welcome to Your Personalized Journey, {!v.userJourney.Contact__r.FirstName}!
+                    
+                    <aura:set attribute="else">
+                        {!$Label.c.Journey_Welcome_Message}
+                    </aura:set>
+                </aura:if>
+                
+            </div>
+
+            <aura:iteration items="{!v.userMilestones}" var="milestone">
+                <div class="{!milestone.Checkpoint__c ? 'journeylevel journeyCheckpoint' : 'journeylevel journey'+ milestone.Type__c}">
+                    <div class="journeyimage">
+                        <aura:if isTrue="{!milestone.Checkpoint__c == true}">
+                            <img src="{!$Resource.JourneyIcons + '/JourneyIcons/Checkpoint.png'}"/>
+                            <aura:set attribute="else">
+                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/' + milestone.Type__c + '.png'}"/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="journeytitle">
+                        <aura:if isTrue="{!milestone.Milestone_URL__c != null}">
+                            <lightning:formattedUrl value="{!milestone.Milestone_URL__c}" label="{!milestone.Milestone__r.Name}" target="_blank" /><br/>
+                            <aura:set attribute="else">
+                                {!milestone.Milestone__r.Name}<br/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+
+                    <div style="float: right; margin-right: 55px">
+                        <aura:if isTrue="{!milestone.Checkpoint__c == true}">
+                            <div class="journeyimageCkpoint">
+                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/ckpoint.png'}"/>
+                            </div>
+                        </aura:if>
+                    </div>
+
+
+                    <aura:iteration items="{!v.userMilestoneRelatedInfo}" var="relatedInfo" indexVar="key">
+                        <aura:if isTrue="{!milestone.Name == relatedInfo.key}">
+                            <div class="journeylinks">
+                                <aura:iteration items="{!relatedInfo.value}" var="relatedInformation" >
+                                    <aura:if isTrue="{!relatedInformation.Description != null}">
+                                        <lightning:formattedUrl value="{!relatedInformation.Description}" label="{!relatedInformation.Subject}" target="_blank" /><br/>
+                                        <aura:set attribute="else">
+                                            {!relatedInformation.Subject} <br/>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:iteration>
+                            </div>
+                        </aura:if>
+                    </aura:iteration>
+
+                    <div class="journeyprogress">
+                        <aura:if isTrue="{!milestone.Progress__c != null}">
+                            <div class="progresscount">
+                                <lightning:formattedNumber value="{!milestone.Progress__c}"/>%
+                            </div>
+                            <div class="progressbar">
+                                <div class="mybar" style="{!'width:' + milestone.Progress__c + '%;border-radius: 10px'}"></div>
+                            </div>
+
+                            <aura:set attribute="else">
+                                <div class="progresscount">0%</div>
+                                <div class="progressbar"><div class="mybar" style="width: 0%;border-radius: 10px"></div></div>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </div>
+                <div class="divider">
+                    <img src="{!$Resource.divider}"/>
+                </div>
+            </aura:iteration>
+            
+            <aura:iteration items="{!v.journeyMilestoneList}" var="jMilestone">
+                <div class="{!jMilestone.Checkpoint__c ? 'journeylevel journeyCheckpoint' : 'journeylevel journey'+ jMilestone.Type__c}">
+                    <div class="journeyimage">
+                        <aura:if isTrue="{!jMilestone.Checkpoint__c == true}">
+                            <img src="{!$Resource.JourneyIcons + '/JourneyIcons/Checkpoint.png'}"/>
+                            <aura:set attribute="else">
+                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/' + jMilestone.Type__c + '.png'}"/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="journeytitle">
+                        <aura:if isTrue="{!jMilestone.Milestone_URL__c != null}">
+                            <lightning:formattedUrl value="{!jMilestone.Milestone_URL__c}" label="{!jMilestone.Name}" target="_blank" /><br/>
+                            <aura:set attribute="else">
+                                {!jMilestone.Name}<br/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    
+                    <div style="float: right; margin-right: 55px">
+                        <aura:if isTrue="{!jMilestone.Checkpoint__c == true}">
+                            <div class="journeyimageCkpoint">
+                                <img src="{!$Resource.JourneyIcons + '/JourneyIcons/ckpoint.png'}"/>
+                            </div>
+                        </aura:if>
+                    </div>
+                </div>
+                <div class="divider">
+                    <img src="{!$Resource.divider}"/>
+                </div>
+            </aura:iteration>
+            <!-- Avaraged Journey Milestone -->
+            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Inactive__c</fullName>
+    <description>CAPM-85 True if Status = Backlog, Blocked, On-hold, Completed. Used for the AgileBoard.</description>
+    <formula>OR(ISPICKVAL( Status__c , &quot;Backlog&quot;),
+					ISPICKVAL( Status__c , &quot;Blocked&quot;),
+				 ISPICKVAL( Status__c , &quot;On-hold&quot;),
+				 ISPICKVAL( Status__c , &quot;Completed&quot;), 
+				 ISPICKVAL( Status__c , &quot;Withdrawn&quot;),
+				 ISPICKVAL( Status__c , &quot;Duplicate&quot;))</formula>
+    <label>Is Inactive</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

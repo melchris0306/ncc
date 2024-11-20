@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Widget_Size__c</fullName>
+    <label>Widget Size</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Classic Top Center S1</fullName>
+                <default>false</default>
+                <label>Classic Top Center S1</label>
+            </value>
+            <value>
+                <fullName>Classic Upper Middle Left S2</fullName>
+                <default>false</default>
+                <label>Classic Upper Middle Left S2</label>
+            </value>
+            <value>
+                <fullName>Classic Upper Middle Right S2</fullName>
+                <default>false</default>
+                <label>Classic Upper Middle Right S2</label>
+            </value>
+            <value>
+                <fullName>Classic Lower Middle Left S2</fullName>
+                <default>false</default>
+                <label>Classic Lower Middle Left S2</label>
+            </value>
+            <value>
+                <fullName>Classic Bottom Left S2</fullName>
+                <default>false</default>
+                <label>Classic Bottom Left S2</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>5</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>6</label>
+            </value>
+            <value>
+                <fullName>7</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>7</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

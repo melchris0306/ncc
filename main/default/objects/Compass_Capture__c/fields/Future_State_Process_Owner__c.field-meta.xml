@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Future_State_Process_Owner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Future State Process Owner</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipName>Compass_Captures1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

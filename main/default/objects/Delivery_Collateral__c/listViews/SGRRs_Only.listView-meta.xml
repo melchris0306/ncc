@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SGRRs_Only</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>SGRR_Prepare_Client_Due_Date__c</columns>
+    <columns>SGRR_Package_Client_Due_Date__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Stage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Production_Support_Requested__c</field>
+        <operation>equals</operation>
+        <value>RCIS SGRR Support: Prepare,RCIS SGRR Support: Package</value>
+    </filters>
+    <filters>
+        <field>Type_and_Scope__c</field>
+        <operation>notEqual</operation>
+        <value>SGRR Master Template / VA EHRM</value>
+    </filters>
+    <label>SGRRs Only</label>
+</ListView>

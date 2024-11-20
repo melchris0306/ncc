@@ -1,0 +1,55 @@
+<template>
+    <table>
+
+        <template if:true={columns.length}>
+            <tr class="table-header">
+
+                <template iterator:it={columns}>
+                    <template if:false={it.last}>
+                        <th class="column" key={it.value.fieldName} style={it.value.style}>{it.value.label}</th>
+                    </template>
+
+                    <template if:true={it.last}>
+                        <th class="column-sort" key={it.value.fieldName} style={it.value.style}>
+                            <span>{it.value.label}</span>
+
+                            <div class="sort-container">
+                                <div if:true={hasSortbutton} class="sort-button" onclick={handleSortButtonClick}>
+                                    <img src={sortIcon}></img>
+                                    <p>Sort</p>
+                                </div>
+                                <template if:true={isSortOpen}>
+                                    <div class="sort-modal">
+                                        <span class="sort-by">Sort by</span>
+                                        <lightning-radio-group 
+                                            name="radio-sort"
+                                            options={sortOptions}
+                                            value={selectedSortOption}
+                                            type="radio"
+                                            onchange={handleSortOptionChange}>
+                                        </lightning-radio-group>
+                                    </div>
+                                </template>
+                            </div>
+                        </th>
+                    </template>
+                </template>
+
+            </tr>
+        </template>
+
+        <template if:true={rows.length}>
+            <template for:each={rows} for:item="row">
+                <tr key={row.keyField} class="row">
+                    <template for:each={row.cells} for:item="cell">
+                        <td class="cell" key={cell.fieldName}>
+                            <lightning-formatted-rich-text value={cell.data}></lightning-formatted-rich-text>
+                        </td>
+                    </template>
+                    
+                </tr>
+            </template>
+        </template>
+        
+    </table>
+</template>

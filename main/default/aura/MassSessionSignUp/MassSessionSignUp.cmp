@@ -1,0 +1,152 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome" access="global" controller="MassSessionSignUpController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="SignUpInstructions" type="String"/>
+    <aura:attribute name="hasData" type="Boolean" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true" />
+    <aura:attribute name="sessionId" type ="String"/>
+    <aura:attribute name="eventId" type ="String"/>
+    <aura:attribute name="eventName" type ="String"/>
+    <aura:attribute name="title" type="string"/>
+    <aura:attribute name="startDate" type="string"/>
+    <aura:attribute name="endDate" type="string"/>
+    <aura:attribute name="location" type="string"/>
+    <aura:attribute name="sessionTimeZone" type="string"/> <!-- UPDATED by JC ESPINO [CCN-EVE-2870-DV] 24/05/23 - added Timezone -->
+
+    <aura:attribute name="sessionMonth" type="string"/>
+    <aura:attribute name="sessionDay" type="string"/>
+    <aura:attribute name="showSave" type="Boolean" default="false" />
+    <aura:attribute name="showEdit" type="Boolean" default="false" />
+    <aura:attribute name="showCancel" type="Boolean" default="false" />
+    <aura:attribute name="isDisabled" type="Boolean" default="false" />
+    <aura:attribute name="emptyRows" type="List" />
+    <aura:attribute name="filledUpRows" type="List" />
+    
+    <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+    <aura:attribute name="shouldShowRank" type="Boolean" default="false" />
+    <aura:attribute name="shouldShowTitle" type="Boolean" default="false" />
+    <aura:attribute name="isRequired" type="Boolean" default="false" />
+    <aura:attribute name="titleItem" type="Object"/>
+
+    <!-- Gian Bata - CCN-EVE-2323-DV -->
+    <aura:attribute name="isSubmitDisabled" type="Boolean" default="true" />
+
+    <aura:handler name="massSessionEventReg" event="c:MassSessionEvent" action="{!c.handleComponentEvent}"/>
+
+    <aura:if isTrue="{! v.isLoading }">
+        <div class="slds-spinner_container">
+            <lightning:spinner variant="brand" alternativeText="Loading..." />
+        </div>
+    </aura:if>
+    <div class="session-section">
+        <div class="main-section">
+            <div class="main-header-section float-left">
+                <div class="main-header-section-title height-auto">Session Sign-up</div>
+            </div>
+
+            <div class="main-session-box">
+
+                <div class="session-sign-up-top">
+                    <div class="session-top-title-container" >
+                        <span class="session-top-title">{!v.eventName}</span>
+                    </div>
+                    <div class="session-top-button-container" >
+                        <lightning:button variant="brand" label="Return to Calendar" title="Brand action" onclick="{! c.returnToCalendar }" />
+                    </div>
+
+                </div>
+                <div style="clear: both"></div>
+                <aura:if isTrue="{!v.hasData}">
+                    <div class="session-instruction-box">
+                        <div class="session-instruction-label">
+                            <span>Sign-Up Instructions</span>
+                        </div>
+                        <div class="session-instruction-text">
+                            <span><lightning:formattedRichText value="{!v.SignUpInstructions}"/></span>
+                        </div>
+                    </div>
+
+                    <div class="session-signup-box">
+
+                        <div class="session-signup-date">
+                            <div class="session-signup-date-month">
+                                {!v.sessionMonth}
+                            </div>
+                            <div class="session-signup-date-date">
+                                {!v.sessionDay}
+                            </div>
+
+                        </div>
+
+                        <div class="session-signup-table">
+                            <div class="session-signup-table-detail">
+                                <span class="session-top-title">{!v.title}</span>
+                                <div class="sessionDateTime">
+                                    <!-- UPDATED by JC ESPINO [CCN-EVE-2870-DV] 24/05/23 - added Timezone -->
+                                    {!v.startDate} - {!v.endDate} | {!v.sessionTimeZone}
+                                </div>
+                                <div class="sessionLocation">
+                                    {!v.location}
+                                </div>
+                            </div>
+                  	        <lightning:formattedText class="required-field-indicator" value="* Required Field" />
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <div class="slds-truncate columnFont" title="Role">Role</div>
+                                    </th>
+                                    
+                                    <!-- Leif Erickson de Gracia - CCN-EVE-3304-DV -->
+                                    <aura:if isTrue="{!v.shouldShowTitle || v.shouldShowRank}">
+                                        <th>
+                                            <aura:if isTrue="{!v.isRequired}">
+                                            <div class="slds-truncate columnFont required-header" title="Rank">Title</div>
+                                                <aura:set attribute="else">
+                                                    <div class="slds-truncate columnFont" title="Rank">Title</div>
+                                                </aura:set>
+                                            </aura:if>
+                                        </th>
+                                    </aura:if>
+                                    
+                                    <th>
+                                        <div class="slds-truncate columnFont required-header" title="First Name">First Name</div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-truncate columnFont required-header" title="Last Name">Last Name</div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-truncate columnFont required-header" title="Email">Email</div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <aura:iteration items="{! v.data }" var="sessionParticipant">
+                                    <c:MassSessionSignUpRow aura:id="mass-session-signup-row" sessionPart = "{!sessionParticipant}" disableButton = "{!v.isDisabled}" titleItem="{!v.titleItem}" shouldShowTitle="{!v.shouldShowTitle}" shouldShowRank="{!v.shouldShowRank}"/>
+                                </aura:iteration>
+                                </tbody>
+                            </table>
+                            <div class="session-signup-buttons">
+                                <aura:if isTrue="{!v.showSave}">
+                                    <!-- Gian Bata - CCN-EVE-2323-DV: added disabled="{!v.isSubmitDisabled}"-->
+                                    <lightning:button class="button-save" variant="brand" label="Save Sign-Ups" title="Brand action" onclick="{! c.handleSaveSignUp }" disabled="{!v.isSubmitDisabled}"/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.showEdit}">
+                                    <lightning:button variant="brand" label="Edit Sign-Ups" title="Brand action" onclick="{! c.handleEditSignUp }" />
+                                </aura:if>
+                                <aura:if isTrue="{!v.showCancel}">
+                                    <lightning:button variant="destructive" label="Cancel" title="Brand action" onclick="{! c.handleCancelSignUp }" />
+                                </aura:if>
+                            </div>
+
+                        </div>
+                    </div>
+                </aura:if>
+
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,12 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="showComponent" type="Boolean" default="true" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div>
+        <aura:if isTrue="{!v.showComponent}">
+            <div class="footer-section">
+                <div class="footer-logo-image"><img src="{!$Resource.communitySurveyIndependentFooter}"/></div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

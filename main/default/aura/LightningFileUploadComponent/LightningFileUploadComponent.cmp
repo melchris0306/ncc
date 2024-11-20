@@ -1,0 +1,110 @@
+<aura:component
+  implements="flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes"
+  access="global"
+  controller="LightningFileUploadHandler"
+>
+  <!-- Public Attributes -->
+  <aura:attribute name="userRecordId" type="String" />
+  <aura:attribute name="profilePictureURL" type="String" default="" />
+  <aura:attribute name="uploadImageModal" type="Boolean" default="true" />
+  <aura:attribute name="contactRecordFirstName" type="String" />
+  <aura:attribute name="contactRecordLastName" type="String" />
+  <aura:attribute name="sitePageName" type="String" />
+
+
+
+  <aura:attribute name="baseURL" type="String" default="" />
+  <aura:attribute
+    name="filetype"
+    type="List"
+    default="['.png', '.jpg', '.jpeg']"
+  />
+  <aura:attribute name="multiple" type="Boolean" default="true" />
+  <aura:attribute name="disabled" type="Boolean" default="true" />
+  <aura:attribute name="hasUploaded" type="Boolean" default="false" />
+  <aura:attribute name="journeyTemplateURL" type="String" />
+  <aura:attribute name="contactUsBtnIsActive" type="Boolean"/>
+  <div>
+      
+    <div class="menu-layout">
+      <aura:if isTrue="{!or($Browser.formFactor == 'DESKTOP', $Browser.formFactor == 'TABLET')}">
+            <aura:if isTrue="{!v.sitePageName != 'navigator'}">
+              <div class="name-modal">
+                {!v.contactRecordFirstName}&nbsp;{!v.contactRecordLastName}
+              </div>
+            </aura:if>
+            <lightning:fileUpload
+              name="fileUploader"
+              multiple="false"
+              accept="{!v.filetype}"
+              recordId=""
+              onuploadfinished="{! c.handleUploadFinished }" />
+			<br/>
+          
+          <aura:if isTrue="{!!empty(v.profilePictureURL)}">
+              <div aura:id="remove-button"  class="remove-button">
+                <lightning:button
+                  label="Remove Profile Image"
+                  title="Remove Profile Image Action"
+                  onclick="{! c.handleRemoveProfileImage }"
+                  disabled="{!v.profilePictureURL == ''}"/>
+              </div>
+              <br/>
+          </aura:if>
+          
+          <div class="sign-out-button">
+            <a href="{!v.journeyTemplateURL}" target="_self">Sign Out</a>
+          </div>
+      </aura:if>
+      <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+        <div class="slds-grid">
+          <div class="slds-col">
+            <div class="name-modal">
+              {!v.contactRecordFirstName} {!v.contactRecordLastName}
+            </div>
+          </div>
+          <div class="slds-col"></div>
+          <div class="slds-col"></div>
+        </div>
+        <div class="slds-grid">
+          <div class="slds-col">
+            <lightning:fileUpload
+              name="fileUploader"
+              multiple="false"
+              accept="{!v.filetype}"
+              recordId=""
+              onuploadfinished="{!c.handleUploadFinished}"
+            />
+          </div>
+        </div>
+          
+        <br />
+          
+        <aura:if isTrue="{!v.profilePictureURL != ''}">
+            <div class="slds-grid">
+              <div class="slds-col remove-button">
+                <lightning:button
+                  label="Remove Profile Image"
+                  title="Remove Profile Image Action"
+                  onclick="{! c.handleRemoveProfileImage }"
+                />
+              </div>
+            </div>
+            <br />
+        </aura:if>
+          
+        <div class="slds-grid">
+          <div class="contact-us-link">
+            <a onclick="{!c.contactUsLinkAction}">Contact Us</a>
+          </div>
+        </div>
+          
+        <div class="slds-grid">
+          <div class="sign-out-button">
+            <a href="{!v.journeyTemplateURL}" target="_self">Sign Out</a>
+          </div>
+        </div>
+      </aura:if>
+    </div>
+  </div>
+</aura:component>

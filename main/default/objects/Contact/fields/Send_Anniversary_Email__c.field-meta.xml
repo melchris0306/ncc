@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_Anniversary_Email__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is part of the Birthday Emailer AppExchange package.</description>
+    <inlineHelpText>Check this field if you wish to send an anniversary email to this contact, using the Anniversary Email email template.</inlineHelpText>
+    <label>Send Anniversary Email</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

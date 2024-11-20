@@ -1,0 +1,121 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="AnyEventCalCtrl">
+    <ltng:require scripts="{!join(',', $Resource.AnyEventCal + '/moment.min.js', $Resource.AnyEventCal + '/moment-timezone.min.js', $Resource.AnyEventCal + '/jquery.min.js', $Resource.AnyEventCal + '/fullcalendar.min.js')}"
+                  afterScriptsLoaded="{!c.scriptsLoaded}" />
+
+    <aura:attribute name="sObjectLabel" type="String" default="Session"/>
+    <aura:attribute name="sObjectName" type="String" default="Session__c"/>
+    <aura:attribute name="titleField" type="String" default="Name"/>
+    <aura:attribute name="startDateTimeField" type="String" default="Start_Date_Time__c"/>
+    <aura:attribute name="endDateTimeField" type="String" default="End_Date_Time__c"/>
+    <aura:attribute name="descriptionField" type="String" default="Session_Details__c"/>
+    <aura:attribute name="userField" type="String" default="CreatedById"/>
+    <aura:attribute name="sessionId" type="String" default=""/>
+    <aura:attribute name="eventId" type="String" default=""/>
+    <aura:attribute name="filterByUserField" type="Boolean" default="true"/>
+    <aura:attribute name="filterBySessionId" type="Boolean" default="false"/>
+    <aura:attribute name="eventsMap" type="Map"/>
+    <aura:attribute name="calendarButtons" type="String"/>
+    <aura:attribute name="weekends" type="Boolean" default="true"/>
+    <aura:attribute name="eventBackgroundColor" type="String" default="#CFEBFE"/>
+    <aura:attribute name="eventBorderColor" type="String" default="#ffffff"/>
+    <aura:attribute name="eventTextColor" type="String" default="#00396b"/>
+	<aura:attribute name="defaultDate" type="String"/>    
+    <aura:attribute name="eventName" type="String" default=""/>
+    <aura:attribute name="eventTimeZone" type="String" default=""/>
+
+    <!-- CCN-EVE-3580-DV 12-03-2023 Von Pernicia - Start --> 
+    <aura:attribute name="isShowCard" type="Boolean" default="false"/>
+    <aura:attribute name="eventsSearchOrigMap" type="Map"/>
+    <aura:attribute name="eventsSearchMap" type="Map"/>
+    <aura:attribute name="selectedSessionIds" type="List"/>
+    <aura:attribute name="isShowCalendar" type="Boolean" default="true"/>
+    <!-- CCN-EVE-3580-DV 12-03-2023 Von Pernicia - END --> 
+    
+    <div>
+        <div class="main-section">
+            <div class="main-section-content">
+                <div class="main-header-section float-left">
+                    <div class="main-header-section-title height-auto">Session Calendar</div>
+                </div>
+                <div class="main-header-section-content slds-grid slds-wrap" id="contactus-section-top">
+
+                    <table class="header-table">
+                        <tr>
+                            <th><div  class="header-title">{!v.eventName}</div></th>
+                            <th>
+                                <div  class="header-button">
+                                    <!-- CCN-EVE-3580-DV 12-03-2023 Von Pernicia - Start --> 
+                                    <div style="display: inline-flex; justify-content: flex-end;">
+                                        <lightning:button class="save-schedule-button" value="" onclick="{!c.refreshPage}" label="Save Proposed Schedule" variant="brand"/>
+                                        <!--<lightning:button variant="brand" label="Filter" class="filter-button dropdown-toggle" onclick="{!c.toggleFilter}"/> -->  
+                                	</div>
+                                    <!-- CCN-EVE-3580-DV 12-03-2023 Von Pernicia - End --> 
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
+					<!-- CCN-EVE-3580-DV 12-03-2023 mmallorca - Start --> 
+                    <div class="filter-container">
+                        <div class="filter-buttons">
+                            <lightning:button variant="brand" iconName="utility:filter" label="Filter" class="filter-button dropdown-toggle" onclick="{!c.toggleFilter}"/>
+                            
+                            <div class="filter-content">
+                                <div class="dropdown-menu slds-hide" aura:id="filterCard">
+                                    
+                                    <h4 class="dropdown-header text-primary">Session Title</h4>
+                                    <form class="px-4 mx-1">
+                                        <lightning:input class="search-input" variant = "label-hidden" placeholder="Search..." aura:id="sessionSearch" onchange="{!c.onChangeSearch}"/>
+                                        
+                                        <div class="mb-2" style="display: block; overflow: auto; max-height: 200px; width: 100%;">
+                                            
+                                            <table class="table ">
+                                                
+                                                <tbody id="myTable">
+                                                    <aura:iteration items="{!v.eventsSearchMap}" var="session" indexVar="Id">
+                                                        <tr>
+                                                            <td>
+                                                                <lightning:input type="checkbox" label="{!session.title}" name="{!session.Id}" checked="{!session.checked}" aura:id="selectedSession" onchange="{!c.onClickSelectedSession}"/>
+                                                                <hr class="dropdown-divider" ></hr>
+                                                            </td>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                    
+                                                </tbody>
+                                                
+                                            </table>
+                                            
+                                        </div>
+                                    </form>
+                                    
+                                    <lightning:button class="dropdown-item" label="Clear all Sessions" onclick="{!c.onClickClearSelectedSession}"/>
+                                    <hr class="dropdown-divider" ></hr>
+                                    <lightning:button variant="brand" label="Apply" class="mx-3" onclick="{!c.onClickApplyFilter}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<!-- CCN-EVE-3580-DV 12-03-2023 mmallorca - END --> 
+                    <aura:if isTrue="{!v.isShowCalendar}">
+                        <c:EventSessionCalendar objectLabel="{!v.sObjectLabel}"
+                                                events="{!v.eventsMap}" 
+                                                sObjectName="{!v.sObjectName}" 
+                                                titleField="{!v.titleField}"
+                                                startDateTimeField="{!v.startDateTimeField}"
+                                                endDateTimeField="{!v.endDateTimeField}"
+                                                descriptionField="{!v.descriptionField}"
+                                                userField="{!v.userField}"
+                                                calendarButtons="{!v.calendarButtons}"
+                                                weekends="{!v.weekends}"
+                                                eventBackgroundColor="{!v.eventBackgroundColor}"
+                                                eventBorderColor="{!v.eventBorderColor}"
+                                                eventTextColor="{!v.eventTextColor}"
+                                                defaultDate="{!v.defaultDate}"/>
+                    </aura:if>
+                </div>
+            </div>  
+        </div>
+    </div>
+    
+    
+    
+</aura:component>

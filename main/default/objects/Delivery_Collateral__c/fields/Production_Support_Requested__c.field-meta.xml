@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Production_Support_Requested__c</fullName>
+    <label>Production Support Requested</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Editorial Support Only</fullName>
+                <default>false</default>
+                <label>Editorial Support Only</label>
+            </value>
+            <value>
+                <fullName>Graphics Support Only</fullName>
+                <default>false</default>
+                <label>Graphics Support Only</label>
+            </value>
+            <value>
+                <fullName>Full Creative and QA Support</fullName>
+                <default>false</default>
+                <label>Full Creative and QA Support</label>
+            </value>
+            <value>
+                <fullName>RCIS SGRR Support: Package</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>RCIS SGRR Support: Package</label>
+            </value>
+            <value>
+                <fullName>RCIS SGRR Support: Prepare</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>RCIS SGRR Support: Prepare</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

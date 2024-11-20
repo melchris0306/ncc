@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AFT</fullName>
+        <default>false</default>
+        <label>Afghanistan Time (UTC+4:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>AKDT</fullName>
+        <default>false</default>
+        <label>Alaska Daylight Time (UTC-8:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AKST</fullName>
+        <default>false</default>
+        <label>Alaska Standard Time (UTC-9:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AMT</fullName>
+        <default>false</default>
+        <label>Amazon Time (UTC-4:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AoE</fullName>
+        <default>false</default>
+        <label>Anywhere on Earth (UTC-12:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AST</fullName>
+        <default>false</default>
+        <label>Arabia Standard Time (UTC+3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>ART</fullName>
+        <default>false</default>
+        <label>Argentina Time (UTC-3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>ADT</fullName>
+        <default>false</default>
+        <label>Atlantic Daylight Time (UTC-3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AT</fullName>
+        <default>false</default>
+        <label>Atlantic Standard Time (UTC-4:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>ACDT</fullName>
+        <default>false</default>
+        <label>Australian Central Daylight Time (UTC+10:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>ACST</fullName>
+        <default>false</default>
+        <label>Australian Central Standard Time (UTC+9:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>ACWST</fullName>
+        <default>false</default>
+        <label>Australian Central Western Standard Time (UTC+8:45)</label>
+    </customValue>
+    <customValue>
+        <fullName>AEDT</fullName>
+        <default>false</default>
+        <label>Australian Eastern Daylight Time (UTC+11:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AEST</fullName>
+        <default>false</default>
+        <label>Australian Eastern Standard Time (UTC+10:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>AWDT</fullName>
+        <default>false</default>
+        <label>Australian Western Daylight Time (UTC+9:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>BST</fullName>
+        <default>false</default>
+        <label>Bangladesh Standard Time (UTC+6:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>BDT</fullName>
+        <default>false</default>
+        <label>British Daylight Time (UTC+1:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CVT</fullName>
+        <default>false</default>
+        <label>Cape Verde Time (UTC-1:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CAT</fullName>
+        <default>false</default>
+        <label>Central Africa Time (UTC+2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CDT</fullName>
+        <default>false</default>
+        <label>Central Daylight Time (UTC-5:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CEST</fullName>
+        <default>false</default>
+        <label>Central European Summer Time (UTC+2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CET</fullName>
+        <default>false</default>
+        <label>Central European Time (UTC+1:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CT</fullName>
+        <default>false</default>
+        <label>Central Standard Time (UTC-6:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>ChST</fullName>
+        <default>false</default>
+        <label>Chamorro Standard Time (UTC+10:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>CHADT</fullName>
+        <default>false</default>
+        <label>Chatham Island Daylight Time (UTC+13:45)</label>
+    </customValue>
+    <customValue>
+        <fullName>CHAST</fullName>
+        <default>false</default>
+        <label>Chatham Island Standard Time (UTC+12:45)</label>
+    </customValue>
+    <customValue>
+        <fullName>CST</fullName>
+        <default>false</default>
+        <label>China Standard Time (UTC+8:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>EAT</fullName>
+        <default>false</default>
+        <label>Eastern Africa Time (UTC+3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>EDT</fullName>
+        <default>false</default>
+        <label>Eastern Daylight Time (UTC-4:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>EEST</fullName>
+        <default>false</default>
+        <label>Eastern European Summer Time (UTC+3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>EET</fullName>
+        <default>false</default>
+        <label>Eastern European Time (UTC+2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>ET</fullName>
+        <default>false</default>
+        <label>Eastern Standard Time (UTC-5:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>GMT</fullName>
+        <default>false</default>
+        <label>Greenwich Mean Time (UTC+0:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>GST</fullName>
+        <default>false</default>
+        <label>Gulf Standard Time (UTC+4:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>HDT</fullName>
+        <default>false</default>
+        <label>Hawaii Daylight Time (UTC-9:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>HST</fullName>
+        <default>false</default>
+        <label>Hawaii Standard Time (UTC-10:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>IST</fullName>
+        <default>false</default>
+        <label>India Standard Time (UTC+5:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>IOT</fullName>
+        <default>false</default>
+        <label>Indian Chagos Time (UTC+6:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>IRST</fullName>
+        <default>false</default>
+        <label>Iran Standard Time (UTC+3:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>JST</fullName>
+        <default>false</default>
+        <label>Japan Standard Time (UTC+9:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>KST</fullName>
+        <default>false</default>
+        <label>Korea Standard Time (UTC+9:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>LINT</fullName>
+        <default>false</default>
+        <label>Line Island Time (UTC+14:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>MART</fullName>
+        <default>false</default>
+        <label>Marquesas Time (UTC-9:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>MSK</fullName>
+        <default>false</default>
+        <label>Moscow Standard Time (UTC+3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>MDT</fullName>
+        <default>false</default>
+        <label>Mountain Daylight Time (UTC-6:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>MT</fullName>
+        <default>false</default>
+        <label>Mountain Standard Time (UTC-7:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>MMT</fullName>
+        <default>false</default>
+        <label>Myanmar Time (UTC+6:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>NPT</fullName>
+        <default>false</default>
+        <label>Nepal Time (UTC+5:45)</label>
+    </customValue>
+    <customValue>
+        <fullName>NDT</fullName>
+        <default>false</default>
+        <label>Newfoundland Daylight Time (UTC-2:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>NST</fullName>
+        <default>false</default>
+        <label>Newfoundland Standard Time (UTC-3:30)</label>
+    </customValue>
+    <customValue>
+        <fullName>NZDT</fullName>
+        <default>false</default>
+        <label>New Zealand Daylight Time (UTC+13:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>NZST</fullName>
+        <default>false</default>
+        <label>New Zealand Standard Time (UTC+12:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>NUT</fullName>
+        <default>false</default>
+        <label>Niue Time (UTC-11:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>PDT</fullName>
+        <default>false</default>
+        <label>Pacific Daylight Time (UTC-7:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>PT</fullName>
+        <default>false</default>
+        <label>Pacific Standard Time (UTC-8:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>PST</fullName>
+        <default>false</default>
+        <label>Pakistan Standard Time (UTC+5:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>SBT</fullName>
+        <default>false</default>
+        <label>Solomon Islands Time (UTC+11:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>SGST</fullName>
+        <default>false</default>
+        <label>South Georgia Time (UTC-2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>TOT</fullName>
+        <default>false</default>
+        <label>Tonga Time (UTC+13:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>TRT</fullName>
+        <default>false</default>
+        <label>Turkey Time (UTC+3:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>UYST</fullName>
+        <default>false</default>
+        <label>Uruguay Summer Time (UTC-2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>WAT</fullName>
+        <default>false</default>
+        <label>West Africa Time Zone (UTC+1:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>WGST</fullName>
+        <default>false</default>
+        <label>Western Greenland Summer Time (UTC-2:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>WIB</fullName>
+        <default>false</default>
+        <label>Western Indonesian Time (UTC+7:00)</label>
+    </customValue>
+    <customValue>
+        <fullName>HADT</fullName>
+        <default>false</default>
+        <label>Hawaii-Aleutian Daylight Time</label>
+    </customValue>
+    <customValue>
+        <fullName>HAST</fullName>
+        <default>false</default>
+        <label>Hawaii-Aleutian Standard Time (America/Adak)</label>
+    </customValue>
+    <customValue>
+        <fullName>GT</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Gambier Time</label>
+    </customValue>
+    <customValue>
+        <fullName>MPDT</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mexican Pacific Daylight Time</label>
+    </customValue>
+    <customValue>
+        <fullName>MPST</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mexican Pacific Standard Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastern Standard Time (America/Panama)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Eastern Standard Time (America/Panama)</label>
+    </customValue>
+    <customValue>
+        <fullName>Central Standard Time (America/El_Salvador)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Central Standard Time (America/El_Salvador)</label>
+    </customValue>
+    <customValue>
+        <fullName>Central Standard Time (America/Mexico_City)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Central Standard Time (America/Mexico_City)</label>
+    </customValue>
+    <customValue>
+        <fullName>Hawaii-Aleutian Standard Time (Pacific/Honolulu)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hawaii-Aleutian Standard Time (Pacific/Honolulu)</label>
+    </customValue>
+    <customValue>
+        <fullName>Pacific Standard Time (America/Tijuana)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pacific Standard Time (America/Tijuana)</label>
+    </customValue>
+    <customValue>
+        <fullName>Pacific Daylight Time (America/Tijuana)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pacific Daylight Time (America/Tijuana)</label>
+    </customValue>
+    <customValue>
+        <fullName>Mountain Standard Time (America/Phoenix)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mountain Standard Time (America/Phoenix)</label>
+    </customValue>
+    <customValue>
+        <fullName>BDST</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>British Summer Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Pitcairn Time</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pitcairn Time</label>
+    </customValue>
+    <description>Time Zone</description>
+    <masterLabel>Time Zone</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

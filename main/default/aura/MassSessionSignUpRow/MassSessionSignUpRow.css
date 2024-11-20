@@ -1,0 +1,105 @@
+.THIS .roleClass{
+    font-size:      14px;
+    font-weight:    bold;
+}
+
+.THIS .roleDescClass{
+    font-size:      12px;
+    width: inherit; /*CCN-802*/
+}
+
+.THIS .rowPadding{
+    margin-right: 5px;
+}
+
+.THIS .roleContainer{
+    /*width: 250px; CCN-802 */
+    min-width: 100px;
+    max-width: 200px;
+    overflow-wrap: break-word;
+    padding-right: 5px;
+}
+
+.THIS .slds-select{
+    height: 40px;
+    border-radius: 5px;
+    min-width: fit-content; /*CCN-802*/
+}
+
+.THIS .slds-input{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.THIS .icon-remove {
+    width:36px;
+    height:36px;
+    margin-left: 7.5px;
+    cursor: pointer;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .required-field.required-error input {
+    border: 1px solid red;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .required-field.required-error + .required-field-indicator {
+    display: block;
+    margin-left: 4px;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .required-field + .required-field-indicator {
+    display: none;
+}
+
+/* Gian Bata CCN-EVE-2323-DV*/
+.THIS .slds-truncate > .required-field-indicator {
+    color: red;
+    font-size: 12px;
+}
+
+
+.THIS .slds-select_container::before { border-bottom: none;}
+.THIS .slds-select_container::after { border-top: none;}
+.THIS .slds-select_container .slds-select { -webkit-appearance : menuList}
+
+.THIS .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 14px;
+}
+
+.THIS .titleField .slds-select_container .slds-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8dGV4dCB4PSIwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJncmV5Ij4mI3gyM0Y3OzwvdGV4dD4KPC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 14px;
+}
+
+.THIS .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+.THIS .titleField .slds-select_container .slds-select:disabled {
+    appearance: none;
+    background-image: none;
+}
+
+
+.THIS .slds-select:disabled + ::after {
+    content: '' !important;
+}
+
+.THIS .slds-select_container .slds-select:disabled {
+    /* This will hide the dropdown arrow (background-image) */
+    background-image: none !important;
+    appearance: none !important; /* hides the native dropdown arrow */
+    -webkit-appearance: none !important; /* for Safari */
+    -moz-appearance: none !important; /* for Firefox */
+}

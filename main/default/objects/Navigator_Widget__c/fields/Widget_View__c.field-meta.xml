@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Widget_View__c</fullName>
+    <label>Widget View</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Widget_Name__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Activity Calendar</fullName>
+                <default>false</default>
+                <label>Activity Calendar</label>
+            </value>
+            <value>
+                <fullName>Activity Date List</fullName>
+                <default>false</default>
+                <label>Activity Date List</label>
+            </value>
+            <value>
+                <fullName>Activity List/Links</fullName>
+                <default>false</default>
+                <label>Activity List/Links</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Email Activity</controllingFieldValue>
+            <controllingFieldValue>Journey Milestones Catch-Up</controllingFieldValue>
+            <controllingFieldValue>Journey Milestones Ongoing</controllingFieldValue>
+            <valueName>Activity List/Links</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Activity</controllingFieldValue>
+            <valueName>Activity Calendar</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

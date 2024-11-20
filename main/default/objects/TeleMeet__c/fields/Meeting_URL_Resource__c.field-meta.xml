@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Meeting_URL_Resource__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK($CustomMetadata.Integration_Configuration__mdt.Chime_Integration.Endpoint__c + &apos;?m=&apos; + Id + &apos;&amp;n=&apos; +  SUBSTITUTE(Resource_Contact__r.FirstName, &apos; &apos;, &apos;%20&apos;)    , &apos;Join Now&apos; , &apos;_blank&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Meeting URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

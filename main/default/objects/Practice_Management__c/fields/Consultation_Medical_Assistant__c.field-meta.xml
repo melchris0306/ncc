@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consultation_Medical_Assistant__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Practice Assistant</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Practice Builders (Consultation Medical Assistant)</relationshipLabel>
+    <relationshipName>Practice_Managements</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

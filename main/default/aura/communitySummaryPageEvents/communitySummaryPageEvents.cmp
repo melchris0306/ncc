@@ -1,0 +1,93 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ChangeCloudController">
+    <ltng:require styles="{!$Resource.CompassEventPage + '/Css/CompassEventMain.css'}" />
+    <aura:attribute name="EventList" type="CCEEventWrapper"/>
+    <aura:attribute name="isFilter" type="Boolean" default="false" /> 
+    <aura:attribute name="sortByOptions" 
+                    type="List" 
+                    default="[
+                             {'label': 'Event Name', 'value': 'Name'},
+                             {'label': 'Start Date', 'value': 'Start_Date_Time__c'},
+                             {'label': 'End Date', 'value': 'End_Date_Time__c'}
+                             ]"/>
+    <aura:attribute name="sortByValue" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	
+    <!-- Start [CCN-EVE-2173-DV] MelMallorca Nov262022 -->
+    <aura:attribute name="eventTypes" type="List"/>
+    <aura:attribute name="eventNames" type="List"/>
+    <aura:handler name="change" value="{!v.eventNames}" action="{!c.doInit}"/>
+    <aura:attribute type="Boolean" name="showSpinner" default="false" />
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="spinnerHolder">
+            <lightning:spinner alternativeText="Loading" size="small" />
+        </div>
+    </aura:if>
+        <table>
+            <tr>
+                <th class="header-event">Events</th>
+                <th class="header-description">Description</th>
+                <th class="header-sort">
+                    <div class="sort-container">
+                        <div>
+                            <div class="sort-button" onclick="{!c.toggleSort}">
+                                <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                                <p>Sort</p>
+                            </div>
+                            <aura:if isTrue="{!v.isFilter}">
+                                <div class="sort-modal">
+                                    <span class="sort-by">Sort by</span>
+                                    <lightning:radioGroup options="{! v.sortByOptions }"
+                                                          value="{! v.sortByValue }"
+                                                          type="radio"
+                                                          onchange="{!c.handleSort}"/>
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            <aura:iteration items="{!v.EventList}" var="event">
+                <tr>
+                    <td class="header-event">
+                        <div><b>{!event.title}</b></div>
+                        <div>{!event.StartDateTime} −</div>
+                        <div>{!event.EndDateTime}</div>
+                    </td>
+                    <td>
+                        <ui:outputRichText value="{!event.subtitle}"/>
+                    </td>
+                    <td class="header-sort">
+                        <aura:if isTrue="{!and(event.showToLinks, event.showSessionCalendarLink)}">
+                            <aura:if isTrue="{!event.showToLinks}">
+                                <a href="{!event.eventURL}" style="float:right;" target="_blank">
+                                    <div class="view-event-button dual">View Event Page</div>
+                                </a>
+                            </aura:if> 
+                            <br />
+                            <aura:if isTrue="{!event.showSessionCalendarLink}">
+                                <a href="{!event.sessionCalendarURL}" style="float:right;margin-top:5px;" target="_blank">
+                                    <div class="view-session-calendar-button dual">View Session Calendar</div>
+                                </a>
+                            </aura:if> 
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!event.showToLinks}">
+                                    <a href="{!event.eventURL}" style="float:right;" target="_blank">
+                                        <div class="view-event-button">View Event Page</div>
+                                    </a>
+                                    <br />
+                                    <br />
+                                </aura:if> 
+                                <aura:if isTrue="{!event.showSessionCalendarLink}">
+                                    <a href="{!event.sessionCalendarURL}" style="float:right;margin-top:5px;" target="_blank">
+                                        <div class="view-session-calendar-button">View Session Calendar</div>
+                                    </a>
+                                </aura:if> 
+                            </aura:set>
+                        </aura:if>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </table>
+    <!-- End [CCN-EVE-2173-DV] MelMallorca Nov262022 -->
+</aura:component>

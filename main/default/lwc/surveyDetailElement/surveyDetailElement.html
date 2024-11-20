@@ -1,0 +1,229 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class={detailElementStyle} style={labelFont}>
+        <template if:true={isText}>
+		
+			<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+            <!--template if:false={isIndependentSurvey}!-->
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+            <!--/template!-->
+
+            <div class="slds-form-element">
+                
+				<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+                <!--div class="questionTitle">    
+                    <template if:true={isIndependentSurvey}>
+                        <template if:true={isRequiredField}>
+                            <span class="is-required">* </span>
+                        </template>
+                    </template>
+
+                    {questionTitle}
+                </div!-->
+
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+
+                <!-- CCN-EVE-2074-DV XEN REYES Oct2022 -->
+                <div class="slds-form-element__control">
+                    <input class="slds-input textInput" type="text" required={isShowRequired} name={label} placeholder="Type your answer here..." data-question-id={questionId} onchange={handleChange} onblur={handleBlur}/>
+                </div>
+                <template if:true={isShowRequired}>
+                    <div class="help-text spaceAbove" data-error-id={label}>Required Field</div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={isRadio}>
+			
+			<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+            <!--template if:false={isIndependentSurvey}!-->
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+            <!--/template!-->
+
+            <fieldset class="slds-form-element">
+                
+				<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+                <!--div class="questionTitle">
+                    <template if:true={isIndependentSurvey}>
+                        <template if:true={isRequiredField}>
+                            <span class="is-required">* </span>
+                        </template>
+                    </template>
+
+                    {questionTitle}
+                </div!-->
+
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+
+                <div class="slds-form-element__control">
+				
+					<!-- Updated by XenReyes Oct122021 [CCN822] !-->
+                    <!--template for:each={optionsWithRandomIds} for:item="option">
+                        <span class="slds-radio" key={option.id}>
+                            <input type="radio" id={option.id} value={option.value} name={label} required="" 
+                                data-question-id={questionId} onchange={handleChange} checked={option.checked}/>
+                            <label class="slds-radio__label" for={option.id}>
+                                <span class="slds-radio_faux"></span>
+                                <span class="slds-form-element__label">{option.label}</span>
+                            </label>
+                        </span>
+                    </template!-->
+
+                    <lightning-radio-group name={label}
+                          data-question-id={questionId}
+                          options={optionsWithRandomIds}
+                          value={radioValue}
+                          type="radio"
+                          variant="label-hidden"
+                          onchange={handleChange}>
+                    </lightning-radio-group>
+
+                    <template if:false={isRequiredField}>
+                        <lightning-button label={labelReset} onclick={handleChange} class="clearselection" name={label} data-question-id={questionId}></lightning-button>
+                    </template>
+                    
+                    <template if:true={isShowRequired}>
+                        <div class="help-text" data-error-id={label}>Required Field</div>
+                    </template>
+                </div>
+            </fieldset>
+        </template>
+
+        <template if:true={isRange}>
+			
+			<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+            <!--template if:false={isIndependentSurvey}!-->
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+            <!--/template!-->
+
+            <div class="slds-form-element">
+                
+				<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+                <!--div class="questionTitle">
+                    <template if:true={isIndependentSurvey}>
+                        <template if:true={isRequiredField}>
+                            <span class="is-required">* </span>
+                        </template>
+                    </template>
+
+                    {questionTitle}
+                </div!-->
+
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+				
+				<!-- Updated by XenReyes Oct122021 [CCN822] !-->
+                <div class="slds-form-element__control">
+                    <div class="slds-slider">
+                        <span class="slds-form-element__label" aria-hidden="true">{min}</span>
+                        <input type="range" required="" class="slds-slider__range" name={label} min={min} 
+                        max={max} step={step} data-range-id={rangeId} data-question-id={questionId} onchange={handleChange} value={sliderValue} disabled={rangeSkip}/>
+                        <span class="slds-form-element__label" aria-hidden="true">{max}</span>
+                    </div>
+
+                    <div if:false={sliderValueEmpty}>Value: {sliderValue}</div>
+                    <div if:true={sliderValueEmpty}>Value: <b>Please select</b></div>
+                </div>
+				
+				<!-- Updated by XenReyes Oct122021 [CCN822] !-->
+                <template if:false={isRequiredField}>
+                    <div style="padding-top: 10px;">
+                        <lightning-button label={labelReset} onclick={handleChange} class="clearselection" name={label} data-question-id={questionId}></lightning-button>
+                    </div>
+                </template>
+
+                <template if:true={isShowRequired}>
+                    <div class="help-text" data-error-id={label}>Required Field</div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={isPicklist}>
+			
+			<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+            <!--template if:false={isIndependentSurvey}!-->
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+            <!--/template!-->
+
+            <div class="slds-form-element">
+                
+				<!-- Updated by XenReyes Oct202021 [CCN796] !-->
+                <!--div class="questionTitle">
+                    <template if:true={isIndependentSurvey}>
+                        <template if:true={isRequiredField}>
+                            <span class="is-required">* </span>
+                        </template>
+                    </template>
+
+                    {questionTitle}
+                </div±-->
+
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+
+                <div class="slds-form-element__control">
+                    <div class="select_container">
+                        <select name={label} class="slds-select" data-question-id={questionId} required={isShowRequired} onchange={handleChange} onblur={handleBlur}>
+                            <option value="">Please select</option>
+                            <template for:each={options} for:item="option">
+                                <option key={option} value={option}>{option}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <template if:true={isShowRequired}>
+                        <div class="help-text" data-error-id={label}>Required Field</div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={isMultiselect}>
+			
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+
+            <fieldset class="slds-form-element">
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+                <div class="slds-form-element__control">
+
+                    <lightning-checkbox-group name={label}
+                            data-question-id={questionId}
+                            options={optionsWithRandomIds}
+                            value={multiselectValue}
+                            variant="label-hidden"
+                            onchange={handleChange}>
+                    </lightning-checkbox-group>
+                    
+                    <template if:true={isShowRequired}>
+                        <div class="help-text" data-error-id={label}>Required Field</div>
+                    </template>
+                </div>
+            </fieldset>
+        </template>
+
+        <template if:true={isDate}>
+		
+            <template if:true={isRequiredField}>
+                <span class="is-required">* </span>
+            </template>
+
+            <div class="slds-form-element">
+                <lightning-formatted-rich-text class={labelClass} value={label}></lightning-formatted-rich-text>
+                <div class="slds-form-element__control">
+                    <input class="slds-input textInput" type="date" required={isShowRequired} name={label} data-question-id={questionId} onchange={handleChange} onblur={handleBlur}/>
+                </div>
+                <template if:true={isShowRequired}>
+                    <div class="help-text spaceAbove" data-error-id={label}>Required Field</div>
+                </template>
+            </div>
+        </template>
+        
+    </div>
+</template>

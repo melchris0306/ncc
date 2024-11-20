@@ -1,0 +1,250 @@
+<aura:component access="global" controller="CommunicationEmail_Controller">
+    <!--  this tag sets modal size -->
+    <aura:html tag="style">
+    	.slds-modal__container {
+    		min-height: 70vh !important;
+         	min-width: 90vw !important;
+        }
+        .slds-spinner_container{
+            background: none;
+        }
+    </aura:html>     
+    
+    <!-- load Lodash scripts -->
+    <ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <!-- public attributes -->
+    <aura:attribute name="contactRecipientsToBeRemoved" type="String[]"  />
+    <aura:attribute name="contactIdList" type="String[]"  />
+    <aura:attribute name="ccRecipients" type="String[]" default=""/>
+    <aura:attribute name="bccRecipients" type="String[]"  default=""/>
+    <aura:attribute name="recordId" type="String"/>
+    
+    <!-- local attributes -->
+    <aura:attribute name="disableListbox" type="Boolean" access="private" default="true"/>
+    <aura:attribute name="isMultipleEntry" type="Boolean" access="private" default="true"/>
+    <aura:attribute name="initialSelection" type="Object[]" access="private"/>
+    <aura:attribute name="ccRecipientsPills" type="Object[]" access="private" />
+    <aura:attribute name="bccRecipientsPills" type="Object[]" access="private"/>
+    <aura:attribute name="isSurveyRecord" type="Boolean" access="private"/>
+    <aura:attribute name="participantStatus" type="String" access="private" default=""/>
+    <aura:attribute name="isLoading" type="Boolean" access="private" default="true"/>
+
+    <!-- CCN-1004 Xen Reyes January 16, 2022 -->
+    <aura:attribute name="initialSelectionCC" type="Object[]" access="private"/>
+    <aura:attribute name="initialSelectionBCC" type="Object[]" access="private"/>
+    <aura:attribute name="contactIdListCC" type="String[]"  />
+    <aura:attribute name="contactIdListBCC" type="String[]"  />
+    <aura:attribute name="contactRecipientsToBeRemovedCC" type="String[]"  />
+    <aura:attribute name="contactRecipientsToBeRemovedBCC" type="String[]"  />
+
+    <!-- CCN-COM-1214-DV XEN REYES Apr. 14, 2022 -->
+    <aura:registerEvent name="commsEvent" type="c:CommunicationEmailEvent"/>
+
+    <aura:attribute name="isFromJourney" type="Boolean" default="false"/>
+    <aura:attribute name="isCommunicationHasJourney" type="Boolean" default="false"/>
+    <aura:attribute name="options" type="List" default="[]"/>
+    <aura:attribute name="excludedIds" type="List" default="[]"/>
+    <aura:attribute name="defaultValuesIds" type="List" default="[]"/>
+    <aura:attribute name="sobjectType" type="String"/>
+    <aura:attribute name="excludedRecipientsDefault" type="String"/>
+
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="emailInputCommit" event="c:emailInputCommit" action="{!c.handleRecipientsChange}"/>
+    
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+        <aura:set attribute="else">
+            
+        
+            <!-- TO RECIPIENTS -->
+            <div class="{!v.isSurveyRecord ? 'slds-grid slds-p-bottom_medium' : ''}">
+                <!-- Shows up a participant status select when record is survey -->
+                <aura:if isTrue="{!v.isSurveyRecord}">
+                    <div class="slds-col slds-col_bump-left slds-size_3-of-12 slds-p-left_none slds-m-right_medium">
+                        <lightning:select name="participantStatus" label="Select Participant Status" value="{!v.participantStatus}" onchange="{!c.handleParticipantChange}">
+                            <option value="">All Participants</option>
+                            <option value="Sent">Survey Sent</option>
+                        </lightning:select>
+                    </div>
+                </aura:if>
+                <div class="{!v.isSurveyRecord ? 'slds-col slds-col_bump-left slds-size_9-of-12' : 'slds-m-vertical_medium'}">
+                    <c:lookup helptext="{!$Label.c.Compass_Email_Select_Recipient}"
+                                aura:id="lookup"
+                                disableListbox="{!v.disableListbox}"
+                                selection="{!v.initialSelection}"         
+                                onsearch="{!c.handleContactSearch}"
+                                onselectionchange="{!c.handleContactSelect}"
+                                label="Select Recipient"
+                                placeholder="Search Contact"
+                                isMultiEntry="{!v.isMultipleEntry}"/>
+                </div>
+                
+                <!-- CCN-COM-1214-DV XEN REYES Apr. 14, 2022 -->
+                <aura:if isTrue="{!or(v.isFromJourney, v.isCommunicationHasJourney)}">
+                    <lightning:dualListbox name="inclExclRecipients"
+                            label=""
+                            variant="label-hidden"
+                            sourceLabel="Included"
+                            selectedLabel="Excluded"
+                            fieldLevelHelp=""
+                            options="{!v.options}"
+                            onchange="{!c.handleChangeDualList}"
+                            value="{!v.defaultValuesIds}"/>
+                </aura:if>
+            </div>
+            
+            <aura:if isTrue="{!! or(v.isFromJourney, v.isCommunicationHasJourney)}">
+                <div style="max-height:34vh; overflow-y:auto">
+                    <aura:if isTrue="{!v.initialSelection.length}">
+                        <ul>
+                            <aura:iteration items="{!v.initialSelection}" var="contact" indexVar="index">
+                                <li aura:id="{!contact.id}">
+                                    <div name="removeTo" class="slds-grid list-item" data-contactid="{!contact.id}" onclick="{!c.handleRemoveRecipient}">
+                                        <div class="slds-col_bump-left">
+                                            <lightning:icon 
+                                                            size="small"
+                                                            iconName="standard:contact" 
+                                                            alternativeText=">" 
+                                                            title="contact"/>
+                                        </div>
+                                        <div class="slds-col slds-m-vertical_xxx-small slds-m-horizontal_xx-small">
+                                            <p>{!contact.title} &lt;{!contact.subtitle}&gt;</p>
+                                        </div>
+                                        <div class="slds-col_bump-right slds-m-vertical_xx-small">
+                                            <lightning:buttonIcon 
+                                                                variant="bare"
+                                                                size="medium"
+                                                                iconName="utility:close"   
+                                                                alternativeText="remove" 
+                                                                class="slds-m-left_xx-small" 
+                                                                title="Remove"/>
+                                        </div>
+                                    </div>
+                                    <aura:if isTrue="{! index == v.initialSelection.length - 1 }">
+                                        <div class="list-last"></div>
+                                    </aura:if>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                        <aura:set attribute="else">
+                            <p class="slds-align_absolute-center font-size-6">No contact/s selected.</p>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </aura:if>
+
+            <!-- CCN-1004 Xen Reyes January 16, 2022 -->
+            <!-- CC RECIPIENTS -->
+            <div class="slds-m-vertical_medium">
+                <!--c:emailInput label="CC" name="cc" emailList="{!v.ccRecipients}"/!-->
+                <div class="slds-m-vertical_medium">
+                    <c:lookup helptext="{!$Label.c.Compass_Email_Select_Recipient}"
+                                aura:id="lookup2"
+                                disableListbox="{!v.disableListbox}"
+                                selection="{!v.initialSelectionCC}"         
+                                onsearch="{!c.handleContactSearch}"
+                                onselectionchange="{!c.handleContactSelect}"
+                                label="Select CC Recipients"
+                                placeholder="Search Contact"
+                                isMultiEntry="{!v.isMultipleEntry}"/>
+                </div>
+    
+                <div style="max-height:34vh; overflow-y:auto">
+                    <aura:if isTrue="{!v.initialSelectionCC.length}">
+                        <ul>
+                            <aura:iteration items="{!v.initialSelectionCC}" var="contact" indexVar="index">
+                                <li aura:id="{!contact.id}">
+                                    <div name="removeCC" class="slds-grid list-item" data-contactid="{!contact.id}" onclick="{!c.handleRemoveRecipient}">
+                                        <div class="slds-col_bump-left">
+                                            <lightning:icon 
+                                                            size="small"
+                                                            iconName="standard:contact" 
+                                                            alternativeText=">" 
+                                                            title="contact"/>
+                                        </div>
+                                        <div class="slds-col slds-m-vertical_xxx-small slds-m-horizontal_xx-small">
+                                            <p>{!contact.title} &lt;{!contact.subtitle}&gt;</p>
+                                        </div>
+                                        <div class="slds-col_bump-right slds-m-vertical_xx-small">
+                                            <lightning:buttonIcon 
+                                                                  variant="bare"
+                                                                  size="medium"
+                                                                  iconName="utility:close"   
+                                                                  alternativeText="remove" 
+                                                                  class="slds-m-left_xx-small" 
+                                                                  title="Remove"/>
+                                        </div>
+                                    </div>
+                                    <aura:if isTrue="{! index == v.initialSelection.length - 1 }">
+                                        <div class="list-last"></div>
+                                    </aura:if>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                        <aura:set attribute="else">
+                            <p class="slds-align_absolute-center font-size-6">No contact/s selected.</p>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+            
+            <!-- BCC RECIPIENTS -->
+            <div class="slds-m-vertical_medium">
+                <!--c:emailInput label="BCC" name="bcc" emailList="{!v.bccRecipients}" ></c:emailInput!-->
+                <div class="slds-m-vertical_medium">
+                    <c:lookup helptext="{!$Label.c.Compass_Email_Select_Recipient}"
+                                aura:id="lookup3"
+                                disableListbox="{!v.disableListbox}"
+                                selection="{!v.initialSelectionBCC}"         
+                                onsearch="{!c.handleContactSearch}"
+                                onselectionchange="{!c.handleContactSelect}"
+                                label="Select BCC Recipients"
+                                placeholder="Search Contact"
+                                isMultiEntry="{!v.isMultipleEntry}"/>
+                </div>
+    
+                <div style="max-height:34vh; overflow-y:auto">
+                    <aura:if isTrue="{!v.initialSelectionBCC.length}">
+                        <ul>
+                            <aura:iteration items="{!v.initialSelectionBCC}" var="contact" indexVar="index">
+                                <li aura:id="{!contact.id}">
+                                    <div name="removeBCC" class="slds-grid list-item" data-contactid="{!contact.id}" onclick="{!c.handleRemoveRecipient}">
+                                        <div class="slds-col_bump-left">
+                                            <lightning:icon 
+                                                            size="small"
+                                                            iconName="standard:contact" 
+                                                            alternativeText=">" 
+                                                            title="contact"/>
+                                        </div>
+                                        <div class="slds-col slds-m-vertical_xxx-small slds-m-horizontal_xx-small">
+                                            <p>{!contact.title} &lt;{!contact.subtitle}&gt;</p>
+                                        </div>
+                                        <div class="slds-col_bump-right slds-m-vertical_xx-small">
+                                            <lightning:buttonIcon 
+                                                                  variant="bare"
+                                                                  size="medium"
+                                                                  iconName="utility:close"   
+                                                                  alternativeText="remove" 
+                                                                  class="slds-m-left_xx-small" 
+                                                                  title="Remove"/>
+                                        </div>
+                                    </div>
+                                    <aura:if isTrue="{! index == v.initialSelection.length - 1 }">
+                                        <div class="list-last"></div>
+                                    </aura:if>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                        <aura:set attribute="else">
+                            <p class="slds-align_absolute-center font-size-6">No contact/s selected.</p>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Adhoc_Journey_Assignment</fullName>
+    <fields>Name</fields>
+    <fields>Journey__c</fields>
+    <fields>Associated_Milestone__c</fields>
+    <fields>Event__c</fields>
+    <fields>Survey__c</fields>
+    <label>Adhoc Journey Assignment</label>
+</CompactLayout>

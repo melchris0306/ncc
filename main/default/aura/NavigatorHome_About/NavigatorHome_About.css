@@ -1,0 +1,35 @@
+.THIS {
+    font-family: 'Roboto-Light';
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src:url(/resource/Roboto/Roboto-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src:url(/resource/Roboto/Roboto-Bold.ttf);
+}
+
+.THIS.title {
+    font-size: 1.4rem;
+    font-family: 'Roboto-Bold';
+}
+
+.THIS.container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.THIS.container img{
+    width: 90%;
+    margin-bottom: 10px; 
+}
+
+.THIS .description{
+    font-size: 1rem;
+}

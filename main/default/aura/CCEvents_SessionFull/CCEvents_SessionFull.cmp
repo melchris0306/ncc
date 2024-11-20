@@ -1,0 +1,47 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <div class="box session-box">
+        <div class="font-center">
+            <div class="session-header font-header font-left">SESSIONS</div>
+            <div class="session-page-container">
+                
+                <div class="session-page-date font-medium ">MAR 17</div>
+                
+                <div class="session-page-card">
+                    <div class="session-page-card-label">
+                        <div class="session-page-card-label-name font-body">Ambulatory - Primary Care</div>
+                        <div class="session-page-card-label-time">8:00 AM - 10:00 AM</div>
+                    </div>
+                    <div class="session-page-card-label-detail font-left font-small">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed purus accumsan sem dapibus fermentum. Aliquam pellentesque sem sit amet pharetra gravida. Donec sollicitudin s
+                    </div>
+                </div>
+                
+                <div class="session-page-card">
+                    <div class="session-page-card-label">
+                        <div class="session-page-card-label-name font-body">Ambulatory - Pediatrics</div>
+                        <div class="session-page-card-label-time">10:30 AM - 12:30 PM</div>
+                    </div>
+                    <div class="session-page-card-label-detail font-left font-small">
+                        dipiscing elit. Lorem ipsum dolor sit amet, consectUt sed purus accumsan sem dapibus fermentum. Aliquam pellentesque sem sit amet pharetra gravida. Donec sollicitudin s
+                    </div>
+                </div>
+                
+                <div class="session-page-date font-medium ">MAR 18</div>
+                
+                <div class="session-page-card">
+                    <div class="session-page-card-label">
+                        <div class="session-page-card-label-name font-body">Dental - Treatment</div>
+                        <div class="session-page-card-label-time">10:30 AM - 12:30 PM</div>
+                    </div>
+                    <div class="session-page-card-label-detail font-left font-small">
+                        Relevant content for this session will be the Dentistry Provider - Day in a Life Deck, Dentistry Demonstration Deck, and the Scenario Workflow Guide. All of these items can be found on the Content Tab of the Event Page. 
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>

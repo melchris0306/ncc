@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Participants_Registered_New__c</fullName>
+    <description>CCN-EVE-1834-DV - This is a system field updated by the apex trigger. This is referenced by Total_Participants_Registered to make sure the field showing is a read-only field.</description>
+    <externalId>false</externalId>
+    <label>System Total Participants Registered</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

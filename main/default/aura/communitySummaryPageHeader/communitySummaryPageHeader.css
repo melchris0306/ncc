@@ -1,0 +1,67 @@
+/* Start [CCN-EVE-2173-DV] MelMallorca Nov262022*/
+.THIS {
+	background:white !important;
+}
+.THIS .sort-modal{
+    width: auto !important;
+}
+.THIS .sort-modal .slds-form-element__label, .THIS .sort-modal .slds-button{
+    font-size: 18px !important;
+}
+.THIS .sort-filter{
+    position: absolute;
+    right: 0;
+}
+.THIS .fc-right {
+    float: right;
+    padding-right: 7.25rem;
+}
+.THIS .event-types .slds-form-element__control {
+   display: inline-flex;
+}
+/* End [CCN-EVE-2173-DV] MelMallorca Nov262022*/
+.THIS .campaign-infobox {
+	background: #011E41;
+	color: white;
+	float: left;
+	width: 40%;
+	height : 645px;
+    padding: 120px 58px;
+}
+
+.THIS .campaign-header {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.THIS .campaign-description {
+    font-size: 18px;
+}
+
+.THIS .campaign-calendar {
+	background:white !important;
+	float: left;
+	width: 60%;
+	padding-left: 2%;
+	padding-right: 2%;
+	height: 20rem;
+	margin-top: 20px;
+}
+
+.THIS .campaign-calendar-container {
+	background:white !important;
+	width: 100%;
+	height : 645px;
+}
+/*Start Added [CCN-EVE-3026-DV] MelMallorca May292023*/
+.THIS .apply-button{
+    border: 1px solid #f9a655;
+    width: 100px;
+    background: #ffae5e 0% 0% no-repeat padding-box;
+}
+.THIS .apply-button:active{
+    background-color: #f9a655;
+}
+.THIS .slds-button_brand{
+    width: 100px;
+}

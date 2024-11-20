@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Date_Time_on_Timezone__c</fullName>
+    <description>CCN-EVE-1834-DV: the start datetime on the session timezone converted to org default timezone</description>
+    <label>Start Date Time on Timezone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

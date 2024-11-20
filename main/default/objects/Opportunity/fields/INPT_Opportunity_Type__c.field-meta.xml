@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INPT_Opportunity_Type__c</fullName>
+    <description>This field is used by the GovWin IQ Connector. This field defines the Opportunity type as either a tracked opportunity or bid or lead or TOON or OM opp.</description>
+    <inlineHelpText>This field is used by the GovWin IQ Connector. This field defines the Opportunity type as either a tracked opportunity or bid or lead or TOON or OM opp.</inlineHelpText>
+    <label>IQ Opportunity Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tracked Opportunity</fullName>
+                <default>false</default>
+                <label>Tracked Opportunity</label>
+            </value>
+            <value>
+                <fullName>Bid</fullName>
+                <default>false</default>
+                <label>Bid</label>
+            </value>
+            <value>
+                <fullName>Lead</fullName>
+                <default>false</default>
+                <label>Lead</label>
+            </value>
+            <value>
+                <fullName>TOON</fullName>
+                <default>false</default>
+                <label>TOON</label>
+            </value>
+            <value>
+                <fullName>OM Opportunity</fullName>
+                <default>false</default>
+                <label>OM Opportunity</label>
+            </value>
+            <value>
+                <fullName>FBO Notice</fullName>
+                <default>false</default>
+                <label>FBO Notice</label>
+            </value>
+            <value>
+                <fullName>Contract Award</fullName>
+                <default>false</default>
+                <label>Contract Award</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

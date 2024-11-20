@@ -1,0 +1,400 @@
+.THIS .fc-head {
+    background-color: #0083c2 !important;
+    color: white;
+}
+
+.THIS .fc-widget-header{
+    color: white;
+    height: 30px;
+    font-size: 18px;
+    font-weight: lighter !important;
+}
+
+.THIS .fc-scroller {
+    overflow: hidden !important;
+}
+
+.THIS .fc-bg .fc-other-month {
+    background: #EEEEEE !important;
+}
+.THIS .fc-bg .fc-today {
+    background: #EBF8FB !important;
+}
+
+.THIS .fc-other-month a {
+    color : #AAAAAA !important;
+    font-size: 14px;
+}
+
+.THIS .fc-future a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-past a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-today a {
+    color : #000000 !important;
+    font-size: 14px;
+}
+
+.THIS .fc-button {
+    height: 35px;
+    background: #ECECEC 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #ebebeb;
+    opacity: 1;
+    color: #707070;
+    text-shadow: none !important;
+    border-color: #dadada;
+    font-size: 18px;
+}
+
+.THIS .fc-today-button {
+    width: 88px;
+    background: var(--unnamed-color-0083c2) 0% 0% no-repeat padding-box;
+    background: #0083C2 0% 0% no-repeat padding-box !important;
+    color: white;
+}
+
+.THIS .fc-prev-button {
+    width: 72px;
+    margin-right: 2px;
+}
+
+.THIS .fc-next-button  {
+    width: 72px;
+}
+
+.THIS .fc-agendaDay-button {
+    width: 72px;
+    margin-right: 2px;
+}
+
+.THIS .fc-agendaWeek-button {
+    width: 72px;
+    margin-left: 1px;
+}
+
+.THIS .fc-month-button {
+    width: 88px;
+    margin-left: 2px;
+}
+
+.THIS .fc-state-active {
+    background: #0083C2 0% 0% no-repeat padding-box !important;
+    color: white;
+}
+
+.THIS .fc-toolbar h2  {
+    color: #707070;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+.THIS .main-header-section-content {
+    padding-right: 73px !important;
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
+.THIS .save-schedule-button {
+    height: 35px;
+    background: #FFAE5E;
+    box-shadow: 0px 3px 6px #EBF8FB;
+    border-radius: 5px;
+    border-color: #FFAE5E;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.THIS .header-table {
+    margin-bottom: 15px;
+}
+
+.THIS .header-title {
+    font-size: 18px;
+}
+
+.THIS .header-button {
+    text-align: right;
+}
+
+/* Start CCN-EVE-3580-DV: Von Pernicia*/
+.THIS .dropdown-menu {
+    z-index: 10001;
+}
+
+.THIS .dropdown-menu {
+    --bs-dropdown-zindex: 1000;
+    --bs-dropdown-min-width: 10rem;
+    --bs-dropdown-padding-x: 0;
+    --bs-dropdown-padding-y: 0.3rem;
+    --bs-dropdown-spacer: 0.125rem;
+    --bs-dropdown-font-size: 1rem;
+    --bs-dropdown-color: #212529;
+    --bs-dropdown-bg: #fff;
+    --bs-dropdown-border-color: rgb(0 0 0 / 18%);
+    --bs-dropdown-border-radius: 0.375rem;
+    --bs-dropdown-border-width: 1px;
+    --bs-dropdown-inner-border-radius: calc(0.375rem - 1px);
+    --bs-dropdown-divider-bg: rgb(0 0 0 / 18%);
+    --bs-dropdown-divider-margin-y: 0.5rem;
+    --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --bs-dropdown-link-color: #212529;
+    --bs-dropdown-link-hover-color: #212529;
+    --bs-dropdown-link-hover-bg: #f8f9fa;
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: #0d6efd;
+    --bs-dropdown-link-disabled-color: rgb(33 37 41 / 50%);
+    --bs-dropdown-item-padding-x: 1rem;
+    --bs-dropdown-item-padding-y: 0.25rem;
+    --bs-dropdown-header-color: #6c757d;
+    --bs-dropdown-header-padding-x: 1rem;
+    --bs-dropdown-header-padding-y: 0.5rem;
+    text-align: right;
+    position: absolute;
+    z-index: var(--bs-dropdown-zindex);
+    min-width: var(--bs-dropdown-min-width);
+    padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
+    margin: 0;
+    font-size: var(--bs-dropdown-font-size);
+    color: var(--bs-dropdown-color);
+    text-align: left;
+    list-style: none;
+    background-color: var(--bs-dropdown-bg);
+    background-clip: padding-box;
+    border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+    border-radius: var(--bs-dropdown-border-radius);
+}
+
+.THIS .text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(0, 131, 193, 1) !important;
+}
+
+.THIS .dropdown-header {
+	display: block;
+    padding: 0.25rem 1rem;
+    margin-bottom: 0;
+    font-size: .875rem;
+    white-space: nowrap;
+}
+.THIS .search-input .slds-input{
+	margin: 0 0 1rem 0!important;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.THIS .px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+}
+
+.THIS .mx-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
+}
+
+.THIS .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #dee2e6;
+    border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.THIS .mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.THIS .dropdown-toggle {
+    white-space: nowrap;
+}
+
+.THIS .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+.THIS .filter-button {
+    height: 35px;
+    box-shadow: 0px 3px 6px #EBF8FB;
+    border-radius: 5px;
+    opacity: 1;
+    font-size: 18px;
+}
+/*CCN-EVE-3580-DV 12-03-2023 mmallorca - Start*/
+.THIS .filter-container{
+	width: 100%;
+	height: 0;                                                                                            
+}             
+.THIS .filter-buttons{
+	float: right;
+}
+.THIS .filter-content{
+	display: inline-flex; 
+	justify-content: flex-end;                                                                                        
+}
+.THIS .filter-content .dropdown-menu {
+	min-width: 500px; 
+    position: absolute; 
+	inset: 225px auto auto auto;
+	margin: 50px 0 0 0 ;
+}
+.THIS .fc-toolbar .fc-right {
+    margin-right: 112px;
+}
+.THIS .table td{
+	padding: 0 0.5rem; 
+}
+.THIS .table .slds-form-element__label{
+	font-size: 16px !important;
+	color: rgb(0, 0, 0);
+}
+/*CCN-EVE-3580-DV 12-03-2023 mmallorca - End*/
+                                                                                    
+                                                                                    
+
+.THIS .mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.THIS .table {
+    --bs-table-color-type: initial;
+    --bs-table-bg-type: initial;
+    --bs-table-color-state: initial;
+    --bs-table-bg-state: initial;
+    --bs-table-color: var(--bs-emphasis-color);
+    --bs-table-bg: var(--bs-body-bg);
+    --bs-table-border-color: var(--bs-border-color);
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-emphasis-color);
+    --bs-table-striped-bg: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    --bs-table-active-color: var(--bs-emphasis-color);
+    --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
+    --bs-table-hover-color: var(--bs-emphasis-color);
+    --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+    border-color: var(--bs-table-border-color);
+}
+
+.THIS .table {
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+.THIS .table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+
+.THIS .mx-3 {
+	margin: .25rem 1rem !important;
+    background: rgb(0, 131, 193);
+    padding: 0.175rem 0.75rem;                                                                                                    
+}
+.THIS .mx-3:hover{
+	color: #fff;
+    background-color: #006ea1;
+    border-color: #0083c1;
+}
+
+.THIS .dropdown-divider {
+    height: 0;
+    margin: 0.25rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.175);
+    opacity: 1;
+}
+.THIS .dropdown-item:hover{
+    background-color: rgb(248, 249, 250);
+}
+                                                                                                                
+.THIS .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+}
+
+/* End CCN-EVE-3580-DV: Von Pernicia*/
+
+/**
+.THIS .anyCalendar{
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+.THIS .fc-toolbar h2 {
+    margin: 0;
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: rgb(22, 50, 92);
+}
+.THIS button.fc-button {
+    text-transform: capitalize;
+}
+.THIS .fc-icon {
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+
+
+.THIS .fc-widget-header{
+    color: white;
+}
+
+.THIS .fc-state-active{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-state-disabled{
+    background-color: rgb(3 45 96);
+    color: white;
+}
+
+.THIS .fc-day-header{
+    color: white;
+}
+
+.THIS h2{
+    color: rgb(3 45 96);
+    font-weight: bold;
+}
+
+.THIS .fc-row.fc-widget-header table thead tr th a {
+    color: white !important;
+}
+**/

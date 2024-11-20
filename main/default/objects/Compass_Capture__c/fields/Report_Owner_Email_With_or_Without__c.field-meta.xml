@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Owner_Email_With_or_Without__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Current_Process_State_Email__c), &apos;Missing&apos;, &apos;With Email&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Report Owner Email With or Without</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,44 @@
+<!-- CREATED BY: JL 20210127 #00338 Ability to Clone Survey and Survey Questions -->
+<aura:component description="CloneSurveyAndQuestions"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes"
+                access="global"
+                controller="SurveyServices">
+    <aura:attribute name="showSpinner" type="Boolean"/>
+    <aura:attribute name="oldRecord" type="Survey__c" default="{'sobjectType':'Survey__c'}"/>
+    <aura:attribute name="newRecord" type="Survey__c" default="{'sobjectType':'Survey__c'}"/>
+    <aura:attribute name="surveyObj" type="Object" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="backgroundInverse">
+            <lightning:spinner alternativeText="Loading" variant="inverse">Cloning Survey</lightning:spinner>
+        </div>
+        <div class="slds-text-align_center slds-text-heading_medium slds-p-top_small">Hang on, we're cloning the survey and its questions...</div>
+    </aura:if>
+
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <h2 records-lwcdetailpanel_lwcdetailpanel="" class="cloneHeader">Clone Survey With Questions</h2>
+            <lightning:recordEditForm aura:id="cloneForm" objectApiName="{!v.surveyObj.SurveyObjectAPI}" onload="{!c.handleOnLoad}" onsubmit="{! c.doClone }">
+                <lightning:messages />
+                
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField aura:id="nameField" fieldName="Name"/>
+                        <lightning:inputField aura:id="activeField" fieldName="{!v.surveyObj.SurveyActiveFieldAPI}"/>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField aura:id="eventField" fieldName="{!v.surveyObj.SurveyEventFieldAPI}"/>
+                        <lightning:inputField aura:id="disclaimerField" fieldName="{!v.surveyObj.SurveyDisclaimerFieldAPI}"/>
+                    </div>
+                </div>              
+                
+                <footer class="slds-card__footer">
+                    <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.doClose }"/>
+                    <lightning:button variant="brand" label="Save" title="Save Clone"  type="submit"/>
+                </footer>
+
+            </lightning:recordEditForm>
+        </div>
+    </article>
+</aura:component>

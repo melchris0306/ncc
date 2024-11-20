@@ -1,0 +1,26 @@
+.THIS.slds-modal__container{
+ max-width: 70px !important;
+ width:70px !important;
+}
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .col-sortable{
+    cursor: pointer;
+    border: solid 1px transparent;
+    padding: 0.25em;
+    border-radius: 0.2em;
+    user-select: none;
+    margin-left: -0.25em;
+}
+.THIS .col-sortable:hover{
+    border-color: var(--lwc-brandAccessible);
+    color: var(--lwc-brandAccessible);
+}
+.THIS .col-sort-icon{
+    position: absolute;
+    font-size: 1.5em;
+    margin-top: -4px;
+	margin-left: 5px;
+}

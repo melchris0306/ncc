@@ -1,0 +1,32 @@
+.font-large {
+	font-size: 3rem;
+}
+
+.font-medium {
+	font-size: 2rem;
+}
+
+.font-small {
+	font-size: 0.8rem;
+}
+
+.font-header {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.font-body {
+	font-size: 1rem;
+}
+
+.font-center {
+	text-align: center;
+}
+
+.font-left {
+	text-align: left;
+}
+
+.font-right {
+	text-align: right;
+}

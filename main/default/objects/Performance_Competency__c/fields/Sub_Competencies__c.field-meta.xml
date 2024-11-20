@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Competencies__c</fullName>
+    <label>Sub-Competencies</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Competency__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Sub_Competencies</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Consulting Skills</controllingFieldValue>
+            <valueName>Data Gathering and Analysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Consulting Skills</controllingFieldValue>
+            <valueName>Impact</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Consulting Skills</controllingFieldValue>
+            <valueName>Communications</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Consulting Skills</controllingFieldValue>
+            <valueName>Domain/Functional Expertise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Delivery and Operational  Excellence</controllingFieldValue>
+            <valueName>Delivery Excellence</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Delivery and Operational  Excellence</controllingFieldValue>
+            <valueName>Accountability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Delivery and Operational  Excellence</controllingFieldValue>
+            <valueName>Adaptability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Delivery and Operational  Excellence</controllingFieldValue>
+            <valueName>Collaboration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Management</controllingFieldValue>
+            <valueName>Financial Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Management</controllingFieldValue>
+            <valueName>Continuous Improvement/Efficiency</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Management</controllingFieldValue>
+            <valueName>Strategic Planning &amp; Decision Making</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <valueName>Professional Development and Coaching</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <valueName>Offering and Capability Development</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing and Business Development</controllingFieldValue>
+            <valueName>Capture and Proposal Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing and Business Development</controllingFieldValue>
+            <valueName>Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Giving Back</controllingFieldValue>
+            <valueName>Community Involvement</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INPT_Profile_URL__c</fullName>
+    <description>This field is used by the GovWin IQ Connector. This field is the URL of the related GovWin IQ Profile (federal or S &amp; L).</description>
+    <label>IQ Profile URL</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

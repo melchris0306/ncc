@@ -1,0 +1,120 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="calendarController">
+    <ltng:require scripts="{!join(',', $Resource.AnyEventCal + '/moment.min.js', $Resource.AnyEventCal + '/moment-timezone.min.js', $Resource.AnyEventCal + '/jquery.min.js', $Resource.AnyEventCal + '/fullcalendar.min.js')}"
+    afterScriptsLoaded="{!c.scriptsLoaded}" />
+    <aura:attribute name="sObjectLabel" type="String" default="Event"/>
+    <aura:attribute name="sObjectName" type="String" default="Event__c"/>
+    <aura:attribute name="titleField" type="String" default="Name"/>
+    <aura:attribute name="startDateTimeField" type="String" default="Start_Date_Time__c"/>
+    <aura:attribute name="endDateTimeField" type="String" default="End_Date_Time__c"/>
+    <aura:attribute name="descriptionField" type="String" default="Description__c"/>
+    <aura:attribute name="userField" type="String" default="CreatedById"/>
+    <aura:attribute name="sessionId" type="String" default=""/>
+    <aura:attribute name="eventId" type="String" default=""/>
+    <aura:attribute name="filterByUserField" type="Boolean" default="true"/>
+    <aura:attribute name="filterBySessionId" type="Boolean" default="false"/>
+    <aura:attribute name="eventsMap" type="Map"/>
+    <aura:attribute name="calendarButtons" type="String"/>
+    <aura:attribute name="weekends" type="Boolean" default="true"/>
+    <aura:attribute name="eventBackgroundColor" type="String" default="#CFEBFE"/>
+    <aura:attribute name="eventBorderColor" type="String" default="#ffffff"/>
+    <aura:attribute name="eventTextColor" type="String" default="#00396b"/>
+    <aura:attribute name="defaultDate" type="String" default="2022-04-04"/>  
+    <aura:attribute name="campaignObject" type="Campaign__c"/> 
+
+    <!-- Start Added [CCN-EVE-2173-DV] MelMallorca Nov272022 -->
+    <aura:attribute name="isFilter" type="Boolean" default="false"/> 
+    <aura:attribute name="filterByOptions" type="List"/>
+    <aura:attribute name="filterByValue" type="List"/>
+    <aura:attribute name="eventNameOptions" type="List"/>
+    <aura:attribute name="eventNameValue" type="List"/>
+    <aura:attribute name="eventNames" type="List"/>
+    <aura:attribute name="eventNamesApply" type="List"/>
+    <aura:attribute name="eventsMapApply" type="Map"/>
+    <aura:attribute name="eventTypes" type="List"/>
+    <aura:attribute name="applyFilter" type="Boolean" default="true"/>
+    <!-- End Added [CCN-EVE-2173-DV] MelMallorca Nov272022 -->
+    <div style="background:white !important; width : 100%">
+
+        <div class="clear-section"></div>
+        <div >
+            <div class="campaign-infobox">
+                <div class="campaign-header" style="text-transform:uppercase;">
+                    {!v.campaignObject.Name}
+                </div>
+                <div  class="campaign-description">
+                    {!v.campaignObject.Description__c}
+                </div>
+            </div>
+            <div class="campaign-calendar-container">
+                <div class="campaign-calendar">
+                    <!-- Start Added [CCN-EVE-2173-DV] MelMallorca Nov272022 -->
+                    <div class="sort-container">
+                        <div class="sort-button sort-filter" onclick="{!c.toggleFilter}">
+                            <img src="{!$Resource.CompassEventPage + '/Icons/SortIcon.svg'}" alt="Sort" class="sort-image"></img>
+                            <p>Filter</p>
+                        </div>
+                        
+                        <aura:if isTrue="{!v.isFilter}">
+                            <div class="sort-modal" >
+                                <span class="sort-by">Event Type</span>
+                                <lightning:checkboxGroup 
+                                                         options="{! v.filterByOptions }"
+                                                         value="{! v.filterByValue }"
+                                                         type="checkbox"
+                                                         aura:id="eventTypes"
+                                                         name="eventTypes" 
+                                                         onchange="{!c.handleEvents}"
+                                                         class="event-types"/>
+                                <br />
+                                <!-- Start Added [CCN-EVE-3026-DV] MelMallorca May292023 -->
+                                <!--<div class="select-btn-grp">
+                                    <lightning:button variant="brand" label="Select all" title="Select all" onclick="{! c.selectAll }" />
+                                    <lightning:button variant="brand" label="Deselect all" title="Deselect all" onclick="{! c.deselectAll }" />
+                                </div>
+                                <br />-->
+                                <!-- CCN-EVE-3026-DV 05-29-2023 mmallorca -->
+                                <span class="sort-by">Event Title</span>
+                                <lightning:checkboxGroup 
+                                                         options="{!v.eventNameOptions}"
+                                                         value="{!v.eventNameValue}"
+                                                         type="checkbox"
+                                                         aura:id="eventNames"
+                                                         name="eventNames"
+                                                         class="event-names"/>
+                                <br />
+                                <div class="select-btn-grp" >
+                                    <!--<div class="submit-button"  onclick="{!c.applyFilter}">Apply</div>-->
+                                    <lightning:button variant="brand" label="Apply" title="Apply" onclick="{!c.applyFilter}" class="apply-button"/>
+                                    <lightning:button variant="brand" label="Clear all" title="Clear all" onclick="{! c.deselectAll }" />
+                                </div>
+                            </div>
+                        </aura:if>
+                    </div>
+                    
+                    <c:calendar objectLabel="{!v.sObjectLabel}"
+                                events="{!v.eventsMapApply}" 
+                                sObjectName="{!v.sObjectName}" 
+                                titleField="{!v.titleField}"
+                                startDateTimeField="{!v.startDateTimeField}"
+                                endDateTimeField="{!v.endDateTimeField}"
+                                descriptionField="{!v.descriptionField}"
+                                userField="{!v.userField}"
+                                calendarButtons="{!v.calendarButtons}"
+                                weekends="{!v.weekends}"
+                                eventBackgroundColor="{!v.eventBackgroundColor}"
+                                eventBorderColor="{!v.eventBorderColor}"
+                                eventTextColor="{!v.eventTextColor}"
+                                defaultDate="{!v.defaultDate}"/>
+                    <!-- End Added [CCN-EVE-2173-DV] MelMallorca Nov272022 -->
+                </div>
+            </div>
+        </div>
+        <div class="clear-section"></div>
+        <!-- Start Added [CCN-EVE-2173-DV] SummaryPageEvents MelMallorca Nov272022 -->
+        <c:communitySummaryPageEvents
+                                      eventTypes="{!v.filterByValue}"
+                                      eventNames="{!v.eventNamesApply}"/>
+        <!-- End Added [CCN-EVE-2173-DV] MelMallorca Nov272022 -->
+    </div>
+
+</aura:component>

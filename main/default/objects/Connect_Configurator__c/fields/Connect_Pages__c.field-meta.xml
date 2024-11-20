@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Pages__c</fullName>
+    <label>Connect Pages</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Home Page</fullName>
+                <default>false</default>
+                <label>Home Page</label>
+            </value>
+            <value>
+                <fullName>Appointments Page</fullName>
+                <default>false</default>
+                <label>Appointments Page</label>
+            </value>
+            <value>
+                <fullName>Provider Page</fullName>
+                <default>false</default>
+                <label>Provider Page</label>
+            </value>
+            <value>
+                <fullName>Profile Page</fullName>
+                <default>false</default>
+                <label>Profile Page</label>
+            </value>
+            <value>
+                <fullName>FAQs Page</fullName>
+                <default>false</default>
+                <label>FAQs Page</label>
+            </value>
+            <value>
+                <fullName>Reminder Page</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reminder Page</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

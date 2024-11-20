@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Impact_rice__c</fullName>
+    <inlineHelpText>How many people will this feature affect within a given time? e.g. 20, 100, 500</inlineHelpText>
+    <label>Impact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>3 - Massive Impact</fullName>
+                <default>false</default>
+                <label>3 - Massive Impact</label>
+            </value>
+            <value>
+                <fullName>2 - High Impact</fullName>
+                <default>false</default>
+                <label>2 - High Impact</label>
+            </value>
+            <value>
+                <fullName>1 - Medium Impact</fullName>
+                <default>false</default>
+                <label>1 - Medium Impact</label>
+            </value>
+            <value>
+                <fullName>0.5 - Low Impact</fullName>
+                <default>false</default>
+                <label>0.5 - Low Impact</label>
+            </value>
+            <value>
+                <fullName>0.25 - Minimal Impact</fullName>
+                <default>false</default>
+                <label>0.25 - Minimal Impact</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

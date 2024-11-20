@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesforce_Application_Validation</fullName>
+    <active>true</active>
+    <description>Whenever the Type = Incident or New Feature and the application is Salesforce, show an error.</description>
+    <errorConditionFormula>IF(AND(OR(ISPICKVAL(Type, &apos;Incident&apos;),ISPICKVAL(Type, &apos;New feature&apos;)),OR(ISPICKVAL(Application__c, &apos;Salesforce&apos;))), true, false)</errorConditionFormula>
+    <errorDisplayField>Application__c</errorDisplayField>
+    <errorMessage>Salesforce is not valid application for this type. Please select a new application.</errorMessage>
+</ValidationRule>

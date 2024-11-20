@@ -1,0 +1,99 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="NavigatorHomeComponentsController">
+
+    <aura:attribute name="monthDate" type="String" />
+    <aura:attribute name="selectedDate" type="Date" />
+    <aura:attribute name="today" type="Date" />
+    <aura:attribute name="isCurrentMonth" type="Boolean" default="true"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="events" type="List" />
+    <aura:attribute name="navWidget" type="Object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <header class="title">
+        <span>{! v.navWidget.Widget_Label__c}</span>
+        <span class="month-date-selector">
+            <aura:if isTrue="{!!v.isCurrentMonth}">
+                <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" onclick="{! c.handlePrevious }" alternativeText="previous" title="Previous" />
+            </aura:if>
+            <p class="month-date">{!v.monthDate}</p>
+            <lightning:buttonIcon iconName="utility:chevronright" variant="bare" onclick="{! c.handleNext }" alternativeText="next" title="Next" />
+        </span>
+    </header>
+
+    <div class="container slds-scrollable_y" >
+        <aura:if isTrue="{!v.isLoading}">
+            <div class="spinner-holder">
+                <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
+            </div>
+            <aura:set attribute="else">
+
+                <!-- Content Start -->
+                <aura:if isTrue="{!v.events.length}">
+                    <aura:iteration items="{!v.events}" var="eventDay">
+        
+                        <div class="date-row">
+                            <div class='display-date'>
+                                <p class="date-number">{!eventDay.dateNumber}</p>
+                                <p class="week-day">{!eventDay.dayOfTheWeek}</p>
+                            </div>
+        
+        
+                            <div class="events-list">
+                                <aura:iteration items="{!eventDay.eventsOfTheDay}" var="eventSession" >
+        
+                                    <!-- Event -->
+                                    <div class="event-bullet">
+                                        <aura:if isTrue="{!eventDay.backgroundColor == 'event-today'}">
+                                            <div class="bullet-today">
+                                                <div class="bullet-ring"></div>
+                                            </div>
+                                            <aura:set attribute="else">
+                                                <div class="bullet-upcoming"/>
+                                            </aura:set>
+                                        </aura:if>
+        
+                                        <aura:if isTrue="{!eventSession.isSingleEvent}">
+                                            <!-- Single Event without session/s -->
+                                            <div class="{!concat('event ', eventDay.backgroundColor)}">
+                                                <div class="event-name">{!eventSession.event.name}</div>
+                                                <div class="event-time">
+                                                    <span>{!eventSession.event.eventTimeDetails}</span>
+                                                </div>
+                                            </div>
+                                            <aura:set attribute="else">
+                                                <!-- Event with session/s -->
+                                                <div class="{!concat('event ', eventDay.backgroundColor)}">
+                                                    <div class="event-name">{!eventSession.event.name}</div>
+                                                    <div class="event-time">{!eventSession.event.timeZone}</div>
+                                                </div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+        
+                                    <!-- Session -->
+                                    <aura:if isTrue="{!eventSession.sessions.length}">
+                                        <aura:iteration items="{!eventSession.sessions}" var="session">
+                                            <div class="{!concat('session ', eventDay.backgroundColor)}">
+                                                <div class="session-name">{!session.name}</div>
+                                                <div class="session-time">{!session.sessionTime}</div>
+                                            </div>
+                                        </aura:iteration>
+                                    </aura:if>
+        
+                                </aura:iteration>
+                            </div>
+                        </div>
+        
+                    </aura:iteration>
+                    <aura:set attribute="else">
+                        <p class="no-data slds-align_absolute-center">No upcoming events/sessions.</p>
+                    </aura:set>
+                </aura:if>
+                <!-- Content End -->
+
+            </aura:set>
+        </aura:if>
+    </div>
+
+</aura:component>

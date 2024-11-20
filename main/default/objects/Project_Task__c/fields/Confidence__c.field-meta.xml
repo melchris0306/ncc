@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confidence__c</fullName>
+    <inlineHelpText>How confident are we about the impact and reach scores? How much data do we have to back up our estimates?</inlineHelpText>
+    <label>Confidence</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>100% - High Confidence</fullName>
+                <default>false</default>
+                <label>100% - High Confidence</label>
+            </value>
+            <value>
+                <fullName>80% - Medium Confidence</fullName>
+                <default>false</default>
+                <label>80% - Medium Confidence</label>
+            </value>
+            <value>
+                <fullName>50% - Low Confidence</fullName>
+                <default>false</default>
+                <label>50% - Low Confidence</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

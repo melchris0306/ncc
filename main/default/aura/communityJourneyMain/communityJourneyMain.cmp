@@ -1,0 +1,29 @@
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+  access="global"
+  controller="TheProviderJourney"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="journeyID" type="String" />
+  <aura:attribute name="userJourney" type="Journey_Participant__c" />
+  <aura:attribute name="journeyData" type="Journey__c" />
+  <aura:attribute name="userMilestones" type="List" />
+  <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+  <aura:attribute name="journeyMilestoneList" type="List" />
+  <aura:attribute name="urlFromJourney" type="Boolean" />
+
+  <div>
+    <div class="journeymain-box">
+      <div class="journeymain-title">{!v.journeyData.Name}</div>
+      <div>
+        <hr class="journeymain-line" />
+      </div>
+      <div>
+        <lightning:formattedRichText
+          value="{!v.journeyData.Description__c}"
+          class="slds-text-body_small journeymain-description"
+        />
+      </div>
+    </div>
+  </div>
+</aura:component>

@@ -1,0 +1,18 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="showComponent" type="Boolean" default="true" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div>
+        <aura:if isTrue="{!v.showComponent}">
+            <div class="footer-section">
+                <!-- Updated by Mel Mallorca  Oct202021 [CCN790,791,792] -->
+                <aura:if isTrue="{!$Browser.isPhone}">
+                        <div class="footer-logo-image"><img src="{!$Resource.CompassLogoWhite}"/></div>
+                    <aura:set attribute="else">
+                        <div class="footer-logo-image"><img src="{!$Resource.communityEventFooterLogo}"/></div>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

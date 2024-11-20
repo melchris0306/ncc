@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dependency_Type__c</fullName>
+    <label>Dependency Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mandatory-External</fullName>
+                <default>false</default>
+                <label>Mandatory-External</label>
+            </value>
+            <value>
+                <fullName>Mandatory-Internal</fullName>
+                <default>false</default>
+                <label>Mandatory-Internal</label>
+            </value>
+            <value>
+                <fullName>Discretionary-External</fullName>
+                <default>false</default>
+                <label>Discretionary-External</label>
+            </value>
+            <value>
+                <fullName>Discretionary-Internal</fullName>
+                <default>false</default>
+                <label>Discretionary-Internal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

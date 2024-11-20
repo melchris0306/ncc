@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Epic_for_QA_Task</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(OR(RecordType.Name = &apos;Bug&apos;,RecordType.Name = &apos;Dev&apos;), OR(From_DevQA_Button_Story__c = true, From_DevQA_Button_Functionality__c = true, From_Bug_Button__c= true), OR(Epic__c = Null, Epic__r.Epic_Code__c = Null)),True,False)</errorConditionFormula>
+    <errorDisplayField>Epic__c</errorDisplayField>
+    <errorMessage>Please add an Epic Record or make sure that the Epic Record assigned has an Epic Code</errorMessage>
+</ValidationRule>

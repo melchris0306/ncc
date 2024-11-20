@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Support</fullName>
+    <columns>Project__c</columns>
+    <columns>Epic__c</columns>
+    <columns>Title__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Project_Task__c.Support</value>
+    </filters>
+    <label>All Support</label>
+</ListView>

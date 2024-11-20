@@ -1,0 +1,93 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="SignedUpRolesSummaryController">
+    
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="hasData" type="Boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-box">
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title" width="fit-content">
+                            Signed-Up Roles Summary                           
+                        </h2>
+                    </div>
+                    <aura:if isTrue="{!v.hasData}">
+                        <div class="slds-media__body">
+                             <lightning:button class="slds-float_right" label="Export to CSV" onclick="{! c.downloadCsv }" />
+                        </div>
+                    </aura:if>
+                </header>
+            </div>
+            <div class="" style="height:450px; width: 100%;">
+                <div class="slds-scrollable" style="height:100%;">
+                    <aura:if isTrue="{!v.hasData}">
+                        <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid" aria-label="SignedUpSummary">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="" scope="col" style="width:200px;">
+                                        <div class="slds-truncate" title="Session">Session</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:180px;">
+                                        <div class="slds-truncate" title="Session Start Date">Session Start Date</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:150px;">
+                                        <div class="slds-truncate" title="Session Role">Session Role</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:200px;">
+                                        <div class="slds-truncate" title="Participant First Name">Participant First Name</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:200px;">
+                                        <div class="slds-truncate" title="Participant Last Name">Participant Last Name</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:200px;">
+                                        <div class="slds-truncate" title="Participant Email">Participant Email</div>
+                                    </th>
+                                    <th class="" scope="col" style="width:100px;">
+                                        <div class="slds-truncate" title="Status">Status</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{! v.data }" var="sessionParticipant">
+                                    <tr class="slds-hint-parent">
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="SessionName">{!sessionParticipant.SessionName}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="SessionStartDate">{!sessionParticipant.SessionStartDate}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="SessionRole">{!sessionParticipant.SessionRole}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="ParticipantFirstName">{!sessionParticipant.ParticipantFirstName}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="ParticipantLastName">{!sessionParticipant.ParticipantLastName}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="ParticipantEmail">{!sessionParticipant.ParticipantEmail}</div>
+                                        </td>
+                                        <td role="gridcell">
+                                            <div class="slds-truncate" title="Status">{!sessionParticipant.Status}</div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                        <aura:set attribute="else">
+                            <div style="display: flex;justify-content: center;align-items: center;margin-top:150px;">
+                                <h2>Currently, there are no session roles setup for this event or the component has failed to load.</h2>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </article>
+    </div>
+</aura:component>

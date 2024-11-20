@@ -1,0 +1,9 @@
+<apex:page extensions="OrgWideAddressEventController" standardController="Event__c">
+    <apex:form style="padding-left: -550px;">
+        <apex:selectList size="1" value="{!orgWideAddress}"> 
+            <apex:outputLabel value="Email Sender  " style="font-size: 14px"/> 
+            <apex:selectOptions value="{!SelectedOrgWideAddress}"/>  
+        </apex:selectList>  &nbsp;
+        <apex:commandButton action="{!save}" value="Save" style="font-size: 12px"/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,863 @@
+.THIS .float-right {
+  float: right;
+}
+.THIS .clear-both {
+  clear: both;
+}
+.THIS .navbar-right {
+  float: right;
+}
+.THIS .myprogressIcon .slds-icon{
+    fill: #0071b5 !important;
+}
+.THIS .journey-progress-bar{
+    position: absolute;
+}
+.THIS .journey-progress-bar .slds-progress-bar__value{
+    /*border-radius: 23px 0 0 23px;*/
+    border-radius: 23px;
+}
+
+.THIS .journey-participant-progress-bar .slds-progress-bar_large{
+    background: none;
+    height: 25px;
+    top: 2px;
+    left: 2px;
+    padding: 5px;
+}
+.THIS .journey-participant-progress-bar .slds-progress-bar__value{
+    background: #0071b5;
+}
+
+.THIS .myprogress-label, .THIS .journeyprogress-label{
+    display: inline-block;
+    position: relative;
+    color: #c5c5c5;
+}
+
+.THIS ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #011e41;
+}
+.THIS li {
+  float: left;
+}
+.THIS .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 91px;
+  height: 35px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.THIS .slds-textarea {
+  border: 1px solid #ccc;
+  height: 100px;
+  background-color: #eeeeee;
+  border-radius: 15px;
+}
+.THIS .slds-form-element__control {
+  font-family: sans-serif;
+}
+.THIS .slds-form-element__label {
+  padding-top: 0px;
+  font-weight: bold;
+}
+.THIS .slds-modal__content {
+  border-radius: 15px;
+}
+
+.THIS .active-field input,
+.THIS .active-field textarea {
+    background-color: white;
+}
+
+.THIS .required-field .slds-form-element__label::before {
+    content: '*';
+    color: red;
+}
+
+.THIS .required-field-indicator {
+    color: red;
+    font-size: 12px;
+}
+
+.THIS .required-field-indicator.legend {
+    font-style: italic;
+    font-size: 13px;
+}
+
+.THIS .required-field-indicator-container {
+    display: flex;
+    justify-content: end;
+}
+
+.THIS .required-field.required-error input,
+.THIS .required-field.required-error textarea {
+    border: 1px solid red;
+}
+
+.THIS .required-field.required-error input {
+        margin-bottom: 4px;
+}
+
+.THIS .required-field.required-error + .required-field-indicator {
+    display: block;
+    margin-left: 4px;
+}
+
+.THIS .required-field + .required-field-indicator {
+    display: none;
+}
+
+/* desktop view */
+@media only screen and (min-width: 1025px) {
+  .THIS .nav-box {
+    /*height: 100px;*/
+    height: 100%;
+    background-color: #011e41;
+  }
+
+  .THIS .navbar-logo-img {
+    height: 100px;
+    width: 100px;
+  }
+  .THIS .navbar-progress {
+    position: relative;
+    margin: 6px 15px;
+  }
+
+  .THIS .progress-label {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+    height: 15px;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 400px;
+    height: 28px;
+    border-radius: 23px;
+    background: white;
+    padding: 3px;
+  }
+
+  .THIS .slds-progress-bar__value {
+    background: #c5c5c5;
+    border-radius: 23px;
+  }
+  .THIS .navbar-name {
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    font-family: sans-serif;
+    margin: 20px 10px 20px 45px;
+  }
+
+  .THIS .navbar-contact-us {
+    margin: 30px 0px 30px 0px;
+  }
+
+  .THIS .navbar-picture {
+    height: 150px;
+    width: 150px;
+  }
+
+  .THIS .navbar-avatar-img {
+    margin: 15px 15px 15px 15px;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    background-color: #fff;
+  }
+
+  .THIS .contact-us-button {
+    width: 110px;
+    height: 40px;
+    background-color: #93d500;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+  }
+
+  .THIS .contact-us-label {
+        font-size: 16px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 9px 5px 10px;
+  }
+
+  .THIS .contactus-label {
+    color: #0072a8;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .THIS .contactus-description {
+    font-size: 18px;
+    font-family: sans-serif;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .THIS .contactus-form {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 60%;
+    /* max-width: 40rem; */
+    min-width: 20rem;
+  }
+
+  .THIS .navbar-picture-active {
+    background-color: #007cba;
+    cursor: pointer;
+  }
+
+  .THIS .navbar-picture-inactive {
+    cursor: pointer;
+  }
+
+  .THIS .dropdown-menu-nav-image {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 350px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px 0px 15px 15px;
+    opacity: 1;
+    left: auto;
+    right: 0;
+    margin-top: 100px;
+    border: 1px solid #707070;
+    margin-right: 16px;
+  }
+
+  .THIS .slds-input {
+    border: 1px solid #ccc;
+    height: 50px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .THIS .nav-box {
+    height: 100px;
+    background-color: #011e41;
+  }
+
+  .THIS .navbar-logo-img {
+    height: 100px;
+    width: 100px;
+  }
+  .THIS .navbar-progress {
+    margin: 25px 35px;
+  }
+
+  .THIS .progress-label {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 260px;
+    height: 25px;
+    border-radius: 20px;
+    background: #ffffff;
+  }
+
+  .THIS .slds-progress-bar__value {
+    background: #f3bd48;
+    border-radius: 20px;
+  }
+
+  .THIS .navbar-name {
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    font-family: sans-serif;
+    margin: 20px 20px 0 30px;
+  }
+
+  .THIS .navbar-contact-us {
+        margin-top: 30px;
+    	margin-right: 20px;
+  }
+
+  .THIS .navbar-picture {
+    height: 120px;
+    width: 120px;
+  }
+
+  .THIS .navbar-avatar-img {
+    margin: 10px 10px 10px 10px;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    background-color: #fff;
+  }
+
+  .THIS .contact-us-button {
+    width: 110px;
+    height: 40px;
+    background-color: #93d500;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .THIS .contact-us-label {
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 10px 0 10px;
+  }
+
+  .THIS .contactus-label {
+    color: #0072a8;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .THIS .contactus-description {
+    font-size: 18px;
+    font-family: sans-serif;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .THIS .contactus-form {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 60%;
+    /* max-width: 40rem; */
+    min-width: 20rem;
+  }
+
+  .THIS .dropdown-menu-nav-image {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px 0px 15px 15px;
+    opacity: 1;
+    left: auto;
+    right: 0;
+    margin-top: 100px;
+    border: 1px solid #707070;
+    margin-right: 16px;
+  }
+
+  .THIS .slds-input {
+    border: 1px solid #ccc;
+    height: 50px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+    
+  .THIS .navbar-picture-active {
+    cursor: pointer;
+  }
+
+  .THIS .navbar-picture-inactive {
+    cursor: pointer;
+  }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .THIS .nav-box {
+    height: 100px;
+    background-color: #011e41;
+  }
+
+  .THIS .navbar-logo-img {
+    height: 100px;
+    width: 100px;
+  }
+  .THIS .navbar-progress {
+    margin: 25px 35px;
+  }
+
+  .THIS .progress-label {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .THIS .slds-progress-bar_large {
+    width: 260px;
+    height: 25px;
+    border-radius: 20px;
+    background: #ffffff;
+  }
+
+  .THIS .slds-progress-bar__value {
+    background: #f3bd48;
+    border-radius: 20px;
+  }
+
+  .THIS .navbar-name {
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    font-family: sans-serif;
+    margin: 40px 20px 0px 30px;
+  }
+
+  .THIS .navbar-contact-us {
+        margin-top: 30px;
+    	margin-right: 20px;
+  }
+
+  .THIS .navbar-picture {
+    height: 120px;
+    width: 120px;
+  }
+
+  .THIS .navbar-avatar-img {
+    margin: 10px 10px 10px 10px;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    background-color: #fff;
+  }
+
+  .THIS .contact-us-button {
+    width: 110px;
+    height: 40px;
+    background-color: #93d500;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .THIS .contact-us-label {
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 10px 0 10px;
+  }
+
+  .THIS .contactus-label {
+    color: #0072a8;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .THIS .contactus-description {
+    font-size: 18px;
+    font-family: sans-serif;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .THIS .contactus-form {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 60%;
+    /* max-width: 40rem; */
+    min-width: 20rem;
+  }
+
+  .THIS .dropdown-menu-nav-image {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px 0px 15px 15px;
+    opacity: 1;
+    left: auto;
+    right: 0;
+    margin-top: 100px;
+    border: 1px solid #707070;
+    margin-right: 16px;
+  }
+
+  .THIS .slds-input {
+    border: 1px solid #ccc;
+    height: 50px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+    
+  .THIS .navbar-picture-active {
+    
+    cursor: pointer;
+  }
+
+  .THIS .navbar-picture-inactive {
+    cursor: pointer;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 812px) and (orientation: portrait) {
+    
+  .THIS .nav-box {
+    height: 80px;
+    background-color: #011e41;
+  }
+
+    
+  .THIS .navbar-logo-img {
+    height: 80px;
+    width: 80px;
+  }
+  .THIS .navbar-progress {
+    margin-top: 20px;
+  }
+
+  .THIS .progress-label {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .THIS .slds-progress-bar_large {  
+    height: 16px;
+    border-radius: 25px;
+    background: #ffffff;
+  }
+  .THIS .slds-progress-bar__value {
+    background: #f3bd48;
+    border-radius: 25px;
+  }
+
+  .THIS .navbar-name {
+    color: white;
+    font-size: 18px;
+    text-align: right;
+    font-family: sans-serif;
+    margin-top: 37px;
+    text-align: right;
+  }
+
+  .THIS .navbar-contact-us {
+    padding-top: 0px;
+  }
+
+  .THIS .navbar-picture {
+    height: 100px;
+    width: 80px;
+    margin-left: 5px;
+  }
+
+  .THIS .navbar-avatar-img {
+    margin: 10px 10px 10px 10px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #fff;
+  }
+
+  .THIS .contact-us-button {
+    width: 65px;
+    height: 25px;
+    background-color: #93d500;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    margin-top: 38px;
+    margin-left: 5px;
+  }
+
+  .THIS .contact-us-label {
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 6px 4.2px 6.4px;
+  }
+
+  .THIS .contactus-box {
+    padding: 3%;
+  }
+
+  .THIS .contactus-label {
+    color: #0072a8;
+    font-size: 21px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 7px;
+  }
+
+  .THIS .contactus-description {
+    font-size: 13px;
+    font-family: sans-serif;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .THIS .contactus-form {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 80%;
+    /* max-width: 40rem; */
+    min-width: 90%;
+  }
+
+  .THIS .dropdown-menu-nav-image {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px 0px 15px 15px;
+    opacity: 1;
+    left: auto;
+    right: 0;
+    margin-top: 80px;
+    border: 1px solid #707070;
+    margin-right: 16px;
+  }
+
+  .THIS .slds-input {
+    border: 1px solid #ccc;
+    height: 40px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 5px;
+  }
+
+  .THIS .slds-textarea {
+    border: 1px solid #ccc;
+    height: 80px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+  }
+
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 90px;
+    height: 32px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+    
+  .THIS .navbar-picture-active {
+    
+    cursor: pointer;
+  }
+
+  .THIS .navbar-picture-inactive {
+    cursor: pointer;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .THIS .nav-box {
+    height: 80px;
+    background-color: #011e41;
+  }
+
+  .THIS .navbar-logo-img {
+    height: 80px;
+    width: 80px;
+  }
+  .THIS .navbar-progress {
+    margin-top: 20px;
+  }
+
+  .THIS .progress-label {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .THIS .slds-progress-bar_large {
+    height: 20px;
+    border-radius: 25px;
+    background: #ffffff;
+  }
+  .THIS .slds-progress-bar__value {
+    background: #f3bd48;
+    border-radius: 25px;
+  }
+  .THIS .navbar-name {
+    color: white;
+    font-size: 18px;
+    text-align: right;
+    font-family: sans-serif;
+    margin-top: 37px;
+    text-align: right;
+    margin-left: 16px;
+    margin-right: 2%;
+  }
+
+  .THIS .navbar-contact-us {
+    padding-top: 20px;
+    margin-right: 5px;
+  }
+
+  .THIS .navbar-picture {
+    height: 96px;
+    width: 96px;
+    margin-left: 5px;
+  }
+
+  .THIS .navbar-avatar-img {
+    margin: 10px 10px 10px 10px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #fff;    
+  }
+
+  .THIS .contact-us-button {
+    width: 76px;
+    height: 30px;
+    background-color: #93d500;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    margin-top: 13px;
+  }
+
+  .THIS .contact-us-label {
+    font-size: 11px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 8px 4.2px 6.4px;
+  }
+
+  .THIS .contactus-box {
+    padding: 3%;
+  }
+
+  .THIS .contactus-label {
+    color: #0072a8;
+    font-size: 21px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 7px;
+  }
+
+  .THIS .contactus-description {
+    font-size: 16px;
+    font-family: sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .THIS .contactus-form {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 80%;
+    /* max-width: 40rem; */
+    min-width: 20rem;
+  }
+
+  .THIS .dropdown-menu-nav-image {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px 0px 15px 15px;
+    opacity: 1;
+    left: auto;
+    right: 0;
+    margin-top: 80px;
+    border: 1px solid #707070;
+    margin-right: 28px;
+  }
+
+  .THIS .slds-input {
+    border: 1px solid #ccc;
+    height: 50px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 5px;
+  }
+    
+  .THIS .navbar-picture-active {
+    cursor: pointer;
+    
+  }
+
+  .THIS .navbar-picture-inactive {
+    cursor: pointer;
+  }
+}

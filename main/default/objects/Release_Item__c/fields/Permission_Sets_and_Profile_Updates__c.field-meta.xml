@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Permission_Sets_and_Profile_Updates__c</fullName>
+    <externalId>false</externalId>
+    <formula>Release__r.Permission_Sets_and_Profile_Updates__c</formula>
+    <inlineHelpText>Excel file to monitor the changes made for Permission sets  and profiles.</inlineHelpText>
+    <label>Permission Sets and Profile Updates</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

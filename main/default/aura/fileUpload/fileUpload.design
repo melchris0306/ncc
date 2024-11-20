@@ -1,0 +1,7 @@
+<design:component label="Custom File uploader">
+        <design:attribute name="fileId" label="API Name of File Id field" description="API Name of the field to put uploaded document Id into" />
+        <design:attribute name="successMessage" label="Successfull upload message" description="Text to confirm that the file was uploaded successfully" />
+        <design:attribute name="cardTitle" label="Title of Upload Widget" description="Title text to display" />
+        <design:attribute name="cardPrompt" label="Prompt for Upload Widget" description="Prompt text to display" />
+        <design:attribute name="fileTypes" label="Comma delimited list of accepted file types" description="Comma delimited list of accepted file types" />
+</design:component>

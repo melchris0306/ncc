@@ -1,0 +1,116 @@
+<aura:component implements="lightning:availableForFlowScreens" access="global" controller="CommunicationEmail_Controller">
+    <!--  this tag sets modal size and style -->
+    <aura:html tag="style">
+    	.slds-modal__container {
+    		min-height: 70vh !important;
+         	min-width: 90vw !important;
+        }
+        .slds-spinner_container{
+            background: none;
+        }
+    </aura:html>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+
+    <!-- public Atrributes -->
+    <aura:attribute name="communication" type="Communication__c" />
+    <aura:attribute name="orgWideEmailAddressRecord" type="OrgWideEmailAddress" />
+    <aura:attribute name="ccRecipients" type="String[]" default=""/>
+    <aura:attribute name="bccRecipients" type="String[]" default=""/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="senderEmail" type="String"/>
+    <aura:attribute name="user" type="User" />
+    <aura:attribute name="attachmentRecords" type="List" default="[]"/>
+
+    <!-- Local Atrributes -->
+    <aura:attribute name="ccPillItems" type="List" access="private"/>
+    <aura:attribute name="bccPillItems" type="List" access="private"/>
+    <aura:attribute name="isLoading" type="Boolean" access="private" default="true"/>
+    <aura:attribute name="emailTemplateLink" type="String" access="private"/>
+
+    <div class="slds-form-element slds-p-around_xx-small slds-scrollable--y">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+            <aura:set attribute="else">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning:input name="communication-name" 
+                                        type="text" 
+                                        readonly="true" 
+                                        value="{!v.communication.Name}" 
+                                        label="Communication Name" />
+                        <lightning:input name="subject" 
+                                        readonly="true" 
+                                        value="{!v.communication.Subject__c}" 
+                                        label="Subject" 
+                                        class="slds-m-bottom_small"/>
+                        <lightning:input name="email-date" 
+                                        type="date" 
+                                        readonly="true" 
+                                        value="{!v.communication.Email_Date__c}" 
+                                        label="Email Date" />
+                        <lightning:input name="scheduled-email-date-time" 
+                                        type="datetime" 
+                                        readonly="true" 
+                                        value="{!v.communication.Email_Delivery_Date_Time_Schedule__c}" 
+                                        label="Email Delivery Schedule" />
+                        <lightning:input name="milestone" 
+                                        type="checkbox" 
+                                        disabled="true" 
+                                        checked="{!v.communication.Milestone__c}" 
+                                        label="Milestone" 
+                                        class="slds-m-vertical_small"/>
+                        <br/>
+
+                        <!-- Updated by XenReyes Oct282022 CCN-814 !-->
+                        <aura:renderif isTrue="{!not(empty(v.attachmentRecords))}">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                 <tr class="slds-line-height_reset">
+                                      <th><b>ATTACHMENTS</b></th>
+                                </tr>
+                                <aura:iteration items="{!v.attachmentRecords}" var="item">
+                                    <tr class="slds-hint-parent">
+                                        <td class="slds-truncate">{!item.name}</td>
+                                        <td></td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>
+                        </aura:renderif>
+
+                    </div>
+                    <div class="slds-col">
+                        <lightning:input name="sender" 
+                                        type="email" 
+                                        readonly="true" 
+                                        value="{!v.senderEmail}" 
+                                        label="From" />
+                        <lightning:input name="replyReceiver" 
+                                        type="email" 
+                                        readonly="true" 
+                                        value="{!v.communication.Reply_Email_Address__c}" 
+                                        label="Reply Receiver" />
+                        <label class="slds-form-element__label" for="cc-container">Cc</label>
+                        <div class="slds-form-element__control">
+                            <lightning:pillContainer id="cc-container" items="{!v.ccPillItems}" onitemremove="{!c.handleRemoveCcItem}"/>
+                        </div>
+                        <label class="slds-form-element__label" for="bcc-container">Bcc</label>
+                        <div class="slds-form-element__control">
+                            <lightning:pillContainer id="bcc-container" items="{!v.bccPillItems}" onitemremove="{!c.handleRemoveBccItem}"/>
+                        </div>
+                        <div class="slds-m-top_small">
+                            <label for="email-template-link">Email Template Link</label><br/>
+                            <p id="email-template-link">
+                                <lightning:formattedUrl value="{!v.emailTemplateLink}" tooltip="Email Template Link" target="_blank" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- <div class="slds-box">
+                    <p><lightning:formattedRichText value="{!v.communication.Body__c}" /></p>
+                </div> -->
+            </aura:set>
+
+        </aura:if>
+    </div>
+</aura:component>

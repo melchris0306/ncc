@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Session Attendance Thank You DoD</name>
+    <style>none</style>
+    <subject>Thank You!</subject>
+    <textOnly>VA Healh Connect CRM
+
+Thank you for your attendance!
+
+ATTENTION: HTML links in emails have been disabled to help users avoid phishing scams and other potential threats. Please copy the text between &quot;&lt; Caution-&quot; and the ending &quot;&gt;,&quot; and paste the link into your web browser.
+
+
+Hello {!Session_Participant__c.Contact_First_Name__c},
+
+{!Session_Participant__c.Session_Attendance_Thank_You_Message__c}
+
+
+For more information, please visit the event page.
+
+{!Session_Participant__c.Event_Name__c}
+
+Event Details</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

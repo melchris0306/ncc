@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Site_Service_Validation</fullName>
+    <columns>NAME</columns>
+    <columns>Capture_Title__c</columns>
+    <columns>Referred_to_Community__c</columns>
+    <columns>In_House__c</columns>
+    <columns>Email__c</columns>
+    <columns>Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type_Values__c</field>
+        <operation>equals</operation>
+        <value>Site Service Validation</value>
+    </filters>
+    <label>Site Service Validation</label>
+</ListView>

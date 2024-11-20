@@ -1,0 +1,20 @@
+.THIS .campaign-hierarchy-page{
+    background: #f3f2f2;
+    border: var(--lwc-borderWidthThin,1px) solid var(--lwc-cardColorBorder,rgb(221, 219, 218));
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+}
+.THIS .header-title{
+    font-size: var(--lwc-varFontSize5,1rem);
+    font-weight: var(--lwc-cardFontWeight,700);
+    padding-left: 10px;
+}
+.THIS .campaign-hierarchy-header{
+    padding: var(--lwc-varSpacingVerticalMedium,1rem) var(--lwc-varSpacingHorizontalMedium,1rem);
+}
+                                        
+.THIS .campaign-hierarchy-page .slds-th__action-button{
+    display: none;
+}
+.THIS .campaign-hierarchy-page .slds-resizable__divider {
+    display: none;
+}

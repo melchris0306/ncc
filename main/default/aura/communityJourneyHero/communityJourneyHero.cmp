@@ -1,0 +1,42 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  access="global"
+  controller="TheProviderJourney"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute name="isOpen" type="boolean" default="false" />
+  <aura:attribute name="journeyID" type="String" />
+  <aura:attribute name="userJourney" type="Journey_Participant__c" />
+  <aura:attribute name="journeyData" type="Journey__c" />
+  <aura:attribute name="userMilestones" type="List" />
+  <aura:attribute name="userMilestoneRelatedInfo" type="List" />
+  <aura:attribute name="journeyMilestoneList" type="List" />
+  <aura:attribute name="urlFromJourney" type="Boolean" />
+  <aura:attribute name="uploadImageModal" type="Boolean" default="false" />
+  <aura:attribute name="submitConfirmationMdl" type="Boolean" default="false" />
+  <aura:attribute name="taskCreationResult" type="String" />
+  <aura:attribute name="userComment" type="String" />
+  <aura:attribute name="userSubject" type="String" />
+  <aura:attribute name="disableSubmit" type="boolean" default="true" />
+  <aura:attribute name="submitConfirmationBtn" type="String" default="Done" />
+  <aura:attribute name="userJourneyFirstName" type="String" default="" />
+  <aura:attribute name="userJourneyLastName" type="String" default="" />
+  <aura:attribute type="Boolean" name="showSpinner" default="false" />
+
+  <aura:attribute name="journeyImageURL" type="string" />
+  <aura:attribute name="campaignLogoURL" type="string" />
+
+  <div>
+    <span class="img-hero">
+      <div class="campaign-logo-container">
+        <img src="{!v.campaignLogoURL}" class="campaign-Logo" />
+      </div>
+      <div class="journey-image-container">
+        <img src="{!v.journeyImageURL}" class="journey-Logo" />
+      </div>
+    </span>
+  </div>
+
+  <div style="clear: both"></div>
+</aura:component>

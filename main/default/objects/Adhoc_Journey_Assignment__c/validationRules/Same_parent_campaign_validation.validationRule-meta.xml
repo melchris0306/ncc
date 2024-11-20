@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Same_parent_campaign_validation</fullName>
+    <active>true</active>
+    <description>Checks whether Journey has the same parent campaign</description>
+    <errorConditionFormula>OR(
+AND(NOT(ISBLANK(Event__c)),(Event__r.Campaign__c != Journey__r.Campaign__c)),
+AND(NOT(ISBLANK(Survey__c)),(Survey__r.Survey_Campaign__c  != Journey__r.Campaign__c))  
+		)</errorConditionFormula>
+    <errorMessage>Cannot associate a journey with different Parent Campaign record.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,166 @@
+/* desktop view */
+@media only screen and (min-width: 1367px) {
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .THIS .img-modal {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 139px;
+    width: 139px;
+    margin-left: 40px;
+  }
+  .THIS .name-modal {
+    margin: 30px 5px 0px 0;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #707070;
+  }
+  .THIS .sign-out-button {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: #007cba;
+  }
+  .THIS .menu-layout {
+    margin: 10px 10px 30px 30px;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .THIS .img-modal {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 139px;
+    width: 139px;
+    margin-left: 40px;
+  }
+  .THIS .name-modal {
+    margin: 30px 5px 0px 0;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #707070;
+  }
+  .THIS .sign-out-button {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: #007cba;
+  }
+  .THIS .menu-layout {
+    margin: 10px 10px 30px 30px;
+  }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1366px) and (orientation: landscape) {
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .THIS .img-modal {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 139px;
+    width: 139px;
+    margin-left: 40px;
+  }
+  .THIS .name-modal {
+    margin: 30px 5px 0px 0;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #707070;
+  }
+  .THIS .sign-out-button {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: #007cba;
+  }
+  .THIS .menu-layout {
+    margin: 10px 10px 30px 30px;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 812px) and (orientation: portrait) {
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .THIS .img-modal {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 139px;
+    width: 139px;
+    margin-left: 40px;
+  }
+  .THIS .name-modal {
+    margin: 0px 0px 0 0;
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #707070;
+  }
+  .THIS .contact-us-link {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: #007cba;
+    margin-bottom: 15px;
+  }
+  .THIS .sign-out-button {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: #007cba;
+  }
+  .THIS .menu-layout {
+    margin: 10px 10px 10px 20px;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .THIS .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .THIS .img-modal {
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 139px;
+    width: 139px;
+    margin-left: 40px;
+  }
+  .THIS .name-modal {
+    margin: 0px 0px 0 0;
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #707070;
+  }
+  .THIS .contact-us-link {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: #007cba;
+    margin-bottom: 15px;
+  }
+  .THIS .sign-out-button {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: #007cba;
+  }
+  .THIS .menu-layout {
+    margin: 10px 10px 10px 20px;
+  }
+}

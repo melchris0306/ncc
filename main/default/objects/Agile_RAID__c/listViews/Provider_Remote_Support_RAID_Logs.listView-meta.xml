@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provider_Remote_Support_RAID_Logs</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Type__c</columns>
+    <columns>Description__c</columns>
+    <columns>Resolution__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Date_Raised__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CAPM_Project__c</field>
+        <operation>contains</operation>
+        <value>Provider</value>
+    </filters>
+    <label>Provider Remote Support RAID Logs</label>
+</ListView>
